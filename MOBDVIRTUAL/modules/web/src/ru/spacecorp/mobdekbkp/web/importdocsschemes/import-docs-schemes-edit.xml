@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="ru.spacecorp.mobdekbkp.web.importdocsschemes.ImportDocsSchemesEdit"
+        datasource="importDocsSchemesDs"
+        focusComponent="fieldGroup"
+        messagesPack="ru.spacecorp.mobdekbkp.web.importdocsschemes">
+    <dsContext>
+        <datasource id="importDocsSchemesDs"
+                    class="ru.spacecorp.mobdekbkp.entity.ImportDocsSchemes"
+                    view="importDocsSchemes-view"/>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="windowActions"
+            spacing="true">
+        <fieldGroup id="fieldGroup"
+                    align="TOP_CENTER"
+                    datasource="importDocsSchemesDs">
+            <column width="250px">
+                <field property="iTM"/>
+            </column>
+        </fieldGroup>
+        <frame id="windowActions"
+               align="MIDDLE_CENTER"
+               screen="editWindowActions"
+               width="AUTO"/>
+    </layout>
+</window>

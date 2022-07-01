@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="ru.spacecorp.mobdekbkp.web.factory.FactoryBrowse"
+        focusComponent="factoriesTable"
+        lookupComponent="factoriesTable"
+        messagesPack="ru.spacecorp.mobdekbkp.web.typonominal">
+    <dsContext>
+        <groupDatasource id="factoriesDs"
+                         class="ru.spacecorp.mobdekbkp.entity.Factory"
+                         view="factoryImport-view">
+            <query>
+                <![CDATA[select e from mobdekbkp$Factory e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true">
+        <groupTable id="factoriesTable"
+                    height="100%"
+                    width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="producer"/>
+                <column id="producingCountry"/>
+                <column id="provider"/>
+            </columns>
+            <rows datasource="factoriesDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        caption="msg://add"
+                        invoke="onCreateBtnClick"/>
+                <button id="editBtn"
+                        action="factoriesTable.edit"/>
+                <button id="removeBtn"
+                        action="factoriesTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<views xmlns="http://schemas.haulmont.com/cuba/view.xsd">
+    <view class="ru.spacecorp.documents.entity.Document"
+          extends="_local"
+          name="document-view">
+        <property name="documentType"
+                  view="_minimal"/>
+        <property name="files"
+                  view="_minimal"/>
+    </view>
+    <view class="ru.spacecorp.documents.entity.DocumentType"
+          extends="_local"
+          name="documentType-view">
+        <property name="parent"
+                  view="_minimal"/>
+    </view>
+    <view class="ru.spacecorp.documents.entity.DocumentRestriction"
+          extends="_local"
+          name="documentRestriction-view">
+        <property name="restriction"
+                  view="_minimal"/>
+    </view>
+</views>

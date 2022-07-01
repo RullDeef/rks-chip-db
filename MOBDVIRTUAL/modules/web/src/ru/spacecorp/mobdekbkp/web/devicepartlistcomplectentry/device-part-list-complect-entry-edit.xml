@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="ru.spacecorp.mobdekbkp.web.devicepartlistcomplectentry.DevicePartListComplectEntryEdit"
+        datasource="devicePartListComplectEntryDs"
+        focusComponent="devicePartListComplectEntryFieldGroup"
+        messagesPack="ru.spacecorp.mobdekbkp.web.devicepartlistcomplectentry">
+    <dsContext>
+        <datasource id="devicePartListComplectEntryDs"
+                    class="ru.spacecorp.mobdekbkp.entity.DevicePartListComplectEntry"
+                    view="devicePartListComplectEntry-view"/>
+        <collectionDatasource id="typonominalsDs"
+                              class="ru.spacecorp.mobdekbkp.entity.Typonominal"
+                              view="_minimal">
+            <query>
+                <![CDATA[select e from mobdekbkp$Typonominal e 
+                            join mobdekbkp$DeviceListProjectEntry o
+                            ON e.id = o.typonominal.id
+                            where o.status = 'approved' ]]>
+            </query>
+        </collectionDatasource>
+        <collectionDatasource id="tnsDs"
+                              class="ru.spacecorp.mobdekbkp.entity.Typonominal"
+                              view="typonominal-view">
+            <query>
+                <![CDATA[select e.typonominal from mobdekbkp$DeviceListProjectEntry e where e.deviceListProject.device
+                in (select e.deviceComplect.device from mobdekbkp$DevicePartListComplect e where e.id=:ds$devicePartListComplectEntryDs.devicePartListComplect.id)
+                ]]>
+            </query>
+        </collectionDatasource>
+        <collectionDatasource id="typonominalsCustDs"
+                              class="ru.spacecorp.mobdekbkp.entity.Typonominal"
+                              datasourceClass="ru.spacecorp.mobdekbkp.web.devicepartlistcomplectentry.complectDatasource.complectDatasource">
+            <query>
+                <![CDATA[select e from mobdekbkp$Typonominal e]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="windowActions"
+            spacing="true">
+        <fieldGroup id="devicePartListComplectEntryFieldGroup"
+                    datasource="devicePartListComplectEntryDs">
+            <column width="350px">
+                <field optionsDatasource="typonominalsCustDs"
+                       property="typonominal"/>
+                <field editable="false"
+                       property="status"/>
+                <field property="amountInDevice"/>
+                <field property="amountDelivered"/>
+                <field property="amountTotal"/>
+                <field property="datePlanned"/>
+                <field property="dateFact"/>
+                <field property="questions"
+                       rows="5"/>
+                <field property="byHeadExecutor"/>
+            </column>
+        </fieldGroup>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

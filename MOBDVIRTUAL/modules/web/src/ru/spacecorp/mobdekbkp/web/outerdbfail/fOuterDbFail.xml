@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        class="ru.spacecorp.mobdekbkp.web.outerdbfail.Fouterdbfail"
+        messagesPack="ru.spacecorp.mobdekbkp.web.outerdbfail">
+    <dsContext>
+        <collectionDatasource id="outerDbFailsDs"
+                              class="ru.spacecorp.mobdekbkp.entity.OuterDbFail">
+            <query>
+                <![CDATA[select e from mobdekbkp$OuterDbFail e]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <dialogMode height="100%"
+                width="100%"/>
+    <layout>
+        <vbox id="vbMain"
+              expand="tblOuterDbFail"
+              height="100%"
+              spacing="true">
+            <hbox expand="label"
+                  spacing="true"
+                  width="100%">
+                <button id="btnCreate"
+                        caption="msg://create"
+                        icon="icons/add.png"
+                        invoke="onBtnCreateClick"/>
+                <label id="label"
+                       align="MIDDLE_CENTER"
+                       value="msg://OuterDbFails"/>
+            </hbox>
+            <table id="tblOuterDbFail"
+                   multiLineCells="true"
+                   width="100%">
+                <actions>
+                    <action id="edit"
+                            invoke="onEdit"/>
+                    <action id="remove"/>
+                </actions>
+                <columns>
+                    <column id="index"/>
+                    <column id="failType"/>
+                    <column id="failDate"/>
+                </columns>
+                <rows datasource="outerDbFailsDs"/>
+            </table>
+        </vbox>
+    </layout>
+</window>

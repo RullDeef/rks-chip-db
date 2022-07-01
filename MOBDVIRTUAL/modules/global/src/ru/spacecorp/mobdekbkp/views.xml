@@ -1,0 +1,2958 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<views xmlns="http://schemas.haulmont.com/cuba/view.xsd">
+    <view class="ru.spacecorp.mobdekbkp.entity.CompanyLicense"
+          extends="_minimal"
+          name="companyLicense-view">
+        <property name="dateObtained"/>
+        <property name="dateExpire"/>
+        <property name="type"
+                  view="_minimal"/>
+        <property name="company"
+                  view="_minimal">
+            <property name="name"/>
+            <property name="nameShort"/>
+        </property>
+        <property name="document"
+                  view="document-view"/>
+        <property name="issued"/>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.Company"
+          extends="_minimal"
+          name="company-view"
+          systemProperties="true">
+        <property name="nameShort"/>
+        <property name="addressFact"/>
+        <property name="addressLegal"/>
+        <property name="ogrn"/>
+        <property name="inn"/>
+        <property name="okpo"/>
+        <property name="phone"/>
+        <property name="fax"/>
+        <property name="email"/>
+        <property name="website"/>
+        <property name="country"
+                  view="country-view">
+        </property>
+        <property name="licenses"
+                  view="companyLicense-view">
+        </property>
+        <property name="types"
+                  view="_minimal">
+        </property>
+        <property name="rating"/>
+        <property name="kpp"/>
+        <property name="needs"
+                  view="companyNeed-view"/>
+        <property name="name"/>
+        <property name="logo"
+                  view="_minimal"/>
+        <property name="genDir"/>
+        <property name="okato"/>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.CompanyTypeEntry"
+          extends="_minimal"
+          name="companyTypeEntry-view">
+        <property name="company"
+                  view="_minimal"/>
+        <property name="type">
+            <property name="name"/>
+        </property>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.CompanyType"
+          extends="_minimal"
+          name="companyType-view"/>
+    <view class="ru.spacecorp.mobdekbkp.entity.ParameterValue"
+          extends="_minimal"
+          name="parameterValue-view">
+        <property name="currentValueType"/>
+        <property name="valFloat"/>
+        <property name="valString"/>
+        <property name="valMax"/>
+        <property name="valMin"/>
+        <property name="tolerancePlus"/>
+        <property name="toleranceMinus"/>
+        <property name="gamma"/>
+        <property name="parameter"
+                  view="parameter-view">
+        </property>
+        <property name="type">
+            <property name="typeClass"
+                      view="typeClassOnType-view">
+                <property name="strRecSettings"
+                          view="_minimal">
+                    <property name="strRec"
+                              view="_minimal">
+                        <property name="strRecSettingses"
+                                  view="_minimal">
+                            <property name="strRec"
+                                      view="_minimal">
+                                <property name="text"/>
+                                <property name="strRecSettingses"
+                                          view="_minimal"/>
+                            </property>
+                            <property name="typeClass"
+                                      view="_minimal"/>
+                        </property>
+                    </property>
+                    <property name="typeClass"
+                              view="_minimal">
+                        <property name="strRecSettings"
+                                  view="_minimal"/>
+                    </property>
+                </property>
+                <property name="parent"
+                          view="typeClass-view">
+                    <property name="characteristics"
+                              view="typeClassCharacteristic-view">
+                        <property name="typeClass"
+                                  view="_minimal">
+                            <property name="strRecSettings"
+                                      view="_minimal">
+                                <property name="strRec"
+                                          view="_minimal"/>
+                            </property>
+                        </property>
+                    </property>
+                </property>
+            </property>
+            <property name="paramValue"
+                      view="_minimal">
+                <property name="currentValueType"/>
+                <property name="valFloat"/>
+                <property name="valString"/>
+                <property name="valMax"/>
+                <property name="valMin"/>
+                <property name="tolerancePlus"/>
+                <property name="toleranceMinus"/>
+                <property name="gamma"/>
+            </property>
+        </property>
+        <property name="operationCondition"
+                  view="_minimal"/>
+        <property name="valStrLib"
+                  view="_minimal">
+            <property name="text"/>
+            <property name="strLibSettingses"
+                      view="_minimal">
+                <property name="strLib"
+                          view="_minimal">
+                    <property name="text"/>
+                    <property name="strLibSettingses"
+                              view="_minimal"/>
+                </property>
+            </property>
+        </property>
+        <property name="valStrRec"
+                  view="_minimal">
+            <property name="text"/>
+            <property name="strRecSettingses"
+                      view="_minimal">
+                <property name="strRec"
+                          view="_minimal">
+                    <property name="text"/>
+                    <property name="strRecSettingses"
+                              view="_minimal"/>
+                </property>
+            </property>
+        </property>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.Typonominal"
+          extends="_minimal"
+          name="typonominal-view">
+        <property name="typonominalQualityLevelNative"
+                  view="typonominalQualityLevelNative-view"/>
+        <property name="typonominalQualityLevelImport"
+                  view="typonominalQualityLevelImport-view"/>
+        <property name="mass"/>
+        <property name="notPerspective"/>
+        <property name="madeUsingImportItems"/>
+        <property name="hasBody"/>
+        <property name="lifeCycleStage"/>
+        <property name="body"
+                  view="typonominalBody-view">
+        </property>
+        <property name="installParameters"
+                  view="typonominalInstallParameters-view"/>
+        <property name="persistenceInfo"
+                  view="outerPersistenceInfo-view"/>
+        <property name="analogs"
+                  view="typonominalAnalog-view"/>
+        <property name="hasSubstitute"/>
+        <property name="sealNeeded"/>
+        <property name="isAutoAssemble"/>
+        <property name="purchaseParameters"
+                  view="typonominalPurchaseParameters-view">
+        </property>
+        <property name="type"
+                  view="type-view">
+            <property name="mathModelParams"
+                      view="typeMathModelParameters-view">
+                <property name="createdBy"/>
+            </property>
+        </property>
+        <property name="technicalCondition"/>
+        <property name="basicInformation"
+                  view="basic-information-view"/>
+        <property name="qualityCaption"/>
+        <property name="factory"
+                  view="factory-view"/>
+        <property name="parametersForPurchasing"
+                  view="parametersForPurchasing-view"/>
+        <property name="advancedSetting"
+                  view="advancedSetting-view"/>
+        <property name="applicabilityDevices"
+                  view="applicabilityDevices-view"/>
+        <property name="corpus"
+                  view="corpus-view"/>
+        <property name="reliabilityIndicators"
+                  view="reliabilityIndicators-view"/>
+        <property name="customParameters"
+                  view="customParameters-view"/>
+        <property name="montageParameters"
+                  view="montageParameters-view"/>
+        <property name="technicalParameters"
+                  view="technicalParameters-view"/>
+        <property name="mainParameters"
+                  view="mainParameters-view"/>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.TypeClass"
+          extends="_minimal"
+          name="typeClass-view">
+        <property name="type"
+                  view="typeClassType-view"/>
+        <property name="number"/>
+        <property name="parent"
+                  view="_minimal">
+        </property>
+        <property name="children"
+                  view="_minimal">
+        </property>
+        <property name="characteristics"
+                  view="typeClassCharacteristic-view"/>
+        <property name="strLibSettings"
+                  view="_minimal">
+            <property name="strLib"
+                      view="_minimal">
+                <property name="text"/>
+                <property name="strLibSettingses"
+                          view="_minimal"/>
+            </property>
+            <property name="typeClass"
+                      view="_minimal"/>
+        </property>
+        <property name="strRecSettings"
+                  view="_minimal">
+            <property name="strRec"
+                      view="_minimal">
+                <property name="text"/>
+                <property name="strRecSettingses"
+                          view="_minimal"/>
+            </property>
+            <property name="typeClass"
+                      view="_minimal"/>
+        </property>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.TypeClass"
+          extends="_minimal"
+          name="typeClass-view-prop">
+        <property name="type"
+                  view="typeClassType-view"/>
+        <property name="characteristics"
+                  view="typeClassCharacteristic-view">
+        </property>
+        <property name="parent"
+                  view="_minimal">
+            <property name="number"/>
+            <property name="type"
+                      view="typeClassType-view"/>
+            <property name="parent"
+                      view="_minimal"/>
+            <property name="characteristics"
+                      view="typeClassCharacteristic-view"/>
+            <property name="children"
+                      view="_minimal"/>
+        </property>
+        <property name="number"/>
+        <property name="children"
+                  view="_minimal">
+            <property name="number"/>
+            <property name="type"
+                      view="typeClassType-view"/>
+            <property name="parent"
+                      view="_minimal"/>
+            <property name="characteristics"
+                      view="typeClassCharacteristic-view"/>
+            <property name="children"
+                      view="_minimal"/>
+        </property>
+        <property name="strLibSettings"
+                  view="_minimal">
+            <property name="strLib"
+                      view="_minimal">
+                <property name="text"/>
+                <property name="strLibSettingses"
+                          view="_minimal"/>
+            </property>
+            <property name="typeClass"
+                      view="_minimal"/>
+        </property>
+        <property name="strRecSettings"
+                  view="_minimal">
+            <property name="strRec"
+                      view="_minimal">
+                <property name="text"/>
+                <property name="strRecSettingses"
+                          view="_minimal"/>
+            </property>
+            <property name="typeClass"
+                      view="_minimal"/>
+        </property>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.TypeClassCharacteristic"
+          extends="_minimal"
+          name="typeClassCharacteristic-view">
+        <property name="typeClass"
+                  view="_minimal">
+            <property name="number"/>
+        </property>
+        <property name="parameter">
+            <property name="name"/>
+            <property name="description"/>
+            <property name="unit"
+                      view="unitVal-view"/>
+            <property name="defaultValueType"/>
+            <property name="paramType"/>
+            <property name="value"
+                      view="_minimal">
+                <property name="currentValueType"/>
+                <property name="valFloat"/>
+                <property name="valString"/>
+                <property name="valMax"/>
+                <property name="valMin"/>
+                <property name="tolerancePlus"/>
+                <property name="toleranceMinus"/>
+                <property name="gamma"/>
+                <property name="parameter"
+                          view="_minimal"/>
+            </property>
+        </property>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.TypeClassType"
+          extends="_local"
+          name="typeClassType-view"/>
+    <view class="ru.spacecorp.mobdekbkp.entity.TypeCalicoholderEntry"
+          extends="_minimal"
+          name="typeCalicoholderEntry-view">
+        <property name="typeInverse"
+                  view="_minimal"/>
+        <property name="name"
+                  view="company-view"/>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.TypeManufacturerEntry"
+          extends="_minimal"
+          name="typeManufacturerEntry-view">
+        <property name="typeInverse"
+                  view="_minimal"/>
+        <property name="name"
+                  view="company-view"/>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.TypeProviderEntry"
+          extends="_minimal"
+          name="typeProviderEntry-view">
+        <property name="typeInverse"
+                  view="_minimal"/>
+        <property name="name"
+                  view="company-view"/>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.TyponominalInstallParameters"
+          extends="_minimal"
+          name="typonominalInstallParameters-view">
+        <property name="nonPbSolderTech"/>
+        <property name="temperatureMode"/>
+        <property name="gasEnvironmentAvailable"/>
+        <property name="installationOptionDesignation"/>
+        <property name="hasGasket"/>
+        <property name="gasketSize"/>
+        <property name="hasGlue"/>
+        <property name="installationCountAllowed"/>
+        <property name="autoInstallation"/>
+        <property name="glueType"
+                  view="_minimal"/>
+        <property name="installMethod"
+                  view="_minimal"/>
+        <property name="solderBrand"
+                  view="_minimal"/>
+        <property name="fluxBrand"
+                  view="_minimal"/>
+        <property name="bodyInstallationDocument"
+                  view="_minimal">
+        </property>
+        <property name="pinFormingDocument"
+                  view="_minimal">
+        </property>
+        <property name="gasketMaterial"
+                  view="_minimal">
+            <property name="type"/>
+        </property>
+        <property name="substrates"
+                  view="substrateEntry-view"/>
+        <property name="pinFormingDesignation"/>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.FluxBrand"
+          extends="_minimal"
+          name="fluxBrand-view"/>
+    <view class="ru.spacecorp.mobdekbkp.entity.CompanyLicenseType"
+          extends="_minimal"
+          name="companyLicenseType-view"/>
+    <view class="ru.spacecorp.mobdekbkp.entity.Country"
+          extends="_minimal"
+          name="country-view">
+        <property name="countryType"/>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.DevicePart"
+          name="devicePart-view">
+        <property name="type"/>
+        <property name="developer"
+                  view="company-view">
+        </property>
+        <property name="constructor"/>
+        <property name="demands"/>
+        <property name="plannedLists"
+                  view="devicePartListPlanned-view">
+        </property>
+        <property name="complectLists"
+                  view="devicePartListComplect-view">
+            <property name="entries"
+                      view="devicePartListComplectEntry-view">
+                <property name="devicePartListComplect"
+                          view="_minimal">
+                    <property name="entries"
+                              view="_minimal"/>
+                </property>
+                <property name="typonominal"
+                          view="typonominal-view">
+                    <property name="type"
+                              view="type-view">
+                        <property name="manufacturers"
+                                  view="typeManufacturerEntry-view">
+                            <property name="name"
+                                      view="company-view">
+                                <property name="createTs"/>
+                                <property name="createdBy"/>
+                            </property>
+                        </property>
+                        <property name="calicoholders"
+                                  view="typeCalicoholderEntry-view">
+                            <property name="name"
+                                      view="company-view">
+                                <property name="createTs"/>
+                                <property name="createdBy"/>
+                            </property>
+                        </property>
+                        <property name="providers"
+                                  view="typeProviderEntry-view">
+                            <property name="name"
+                                      view="company-view">
+                                <property name="createTs"/>
+                                <property name="createdBy"/>
+                            </property>
+                        </property>
+                        <property name="typonominal"
+                                  view="_minimal">
+                            <property name="purchaseParameters"
+                                      view="typonominalPurchaseParameters-view">
+                                <property name="company"
+                                          view="company-view">
+                                    <property name="createTs"/>
+                                    <property name="createdBy"/>
+                                </property>
+                            </property>
+                        </property>
+                    </property>
+                    <property name="purchaseParameters"
+                              view="typonominalPurchaseParameters-view">
+                        <property name="company"
+                                  view="company-view">
+                            <property name="createTs"/>
+                            <property name="createdBy"/>
+                        </property>
+                    </property>
+                </property>
+            </property>
+            <property name="deviceComplect"
+                      view="_minimal">
+                <property name="partListComplect"
+                          view="_minimal">
+                    <property name="entries"
+                              view="_minimal"/>
+                </property>
+            </property>
+        </property>
+        <property name="designation"/>
+        <property name="documents"
+                  view="_minimal">
+            <property name="designation"/>
+            <property name="documentType"
+                      view="_minimal"/>
+        </property>
+        <property name="createTs"/>
+        <property name="createdBy"/>
+        <property name="updateTs"/>
+        <property name="updatedBy"/>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.GlueType"
+          extends="_minimal"
+          name="glueType-view"/>
+    <view class="ru.spacecorp.mobdekbkp.entity.InstallMethod"
+          extends="_local"
+          name="installMethod-view"/>
+    <view class="ru.spacecorp.mobdekbkp.entity.Material"
+          extends="_minimal"
+          name="material-view">
+        <property name="type"/>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.OuterInformationSource"
+          extends="_local"
+          name="outerInformationSource-view"/>
+    <view class="ru.spacecorp.mobdekbkp.entity.SolderBrand"
+          extends="_local"
+          name="solderBrand-view"/>
+    <view class="ru.spacecorp.mobdekbkp.entity.TypeMathModelParameters"
+          extends="_minimal"
+          name="typeMathModelParameters-view">
+        <property name="elProcDescription"/>
+        <property name="elProcModelCategory"/>
+        <property name="elProcModelSubcategory"/>
+        <property name="elProcModelConnectionList"/>
+        <property name="elProcModelPrefix"/>
+        <property name="elProcModelToViewCompare"/>
+        <property name="applyBounds"/>
+        <property name="heatModelParameters"
+                  view="document-view"/>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.TyponominalAnalog"
+          extends="_minimal"
+          name="typonominalAnalog-view">
+        <property name="isRecommendedGnio"/>
+        <property name="producer"/>
+        <property name="producingCountry"/>
+        <property name="okrMinPromTorg"/>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.TyponominalBody"
+          extends="_minimal"
+          name="typonominalBody-view">
+        <property name="pinsCount"/>
+        <property name="bodyMaterial"
+                  view="material-view">
+        </property>
+        <property name="pinsMaterial"
+                  view="material-view">
+        </property>
+        <property name="coatingMaterial"
+                  view="material-view">
+        </property>
+        <property name="distanceLeads"/>
+        <property name="mass"/>
+        <property name="maxHeight"/>
+        <property name="sealingDemand"/>
+        <property name="dispersePower"/>
+        <property name="outputPower"/>
+        <property name="thermalResistance"/>
+        <property name="fixatorMarkup"
+                  view="_local"/>
+        <property name="pinFormingDesignation"
+                  view="_local"/>
+        <property name="dimensionsAndBody"
+                  view="_local"/>
+        <property name="length"/>
+        <property name="width"/>
+        <property name="height"/>
+        <property name="photo"
+                  view="_local"/>
+        <property name="documentsModel"
+                  view="document-view"/>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.TyponominalQualityLevelImport"
+          extends="_local"
+          name="typonominalQualityLevelImport-view"/>
+    <view class="ru.spacecorp.mobdekbkp.entity.TyponominalQualityLevelNative"
+          extends="_local"
+          name="typonominalQualityLevelNative-view"/>
+    <view class="ru.spacecorp.mobdekbkp.entity.DeviceComplect"
+          extends="_minimal"
+          name="deviceComplect-view"
+          systemProperties="true">
+        <property name="device"
+                  view="_minimal"/>
+        <property name="partListComplect"
+                  view="devicePartListComplect-view">
+        </property>
+        <property name="status"/>
+        <property name="documents"
+                  view="_minimal">
+            <property name="designation"/>
+            <property name="documentType"
+                      view="_minimal"/>
+        </property>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.DeviceComplectList"
+          extends="_minimal"
+          name="deviceComplectList-view">
+        <property name="status"/>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.DeviceListProject"
+          extends="_minimal"
+          name="deviceListProject-view"
+          systemProperties="true">
+        <property name="entries"
+                  view="deviceListProjectEntry-view">
+            <property name="typonominal"
+                      view="typonominal-view">
+                <property name="createdBy"/>
+            </property>
+        </property>
+        <property name="device"
+                  view="_minimal">
+            <property name="deviceProjectList"
+                      view="_minimal"/>
+        </property>
+        <property name="additions"
+                  view="_minimal">
+            <property name="entries"
+                      view="_minimal">
+                <property name="status"/>
+            </property>
+        </property>
+        <property name="demands"/>
+        <property name="approvalDate"/>
+        <property name="documents"
+                  view="_minimal">
+            <property name="designation"/>
+            <property name="documentType"
+                      view="_minimal"/>
+            <property name="files"
+                      view="_minimal"/>
+        </property>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.DeviceListProjectAddition"
+          extends="_minimal"
+          name="deviceListProjectAddition-view">
+        <property name="entries"
+                  view="deviceListProjectAdditionEntry-view"/>
+        <property name="deviceListProject"
+                  view="_minimal"/>
+        <property name="documents"
+                  view="_minimal">
+            <property name="designation"/>
+            <property name="documentType"
+                      view="_minimal"/>
+            <property name="files"
+                      view="_minimal"/>
+        </property>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.DeviceListProjectAdditionEntry"
+          extends="_minimal"
+          name="deviceListProjectAdditionEntry-view">
+        <property name="additionType"/>
+        <property name="status"/>
+        <property name="deviceListProjectAddition"
+                  view="_minimal">
+            <property name="deviceListProject"
+                      view="_minimal"/>
+        </property>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.DeviceListProjectEntry"
+          extends="_minimal"
+          name="deviceListProjectEntry-view">
+        <property name="deviceListProject"
+                  view="_minimal"/>
+        <property name="typonominal"
+                  view="typonominal-view">
+            <property name="body"
+                      view="typonominalBody-view">
+                <property name="createdBy"/>
+            </property>
+            <property name="type"
+                      view="type-view">
+                <property name="manufacturers"
+                          view="typeManufacturerEntry-view">
+                    <property name="name"
+                              view="company-view">
+                        <property name="licenses"
+                                  view="companyLicense-view">
+                            <property name="document"
+                                      view="_minimal">
+                            </property>
+                        </property>
+                    </property>
+                </property>
+                <property name="typonominal"
+                          view="_minimal">
+                    <property name="body"
+                              view="typonominalBody-view">
+                        <property name="bodyMaterial">
+                            <property name="name"/>
+                            <property name="type"/>
+                        </property>
+                        <property name="pinsMaterial">
+                            <property name="name"/>
+                            <property name="type"/>
+                        </property>
+                        <property name="coatingMaterial">
+                            <property name="name"/>
+                            <property name="type"/>
+                        </property>
+                        <property name="pinFormingDesignation"
+                                  view="_minimal">
+                        </property>
+                        <property name="photo"
+                                  view="_minimal">
+                        </property>
+                        <property name="dimensionsAndBody"
+                                  view="_minimal">
+                        </property>
+                        <property name="fixatorMarkup"
+                                  view="_minimal">
+                        </property>
+                    </property>
+                </property>
+            </property>
+            <property name="purchaseParameters"
+                      view="typonominalPurchaseParameters-view">
+                <property name="company"
+                          view="company-view">
+                    <property name="licenses"
+                              view="companyLicense-view">
+                        <property name="type">
+                            <property name="name"/>
+                        </property>
+                        <property name="company">
+                            <property name="smartName"/>
+                        </property>
+                        <property name="document"
+                                  view="_minimal">
+                        </property>
+                    </property>
+                    <property name="needs"
+                              view="companyNeed-view">
+                        <property name="typonominal">
+                            <property name="name"/>
+                            <property name="typonominalQualityLevelNative">
+                                <property name="name"/>
+                            </property>
+                            <property name="typonominalQualityLevelImport">
+                                <property name="name"/>
+                            </property>
+                            <property name="type">
+                                <property name="designation"/>
+                                <property name="manufacturers">
+                                    <property name="name"/>
+                                </property>
+                            </property>
+                        </property>
+                    </property>
+                </property>
+            </property>
+        </property>
+        <property name="status"/>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.DevicePartListComplect"
+          extends="_minimal"
+          name="devicePartListComplect-view"
+          systemProperties="true">
+        <property name="status"/>
+        <property name="entries"
+                  view="devicePartListComplectEntry-view">
+            <property name="typonominal"
+                      view="typonominal-view">
+                <property name="createdBy"/>
+            </property>
+        </property>
+        <property name="deviceComplect"
+                  view="_minimal">
+            <property name="partListComplect"
+                      view="_minimal"/>
+            <property name="device"
+                      view="_minimal"/>
+            <property name="createdBy"/>
+        </property>
+        <property name="devicePart"
+                  view="_minimal"/>
+        <property name="documents"
+                  view="_minimal">
+            <property name="designation"/>
+            <property name="documentType"
+                      view="_minimal"/>
+        </property>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.DevicePartListComplectEntry"
+          extends="_minimal"
+          name="devicePartListComplectEntry-view">
+        <property name="typonominal"
+                  view="typonominal-view">
+            <property name="body"
+                      view="typonominalBody-view">
+                <property name="createdBy"/>
+            </property>
+        </property>
+        <property name="status"/>
+        <property name="amountInDevice"/>
+        <property name="amountTotal"/>
+        <property name="datePlanned"/>
+        <property name="dateFact"/>
+        <property name="questions"/>
+        <property name="byHeadExecutor"/>
+        <property name="devicePartListComplect"
+                  view="_minimal">
+            <property name="devicePart"
+                      view="_minimal"/>
+        </property>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.DevicePartListPlanned"
+          name="devicePartListPlanned-view">
+        <property name="status"/>
+        <property name="entries"
+                  view="devicePartListPlannedEntry-view">
+            <property name="typonominal"
+                      view="typonominal-view">
+                <property name="createdBy"/>
+                <property name="purchaseParameters"
+                          view="typonominalPurchaseParameters-view">
+                    <property name="typonominal"
+                              view="_minimal">
+                        <property name="typonominalQualityLevelNative"
+                                  view="_minimal"/>
+                        <property name="typonominalQualityLevelImport"
+                                  view="_minimal"/>
+                    </property>
+                    <property name="company"
+                              view="company-view">
+                        <property name="createTs"/>
+                        <property name="createdBy"/>
+                    </property>
+                </property>
+                <property name="analogs"
+                          view="typonominalAnalog-view">
+                    <property name="parentTyponominal">
+                        <property name="typonominalQualityLevelNative"
+                                  view="_minimal"/>
+                        <property name="typonominalQualityLevelImport"
+                                  view="_minimal"/>
+                    </property>
+                </property>
+                <property name="type"
+                          view="type-view">
+                    <property name="manufacturers"
+                              view="typeManufacturerEntry-view">
+                        <property name="name"
+                                  view="company-view">
+                            <property name="createTs"/>
+                            <property name="createdBy"/>
+                        </property>
+                    </property>
+                    <property name="calicoholders"
+                              view="typeCalicoholderEntry-view">
+                        <property name="name"
+                                  view="company-view">
+                            <property name="createTs"/>
+                            <property name="createdBy"/>
+                        </property>
+                    </property>
+                    <property name="providers"
+                              view="typeProviderEntry-view">
+                        <property name="name"
+                                  view="company-view">
+                            <property name="createTs"/>
+                            <property name="createdBy"/>
+                        </property>
+                    </property>
+                    <property name="typonominal"
+                              view="_minimal">
+                        <property name="purchaseParameters"
+                                  view="typonominalPurchaseParameters-view">
+                            <property name="company"
+                                      view="company-view">
+                                <property name="createTs"/>
+                                <property name="createdBy"/>
+                            </property>
+                        </property>
+                    </property>
+                </property>
+            </property>
+        </property>
+        <property name="devicePart"
+                  view="_minimal"/>
+        <property name="device"
+                  view="_minimal">
+            <property name="developer"
+                      view="company-view">
+                <property name="createTs"/>
+                <property name="createdBy"/>
+            </property>
+            <property name="generalConstructor"/>
+            <property name="demands"/>
+            <property name="deviceProjectList"
+                      view="_minimal"/>
+            <property name="complects"
+                      view="_minimal"/>
+            <property name="isApproved"/>
+            <property name="filterConditions"
+                      view="deviceFilterConditions-view">
+            </property>
+        </property>
+        <property name="name"/>
+        <property name="createdBy"/>
+        <property name="documents"
+                  view="_minimal">
+            <property name="designation"/>
+            <property name="documentType"
+                      view="_minimal"/>
+        </property>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.DevicePartListPlannedEntry"
+          name="devicePartListPlannedEntry-view">
+        <property name="typonominal"
+                  view="typonominal-view">
+            <property name="body"
+                      view="typonominalBody-view">
+                <property name="createdBy"/>
+            </property>
+            <property name="type"
+                      view="type-view">
+                <property name="manufacturers"
+                          view="typeManufacturerEntry-view">
+                    <property name="name"
+                              view="company-view">
+                        <property name="licenses"
+                                  view="companyLicense-view">
+                            <property name="type">
+                                <property name="name"/>
+                            </property>
+                            <property name="company">
+                                <property name="smartName"/>
+                            </property>
+                            <property name="document"
+                                      view="_minimal">
+                            </property>
+                        </property>
+                        <property name="needs"
+                                  view="companyNeed-view">
+                            <property name="typonominal">
+                                <property name="name"/>
+                                <property name="typonominalQualityLevelNative">
+                                    <property name="name"/>
+                                </property>
+                                <property name="typonominalQualityLevelImport">
+                                    <property name="name"/>
+                                </property>
+                                <property name="type">
+                                    <property name="designation"/>
+                                    <property name="manufacturers">
+                                        <property name="name"/>
+                                    </property>
+                                </property>
+                            </property>
+                        </property>
+                    </property>
+                    <property name="typeInverse">
+                        <property name="designation"/>
+                    </property>
+                </property>
+                <property name="calicoholders"
+                          view="typeCalicoholderEntry-view">
+                    <property name="name"
+                              view="company-view">
+                        <property name="country">
+                            <property name="name"/>
+                            <property name="countryType"/>
+                        </property>
+                        <property name="licenses"
+                                  view="companyLicense-view">
+                            <property name="type">
+                                <property name="name"/>
+                            </property>
+                            <property name="company">
+                                <property name="smartName"/>
+                            </property>
+                        </property>
+                        <property name="types">
+                            <property name="type"/>
+                        </property>
+                        <property name="needs">
+                            <property name="typonominal">
+                                <property name="name"/>
+                                <property name="typonominalQualityLevelNative">
+                                    <property name="name"/>
+                                </property>
+                                <property name="typonominalQualityLevelImport">
+                                    <property name="name"/>
+                                </property>
+                                <property name="type">
+                                    <property name="designation"/>
+                                    <property name="manufacturers">
+                                        <property name="name"/>
+                                    </property>
+                                </property>
+                            </property>
+                            <property name="amount"/>
+                            <property name="wantedDeliverDate"/>
+                            <property name="company">
+                                <property name="name"/>
+                                <property name="nameShort"/>
+                                <property name="smartName"/>
+                            </property>
+                        </property>
+                    </property>
+                    <property name="typeInverse">
+                        <property name="designation"/>
+                    </property>
+                </property>
+                <property name="providers"
+                          view="typeProviderEntry-view">
+                    <property name="name"
+                              view="company-view">
+                        <property name="country">
+                            <property name="name"/>
+                            <property name="countryType"/>
+                        </property>
+                        <property name="licenses"
+                                  view="companyLicense-view">
+                            <property name="type">
+                                <property name="name"/>
+                            </property>
+                            <property name="company">
+                                <property name="smartName"/>
+                            </property>
+                        </property>
+                        <property name="types">
+                            <property name="type"/>
+                        </property>
+                        <property name="needs">
+                            <property name="typonominal">
+                                <property name="name"/>
+                                <property name="typonominalQualityLevelNative">
+                                    <property name="name"/>
+                                </property>
+                                <property name="typonominalQualityLevelImport">
+                                    <property name="name"/>
+                                </property>
+                                <property name="type">
+                                    <property name="designation"/>
+                                    <property name="manufacturers">
+                                        <property name="name"/>
+                                    </property>
+                                </property>
+                            </property>
+                            <property name="amount"/>
+                            <property name="wantedDeliverDate"/>
+                            <property name="company">
+                                <property name="name"/>
+                                <property name="nameShort"/>
+                                <property name="smartName"/>
+                            </property>
+                        </property>
+                    </property>
+                    <property name="typeInverse">
+                        <property name="designation"/>
+                    </property>
+                </property>
+                <property name="climaticImplementation">
+                    <property name="name"/>
+                </property>
+                <property name="mathModelParams"
+                          view="typeMathModelParameters-view">
+                </property>
+                <property name="typeClass">
+                    <property name="number"/>
+                    <property name="name"/>
+                    <property name="type">
+                        <property name="name"/>
+                    </property>
+                    <property name="parent">
+                        <property name="number"/>
+                        <property name="name"/>
+                        <property name="type">
+                            <property name="name"/>
+                        </property>
+                        <property name="parent">
+                            <property name="name"/>
+                        </property>
+                        <property name="characteristics">
+                            <property name="isMain"/>
+                            <property name="parameter">
+                                <property name="name"/>
+                                <property name="description"/>
+                                <property name="unit">
+                                    <property name="name"/>
+                                    <property name="shortName"/>
+                                </property>
+                                <property name="defaultValueType"/>
+                                <property name="paramType"/>
+                                <property name="value">
+                                    <property name="currentValueType"/>
+                                    <property name="valFloat"/>
+                                    <property name="valString"/>
+                                    <property name="valMax"/>
+                                    <property name="valMin"/>
+                                    <property name="tolerancePlus"/>
+                                    <property name="toleranceMinus"/>
+                                    <property name="gamma"/>
+                                    <property name="type"/>
+                                    <property name="parameter">
+                                        <property name="name"/>
+                                    </property>
+                                </property>
+                            </property>
+                            <property name="typeClass">
+                                <property name="number"/>
+                                <property name="name"/>
+                            </property>
+                        </property>
+                        <property name="children">
+                            <property name="name"/>
+                        </property>
+                    </property>
+                    <property name="characteristics">
+                        <property name="isMain"/>
+                        <property name="parameter">
+                            <property name="name"/>
+                            <property name="description"/>
+                            <property name="unit">
+                                <property name="name"/>
+                                <property name="shortName"/>
+                            </property>
+                            <property name="defaultValueType"/>
+                            <property name="paramType"/>
+                            <property name="value">
+                                <property name="currentValueType"/>
+                                <property name="valFloat"/>
+                                <property name="valString"/>
+                                <property name="valMax"/>
+                                <property name="valMin"/>
+                                <property name="tolerancePlus"/>
+                                <property name="toleranceMinus"/>
+                                <property name="gamma"/>
+                                <property name="type"/>
+                                <property name="parameter">
+                                    <property name="name"/>
+                                </property>
+                            </property>
+                        </property>
+                        <property name="typeClass">
+                            <property name="number"/>
+                            <property name="name"/>
+                        </property>
+                    </property>
+                    <property name="children">
+                        <property name="number"/>
+                        <property name="name"/>
+                        <property name="type">
+                            <property name="name"/>
+                        </property>
+                        <property name="parent">
+                            <property name="name"/>
+                        </property>
+                        <property name="characteristics">
+                            <property name="isMain"/>
+                            <property name="parameter">
+                                <property name="name"/>
+                                <property name="description"/>
+                                <property name="unit">
+                                    <property name="name"/>
+                                    <property name="shortName"/>
+                                </property>
+                                <property name="defaultValueType"/>
+                                <property name="paramType"/>
+                                <property name="value">
+                                    <property name="currentValueType"/>
+                                    <property name="valFloat"/>
+                                    <property name="valString"/>
+                                    <property name="valMax"/>
+                                    <property name="valMin"/>
+                                    <property name="tolerancePlus"/>
+                                    <property name="toleranceMinus"/>
+                                    <property name="gamma"/>
+                                    <property name="type"/>
+                                    <property name="parameter">
+                                        <property name="name"/>
+                                    </property>
+                                </property>
+                            </property>
+                            <property name="typeClass">
+                                <property name="number"/>
+                                <property name="name"/>
+                            </property>
+                        </property>
+                        <property name="children">
+                            <property name="name"/>
+                        </property>
+                    </property>
+                </property>
+                <property name="paramValue">
+                    <property name="currentValueType"/>
+                    <property name="valFloat"/>
+                    <property name="valString"/>
+                    <property name="valMax"/>
+                    <property name="valMin"/>
+                    <property name="tolerancePlus"/>
+                    <property name="toleranceMinus"/>
+                    <property name="gamma"/>
+                    <property name="type">
+                        <property name="designation"/>
+                        <property name="typeClass">
+                            <property name="number"/>
+                            <property name="name"/>
+                            <property name="type">
+                                <property name="name"/>
+                            </property>
+                            <property name="parent">
+                                <property name="number"/>
+                                <property name="name"/>
+                                <property name="type">
+                                    <property name="name"/>
+                                </property>
+                                <property name="parent">
+                                    <property name="name"/>
+                                </property>
+                                <property name="characteristics">
+                                    <property name="isMain"/>
+                                    <property name="parameter">
+                                        <property name="name"/>
+                                        <property name="description"/>
+                                        <property name="unit">
+                                            <property name="name"/>
+                                            <property name="shortName"/>
+                                        </property>
+                                        <property name="defaultValueType"/>
+                                        <property name="paramType"/>
+                                        <property name="value">
+                                            <property name="currentValueType"/>
+                                            <property name="valFloat"/>
+                                            <property name="valString"/>
+                                            <property name="valMax"/>
+                                            <property name="valMin"/>
+                                            <property name="tolerancePlus"/>
+                                            <property name="toleranceMinus"/>
+                                            <property name="gamma"/>
+                                            <property name="type"/>
+                                            <property name="parameter">
+                                                <property name="name"/>
+                                            </property>
+                                        </property>
+                                    </property>
+                                    <property name="typeClass">
+                                        <property name="number"/>
+                                        <property name="name"/>
+                                    </property>
+                                </property>
+                                <property name="children">
+                                    <property name="name"/>
+                                </property>
+                            </property>
+                            <property name="characteristics">
+                                <property name="isMain"/>
+                                <property name="parameter">
+                                    <property name="name"/>
+                                    <property name="description"/>
+                                    <property name="unit">
+                                        <property name="name"/>
+                                        <property name="shortName"/>
+                                    </property>
+                                    <property name="defaultValueType"/>
+                                    <property name="paramType"/>
+                                    <property name="value">
+                                        <property name="currentValueType"/>
+                                        <property name="valFloat"/>
+                                        <property name="valString"/>
+                                        <property name="valMax"/>
+                                        <property name="valMin"/>
+                                        <property name="tolerancePlus"/>
+                                        <property name="toleranceMinus"/>
+                                        <property name="gamma"/>
+                                        <property name="type"/>
+                                        <property name="parameter">
+                                            <property name="name"/>
+                                        </property>
+                                    </property>
+                                </property>
+                                <property name="typeClass">
+                                    <property name="number"/>
+                                    <property name="name"/>
+                                </property>
+                            </property>
+                            <property name="children">
+                                <property name="number"/>
+                                <property name="name"/>
+                                <property name="type">
+                                    <property name="name"/>
+                                </property>
+                                <property name="parent">
+                                    <property name="name"/>
+                                </property>
+                                <property name="characteristics">
+                                    <property name="isMain"/>
+                                    <property name="parameter">
+                                        <property name="name"/>
+                                        <property name="description"/>
+                                        <property name="unit">
+                                            <property name="name"/>
+                                            <property name="shortName"/>
+                                        </property>
+                                        <property name="defaultValueType"/>
+                                        <property name="paramType"/>
+                                        <property name="value">
+                                            <property name="currentValueType"/>
+                                            <property name="valFloat"/>
+                                            <property name="valString"/>
+                                            <property name="valMax"/>
+                                            <property name="valMin"/>
+                                            <property name="tolerancePlus"/>
+                                            <property name="toleranceMinus"/>
+                                            <property name="gamma"/>
+                                            <property name="type"/>
+                                            <property name="parameter">
+                                                <property name="name"/>
+                                            </property>
+                                        </property>
+                                    </property>
+                                    <property name="typeClass">
+                                        <property name="number"/>
+                                        <property name="name"/>
+                                    </property>
+                                </property>
+                                <property name="children">
+                                    <property name="name"/>
+                                </property>
+                            </property>
+                        </property>
+                        <property name="paramValue">
+                            <property name="currentValueType"/>
+                            <property name="valFloat"/>
+                            <property name="valString"/>
+                            <property name="valMax"/>
+                            <property name="valMin"/>
+                            <property name="tolerancePlus"/>
+                            <property name="toleranceMinus"/>
+                            <property name="gamma"/>
+                            <property name="type"/>
+                        </property>
+                    </property>
+                    <property name="parameter">
+                        <property name="name"/>
+                        <property name="description"/>
+                        <property name="unit">
+                            <property name="name"/>
+                            <property name="shortName"/>
+                        </property>
+                        <property name="defaultValueType"/>
+                        <property name="paramType"/>
+                        <property name="value">
+                            <property name="type">
+                                <property name="designation"/>
+                            </property>
+                        </property>
+                    </property>
+                </property>
+                <property name="amountUnit">
+                    <property name="name"/>
+                    <property name="shortName"/>
+                </property>
+                <property name="typonominal"
+                          view="_minimal">
+                    <property name="purchaseParameters"
+                              view="typonominalPurchaseParameters-view">
+                        <property name="typonominal">
+                            <property name="name"/>
+                        </property>
+                        <property name="company"
+                                  view="company-view">
+                            <property name="country">
+                                <property name="name"/>
+                                <property name="countryType"/>
+                            </property>
+                            <property name="licenses"
+                                      view="companyLicense-view">
+                                <property name="type">
+                                    <property name="name"/>
+                                </property>
+                                <property name="company">
+                                    <property name="smartName"/>
+                                </property>
+                            </property>
+                            <property name="types">
+                                <property name="type"/>
+                            </property>
+                            <property name="needs">
+                                <property name="typonominal">
+                                    <property name="name"/>
+                                    <property name="typonominalQualityLevelNative">
+                                        <property name="name"/>
+                                    </property>
+                                    <property name="typonominalQualityLevelImport">
+                                        <property name="name"/>
+                                    </property>
+                                    <property name="type">
+                                        <property name="designation"/>
+                                        <property name="manufacturers">
+                                            <property name="name"/>
+                                        </property>
+                                    </property>
+                                </property>
+                                <property name="amount"/>
+                                <property name="wantedDeliverDate"/>
+                                <property name="company">
+                                    <property name="name"/>
+                                    <property name="nameShort"/>
+                                </property>
+                            </property>
+                        </property>
+                        <property name="cost">
+                            <property name="value"/>
+                        </property>
+                    </property>
+                </property>
+            </property>
+        </property>
+        <property name="status"/>
+        <property name="devicePartListPlannedInverse"
+                  view="_minimal"/>
+        <property name="createdBy"/>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.DevicePartsEntry"
+          extends="_minimal"
+          name="devicePartsEntry-view"
+          systemProperties="true">
+        <property name="device"
+                  view="_minimal">
+        </property>
+        <property name="inDevicePartComlect"
+                  view="_minimal"/>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.OuterListType"
+          extends="_minimal"
+          name="outerListType-view">
+        <property name="isAllowing"/>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.OuterListAllowingEntry"
+          extends="_minimal"
+          name="outerListAllowingEntry-view">
+        <property name="outerListAllowing"
+                  view="_minimal">
+            <property name="type"
+                      view="_minimal">
+                <property name="isAllowing"/>
+            </property>
+        </property>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.OuterListAllowing"
+          extends="_minimal"
+          name="outerListAllowing-view">
+        <property name="type"
+                  view="_minimal">
+            <property name="isAllowing"/>
+        </property>
+        <property name="startDate"/>
+        <property name="endDate"/>
+        <property name="substituting"/>
+        <property name="releaseYear"/>
+        <property name="isModification"/>
+        <property name="entries"
+                  view="outerListAllowingEntry-view"/>
+        <property name="documents"
+                  view="_minimal">
+            <property name="designation"/>
+            <property name="documentType"
+                      view="_minimal"/>
+            <property name="files"
+                      view="_minimal"/>
+        </property>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.Type"
+          extends="_minimal"
+          name="type-view">
+        <property name="manufacturers"
+                  view="typeManufacturerEntry-view">
+        </property>
+        <property name="calicoholders"
+                  view="typeCalicoholderEntry-view">
+        </property>
+        <property name="providers"
+                  view="typeProviderEntry-view">
+        </property>
+        <property name="functionalPurpose"/>
+        <property name="placementCategory"/>
+        <property name="mathModelParams"
+                  view="typeMathModelParameters-view">
+        </property>
+        <property name="amountUnit"
+                  view="unitDev-view"/>
+        <property name="hasLongDeliverCycle"/>
+        <property name="climaticImplementation"
+                  view="typeClimaticImplementation-view"/>
+        <property name="createdBy"/>
+        <property name="typonominal"
+                  view="_minimal">
+            <property name="body"
+                      view="typonominalBody-view">
+                <property name="createdBy"/>
+            </property>
+            <property name="typonominalQualityLevelNative"
+                      view="typonominalQualityLevelNative-view"/>
+            <property name="typonominalQualityLevelImport"
+                      view="typonominalQualityLevelImport-view"/>
+            <property name="mass"/>
+            <property name="notPerspective"/>
+            <property name="hasSubstitute"/>
+            <property name="sealNeeded"/>
+            <property name="isAutoAssemble"/>
+            <property name="madeUsingImportItems"/>
+            <property name="hasBody"/>
+            <property name="lifeCycleStage"/>
+            <property name="installParameters"
+                      view="typonominalInstallParameters-view"/>
+            <property name="persistenceInfo"
+                      view="outerPersistenceInfo-view"/>
+            <property name="analogs"
+                      view="typonominalAnalog-view"/>
+            <property name="type"
+                      view="_minimal"/>
+            <property name="purchaseParameters"
+                      view="typonominalPurchaseParameters-view"/>
+        </property>
+        <property name="typeClass"
+                  view="typeClassOnType-view"/>
+        <property name="paramValue"
+                  view="parameterValue-TN-view"/>
+        <property name="documnetsDelivery"
+                  view="_minimal">
+            <property name="designation"/>
+            <property name="documentType"
+                      view="_minimal"/>
+        </property>
+        <property name="documentsStandartAppScheme"
+                  view="_minimal">
+            <property name="designation"/>
+            <property name="documentType"
+                      view="_minimal"/>
+        </property>
+        <property name="altClassMil"
+                  view="_minimal"/>
+        <property name="altClassG56649"
+                  view="_minimal"/>
+        <property name="altClassRel"
+                  view="_minimal"/>
+        <property name="altClassG2710"
+                  view="_minimal"/>
+        <property name="reliabilityHandbook"/>
+    </view>
+    <view class="com.haulmont.cuba.security.entity.User"
+          extends="_local"
+          name="user-view-roles">
+        <property name="userRoles"
+                  view="_minimal">
+            <property name="role"
+                      view="_minimal"/>
+        </property>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.ApplicationNewTyponominalAdd"
+          extends="_minimal"
+          name="applicationNewTyponominalAdd-view">
+        <property name="status"/>
+        <property name="deliveryDocDesignation"/>
+        <property name="classMop"/>
+        <property name="description"/>
+        <property name="documents"
+                  view="_minimal">
+            <property name="designation"/>
+            <property name="documentType"
+                      view="_minimal"/>
+            <property name="files"
+                      view="_minimal"/>
+        </property>
+        <property name="createdBy"/>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.ApplicationNewTyponominalDev"
+          extends="_minimal"
+          name="applicationNewTyponominalDev-view">
+        <property name="status"/>
+        <property name="className"/>
+        <property name="event"/>
+        <property name="possibility"/>
+        <property name="prototype"/>
+        <property name="document"
+                  view="_minimal">
+            <property name="designation"/>
+            <property name="documentType"
+                      view="_minimal"/>
+            <property name="files"
+                      view="_minimal"/>
+        </property>
+        <property name="commonApplication"
+                  view="applicationCommonEntry-view">
+            <property name="parents"
+                      view="_minimal">
+                <property name="application"
+                          view="_minimal">
+                    <property name="document"
+                              view="_minimal">
+                    </property>
+                </property>
+            </property>
+        </property>
+        <property name="createTs"/>
+        <property name="updateTs"/>
+        <property name="createdBy"/>
+        <property name="updatedBy"/>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.ApplicationCommonEntry"
+          extends="_minimal"
+          name="applicationCommonEntry-view">
+        <property name="status"/>
+        <property name="events"/>
+        <property name="characteristics"/>
+        <property name="prototype"/>
+        <property name="possibility"/>
+        <property name="applicationCommonDev"
+                  view="_minimal">
+        </property>
+        <property name="okrInfo"
+                  view="applicationOkrInfo-view">
+        </property>
+        <property name="parents"
+                  view="applicationNewDevEntry-view">
+        </property>
+        <property name="documents"
+                  view="_minimal">
+            <property name="designation"/>
+            <property name="documentType"
+                      view="_minimal"/>
+            <property name="files"
+                      view="_minimal"/>
+        </property>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.ApplicationCommonDev"
+          extends="_minimal"
+          name="applicationCommonDev-view">
+        <property name="status"/>
+        <property name="entries"
+                  view="applicationCommonEntry-view">
+            <property name="parents"
+                      view="_minimal">
+                <property name="application"
+                          view="_minimal">
+                    <property name="document"
+                              view="_minimal">
+                    </property>
+                    <property name="createdBy"/>
+                </property>
+                <property name="createdBy"/>
+            </property>
+            <property name="createdBy"/>
+        </property>
+        <property name="documents"
+                  view="_minimal">
+            <property name="documentType"
+                      view="_minimal"/>
+            <property name="designation"/>
+            <property name="files"
+                      view="_minimal"/>
+        </property>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.UnitVal"
+          extends="_minimal"
+          name="unitVal-view">
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.CompanyNeed"
+          extends="_minimal"
+          name="companyNeed-view">
+        <property name="company"
+                  view="_minimal">
+            <property name="name"/>
+            <property name="nameShort"/>
+        </property>
+        <property name="typonominal"
+                  view="_minimal">
+            <property name="typonominalQualityLevelNative"
+                      view="_minimal"/>
+            <property name="typonominalQualityLevelImport"
+                      view="_minimal"/>
+            <property name="type"
+                      view="_minimal">
+                <property name="manufacturers"
+                          view="_minimal"/>
+            </property>
+        </property>
+        <property name="createdBy"/>
+        <property name="createTs"/>
+        <property name="status"/>
+        <property name="companyNeedApplication"
+                  view="_minimal"/>
+        <property name="requirements"/>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.LibAttributes"
+          extends="_minimal"
+          name="libAttributes-view">
+        <property name="series"/>
+        <property name="viewModel"
+                  view="document-view"/>
+        <property name="viewName"/>
+        <property name="alterView"/>
+        <property name="positionPrefix"/>
+        <property name="keyAttribute"/>
+        <property name="rangeDefinition"/>
+        <property name="landModel"
+                  view="document-view"/>
+        <property name="landName"/>
+        <property name="alterLand"/>
+        <property name="ideAttrib"
+                  view="document-view"/>
+        <property name="documents"
+                  view="_minimal">
+            <property name="designation"/>
+            <property name="documentType"
+                      view="_minimal"/>
+            <property name="files"
+                      view="_minimal"/>
+        </property>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.Parameter"
+          extends="_minimal"
+          name="parameter-view">
+        <property name="description"/>
+        <property name="unit"
+                  view="unitVal-view">
+        </property>
+        <property name="defaultValueType"/>
+        <property name="paramType"/>
+        <property name="parameterCategory"
+                  view="_minimal"/>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.UnitDev"
+          extends="_local"
+          name="unitDev-view"/>
+    <view class="ru.spacecorp.mobdekbkp.entity.TyponominalPurchaseParameters"
+          extends="_minimal"
+          name="typonominalPurchaseParameters-view">
+        <property name="typonominal"
+                  view="_minimal"/>
+        <property name="company"
+                  view="company-view"/>
+        <property name="costRating"/>
+        <property name="typicalDeliveryTerm"/>
+        <property name="marketAvailableIndex"/>
+        <property name="needPermissionsGosdep"/>
+        <property name="permissionGosdepTerm"/>
+        <property name="hasSamples"/>
+        <property name="deliveryMin"/>
+        <property name="deliveryMax"/>
+        <property name="cost"
+                  view="_minimal">
+            <property name="currency">
+                <property name="nameShort"/>
+            </property>
+            <property name="setupDate"/>
+        </property>
+        <property name="createdBy"/>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.Cost"
+          extends="_local"
+          name="cost-view">
+        <property name="currency">
+            <property name="nameShort"/>
+        </property>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.Currency"
+          name="currency-view">
+        <property name="nameShort"/>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.TypeClimaticImplementation"
+          extends="_minimal"
+          name="typeClimaticImplementation-view"/>
+    <view class="ru.spacecorp.mobdekbkp.entity.SubstrateEntry"
+          extends="_local"
+          name="substrateEntry-view">
+        <property name="typonominalInstallParameters"
+                  view="_minimal"/>
+        <property name="substrate"
+                  view="substrate-view"/>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.Substrate"
+          extends="_minimal"
+          name="substrate-view">
+        <property name="material"
+                  view="material-view"/>
+        <property name="model"/>
+        <property name="name"/>
+        <property name="thickness"/>
+        <property name="color"/>
+        <property name="roughness"/>
+        <property name="density"/>
+        <property name="moistureAbsorb"/>
+        <property name="flexStrength"/>
+        <property name="elasticModule"/>
+        <property name="heatConductCoeff"/>
+        <property name="heatCapacity"/>
+        <property name="lineExtCoeff300"/>
+        <property name="lineExtCoeff600"/>
+        <property name="lineExtCoeff1000"/>
+        <property name="dielectricConstantM"/>
+        <property name="dielectricConstantG"/>
+        <property name="dielectricLossCoeff"/>
+        <property name="breakdownVoltage"/>
+        <property name="resistivityLevel"/>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.ApplicationNewDevEntry"
+          extends="_minimal"
+          name="applicationNewDevEntry-view">
+        <property name="applicationCommonEntry"
+                  view="_minimal">
+            <property name="events"/>
+            <property name="characteristics"/>
+            <property name="prototype"/>
+            <property name="possibility"/>
+            <property name="status"/>
+            <property name="applicationCommonDev"
+                      view="_minimal">
+                <property name="status"/>
+            </property>
+            <property name="okrInfo"
+                      view="_minimal"/>
+            <property name="parents"
+                      view="_minimal"/>
+        </property>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.ApplicationOkrInfo"
+          extends="_minimal"
+          name="applicationOkrInfo-view">
+        <property name="responsible"
+                  view="company-view">
+            <property name="licenses"
+                      view="companyLicense-view">
+                <property name="document"
+                          view="_minimal">
+                </property>
+            </property>
+        </property>
+        <property name="dateStart"/>
+        <property name="dateApprox"/>
+        <property name="dateEnd"/>
+        <property name="condition"/>
+        <property name="result"/>
+        <property name="applicationCommonEntry"
+                  view="_minimal"/>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.TermsAndDefinitions"
+          extends="_local"
+          name="termsAndDefinitions-view"/>
+    <view class="ru.spacecorp.mobdekbkp.entity.Typonominal"
+          extends="_local"
+          name="typonominal-dashboard-view"
+          systemProperties="true">
+        <property name="type"
+                  view="_minimal">
+            <property name="manufacturers"
+                      view="_minimal">
+                <property name="name"
+                          view="_minimal">
+                    <property name="country"
+                              view="_minimal">
+                        <property name="countryType"/>
+                    </property>
+                </property>
+            </property>
+            <property name="typeClass"
+                      view="_minimal">
+                <property name="parent"
+                          view="_minimal">
+                    <property name="parent"
+                              view="_minimal">
+                        <property name="parent"
+                                  view="_minimal">
+                            <property name="parent"
+                                      view="_minimal">
+                                <property name="parent"
+                                          view="_minimal">
+                                    <property name="parent"
+                                              view="_minimal"/>
+                                </property>
+                            </property>
+                        </property>
+                    </property>
+                </property>
+            </property>
+        </property>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.TypeClass"
+          extends="_local"
+          name="typeClass-parent-view">
+        <property name="parent"
+                  view="_minimal">
+        </property>
+        <property name="strLibSettings"
+                  view="_minimal">
+            <property name="strLib"
+                      view="_minimal">
+                <property name="text"/>
+                <property name="strLibSettingses"
+                          view="_minimal"/>
+            </property>
+            <property name="typeClass"
+                      view="_minimal"/>
+        </property>
+        <property name="strRecSettings"
+                  view="_minimal">
+            <property name="strRec"
+                      view="_minimal">
+                <property name="text"/>
+                <property name="strRecSettingses"
+                          view="_minimal"/>
+            </property>
+            <property name="typeClass"
+                      view="_minimal"/>
+        </property>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.TyponominalAnalog"
+          extends="_local"
+          name="typonominalAnalog-view_1">
+        <property name="typonominal"
+                  view="_minimal"/>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.OuterCertificateTests"
+          extends="_minimal"
+          name="outerCertificateTests-view">
+        <property name="index"/>
+        <property name="description"/>
+        <property name="dateStart"/>
+        <property name="dateEnd"/>
+        <property name="result"/>
+        <property name="documents"
+                  view="_minimal">
+            <property name="designation"/>
+            <property name="documentType"
+                      view="_minimal"/>
+            <property name="files"
+                      view="_minimal"/>
+        </property>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.Typonominal"
+          extends="_minimal"
+          name="tn-names"
+          systemProperties="true">
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.Type"
+          extends="_minimal"
+          name="type-names"/>
+    <view class="ru.spacecorp.mobdekbkp.entity.TypeClass"
+          extends="_local"
+          name="typeClass-children-view">
+        <property name="children"
+                  view="_minimal"/>
+        <property name="strLibSettings"
+                  view="_minimal">
+            <property name="strLib"
+                      view="_minimal">
+                <property name="text"/>
+                <property name="strLibSettingses"
+                          view="_minimal"/>
+            </property>
+            <property name="typeClass"
+                      view="_minimal"/>
+        </property>
+        <property name="strRecSettings"
+                  view="_minimal">
+            <property name="strRec"
+                      view="_minimal">
+                <property name="text"/>
+                <property name="strRecSettingses"
+                          view="_minimal"/>
+            </property>
+            <property name="typeClass"
+                      view="_minimal"/>
+        </property>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.OuterEntranceTests"
+          extends="_local"
+          name="outerEntranceTests-view">
+        <property name="typonominal"
+                  view="_minimal"/>
+        <property name="certCenter"
+                  view="company-view"/>
+        <property name="documents"
+                  view="_minimal">
+            <property name="designation"/>
+            <property name="documentType"
+                      view="_minimal"/>
+            <property name="files"
+                      view="_minimal"/>
+        </property>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.TypeClass"
+          extends="_minimal"
+          name="typeClassOnType-view">
+        <property name="number"/>
+        <property name="type"
+                  view="typeClassType-view"/>
+        <property name="parent"
+                  view="typeClass-view"/>
+        <property name="children"
+                  view="typeClass-view"/>
+        <property name="characteristics"
+                  view="typeClassCharacteristic-view"/>
+        <property name="strLibSettings"
+                  view="_minimal">
+            <property name="strLib"
+                      view="_minimal">
+                <property name="text"/>
+                <property name="strLibSettingses"
+                          view="_minimal"/>
+            </property>
+            <property name="typeClass"
+                      view="_minimal"/>
+        </property>
+        <property name="strRecSettings"
+                  view="_minimal">
+            <property name="strRec"
+                      view="_minimal">
+                <property name="text"/>
+                <property name="strRecSettingses"
+                          view="_minimal"/>
+            </property>
+            <property name="typeClass"
+                      view="_minimal"/>
+        </property>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.OuterDbFail"
+          extends="_local"
+          name="outerDbFail-view">
+        <property name="typonominal"
+                  view="_minimal"/>
+        <property name="source"
+                  view="_minimal"/>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.OuterFailAndRefuses"
+          extends="_local"
+          name="outerFailAndRefuses-view">
+        <property name="typonominal"
+                  view="_minimal"/>
+        <property name="documents"
+                  view="_minimal">
+            <property name="designation"/>
+            <property name="documentType"
+                      view="_minimal"/>
+            <property name="files"
+                      view="_minimal"/>
+        </property>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.OuterDbRefuse"
+          extends="_minimal"
+          name="outerDbRefuse-view">
+        <property name="produceDate"/>
+        <property name="checked"/>
+        <property name="refused"/>
+        <property name="failed"/>
+        <property name="provider"/>
+        <property name="importDevice"
+                  view="_minimal">
+            <property name="name"/>
+        </property>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.OuterRejection"
+          extends="_minimal"
+          name="outerRejection-view">
+        <property name="checked"/>
+        <property name="rejected"/>
+        <property name="reason"/>
+        <property name="comment"/>
+        <property name="importDevice"
+                  view="_minimal">
+            <property name="name"/>
+        </property>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.Typonominal"
+          extends="_minimal"
+          name="typonominal-report">
+        <property name="typonominalQualityLevelNative"
+                  view="_minimal"/>
+        <property name="typonominalQualityLevelImport"
+                  view="_minimal"/>
+        <property name="type"
+                  view="_minimal">
+            <property name="manufacturers"
+                      view="_minimal">
+                <property name="name"
+                          view="_minimal">
+                    <property name="name"/>
+                    <property name="nameShort"/>
+                </property>
+            </property>
+        </property>
+    </view>
+    <view class="com.haulmont.bpm.entity.ProcInstance"
+          extends="_local"
+          name="procInstance-viewinfo">
+        <property name="startedBy"
+                  view="_minimal"/>
+        <property name="procTasks"
+                  view="_minimal">
+            <property name="startDate"/>
+            <property name="endDate"/>
+            <property name="outcome"/>
+            <property name="comment"/>
+            <property name="procActor"
+                      view="_minimal"/>
+            <property name="locName"/>
+            <property name="locOutcome"/>
+            <property name="actProcessDefinitionId"/>
+            <property name="actTaskDefinitionKey"/>
+            <property name="name"/>
+        </property>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.DevicePartListPlannedEntry"
+          extends="_local"
+          name="devicePartListPlannedEntry-view_small"
+          systemProperties="true">
+        <property name="typonominal"
+                  view="_minimal"/>
+        <property name="devicePartListPlannedInverse"
+                  view="_minimal"/>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.DeviceListProjectEntry"
+          extends="_local"
+          name="deviceListProjectEntry-view_small">
+        <property name="typonominal"
+                  view="_minimal"/>
+        <property name="deviceListProject"
+                  view="_minimal"/>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.DevicePartListComplectEntry"
+          extends="_local"
+          name="devicePartListComplectEntry-view_small">
+        <property name="typonominal"
+                  view="_minimal"/>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.Device"
+          extends="_local"
+          name="device-view"
+          systemProperties="true">
+        <property name="developer"
+                  view="company-view">
+        </property>
+        <property name="parts"
+                  view="devicePartsEntry-view">
+            <property name="part"
+                      view="devicePart-view">
+                <property name="complectLists"
+                          view="devicePartListComplect-view">
+                    <property name="deviceComplect"
+                              view="_minimal">
+                        <property name="partListComplect"
+                                  view="_minimal">
+                            <property name="createdBy"/>
+                        </property>
+                    </property>
+                    <property name="entries"
+                              view="devicePartListComplectEntry-view">
+                        <property name="typonominal"
+                                  view="typonominal-view">
+                            <property name="shelfLife"/>
+                        </property>
+                    </property>
+                </property>
+                <property name="plannedLists"
+                          view="devicePartListPlanned-view">
+                    <property name="entries"
+                              view="devicePartListPlannedEntry-view">
+                        <property name="typonominal"
+                                  view="typonominal-view">
+                            <property name="shelfLife"/>
+                        </property>
+                    </property>
+                </property>
+            </property>
+        </property>
+        <property name="deviceProjectList"
+                  view="deviceListProject-view">
+            <property name="device"
+                      view="_minimal">
+                <property name="developer"
+                          view="_minimal"/>
+                <property name="generalConstructor"/>
+                <property name="demands"/>
+            </property>
+            <property name="entries"
+                      view="deviceListProjectEntry-view">
+                <property name="typonominal"
+                          view="typonominal-view">
+                    <property name="shelfLife"/>
+                </property>
+            </property>
+        </property>
+        <property name="complects"
+                  view="deviceComplect-view">
+            <property name="partListComplect"
+                      view="devicePartListComplect-view">
+                <property name="documents"
+                          view="_minimal">
+                    <property name="files"
+                              view="_minimal"/>
+                </property>
+                <property name="entries"
+                          view="devicePartListComplectEntry-view">
+                    <property name="typonominal"
+                              view="typonominal-view">
+                        <property name="shelfLife"/>
+                    </property>
+                </property>
+            </property>
+        </property>
+        <property name="documents"
+                  view="document-view">
+        </property>
+        <property name="filterConditions"
+                  view="deviceFilterConditions-view">
+        </property>
+        <property name="fileDescriptor"
+                  view="_minimal">
+            <property name="size"/>
+            <property name="id"/>
+        </property>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.AlterClassReliability"
+          extends="_minimal"
+          name="alterClassReliability-view">
+        <property name="parent"
+                  view="_minimal">
+            <property name="type"
+                      view="_minimal"/>
+        </property>
+        <property name="type"
+                  view="_minimal"/>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.AlterClassMil"
+          extends="_minimal"
+          name="alterClassMil-view">
+        <property name="shortName"/>
+        <property name="parent"
+                  view="_minimal">
+            <property name="shortName"/>
+        </property>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.AlterClassGost2710"
+          extends="_minimal"
+          name="alterClassGost2710-view">
+        <property name="typeSamples"/>
+        <property name="parent"
+                  view="_minimal">
+            <property name="typeSamples"/>
+        </property>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.DeviceFilterConditions"
+          extends="_local"
+          name="deviceFilterConditions-view">
+        <property name="devices"
+                  view="_minimal"/>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.Type"
+          extends="_minimal"
+          name="type-filter-view">
+        <property name="paramValue"
+                  view="_minimal">
+            <property name="currentValueType"/>
+            <property name="valFloat"/>
+            <property name="valString"/>
+            <property name="valMax"/>
+            <property name="valMin"/>
+            <property name="tolerancePlus"/>
+            <property name="toleranceMinus"/>
+            <property name="gamma"/>
+            <property name="parameter"
+                      view="_minimal"/>
+        </property>
+        <property name="typonominal"
+                  view="_minimal">
+            <property name="typonominalQualityLevelNative"
+                      view="_minimal"/>
+            <property name="typonominalQualityLevelImport"
+                      view="_minimal"/>
+            <property name="mass"/>
+            <property name="notPerspective"/>
+            <property name="hasSubstitute"/>
+            <property name="sealNeeded"/>
+            <property name="isAutoAssemble"/>
+            <property name="madeUsingImportItems"/>
+            <property name="shelfLife"/>
+            <property name="persistenceCycle"/>
+            <property name="hasBody"/>
+            <property name="lifeCycleStage"/>
+            <property name="labeling"/>
+            <property name="body"
+                      view="_minimal">
+                <property name="length"/>
+                <property name="width"/>
+                <property name="height"/>
+                <property name="pinsCount"/>
+                <property name="bodyMaterial"
+                          view="_minimal"/>
+                <property name="pinsMaterial"
+                          view="_minimal"/>
+                <property name="coatingMaterial"
+                          view="_minimal"/>
+                <property name="distanceLeads"/>
+                <property name="mass"/>
+                <property name="maxHeight"/>
+                <property name="pinFormingDesignation"
+                          view="_minimal"/>
+                <property name="sealingDemand"/>
+                <property name="dispersePower"/>
+                <property name="outputPower"/>
+                <property name="thermalResistance"/>
+                <property name="dimensionsAndBody"
+                          view="_minimal"/>
+                <property name="fixatorMarkup"
+                          view="_minimal"/>
+            </property>
+            <property name="installParameters"
+                      view="_minimal"/>
+            <property name="persistenceInfo"
+                      view="_minimal"/>
+            <property name="purchaseParameters"
+                      view="_minimal"/>
+        </property>
+        <property name="altClassRel"
+                  view="_minimal"/>
+        <property name="altClassMil"
+                  view="_minimal"/>
+        <property name="altClassG56649"
+                  view="_minimal"/>
+        <property name="altClassG2710"
+                  view="_minimal"/>
+        <property name="hasLongDeliverCycle"/>
+        <property name="functionalPurpose"/>
+        <property name="placementCategory"/>
+        <property name="climaticImplementation"
+                  view="_minimal"/>
+        <property name="typeClass"
+                  view="_minimal"/>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.SupportInfo"
+          extends="_local"
+          name="supportInfo-view">
+        <property name="instructions"
+                  view="_minimal"/>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.Handbook"
+          extends="_local"
+          name="handbook-view">
+        <property name="entries"
+                  view="_minimal">
+            <property name="parent"
+                      view="_minimal">
+                <property name="value"/>
+            </property>
+            <property name="value"/>
+        </property>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.HandbookEntry"
+          extends="_local"
+          name="handbookEntry-view">
+        <property name="parent"
+                  view="_minimal">
+            <property name="value"/>
+        </property>
+        <property name="handbook"
+                  view="_minimal">
+            <property name="entries"
+                      view="_minimal"/>
+        </property>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.Type"
+          extends="_local"
+          name="type-fast-view">
+        <property name="mathModelParams"
+                  view="_minimal"/>
+        <property name="typeClass"
+                  view="_minimal"/>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.HandbookCad"
+          extends="_local"
+          name="handbookCad-view">
+        <property name="handbook"
+                  view="_minimal"/>
+        <property name="createTs"/>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.TyponominalQualityLevelImportSettings"
+          extends="_local"
+          name="typonominalQualityLevelImportSettings-view">
+        <property name="importClass"
+                  view="_minimal"/>
+        <property name="qualityLevel"
+                  view="_local"/>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.StrLibSettings"
+          extends="_local"
+          name="strLibSettings-view">
+        <property name="strLib"
+                  view="_minimal">
+            <property name="text"/>
+        </property>
+        <property name="typeClass"
+                  view="_minimal"/>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.StrRecSettings"
+          extends="_local"
+          name="strRecSettings-view">
+        <property name="strRec"
+                  view="_minimal">
+            <property name="text"/>
+        </property>
+        <property name="typeClass"
+                  view="_minimal"/>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.Parameter"
+          extends="_local"
+          name="parameter-value-view">
+        <property name="unit"
+                  view="_minimal"/>
+        <property name="parameterCategory"
+                  view="_minimal"/>
+        <property name="value"
+                  view="_minimal">
+            <property name="currentValueType"/>
+            <property name="valStrRec"
+                      view="_minimal"/>
+            <property name="valStrLib"
+                      view="_minimal"/>
+            <property name="valFloat"/>
+            <property name="valString"/>
+            <property name="valMax"/>
+            <property name="valMin"/>
+            <property name="tolerancePlus"/>
+            <property name="toleranceMinus"/>
+            <property name="gamma"/>
+            <property name="parameter"
+                      view="_minimal">
+            </property>
+            <property name="operationCondition"
+                      view="_minimal"/>
+        </property>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.ParameterValue"
+          extends="_local"
+          name="parameterValue-TN-view">
+        <property name="valStrRec"
+                  view="_minimal">
+            <property name="text"/>
+            <property name="strRecSettingses"
+                      view="_minimal"/>
+        </property>
+        <property name="valStrLib"
+                  view="_minimal">
+            <property name="text"/>
+            <property name="strLibSettingses"
+                      view="_minimal"/>
+        </property>
+        <property name="type"
+                  view="_minimal"/>
+        <property name="parameter"
+                  view="_minimal">
+            <property name="parameterCategory"
+                      view="_minimal"/>
+            <property name="unit"
+                      view="_minimal"/>
+        </property>
+        <property name="operationCondition"
+                  view="_minimal"/>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.ParameterValue"
+          extends="_local"
+          name="parameterValue-view-edit">
+        <property name="valStrRec"
+                  view="_minimal">
+            <property name="text"/>
+            <property name="strRecSettingses"
+                      view="_minimal">
+                <property name="typeClass"
+                          view="_minimal"/>
+            </property>
+        </property>
+        <property name="valStrLib"
+                  view="_minimal">
+            <property name="text"/>
+            <property name="strLibSettingses"
+                      view="_minimal">
+                <property name="typeClass"
+                          view="_minimal"/>
+            </property>
+        </property>
+        <property name="type"
+                  view="_minimal">
+            <property name="typeClass"
+                      view="_minimal">
+                <property name="characteristics"
+                          view="_minimal">
+                    <property name="parameter"
+                              view="_minimal">
+                        <property name="paramType"/>
+                    </property>
+                </property>
+                <property name="parent"
+                          view="_minimal"/>
+            </property>
+            <property name="paramValue"
+                      view="_minimal">
+                <property name="parameter"
+                          view="_minimal"/>
+            </property>
+        </property>
+        <property name="parameter"
+                  view="_minimal">
+            <property name="description"/>
+            <property name="unit"
+                      view="_minimal"/>
+            <property name="defaultValueType"/>
+            <property name="paramType"/>
+            <property name="parameterCategory"
+                      view="_minimal"/>
+            <property name="value"
+                      view="_minimal"/>
+        </property>
+        <property name="operationCondition"
+                  view="_minimal"/>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.CompanyNeedApplication"
+          extends="_local"
+          name="companyNeedApplication-view">
+        <property name="companyNeed"
+                  view="_minimal">
+            <property name="company"
+                      view="_minimal"/>
+            <property name="status"/>
+            <property name="requirements"/>
+        </property>
+        <property name="createTs"/>
+        <property name="createdBy"/>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.BasicInformation"
+          extends="_minimal"
+          name="basic-information-view">
+        <property name="functionality"/>
+        <property name="levelQuality"/>
+        <property name="in_the_list_0122"/>
+        <property name="in_the_list_EKB_K"/>
+        <property name="typonominal"
+                  view="_minimal"/>
+        <property name="importDevice"
+                  view="_minimal">
+            <property name="name"/>
+        </property>
+        <property name="levelQualityImport"/>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.Factory"
+          extends="_minimal"
+          name="factory-view">
+        <property name="producer"/>
+        <property name="producingCountry"/>
+        <property name="certificationCMKOrganization"/>
+        <property name="calculatorHolder"/>
+        <property name="provider"/>
+        <property name="typonominal"
+                  view="_minimal"/>
+        <property name="importDevice"
+                  view="_minimal">
+            <property name="name"/>
+        </property>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.AdvancedSetting"
+          extends="_minimal"
+          name="advancedSetting-view">
+        <property name="mass"/>
+        <property name="numberPRP"/>
+        <property name="technicalSpecificationName"/>
+        <property name="technicalSpecificationValue"/>
+        <property name="workingLife"/>
+        <property name="shelfLife"/>
+        <property name="tightness"/>
+        <property name="typonominal"
+                  view="_minimal"/>
+        <property name="technology"/>
+        <property name="importDevice"
+                  view="_minimal">
+            <property name="name"/>
+        </property>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.ParametersForPurchasing"
+          extends="_minimal"
+          name="parametersForPurchasing-view">
+        <property name="productPrice"/>
+        <property name="deliveryTime"/>
+        <property name="deliveryTerm"/>
+        <property name="typonominal"
+                  view="_minimal"/>
+        <property name="statusInProduction"/>
+        <property name="importDevice"
+                  view="_minimal">
+            <property name="name"/>
+        </property>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.ApplicabilityDevices"
+          extends="_local"
+          name="applicabilityDevices-view">
+        <property name="typonominal"
+                  view="_local"/>
+        <property name="importDevice"
+                  view="_minimal">
+            <property name="name"/>
+        </property>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.ImportClass"
+          extends="_local"
+          name="importClass-view">
+        <property name="importDevice"
+                  view="_minimal">
+            <property name="name"/>
+        </property>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.ImportDevice"
+          extends="_local"
+          name="importDevice-view">
+        <property name="importClass"
+                  view="_minimal"/>
+        <property name="importDocsSchemes"
+                  view="_minimal">
+            <property name="iTM"/>
+        </property>
+        <property name="factoryImport"
+                  view="_minimal">
+            <property name="producer"/>
+            <property name="producingCountry"/>
+            <property name="provider"/>
+        </property>
+        <property name="parametersForPurchasing"
+                  view="_minimal">
+            <property name="productPrice"/>
+            <property name="deliveryTime"/>
+            <property name="deliveryTerm"/>
+            <property name="statusInProduction"/>
+        </property>
+        <property name="corpus"
+                  view="corpusImport-view">
+        </property>
+        <property name="saprData"
+                  view="saprData-view"/>
+        <property name="mainParameters"
+                  view="mainParameters-view"/>
+        <property name="customParameters"
+                  view="customParametersImport-view">
+        </property>
+        <property name="advancedSetting"
+                  view="advancedSetting-view"/>
+        <property name="outerPersistenceInfo"
+                  view="outerPersistenceInfo-view"/>
+        <property name="applicabilityDevices"
+                  view="applicabilityDevices-view"/>
+        <property name="outerRejection"
+                  view="outerRejection-view"/>
+        <property name="outerDbRefuse"
+                  view="outerDbRefuse-view"/>
+        <property name="analogImport"
+                  view="analogImport-view"/>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.ImportDevice"
+          extends="_minimal"
+          name="importDeviceName-view">
+        <property name="name"/>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.ImportClass"
+          extends="_minimal"
+          name="importClassName-view"/>
+    <view class="ru.spacecorp.mobdekbkp.entity.Corpus"
+          extends="_local"
+          name="corpus-view">
+        <property name="typonominal"
+                  view="_minimal"/>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.ReliabilityIndicators"
+          extends="_local"
+          name="reliabilityIndicators-view">
+        <property name="typonominal"
+                  view="_minimal"/>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.CustomParameters"
+          extends="_local"
+          name="customParameters-view">
+        <property name="typonominal"
+                  view="_local"/>
+        <property name="importDevice"
+                  view="_minimal">
+            <property name="name"/>
+        </property>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.ImportDocsSchemes"
+          extends="_local"
+          name="importDocsSchemes-view">
+        <property name="importDevice"
+                  view="_minimal">
+            <property name="name"/>
+        </property>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.Factory"
+          extends="_minimal"
+          name="factoryImport-view">
+        <property name="producer"/>
+        <property name="importDevice"
+                  view="_minimal">
+            <property name="name"/>
+        </property>
+        <property name="producingCountry"/>
+        <property name="provider"/>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.Corpus"
+          extends="_minimal"
+          name="corpusImport-view">
+        <property name="corpusType"/>
+        <property name="corpusMaterial"/>
+        <property name="contactCover"/>
+        <property name="importDevice"
+                  view="_minimal">
+            <property name="name"/>
+        </property>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.SaprData"
+          extends="_local"
+          name="saprData-view">
+        <property name="importDevice"
+                  view="_minimal">
+            <property name="name"/>
+        </property>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.MainParameters"
+          extends="_base"
+          name="mainParameters-view">
+        <property name="importDevice"
+                  view="_minimal">
+            <property name="name"/>
+        </property>
+        <property name="typonominal"
+                  view="_minimal"/>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.CustomParameters"
+          extends="_local"
+          name="customParametersImport-view">
+        <property name="importDevice"
+                  view="_minimal">
+            <property name="name"/>
+        </property>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.MontageParameters"
+          extends="_local"
+          name="montageParameters-view">
+        <property name="typonominal"
+                  view="_minimal"/>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.TechnicalParameters"
+          extends="_local"
+          name="technicalParameters-view">
+        <property name="typonominal"
+                  view="_minimal"/>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.SVCH"
+          extends="_local"
+          name="sVCH-view">
+        <property name="typonominal"
+                  view="_minimal"/>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.IntegratedCircuits"
+          extends="_local"
+          name="integratedCircuits-view">
+        <property name="typonominal"
+                  view="_minimal"/>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.DigitalChips"
+          extends="_local"
+          name="digitalChips-view">
+        <property name="typonominal"
+                  view="_minimal"/>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.Plis"
+          extends="_local"
+          name="plis-view">
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.SemiconductorDiodes"
+          extends="_local"
+          name="semiconductorDiodes-view">
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.SemiconductorEmitters"
+          extends="_local"
+          name="semiconductorEmitters-view">
+        <property name="typonominal"
+                  view="_minimal"/>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.QuantumElectronicsProducts"
+          extends="_local"
+          name="quantumElectronicsProducts-view">
+        <property name="typonominal"
+                  view="_minimal"/>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.ElectricVacuumLamps"
+          extends="_local"
+          name="electricVacuumLamps-view">
+        <property name="typonominal"
+                  view="_minimal"/>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.CathodeRayTubes"
+          extends="_local"
+          name="cathodeRayTubes-view">
+        <property name="typonominal"
+                  view="_minimal"/>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.PhotosensitiveDevices"
+          extends="_local"
+          name="photosensitiveDevices-view">
+        <property name="typonominal"
+                  view="_minimal"/>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.SignSynthesizingIndicators"
+          extends="_local"
+          name="signSynthesizingIndicators-view">
+        <property name="typonominal"
+                  view="_minimal"/>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.PiezoelectricDevices"
+          extends="_local"
+          name="piezoelectricDevices-view">
+        <property name="typonominal"
+                  view="_minimal"/>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.Resistors"
+          extends="_local"
+          name="resistors-view">
+        <property name="typonominal"
+                  view="_minimal"/>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.Capacitors"
+          extends="_local"
+          name="capacitors-view">
+        <property name="typonominal"
+                  view="_minimal"/>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.TransformersChokes"
+          extends="_local"
+          name="transformersChokes-view">
+        <property name="typonominal"
+                  view="_minimal"/>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.SwitchingProducts"
+          extends="_local"
+          name="switchingProducts-view">
+        <property name="typonominal"
+                  view="_minimal"/>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.ElectricalConnectors"
+          extends="_local"
+          name="electricalConnectors-view">
+        <property name="typonominal"
+                  view="_minimal"/>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.SmallElectricMachines"
+          extends="_local"
+          name="smallElectricMachines-view">
+        <property name="typonominal"
+                  view="_minimal"/>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.CurrentSources"
+          extends="_local"
+          name="currentSources-view">
+        <property name="typonominal"
+                  view="_minimal"/>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.CablesWiresCords"
+          extends="_local"
+          name="cablesWiresCords-view">
+        <property name="typonominal"
+                  view="_minimal"/>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.FunctionalDevices"
+          extends="_local"
+          name="functionalDevices-view">
+        <property name="typonominal"
+                  view="_minimal"/>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.FiberOpticComponents"
+          extends="_local"
+          name="fiberOpticComponents-view">
+        <property name="typonominal"
+                  view="_minimal"/>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.ElectricLightSources"
+          extends="_local"
+          name="electricLightSources-view">
+        <property name="typonominal"
+                  view="_minimal"/>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.ProductsFerritesMagnetodielectrics"
+          extends="_local"
+          name="productsFerritesMagnetodielectrics-view">
+        <property name="typonominal"
+                  view="_minimal"/>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.MicroassembliesMulticrystals"
+          extends="_local"
+          name="microassembliesMulticrystals-view">
+        <property name="typonominal"
+                  view="_minimal"/>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.Typonominal"
+          extends="_local"
+          name="typonominal-card-view">
+        <property name="basicInformation"
+                  view="_minimal">
+            <property name="functionality"/>
+            <property name="levelQuality"/>
+            <property name="levelQualityImport"/>
+            <property name="in_the_list_0122"/>
+            <property name="in_the_list_EKB_K"/>
+        </property>
+        <property name="type"
+                  view="_minimal">
+            <property name="typeClass"
+                      view="_minimal"/>
+        </property>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.Suppliers"
+          extends="_local"
+          name="suppliers-view">
+        <property name="smartName"/>
+        <property name="logo"
+                  view="_minimal"/>
+        <property name="country"
+                  view="_minimal"/>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.AnalogImport"
+          extends="_local"
+          name="analogImport-view">
+        <property name="importDevice"
+                  view="_minimal">
+            <property name="name"/>
+        </property>
+    </view>
+    <view class="ru.spacecorp.mobdekbkp.entity.ImportDevice"
+          extends="_local"
+          name="importDeviceName-view"/>
+    <view class="ru.spacecorp.mobdekbkp.entity.OuterPersistenceInfo"
+          extends="_local"
+          name="outerPersistenceInfo-view">
+        <property name="typonominal"
+                  view="_minimal"/>
+        <property name="manufacturer"
+                  view="_minimal">
+            <property name="name"/>
+            <property name="nameShort"/>
+        </property>
+        <property name="infoSource"
+                  view="_minimal"/>
+        <property name="importDevice"
+                  view="_minimal">
+            <property name="name"/>
+        </property>
+    </view>
+</views>

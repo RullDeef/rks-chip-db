@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="ru.spacecorp.mobdekbkp.web.termsanddefinitions.TermsAndDefinitionsBrowse"
+        focusComponent="termsAndDefinitionsTable"
+        lookupComponent="termsAndDefinitionsTable"
+        messagesPack="ru.spacecorp.mobdekbkp.web.termsanddefinitions">
+    <dsContext>
+        <groupDatasource id="termsAndDefinitionsesDs"
+                         class="ru.spacecorp.mobdekbkp.entity.TermsAndDefinitions"
+                         view="termsAndDefinitions-view">
+            <query>
+                <![CDATA[select e from mobdekbkp$TermsAndDefinitions e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="termsAndDefinitionsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="termsAndDefinitionsTable"
+                datasource="termsAndDefinitionsesDs">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="termsAndDefinitionsTable"
+                    textSelectionEnabled="true"
+                    width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="term"
+                        maxTextLength="30"/>
+                <column id="definition"
+                        maxTextLength="150"
+                        width="950"/>
+                <column id="source"
+                        maxTextLength="30"/>
+            </columns>
+            <rows datasource="termsAndDefinitionsesDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="termsAndDefinitionsTable.create"/>
+                <button id="editBtn"
+                        action="termsAndDefinitionsTable.edit"/>
+                <button id="removeBtn"
+                        action="termsAndDefinitionsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

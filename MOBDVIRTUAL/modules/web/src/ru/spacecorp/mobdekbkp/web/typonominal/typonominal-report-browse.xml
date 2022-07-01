@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="ru.spacecorp.mobdekbkp.web.typonominal.TyponominalReportBrowse"
+        focusComponent="typonominalsTable"
+        lookupComponent="typonominalsTable"
+        messagesPack="ru.spacecorp.mobdekbkp.web.typonominal">
+    <dsContext>
+        <hierarchicalDatasource id="typeClassesDs"
+                                class="ru.spacecorp.mobdekbkp.entity.TypeClass"
+                                hierarchyProperty="parent"
+                                view="typeClass-view">
+            <query>
+                <![CDATA[select e from mobdekbkp$TypeClass e]]>
+            </query>
+        </hierarchicalDatasource>
+        <collectionDatasource id="typesDs"
+                              class="ru.spacecorp.mobdekbkp.entity.Type"
+                              view="type-names">
+            <query>
+                <![CDATA[select e from mobdekbkp$Type e]]>
+            </query>
+        </collectionDatasource>
+        <groupDatasource id="typonominalsDs"
+                         class="ru.spacecorp.mobdekbkp.entity.Typonominal"
+                         view="typonominal-report">
+            <query>
+                <![CDATA[select e from mobdekbkp$Typonominal e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode forceDialog="true"
+                height="600"
+                width="800"/>
+    <layout expand="hboxId"
+            spacing="true">
+        <button id="allTyponominalBtn"
+                align="TOP_RIGHT"
+                caption="Показать все Типономиналы"
+                invoke="onAllTyponominalBtnClick"
+                width="250px"/>
+        <hbox id="hboxId"
+              spacing="true"
+              width="100%">
+            <groupBox id="typeClassGroupBox"
+                      caption="Класс ЭКБ"
+                      height="100%"
+                      spacing="true">
+                <tree id="typeClassesTree"
+                      height="100%"
+                      width="100%">
+                    <treechildren datasource="typeClassesDs"/>
+                </tree>
+            </groupBox>
+            <groupBox id="typeGroupBox"
+                      caption="msg://Type"
+                      height="100%"
+                      spacing="true">
+                <table id="typesTable"
+                       columnHeaderVisible="false"
+                       height="100%"
+                       width="100%">
+                    <columns>
+                        <column id="designation"/>
+                    </columns>
+                    <rows datasource="typesDs"/>
+                </table>
+            </groupBox>
+            <groupBox id="typonominalGroupBox"
+                      caption="msg://Typonominal"
+                      height="100%"
+                      spacing="true">
+                <table id="typonominalsTable"
+                       columnHeaderVisible="false"
+                       height="100%"
+                       width="100%">
+                    <actions>
+                        <action id="create"/>
+                        <action id="remove"/>
+                    </actions>
+                    <columns>
+                        <column id="name"/>
+                    </columns>
+                    <rows datasource="typonominalsDs"/>
+                </table>
+            </groupBox>
+        </hbox>
+    </layout>
+</window>

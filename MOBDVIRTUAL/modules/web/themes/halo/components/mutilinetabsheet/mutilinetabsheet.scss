@@ -1,0 +1,40 @@
+@mixin mutilinetabsheet($primary-stylename: mutilinetabsheet) {
+
+  .#{$primary-stylename} .v-tabsheet-tabcontainer tr {
+    display: contents;
+    border-spacing: 0;
+    border-collapse: collapse;
+    vertical-align: top;
+  }
+
+  .#{$primary-stylename} .v-tabsheet-tabcontainer tbody {
+    display: contents;
+    border-spacing: 0;
+    border-collapse: collapse;
+    vertical-align: top;
+  }
+
+  .#{$primary-stylename} .v-tabsheet-tabcontainer table {
+    display: flex;
+    flex-flow: row wrap;
+    border-spacing: 0;
+    border-collapse: collapse;
+    vertical-align: top;
+  }
+
+  .#{$primary-stylename} .v-tabsheet-tabcontainer td {
+    display: inline-block;
+    padding: 0;
+    flex: 1 auto;
+  }
+
+  .v-tabsheet-framed > .v-tabsheet-tabcontainer .v-caption {
+    margin-left: 0px;
+    padding: 0px 20px;
+  }
+
+  .#{$primary-stylename} .v-tabsheet-tabitemcell .v-caption {
+    width: 100% !important;
+  }
+
+}

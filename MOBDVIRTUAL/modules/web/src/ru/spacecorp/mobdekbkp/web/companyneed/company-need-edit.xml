@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="ru.spacecorp.mobdekbkp.web.companyneed.CompanyNeedEdit"
+        datasource="companyNeedDs"
+        focusComponent="fieldGroup"
+        messagesPack="ru.spacecorp.mobdekbkp.web.companyneed">
+    <dsContext>
+        <datasource id="companyNeedDs"
+                    class="ru.spacecorp.mobdekbkp.entity.CompanyNeed"
+                    view="companyNeed-view"/>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="windowActions"
+            spacing="true">
+        <hbox spacing="true">
+            <fieldGroup id="fieldGroup"
+                        datasource="companyNeedDs">
+                <column width="250px">
+                    <field property="typonominal"/>
+                    <field property="amount"/>
+                    <field property="wantedDeliverDate"/>
+                    <field editable="false"
+                           property="company"/>
+                    <field editable="false"
+                           property="status"/>
+                    <field property="requirements"
+                           rows="5"/>
+                </column>
+            </fieldGroup>
+            <vbox spacing="true">
+                <button id="approveBtn"
+                        caption="msg://Approve"
+                        visible="false"/>
+                <button id="rejectBtn"
+                        caption="msg://Reject"
+                        visible="false"/>
+                <button id="rejectGnioBtn"
+                        caption="msg://Reject"
+                        visible="false"/>
+            </vbox>
+        </hbox>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

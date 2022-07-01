@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="ru.spacecorp.mobdekbkp.web.parametervalue.ParameterValueEdit"
+        datasource="parameterValueDs"
+        messagesPack="ru.spacecorp.mobdekbkp.web.parametervalue">
+    <dsContext>
+        <datasource id="parameterValueDs"
+                    class="ru.spacecorp.mobdekbkp.entity.ParameterValue"
+                    view="parameterValue-view-edit">
+            <datasource id="parameterDs"
+                        property="parameter"/>
+        </datasource>
+        <collectionDatasource id="strLibsDs"
+                              class="ru.spacecorp.mobdekbkp.entity.StrLib"
+                              view="_local">
+            <query>
+                <![CDATA[select p from mobdekbkp$StrLibSettings e 
+join e.strLib p where e.typeClass.id = :ds$parameterValueDs.type.typeClass.id]]>
+            </query>
+        </collectionDatasource>
+        <collectionDatasource id="strRecsDs"
+                              class="ru.spacecorp.mobdekbkp.entity.StrRec"
+                              view="_local">
+            <query>
+                <![CDATA[select p from mobdekbkp$StrRecSettings e 
+join e.strRec p where e.typeClass.id = :ds$parameterValueDs.type.typeClass.id]]>
+            </query>
+        </collectionDatasource>
+        <collectionDatasource id="strRecSettingsesDs"
+                              class="ru.spacecorp.mobdekbkp.entity.StrRecSettings"
+                              view="strRecSettings-view">
+            <query>
+                <![CDATA[select e from mobdekbkp$StrRecSettings e 
+where e.typeClass.id = :ds$parameterValueDs.type.typeClass.id]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <dialogMode forceDialog="true"/>
+    <layout expand="windowActions"
+            spacing="true">
+        <grid id="parametersGrid"
+              spacing="true"
+              width="100%">
+            <columns>
+                <column flex="0.3"/>
+                <column flex="0.7"/>
+            </columns>
+            <rows>
+                <row>
+                    <label id="typeLbl"
+                           align="MIDDLE_LEFT"
+                           value="msg://ru.spacecorp.mobdekbkp.entity/ParameterValue.type"
+                           width="100%"/>
+                    <textField id="typeField"
+                               align="MIDDLE_LEFT"
+                               datasource="parameterValueDs"
+                               editable="false"
+                               property="type"
+                               width="100%"/>
+                </row>
+                <row>
+                    <label id="paramTypeLbl"
+                           align="MIDDLE_LEFT"
+                           value="msg://ru.spacecorp.mobdekbkp.entity/Parameter.paramType"
+                           width="100%"/>
+                    <lookupField id="paramTypeField"
+                                 align="MIDDLE_LEFT"
+                                 optionsEnum="ru.spacecorp.mobdekbkp.entity.ParameterType"
+                                 width="100%"/>
+                </row>
+                <row>
+                    <label id="parameterLbl"
+                           align="MIDDLE_LEFT"
+                           value="msg://ru.spacecorp.mobdekbkp.entity/ParameterValue.parameter"
+                           width="100%"/>
+                    <hbox id="parameterValueHbox"
+                          expand="parameterValueLabel"
+                          stylename="rtaPickerField"
+                          width="100%">
+                        <richTextArea id="parameterValueLabel"
+                                      datasource="parameterDs"
+                                      editable="false"
+                                      property="name"/>
+                        <button id="changeBtn"
+                                icon="PICKERFIELD_LOOKUP"
+                                invoke="onChangeBtnClick"/>
+                        <button id="clearBtn"
+                                icon="PICKERFIELD_CLEAR"
+                                invoke="onClearBtnClick"/>
+                    </hbox>
+                </row>
+                <row>
+                    <label id="currentValueTypeLbl"
+                           align="MIDDLE_LEFT"
+                           value="msg://ru.spacecorp.mobdekbkp.entity/ParameterValue.currentValueType"
+                           width="100%"/>
+                    <lookupField id="currentValueTypeField"
+                                 align="MIDDLE_LEFT"
+                                 datasource="parameterValueDs"
+                                 editable="false"
+                                 property="currentValueType"
+                                 width="100%"/>
+                </row>
+                <row>
+                    <label align="MIDDLE_LEFT"
+                           value="msg://operationCondition"
+                           width="100%"/>
+                    <pickerField datasource="parameterValueDs"
+                                 property="operationCondition"
+                                 width="100%"/>
+                </row>
+                <row>
+                    <label id="valFloatLbl"
+                           align="MIDDLE_LEFT"
+                           value="msg://value"
+                           visible="false"
+                           width="100%"/>
+                    <hbox id="valFloatHbox"
+                          expand="valFloatField"
+                          spacing="true"
+                          visible="false"
+                          width="100%">
+                        <textField id="valFloatField"
+                                   align="MIDDLE_LEFT"
+                                   datasource="parameterValueDs"
+                                   property="valFloat"/>
+                        <label id="mainFloatLbl"
+                               align="MIDDLE_LEFT"
+                               datasource="parameterDs"
+                               htmlEnabled="true"
+                               property="unit.shortName"/>
+                    </hbox>
+                </row>
+                <row>
+                    <label id="valStringLbl"
+                           align="MIDDLE_LEFT"
+                           value="msg://value"
+                           visible="false"
+                           width="100%"/>
+                    <textField id="valStringField"
+                               align="MIDDLE_LEFT"
+                               datasource="parameterValueDs"
+                               property="valString"
+                               visible="false"
+                               width="100%"/>
+                </row>
+                <row>
+                    <label id="valMinMaxLbl"
+                           align="MIDDLE_LEFT"
+                           value="Интервал"
+                           visible="false"
+                           width="100%"/>
+                    <hbox id="valMinMaxHbox"
+                          expand="space2"
+                          spacing="true"
+                          visible="false"
+                          width="100%">
+                        <hbox id="valMinHbox">
+                            <label id="valMinLbl"
+                                   align="MIDDLE_RIGHT"
+                                   value="от "/>
+                            <textField id="valMinField"
+                                       datasource="parameterValueDs"
+                                       property="valMin"
+                                       width="50px"/>
+                        </hbox>
+                        <hbox id="valMaxHbox">
+                            <label id="valMaxLbl"
+                                   align="MIDDLE_RIGHT"
+                                   value="до"/>
+                            <textField id="valMaxField"
+                                       datasource="parameterValueDs"
+                                       property="valMax"
+                                       width="50px"/>
+                        </hbox>
+                        <label id="space2"/>
+                    </hbox>
+                </row>
+                <row>
+                    <label id="toleranceMinusPlusLbl"
+                           align="MIDDLE_LEFT"
+                           value="Допустимое отклонение:"
+                           visible="false"
+                           width="100%"/>
+                    <hbox id="toleranceMinusPlusHbox"
+                          expand="space"
+                          spacing="true"
+                          visible="false"
+                          width="100%">
+                        <hbox id="toleranceMinusHbox"
+                              width="74px">
+                            <label id="toleranceMinusLbl"
+                                   align="MIDDLE_RIGHT"
+                                   value=" &quot;-&quot;"/>
+                            <textField id="toleranceMinusField"
+                                       align="MIDDLE_LEFT"
+                                       datasource="parameterValueDs"
+                                       property="toleranceMinus"
+                                       width="50px"/>
+                        </hbox>
+                        <hbox id="tolerancePlusHbox"
+                              width="74px">
+                            <label id="tolerancePlusLbl"
+                                   align="MIDDLE_RIGHT"
+                                   value="&quot;+&quot;"/>
+                            <textField id="tolerancePlusField"
+                                       align="MIDDLE_LEFT"
+                                       datasource="parameterValueDs"
+                                       property="tolerancePlus"
+                                       width="50px"/>
+                        </hbox>
+                        <label id="space"/>
+                    </hbox>
+                </row>
+                <row>
+                    <label id="gammaLbl"
+                           align="MIDDLE_LEFT"
+                           value="msg://ru.spacecorp.mobdekbkp.entity/ParameterValue.gamma"
+                           visible="false"
+                           width="100%"/>
+                    <textField id="gammaField"
+                               align="MIDDLE_LEFT"
+                               datasource="parameterValueDs"
+                               property="gamma"
+                               visible="false"
+                               width="100%"/>
+                </row>
+                <row>
+                    <label id="boolLbl"
+                           align="MIDDLE_LEFT"
+                           value="Значение"
+                           visible="false"
+                           width="100%"/>
+                    <optionsGroup id="boolOptionsGroup"
+                                  orientation="horizontal"
+                                  visible="false"
+                                  width="100%"/>
+                </row>
+                <row>
+                    <label id="valStringLbl1"
+                           value="msg://value"
+                           visible="false"
+                           width="100%"/>
+                    <lookupField id="lookupFieldRec"
+                                 captionProperty="text"
+                                 datasource="parameterValueDs"
+                                 nullOptionVisible="false"
+                                 optionsDatasource="strRecsDs"
+                                 property="valStrRec"
+                                 visible="false"
+                                 width="100%"/>
+                </row>
+                <row>
+                    <label id="valStringLbl2"
+                           value="msg://value"
+                           visible="false"
+                           width="100%"/>
+                    <lookupField id="lookupFieldLib"
+                                 captionProperty="text"
+                                 datasource="parameterValueDs"
+                                 nullOptionVisible="false"
+                                 optionsDatasource="strLibsDs"
+                                 property="valStrLib"
+                                 visible="false"
+                                 width="100%"/>
+                </row>
+            </rows>
+        </grid>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

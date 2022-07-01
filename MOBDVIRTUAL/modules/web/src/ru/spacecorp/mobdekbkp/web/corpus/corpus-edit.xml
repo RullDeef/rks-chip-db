@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="ru.spacecorp.mobdekbkp.web.corpus.CorpusEdit"
+        datasource="corpusDs"
+        focusComponent="fieldGroup"
+        messagesPack="ru.spacecorp.mobdekbkp.web.corpus">
+    <dsContext>
+        <datasource id="corpusDs"
+                    class="ru.spacecorp.mobdekbkp.entity.Corpus"
+                    view="corpusImport-view"/>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="windowActions"
+            spacing="true">
+        <fieldGroup id="fieldGroup"
+                    datasource="corpusDs">
+            <column width="250px">
+                <field property="corpusType"/>
+                <field property="corpusMaterial"/>
+                <field property="contactCover"/>
+            </column>
+        </fieldGroup>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

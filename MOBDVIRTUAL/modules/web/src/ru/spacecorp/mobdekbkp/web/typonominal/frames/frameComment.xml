@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        class="ru.spacecorp.mobdekbkp.web.typonominal.frames.Framecomment"
+        messagesPack="ru.spacecorp.mobdekbkp.web.typonominal.frames">
+    <dialogMode height="600"
+                width="800"/>
+    <layout>
+        <vbox id="vbMain"
+              height="100%"
+              spacing="true">
+            <frame id="comments"
+                   height="100%"
+                   screen="discuss$Comment.browse"/>
+        </vbox>
+    </layout>
+</window>

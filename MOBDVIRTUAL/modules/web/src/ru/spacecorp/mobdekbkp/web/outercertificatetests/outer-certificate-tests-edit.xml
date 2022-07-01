@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="ru.spacecorp.mobdekbkp.web.outercertificatetests.OuterCertificateTestsEdit"
+        datasource="outerCertificateTestsDs"
+        focusComponent="fieldGroup"
+        messagesPack="ru.spacecorp.mobdekbkp.web.outercertificatetests">
+    <dsContext>
+        <datasource id="outerCertificateTestsDs"
+                    class="ru.spacecorp.mobdekbkp.entity.OuterCertificateTests"
+                    view="outerCertificateTests-view">
+            <collectionDatasource id="documentsDs"
+                                  property="documents"/>
+        </datasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="tabSheet"
+            spacing="true">
+        <tabSheet id="tabSheet">
+            <tab id="mainTab"
+                 caption="msg://Properties"
+                 margin="true,false,false,false"
+                 spacing="true">
+                <fieldGroup id="fieldGroup"
+                            datasource="outerCertificateTestsDs"
+                            width="100%">
+                    <column width="100%">
+                        <field property="typonominal"/>
+                        <field property="index"/>
+                        <field property="description"
+                               rows="5"/>
+                        <field property="dateStart"/>
+                        <field property="dateEnd"/>
+                        <field property="result"
+                               rows="5"/>
+                    </column>
+                </fieldGroup>
+            </tab>
+            <tab id="docsTab"
+                 caption="msg://Documents"
+                 margin="true,false,false,false"
+                 spacing="true">
+                <groupBox id="documentsBox"
+                          caption="msg://ru.spacecorp.mobdekbkp.entity/OuterCertificateTests.documents"
+                          height="100%">
+                    <table id="documentsTable"
+                           height="100%"
+                           width="100%">
+                        <actions>
+                            <action id="add"/>
+                            <action id="remove"/>
+                        </actions>
+                        <columns>
+                            <column id="name"/>
+                            <column id="designation"/>
+                            <column id="documentType"/>
+                            <column id="files"/>
+                        </columns>
+                        <rows datasource="documentsDs"/>
+                        <buttonsPanel>
+                            <button action="documentsTable.add"/>
+                            <button action="documentsTable.remove"/>
+                        </buttonsPanel>
+                    </table>
+                </groupBox>
+            </tab>
+        </tabSheet>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="ru.spacecorp.mobdekbkp.web.parametersforpurchasing.ParametersForPurchasingBrowse"
+        focusComponent="parametersForPurchasingsTable"
+        lookupComponent="parametersForPurchasingsTable"
+        messagesPack="ru.spacecorp.mobdekbkp.web.typonominal">
+    <dsContext>
+        <groupDatasource id="parametersForPurchasingsDs"
+                         class="ru.spacecorp.mobdekbkp.entity.ParametersForPurchasing"
+                         view="parametersForPurchasing-view">
+            <query>
+                <![CDATA[select e from mobdekbkp$ParametersForPurchasing e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true">
+        <groupTable id="parametersForPurchasingsTable"
+                    height="100%"
+                    width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="productPrice"/>
+                <column id="deliveryTime"/>
+                <column id="deliveryTerm"/>
+                <column id="statusInProduction"/>
+            </columns>
+            <rows datasource="parametersForPurchasingsDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        caption="msg://add"
+                        invoke="onCreateBtnClick"/>
+                <button id="editBtn"
+                        action="parametersForPurchasingsTable.edit"/>
+                <button id="removeBtn"
+                        action="parametersForPurchasingsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

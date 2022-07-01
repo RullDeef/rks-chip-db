@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="ru.spacecorp.mobdekbkp.web.outerpersistenceinfo.OuterPersistenceInfoBrowse"
+        focusComponent="outerPersistenceInfoesTable"
+        lookupComponent="outerPersistenceInfoesTable"
+        messagesPack="ru.spacecorp.mobdekbkp.web.outerpersistenceinfo">
+    <dsContext>
+        <groupDatasource id="outerPersistenceInfoesDs"
+                         class="ru.spacecorp.mobdekbkp.entity.OuterPersistenceInfo"
+                         view="outerPersistenceInfo-view">
+            <query>
+                <![CDATA[select e from mobdekbkp$OuterPersistenceInfo e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true">
+        <groupTable id="outerPersistenceInfoesTable"
+                    height="100%"
+                    width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"
+                        invoke="onEdit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="manufacturer"/>
+                <column id="infoSource"/>
+                <column id="singleEffectData"/>
+                <column id="doseEffectData"/>
+                <column id="hasFiles"/>
+            </columns>
+            <rows datasource="outerPersistenceInfoesDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        caption="msg://create"
+                        invoke="onCreateBtnClick"/>
+                <button id="editBtn"
+                        action="outerPersistenceInfoesTable.edit"
+                        caption="msg://edit"
+                        invoke="onEdit"/>
+                <button id="removeBtn"
+                        action="outerPersistenceInfoesTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

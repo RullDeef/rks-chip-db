@@ -1,0 +1,304 @@
+buildscript {
+    ext.cubaVersion = '7.2.19'
+    repositories {
+        maven {
+            url 'https://repo.cuba-platform.com/content/groups/work/'
+            credentials {
+                username(rootProject.hasProperty('repoUser') ? rootProject['repoUser'] : 'cuba')
+                password(rootProject.hasProperty('repoPass') ? rootProject['repoPass'] : 'cuba123')
+            }
+        }
+//        maven {
+//            url 'http://db-djserv.dgs:8081/repository/maven-releases/'
+//            credentials {
+//                username(rootProject.hasProperty('repoUser') ? rootProject['repoUser'] : 'makarkin')
+//                password(rootProject.hasProperty('repoPass') ? rootProject['repoPass'] : 'makarkinpas1')
+//            }
+//        }
+//        maven {
+//            url 'https://repo.cuba-platform.com/content/groups/premium/'
+//            credentials {
+//                username(rootProject.hasProperty('repoUser') ? rootProject['repoUser'] : '201105018106')
+//                password(rootProject.hasProperty('repoPass') ? rootProject['repoPass'] : '192RMmsyZtci')
+//            }
+//        }
+        maven {
+            url 'https://nexus.cuba-platform.cn/repository/cuba/'
+        }
+    }
+    dependencies {
+        classpath "com.haulmont.gradle:cuba-plugin:$cubaVersion"
+    }
+}
+
+def modulePrefix = 'mobd'
+
+def globalModule = project(":${modulePrefix}-global" )
+def coreModule = project(":${modulePrefix}-core" )
+def guiModule = project(":${modulePrefix}-gui" )
+def webModule = project(":${modulePrefix}-web" )
+def webThemesModule = project(":${modulePrefix}-web-themes" )
+def webToolkitModule = project(":${modulePrefix}-web-toolkit" )
+
+def servletApi = 'javax.servlet:javax.servlet-api:3.1.0'
+
+
+apply(plugin: 'idea')
+apply(plugin: 'cuba')
+
+cuba {
+    artifact {
+        group = 'ru.spacecorp.mobdekbkp'
+        version = '0.1'
+        isSnapshot = true
+    }
+}
+
+dependencies {
+
+
+    appComponent('com.haulmont.addon.admintools:cuba-at-global:1.5.1')
+    appComponent("com.haulmont.charts:charts-global:$cubaVersion")
+    appComponent("com.haulmont.reports:reports-global:$cubaVersion")
+    appComponent("com.haulmont.bpm:bpm-global:$cubaVersion")
+    appComponent("com.haulmont.fts:fts-global:$cubaVersion")
+
+
+//    appComponent("ru.iovchinnikov.talks:talks-global:1.2.0")
+//    appComponent("com.spacecorp.rulesmodule:rules-global:0.7")
+//    appComponent("com.company.reviews:reviews-global:0.4.0")
+//    appComponent("com.company.importmodule:import-global:1.1")
+//    appComponent("ru.spacecorp.documents:docs-global:0.2.5")
+//    appComponent("ru.iovchinnikov.notificationsusers:notificationsusers-global:0.8.1")
+}
+
+def postgres = 'org.postgresql:postgresql:9.4.1212'
+
+configure([globalModule, coreModule, guiModule, webModule, webToolkitModule]) {
+    apply(plugin: 'java')
+    apply(plugin: 'maven')
+    apply(plugin: 'idea')
+    apply(plugin: 'cuba')
+    compileJava.options.encoding = 'UTF-8'
+    dependencies {
+        testCompile('junit:junit:4.12')
+    }
+
+    task sourceJar(type: Jar) {
+        from file('src')
+        classifier = 'sources'
+    }
+
+    artifacts {
+        archives sourceJar
+    }
+}
+
+configure([globalModule, coreModule, guiModule, webModule]) {
+    apply(plugin: 'groovy')
+    compileGroovy.options.encoding = 'UTF-8'
+    sourceSets {
+        main { groovy { srcDirs = ["src"] } }
+        test { groovy { srcDirs = ["test"] } }
+    }
+}
+
+configure(globalModule) {
+    task enhance(type: CubaEnhancing)
+}
+
+configure(coreModule) {
+    configurations {
+        jdbc
+        dbscripts
+    }
+
+    dependencies {
+        compile(globalModule)
+        compileOnly servletApi
+        jdbc(postgres)
+        testRuntime(postgres)
+
+        // https://mvnrepository.com/artifact/org.apache.directory.studio/org.apache.commons.lang
+        implementation 'org.apache.directory.studio:org.apache.commons.lang:2.6'
+
+        // https://mvnrepository.com/artifact/com.haulmont.yarg/yarg
+        implementation 'com.haulmont.yarg:yarg:2.0.12'
+    }
+
+    task cleanConf(description: 'Cleans up conf directory', type: Delete) {
+        delete "$cuba.appHome/${modulePrefix}-core/conf"
+    }
+
+    task deploy(dependsOn: [assemble, cleanConf], type: CubaDeployment) {
+        appName = "${modulePrefix}-core"
+        appJars(modulePrefix + '-global', modulePrefix + '-core')
+    }
+}
+
+configure(guiModule) {
+    dependencies {
+        compile(globalModule)
+    }
+
+    task deployConf(type: Copy) {
+        from file('src')
+        include "ru/spacecorp/mobdekbkp/**"
+        into "$cuba.appHome/${modulePrefix}/conf"
+    }
+}
+
+configure(webModule) {
+    configurations {
+        webcontent
+    }
+
+    dependencies {
+        compileOnly servletApi
+        compile(guiModule)
+    }
+
+    jar {
+        with copySpec {
+            from sourceSets.main.allJava
+            include "ru/spacecorp/mobdekbkp/web/toolkit/ui/client/**"
+        }
+    }
+
+    task webArchive(type: Zip) {
+        from file("$buildDir/web")
+        from file('web')
+        classifier = 'web'
+    }
+
+    artifacts {
+        archives webArchive
+    }
+
+    task deployConf(type: Copy) {
+        from file('src')
+        include "ru/spacecorp/mobdekbkp/**"
+        into "$cuba.appHome/${modulePrefix}/conf"
+    }
+
+    task clearMessagesCache(type: CubaClearMessagesCache) {
+        appName = "${modulePrefix}"
+    }
+    deployConf.dependsOn clearMessagesCache
+
+    task cleanConf(description: 'Cleans up conf directory', type: Delete) {
+        delete "$cuba.appHome/${modulePrefix}/conf"
+    }
+
+    task deploy(dependsOn: [assemble, cleanConf], type: CubaDeployment) {
+        appName = "${modulePrefix}"
+        appJars(modulePrefix + '-global', modulePrefix + '-gui', modulePrefix + '-web')
+    }
+    task buildScssThemes(type: CubaWebScssThemeCreation)
+    task deployThemes(type: CubaDeployThemeTask, dependsOn: buildScssThemes)
+    assemble.dependsOn buildScssThemes
+}
+
+configure(webThemesModule) {
+    apply(plugin: 'java')
+    apply(plugin: 'maven')
+    apply(plugin: 'cuba')
+
+    appModuleType = 'web-themes'
+
+    buildDir = file('../build/scss-themes')
+
+    sourceSets {
+        main {
+            java {
+                srcDir '.'
+            }
+            resources {
+                srcDir '.'
+            }
+        }
+    }
+}
+
+configure(webToolkitModule) {
+    dependencies {
+        compile(webModule)
+    }
+
+    jar {
+        from sourceSets.main.allJava
+    }
+
+    task buildWidgetSet(type: CubaWidgetSetBuilding) {
+        widgetSetClass = 'ru.spacecorp.mobdekbkp.web.toolkit.ui.AppWidgetSet'
+    }
+
+    task debugWidgetSet(type: CubaWidgetSetDebug) {
+        widgetSetClass = 'ru.spacecorp.mobdekbkp.web.toolkit.ui.AppWidgetSet'
+    }
+
+    task webArchive(dependsOn: buildWidgetSet, type: Zip) {
+        from file("$buildDir/web")
+        classifier = 'web'
+    }
+
+    artifacts {
+        archives webArchive
+    }
+
+    task deploy(dependsOn: buildWidgetSet) {
+        doLast {
+            delete {
+                "$cuba.tomcat.dir/webapps/${modulePrefix}/VAADIN/widgetsets"
+            }
+            copy {
+                from "$buildDir/web"
+                into "$cuba.tomcat.dir/webapps/${modulePrefix}"
+            }
+        }
+    }
+}
+
+
+task undeploy(type: Delete, dependsOn: ":${modulePrefix}-web:cleanConf" ) {
+    delete("$cuba.tomcat.dir/shared")
+    delete("$cuba.tomcat.dir/webapps/${modulePrefix}-core" )
+    delete("$cuba.tomcat.dir/webapps/${modulePrefix}" )
+}
+
+task restart(dependsOn: ['stop', ":${modulePrefix}-core:deploy" , ":${modulePrefix}-web:deploy" , ":${modulePrefix}-web-toolkit:deploy" ], description: 'Redeploys applications and restarts local Tomcat') {
+    doLast {
+        ant.waitfor(maxwait: 6, maxwaitunit: 'second', checkevery: 2, checkeveryunit: 'second') {
+            not {
+                socket(server: 'localhost', port: '8787')
+            }
+        }
+        start.execute()
+    }
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '4.3.1'
+}
+
+apply from: 'extra.gradle'
+
+task buildUberJar(type: CubaUberJarBuilding) {
+    singleJar = true
+    logbackConfigurationFile = 'etc/uber-jar-logback.xml'
+    webPort = 8088
+    coreJettyEnvPath = 'modules/core/web/META-INF/jetty-env.xml'
+    appProperties = ['cuba.automaticDatabaseUpdate': false]
+}
+
+task buildWar(type: CubaWarBuilding) {
+    includeContextXml = true
+    includeJdbcDriver = true
+    appHome = './ru/spacecorp/mobdekbkp'
+    singleWar = false
+    appProperties = [
+            'cuba.automaticDatabaseUpdate': false,
+            'cuba.webPort'                : 8088,
+            'cuba.connectionUrlList'      : 'http://localhost:8088/mobd-core'
+    ]
+}

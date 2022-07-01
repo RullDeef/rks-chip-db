@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="ru.spacecorp.mobdekbkp.web.outerlistallowing.OuterListAllowingBrowse"
+        focusComponent="outerListAllowingsTable"
+        messagesPack="ru.spacecorp.mobdekbkp.web.outerlistallowing">
+    <dsContext>
+        <groupDatasource id="outerListAllowingsDs"
+                         class="ru.spacecorp.mobdekbkp.entity.OuterListAllowing"
+                         view="outerListAllowing-view">
+            <query>
+                <![CDATA[select e from mobdekbkp$OuterListAllowing e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true">
+        <vbox spacing="true">
+            <filter id="filter"
+                    applyTo="outerListAllowingsTable"
+                    datasource="outerListAllowingsDs">
+                <properties include=".*"/>
+            </filter>
+            <groupTable id="outerListAllowingsTable"
+                        height="900px"
+                        width="100%">
+                <actions>
+                    <action id="create"/>
+                    <action id="edit"/>
+                    <action id="remove"/>
+                </actions>
+                <columns>
+                    <column id="type.name"/>
+                    <column id="number"/>
+                    <column id="name"/>
+                    <column id="startDate"/>
+                    <column id="endDate"/>
+                    <column id="substituting"/>
+                    <column id="releaseYear"/>
+                    <column id="isModification"/>
+                </columns>
+                <rows datasource="outerListAllowingsDs"/>
+                <rowsCount/>
+                <buttonsPanel id="buttonsPanel"
+                              alwaysVisible="true">
+                    <button id="createBtn"
+                            action="outerListAllowingsTable.create"/>
+                    <button id="editBtn"
+                            action="outerListAllowingsTable.edit"/>
+                    <button id="removeBtn"
+                            action="outerListAllowingsTable.remove"/>
+                </buttonsPanel>
+            </groupTable>
+        </vbox>
+    </layout>
+</window>

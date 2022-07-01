@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="ru.spacecorp.mobdekbkp.web.reliabilityIndicators.ReliabilityIndicatorsEdit"
+        datasource="reliabilityIndicatorsDs"
+        focusComponent="fieldGroup"
+        messagesPack="ru.spacecorp.mobdekbkp.web.typonominal">
+    <dsContext>
+        <datasource id="reliabilityIndicatorsDs"
+                    class="ru.spacecorp.mobdekbkp.entity.ReliabilityIndicators"
+                    view="reliabilityIndicators-view"/>
+    </dsContext>
+    <dialogMode height="150"
+                width="800"/>
+    <layout expand="windowActions"
+            spacing="true">
+        <fieldGroup id="fieldGroup"
+                    align="TOP_CENTER"
+                    datasource="reliabilityIndicatorsDs">
+            <column width="250px">
+                <field property="reliabilityIndicator"/>
+                <field property="retentionRate"/>
+                <field property="gammaPercentOperatingMaintenance"/>
+                <field property="gammaPercentOperatingLight"/>
+                <field property="gammapercentStorageabilityTime"/>
+            </column>
+        </fieldGroup>
+        <frame id="windowActions"
+               align="MIDDLE_CENTER"
+               screen="editWindowActions"
+               width="AUTO"/>
+    </layout>
+</window>

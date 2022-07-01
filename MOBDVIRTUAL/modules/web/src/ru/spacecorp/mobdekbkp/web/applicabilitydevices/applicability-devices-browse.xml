@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="ru.spacecorp.mobdekbkp.web.applicabilitydevices.ApplicabilityDevicesBrowse"
+        focusComponent="applicabilityDevicesesTable"
+        lookupComponent="applicabilityDevicesesTable"
+        messagesPack="ru.spacecorp.mobdekbkp.web.applicabilitydevices">
+    <dsContext>
+        <groupDatasource id="applicabilityDevicesesDs"
+                         class="ru.spacecorp.mobdekbkp.entity.ApplicabilityDevices"
+                         view="applicabilityDevices-view">
+            <query>
+                <![CDATA[select e from mobdekbkp$ApplicabilityDevices e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true">
+        <groupTable id="applicabilityDevicesesTable"
+                    height="100%"
+                    width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="equipment"/>
+                <column id="companyDeveloperHardware"/>
+                <column id="productRKT"/>
+                <column id="primeDeveloper"/>
+                <column id="approvalYear"/>
+            </columns>
+            <rows datasource="applicabilityDevicesesDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="btApplicabilityDevices"
+                        caption="msg://add"
+                        invoke="onCreateBtnClick"/>
+                <button id="editBtn"
+                        action="applicabilityDevicesesTable.edit"/>
+                <button id="removeBtn"
+                        action="applicabilityDevicesesTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

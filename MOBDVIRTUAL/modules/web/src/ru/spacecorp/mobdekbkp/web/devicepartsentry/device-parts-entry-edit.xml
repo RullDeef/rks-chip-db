@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="ru.spacecorp.mobdekbkp.web.devicepartsentry.DevicePartsEntryEdit"
+        datasource="devicePartsEntryDs"
+        focusComponent="fieldGroup"
+        messagesPack="ru.spacecorp.mobdekbkp.web.devicepartsentry">
+    <dsContext>
+        <datasource id="devicePartsEntryDs"
+                    class="ru.spacecorp.mobdekbkp.entity.DevicePartsEntry"
+                    view="devicePartsEntry-view"/>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="windowActions"
+            spacing="true">
+        <fieldGroup id="fieldGroup"
+                    datasource="devicePartsEntryDs">
+            <column width="250px">
+                <field property="part"/>
+                <field property="amount"/>
+            </column>
+        </fieldGroup>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

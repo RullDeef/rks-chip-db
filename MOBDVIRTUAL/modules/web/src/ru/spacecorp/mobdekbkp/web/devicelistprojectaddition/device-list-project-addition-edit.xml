@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="ru.spacecorp.mobdekbkp.web.devicelistprojectaddition.DeviceListProjectAdditionEdit"
+        datasource="deviceListProjectAdditionDs"
+        focusComponent="deviceListProjectAdditionFieldGroup"
+        messagesPack="ru.spacecorp.mobdekbkp.web.devicelistprojectaddition">
+    <dsContext>
+        <datasource id="deviceListProjectAdditionDs"
+                    class="ru.spacecorp.mobdekbkp.entity.DeviceListProjectAddition"
+                    view="deviceListProjectAddition-view">
+            <collectionDatasource id="entriesDs"
+                                  property="entries"/>
+            <collectionDatasource id="documentsDs"
+                                  property="documents"/>
+        </datasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true">
+        <vbox spacing="true">
+            <fieldGroup id="deviceListProjectAdditionFieldGroup"
+                        datasource="deviceListProjectAdditionDs">
+                <column width="250px">
+                    <field property="name"/>
+                    <field property="status"/>
+                </column>
+            </fieldGroup>
+            <hbox spacing="true">
+                <groupBox id="documentGroupBox"
+                          caption="msg://documents"
+                          height="100%"
+                          spacing="true"
+                          width="AUTO">
+                    <table id="documentTable"
+                           height="300px"
+                           width="700px">
+                        <actions>
+                            <action id="add"/>
+                            <action id="exclude"/>
+                        </actions>
+                        <columns>
+                            <column id="name"/>
+                            <column id="documentType"/>
+                            <column id="designation"/>
+                        </columns>
+                        <rows datasource="documentsDs"/>
+                        <buttonsPanel id="documentBtnPanel">
+                            <button id="documentAddBtn"
+                                    action="documentTable.add"/>
+                            <button id="documentExcludeBtn"
+                                    action="documentTable.exclude"/>
+                        </buttonsPanel>
+                    </table>
+                </groupBox>
+                <groupBox id="entriesGroupBox"
+                          caption="msg://Entries"
+                          spacing="true">
+                    <table id="entriesTable"
+                           height="300px"
+                           width="400px">
+                        <actions>
+                            <action id="create"/>
+                            <action id="edit"/>
+                            <action id="remove"/>
+                        </actions>
+                        <columns>
+                            <column id="additionType"/>
+                            <column id="status"/>
+                        </columns>
+                        <rows datasource="entriesDs"/>
+                        <buttonsPanel>
+                            <button id="entryCreateBtn"
+                                    action="entriesTable.create"/>
+                            <button id="entryEditBtn"
+                                    action="entriesTable.edit"/>
+                            <button id="entryRemoveBtn"
+                                    action="entriesTable.remove"/>
+                        </buttonsPanel>
+                    </table>
+                </groupBox>
+            </hbox>
+            <frame id="windowActions"
+                   screen="editWindowActions"/>
+        </vbox>
+    </layout>
+</window>

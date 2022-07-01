@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="ru.spacecorp.mobdekbkp.web.companytype.CompanyTypeEdit"
+        datasource="companyTypeDs"
+        focusComponent="fieldGroup"
+        messagesPack="ru.spacecorp.mobdekbkp.web.companytype">
+    <dsContext>
+        <datasource id="companyTypeDs"
+                    class="ru.spacecorp.mobdekbkp.entity.CompanyType"
+                    view="companyType-view"/>
+    </dsContext>
+    <dialogMode forceDialog="true"
+                height="130"
+                width="400"/>
+    <layout expand="windowActions"
+            spacing="true">
+        <fieldGroup id="fieldGroup"
+                    datasource="companyTypeDs">
+            <column width="250px">
+                <field property="name"/>
+            </column>
+        </fieldGroup>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

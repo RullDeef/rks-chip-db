@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        class="ru.spacecorp.mobdekbkp.web.screens.ExtInputParametersWindow"
+        extends="/com/haulmont/reports/gui/report/run/input-parameters.xml"
+        messagesPack="ru.spacecorp.mobdekbkp.web.screens">
+    <layout>
+        <hbox id="templatesBox">
+            <label description="msg://TemplateRep"/>
+            <lookupField id="templateField"
+                         captionProperty="code"/>
+        </hbox>
+    </layout>
+</window>

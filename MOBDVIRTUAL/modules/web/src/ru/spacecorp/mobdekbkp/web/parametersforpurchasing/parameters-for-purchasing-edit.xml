@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="ru.spacecorp.mobdekbkp.web.parametersforpurchasing.ParametersForPurchasingEdit"
+        datasource="parametersForPurchasingDs"
+        focusComponent="fieldGroup"
+        messagesPack="ru.spacecorp.mobdekbkp.web.typonominal">
+    <dsContext>
+        <datasource id="parametersForPurchasingDs"
+                    class="ru.spacecorp.mobdekbkp.entity.ParametersForPurchasing"
+                    view="parametersForPurchasing-view"/>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="windowActions"
+            spacing="true">
+        <fieldGroup id="fieldGroup"
+                    align="TOP_CENTER"
+                    datasource="parametersForPurchasingDs">
+            <column width="250px">
+                <field property="productPrice"/>
+                <field property="deliveryTime"/>
+                <field property="deliveryTerm"/>
+                <field property="statusInProduction"/>
+            </column>
+        </fieldGroup>
+        <frame id="windowActions"
+               align="MIDDLE_CENTER"
+               screen="editWindowActions"
+               width="AUTO"/>
+    </layout>
+</window>

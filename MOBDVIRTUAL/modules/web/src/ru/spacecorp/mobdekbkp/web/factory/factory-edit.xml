@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="ru.spacecorp.mobdekbkp.web.factory.FactoryEdit"
+        datasource="factoryDs"
+        focusComponent="fieldGroup"
+        messagesPack="ru.spacecorp.mobdekbkp.web.factory">
+    <dsContext>
+        <datasource id="factoryDs"
+                    class="ru.spacecorp.mobdekbkp.entity.Factory"
+                    view="factoryImport-view"/>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="windowActions"
+            spacing="true">
+        <fieldGroup id="fieldGroup"
+                    align="TOP_CENTER"
+                    datasource="factoryDs">
+            <column width="250px">
+                <field property="producer"/>
+                <field property="producingCountry"/>
+                <field property="provider"/>
+            </column>
+        </fieldGroup>
+        <frame id="windowActions"
+               align="MIDDLE_CENTER"
+               screen="editWindowActions"
+               width="AUTO"/>
+    </layout>
+</window>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        class="ru.spacecorp.mobdekbkp.web.typonominal.frames.TnBasicInfo"
+        messagesPack="ru.spacecorp.mobdekbkp.web.typonominal">
+    <dsContext>
+        <datasource id="basicInformationDs"
+                    class="ru.spacecorp.mobdekbkp.entity.BasicInformation"
+                    view="basic-information-view"/>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout>
+        <scrollBox id="scrollBox"
+                   height="100%">
+            <groupBox id="gbBasicInfo"
+                      spacing="true">
+                <textArea id="taFuncPurpose"
+                          caption="msg://functional"
+                          editable="false"
+                          inputPrompt="msg://mustSelectTn"
+                          width="100%"/>
+                <button id="btFuncPurpose"
+                        caption="msg://AddChange"
+                        invoke="onBtFuncPurposeClick"
+                        width="30%"/>
+                <hbox spacing="true"
+                      width="100%">
+                    <label value="msg://QualityLevel"
+                           width="100%"/>
+                    <textField id="tfQualityLevel"
+                               width="100%"/>
+                </hbox>
+                <hbox spacing="true"
+                      width="100%">
+                    <label value="msg://Item0122"
+                           width="100%"/>
+                    <textField id="thItem0122"
+                               width="100%"/>
+                </hbox>
+                <hbox spacing="true"
+                      width="100%">
+                    <label value="msg://ItemEKBK"
+                           width="100%"/>
+                    <textField id="tfItemEKBK"
+                               width="100%"/>
+                </hbox>
+                <button id="reportButton"
+                        caption="msg://reportButton"
+                        icon="font-icon:PRINT"
+                        invoke="runReport"
+                        visible="false"/>
+            </groupBox>
+        </scrollBox>
+    </layout>
+</window>

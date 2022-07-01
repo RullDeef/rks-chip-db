@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        class="ru.spacecorp.mobdekbkp.web.reliabilityIndicators.TnReliabilityindicators"
+        messagesPack="ru.spacecorp.mobdekbkp.web.typonominal">
+    <dialogMode height="600"
+                width="800"/>
+    <layout>
+        <scrollBox height="100%">
+            <groupBox spacing="true">
+                <hbox spacing="true"
+                      width="100%">
+                    <label align="MIDDLE_LEFT"
+                           value="msg://reliabilityIndicator(γ)"
+                           width="100%"/>
+                    <textField id="tfreliabilityIndicator"
+                               width="100%"/>
+                </hbox>
+                <hbox spacing="true"
+                      width="100%">
+                    <label align="MIDDLE_LEFT"
+                           value="msg://retentionRate(γ)"
+                           width="100%"/>
+                    <textField id="tfretentionRate"
+                               width="100%"/>
+                </hbox>
+                <hbox spacing="true"
+                      width="100%">
+                    <label align="MIDDLE_CENTER"
+                           value="msg://gammaPercentOperatingMaintenance"
+                           width="100%"/>
+                    <textField id="tfgammaPercentOperating"
+                               width="100%"/>
+                    <button id="btgammaPercentOperatingMaintenance"
+                            caption="msg://AddChange"
+                            invoke="onBtgammaPercentOperatingMaintenanceClick"
+                            width="100%"/>
+                </hbox>
+                <hbox spacing="true"
+                      width="100%">
+                    <label align="MIDDLE_CENTER"
+                           value="msg://gammaPercentOperatingLight"
+                           width="100%"/>
+                    <textField id="tfgammaPercentOperatingLight"
+                               width="100%"/>
+                    <button id="btgammaPercentOperatingLight"
+                            caption="msg://AddChange"
+                            invoke="onBtgammaPercentOperatingLightClick"
+                            width="100%"/>
+                </hbox>
+                <hbox spacing="true"
+                      width="100%">
+                    <label align="MIDDLE_CENTER"
+                           value="msg://gammapercentStorageabilitytime, лет"
+                           width="100%"/>
+                    <textField id="tfgammapercentStorageabilitytime"
+                               width="100%"/>
+                    <button id="btgammapercentStorageabilitytime"
+                            caption="msg://AddChange"
+                            invoke="onBtgammapercentStorageabilitytimeClick"
+                            width="100%"/>
+                </hbox>
+            </groupBox>
+        </scrollBox>
+    </layout>
+</window>

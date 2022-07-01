@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="ru.spacecorp.mobdekbkp.web.handbookentry.HandbookEntryBrowse"
+        focusComponent="handbookEntriesTable"
+        lookupComponent="handbookEntriesTable"
+        messagesPack="ru.spacecorp.mobdekbkp.web.handbookentry">
+    <dsContext>
+        <hierarchicalDatasource id="handbookEntriesDs"
+                                class="ru.spacecorp.mobdekbkp.entity.HandbookEntry"
+                                hierarchyProperty="parent"
+                                view="handbookEntry-view">
+            <query>
+                <![CDATA[select e from mobdekbkp$HandbookEntry e]]>
+            </query>
+        </hierarchicalDatasource>
+    </dsContext>
+    <dialogMode forceDialog="true"
+                height="600"
+                width="800"/>
+    <layout expand="handbookEntriesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="handbookEntriesTable"
+                datasource="handbookEntriesDs">
+            <properties include=".*"/>
+        </filter>
+        <treeTable id="handbookEntriesTable"
+                   width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="parent"/>
+                <column id="key"/>
+                <column id="value"/>
+            </columns>
+            <rows datasource="handbookEntriesDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="handbookEntriesTable.create"/>
+                <button id="editBtn"
+                        action="handbookEntriesTable.edit"/>
+                <button id="removeBtn"
+                        action="handbookEntriesTable.remove"/>
+            </buttonsPanel>
+        </treeTable>
+    </layout>
+</window>

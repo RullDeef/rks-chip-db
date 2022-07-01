@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="ru.spacecorp.mobdekbkp.web.analogimport.AnalogImportBrowse"
+        focusComponent="analogImportsTable"
+        lookupComponent="analogImportsTable"
+        messagesPack="ru.spacecorp.mobdekbkp.web.analogimport">
+    <dsContext>
+        <groupDatasource id="analogImportsDs"
+                         class="ru.spacecorp.mobdekbkp.entity.AnalogImport"
+                         view="analogImport-view">
+            <query>
+                <![CDATA[select e from mobdekbkp$AnalogImport e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true">
+        <groupTable id="analogImportsTable"
+                    height="100%"
+                    width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="typonominalAnalogType"/>
+                <column id="isRecommendedGnio"/>
+                <column id="analogName"/>
+                <column id="producer"/>
+                <column id="producingCountry"/>
+                <column id="okrMinPromTorg"/>
+            </columns>
+            <rows datasource="analogImportsDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        caption="msg://create"
+                        invoke="onCreateBtnClick"/>
+                <button id="editBtn"
+                        action="analogImportsTable.edit"
+                        caption="msg://edit"/>
+                <button id="removeBtn"
+                        action="analogImportsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

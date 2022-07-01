@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="ru.spacecorp.mobdekbkp.web.suppliers.SuppliersEdit"
+        datasource="suppliersDs"
+        focusComponent="supplierfieldGroup"
+        messagesPack="ru.spacecorp.mobdekbkp.web.suppliers">
+    <dsContext>
+        <datasource id="suppliersDs"
+                    class="ru.spacecorp.mobdekbkp.entity.Suppliers"
+                    view="suppliers-view"/>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="vbox"
+            spacing="true">
+        <vbox id="vbox"
+              align="MIDDLE_CENTER"
+              expand="rootTabShhet"
+              margin="true,false,true,false"
+              responsive="true"
+              spacing="true">
+            <label id="labelName"
+                   align="MIDDLE_CENTER"
+                   datasource="suppliersDs"
+                   htmlEnabled="true"
+                   property="smartName"
+                   stylename="h1"
+                   width="100%"/>
+            <tabSheet id="rootTabShhet">
+                <tab id="mainTab"
+                     caption="msg://mainTabName"
+                     margin="true,false,false,false"
+                     spacing="true">
+                    <hbox height="100%"
+                          spacing="true"
+                          width="100%">
+                        <vbox height="100%"
+                              spacing="true">
+                            <scrollBox height="100%">
+                                <groupBox id="mainInfoBox"
+                                          caption="msg://mainProperties"
+                                          spacing="true">
+                                    <fieldGroup id="supplierfieldGroup"
+                                                datasource="suppliersDs"
+                                                width="100%">
+                                        <column width="250px">
+                                            <field property="name"/>
+                                            <field property="country"/>
+                                            <field property="genDirector"/>
+                                            <field property="nameShort"/>
+                                            <field property="addressFact"/>
+                                            <field property="addressLegal"/>
+                                            <field property="phone"/>
+                                            <field property="fax"/>
+                                            <field property="email"/>
+                                            <field property="website"/>
+                                        </column>
+                                    </fieldGroup>
+                                </groupBox>
+                            </scrollBox>
+                        </vbox>
+                        <vbox height="100%"
+                              spacing="true">
+                            <image id="cmpnLogo"
+                                   align="MIDDLE_CENTER"
+                                   height="100px"
+                                   scaleMode="CONTAIN"
+                                   width="100%"/>
+                        </vbox>
+                    </hbox>
+                </tab>
+                <tab id="juristicTab"
+                     caption="msg://juristicTabName"
+                     margin="true,false,false,false"
+                     spacing="true">
+                    <groupBox spacing="true">
+                        <fieldGroup datasource="suppliersDs"
+                                    height="100%"
+                                    width="100%">
+                            <column width="250px">
+                                <field property="ogrn"/>
+                                <field property="kpp"/>
+                                <field property="inn"/>
+                                <field property="okpo"/>
+                                <field property="okato"/>
+                            </column>
+                        </fieldGroup>
+                    </groupBox>
+                </tab>
+            </tabSheet>
+        </vbox>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

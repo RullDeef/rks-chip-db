@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://Registration"
+        class="ru.spacecorp.mobdekbkp.web.screens.Registerscreen"
+        messagesPack="ru.spacecorp.mobdekbkp.web.screens">
+    <dialogMode height="600"
+                width="800"/>
+    <layout>
+        <vbox spacing="true">
+            <hbox id="nameBox"
+                  spacing="true"
+                  width="75%">
+                <label id="nameLbl"
+                       value="msg://Name"/>
+                <textField id="nameField"
+                           required="true"
+                           requiredMessage="msg://enterName"
+                           width="100%"/>
+            </hbox>
+            <hbox id="surnameBox"
+                  spacing="true"
+                  width="75%">
+                <label id="surnameLbl"
+                       value="msg://Surname"/>
+                <textField id="surnameField"
+                           required="true"
+                           requiredMessage="msg://enterSurname"
+                           width="100%"/>
+            </hbox>
+            <hbox id="patronymicBox"
+                  spacing="true"
+                  width="75%">
+                <label id="patronymicLbl"
+                       value="msg://Patronymic"/>
+                <textField id="patronymicField"
+                           width="100%"/>
+            </hbox>
+            <hbox id="emailBox"
+                  spacing="true"
+                  width="75%">
+                <label id="emailLbl"
+                       value="msg://Email"/>
+                <textField id="emailField"
+                           required="true"
+                           requiredMessage="msg://enterEmail"
+                           width="100%"/>
+            </hbox>
+            <hbox id="phoneBox"
+                  spacing="true"
+                  width="75%">
+                <label id="phoneLbl"
+                       value="msg://Phone"/>
+                <textField id="phoneField"
+                           required="true"
+                           requiredMessage="msg://enterPnone"
+                           width="100%"/>
+            </hbox>
+            <hbox id="companyBox"
+                  spacing="true"
+                  width="75%">
+                <label id="companyLbl"
+                       value="msg://Company"/>
+                <textField id="companyField"
+                           required="true"
+                           requiredMessage="msg://enterCompany"
+                           width="100%"/>
+            </hbox>
+            <hbox id="positionBox"
+                  spacing="true"
+                  width="75%">
+                <label id="positionLbl"
+                       value="msg://Position"/>
+                <textField id="positionField"
+                           required="true"
+                           requiredMessage="msg://enterPosition"
+                           width="100%"/>
+            </hbox>
+            <hbox id="actionBox"
+                  spacing="true">
+                <button id="sendBtn"
+                        caption="msg://Send"
+                        icon="SEND"
+                        invoke="onSendBtnClick"/>
+                <button id="cancelBtn"
+                        caption="msg://Cancel"
+                        icon="CANCEL"
+                        invoke="onCancelBtnClick"/>
+            </hbox>
+        </vbox>
+    </layout>
+</window>

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+  ~ Copyright (c) 2017 Haulmont Technology Ltd. All Rights Reserved.
+  ~ Haulmont Technology proprietary and confidential.
+  ~ Use is subject to license terms.
+  -->
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://caption"
+        class="ru.spacecorp.mobdekbkp.web.typonominal.ImportDeviceBrowse"
+        messagesPack="ru.spacecorp.mobdekbkp.web.typonominal">
+    <dsContext>
+        <collectionDatasource id="importDevicesDs"
+                              class="ru.spacecorp.mobdekbkp.entity.ImportDevice"
+                              view="importDeviceName-view">
+            <query>
+                <![CDATA[select e from mobdekbkp$ImportDevice e]]>
+            </query>
+        </collectionDatasource>
+        <collectionDatasource id="importClassesDs"
+                              class="ru.spacecorp.mobdekbkp.entity.ImportClass"
+                              view="importClassName-view">
+            <query>
+                <![CDATA[select e from mobdekbkp$ImportClass e order by e.number_]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <actions>
+        <action id="save"
+                caption="mainMsg://actions.Ok"
+                icon="icons/ok.png"
+                invoke="save"
+                shortcut="CTRL-ENTER"/>
+        <action id="cancel"
+                caption="mainMsg://actions.Cancel"
+                description="Esc"
+                icon="icons/cancel.png"
+                invoke="cancel"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout>
+        <split id="split"
+               height="100%"
+               orientation="horizontal"
+               reversePosition="true"
+               width="100%">
+            <vbox spacing="true">
+                <groupBox spacing="true">
+                    <vbox spacing="true">
+                        <hbox spacing="true"
+                              width="100%">
+                            <buttonsPanel visible="false"
+                                          width="100%">
+                                <button id="btAdd"
+                                        caption="msg://addDevice"
+                                        invoke="onBtAddClick"
+                                        width="100%"/>
+                                <button id="btEdit"
+                                        action="dgDevice.edit"
+                                        caption="msg://editDevice"
+                                        width="100%"/>
+                                <button id="btDelete"
+                                        action="dgDevice.remove"
+                                        caption="msg://deleteDevice"
+                                        width="100%"/>
+                            </buttonsPanel>
+                        </hbox>
+                        <hbox spacing="true"
+                              width="100%">
+                            <groupBox spacing="true"
+                                      width="133%">
+                                <table id="dgClass"
+                                       caption="msg://ImportClass"
+                                       columnControlVisible="false"
+                                       columnHeaderVisible="false"
+                                       description="msg://ImportClass"
+                                       width="100%">
+                                    <columns>
+                                        <column id="name"/>
+                                    </columns>
+                                    <rows datasource="importClassesDs"/>
+                                </table>
+                            </groupBox>
+                            <groupBox align="TOP_RIGHT"
+                                      spacing="true"
+                                      width="70%">
+                                <dataGrid id="dgDevice"
+                                          caption="msg://tn"
+                                          datasource="importDevicesDs"
+                                          headerVisible="false"
+                                          width="100%">
+                                    <actions>
+                                        <action id="edit"/>
+                                        <action id="remove"/>
+                                    </actions>
+                                    <columns>
+                                        <column property="name"/>
+                                    </columns>
+                                </dataGrid>
+                            </groupBox>
+                        </hbox>
+                    </vbox>
+                </groupBox>
+            </vbox>
+            <vbox id="editBox"
+                  height="100%"
+                  margin="false,false,false,true"
+                  spacing="true">
+                <frame id="importCardFrame"
+                       height="100%"
+                       screen="mobdekbkp$ImportCardFrame"/>
+            </vbox>
+        </split>
+    </layout>
+</window>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://supportInfoCaption"
+        class="ru.spacecorp.mobdekbkp.web.screens.Loginsupportinfo"
+        messagesPack="ru.spacecorp.mobdekbkp.web.screens">
+    <dialogMode forceDialog="true"
+                height="200"
+                width="550"/>
+    <layout>
+        <vbox spacing="true">
+            <label id="noDataLabel"
+                   align="TOP_CENTER"
+                   value="msg://noData"
+                   visible="false"/>
+            <groupBox id="infoBox"
+                      spacing="true">
+                <hbox spacing="true">
+                    <label id="phoneLabel"
+                           value="msg://phone"
+                           width="200px"/>
+                    <textField id="phoneField"
+                               editable="false"
+                               width="250px"/>
+                </hbox>
+                <hbox spacing="true">
+                    <label id="mailLabel"
+                           value="msg://mail"
+                           width="200px"/>
+                    <textField id="mailField"
+                               editable="false"
+                               width="250px"/>
+                </hbox>
+            </groupBox>
+        </vbox>
+    </layout>
+</window>

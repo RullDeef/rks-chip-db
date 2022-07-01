@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="ru.spacecorp.mobdekbkp.web.outerlistallowingentry.OuterListAllowingEntryBrowse"
+        focusComponent="outerListAllowingEntriesTable"
+        lookupComponent="outerListAllowingEntriesTable"
+        messagesPack="ru.spacecorp.mobdekbkp.web.outerlistallowingentry">
+    <dsContext>
+        <groupDatasource id="outerListAllowingEntriesDs"
+                         class="ru.spacecorp.mobdekbkp.entity.OuterListAllowingEntry"
+                         view="outerListAllowingEntry-view">
+            <query>
+                <![CDATA[select e from mobdekbkp$OuterListAllowingEntry e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="outerListAllowingEntriesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="outerListAllowingEntriesTable"
+                datasource="outerListAllowingEntriesDs">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="outerListAllowingEntriesTable"
+                    width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="typonominal"/>
+                <column id="linkToListEntry"/>
+                <column id="adminParameters.status"/>
+            </columns>
+            <rows datasource="outerListAllowingEntriesDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="outerListAllowingEntriesTable.create"/>
+                <button id="editBtn"
+                        action="outerListAllowingEntriesTable.edit"/>
+                <button id="removeBtn"
+                        action="outerListAllowingEntriesTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="ru.spacecorp.mobdekbkp.web.saprdata.SaprDataBrowse"
+        focusComponent="saprDatasTable"
+        lookupComponent="saprDatasTable"
+        messagesPack="ru.spacecorp.mobdekbkp.web.typonominal">
+    <dsContext>
+        <groupDatasource id="saprDatasDs"
+                         class="ru.spacecorp.mobdekbkp.entity.SaprData"
+                         view="saprData-view">
+            <query>
+                <![CDATA[select e from mobdekbkp$SaprData e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true">
+        <label value="msg://reference"/>
+        <groupTable id="saprDatasTable"
+                    height="100%"
+                    width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="libraryGraphicalSymbols"/>
+                <column id="electronicGeometricLibrary"/>
+            </columns>
+            <rows datasource="saprDatasDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        caption="msg://add"
+                        invoke="onCreateBtnClick"/>
+                <button id="editBtn"
+                        action="saprDatasTable.edit"/>
+                <button id="removeBtn"
+                        action="saprDatasTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

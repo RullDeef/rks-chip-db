@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="ru.spacecorp.mobdekbkp.web.installmethod.InstallMethodBrowse"
+        focusComponent="installMethodsTable"
+        lookupComponent="installMethodsTable"
+        messagesPack="ru.spacecorp.mobdekbkp.web.installmethod">
+    <dsContext>
+        <groupDatasource id="installMethodsDs"
+                         class="ru.spacecorp.mobdekbkp.entity.InstallMethod"
+                         view="installMethod-view">
+            <query>
+                <![CDATA[select e from mobdekbkp$InstallMethod e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="installMethodsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="installMethodsTable"
+                datasource="installMethodsDs">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="installMethodsTable"
+                    width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="name"/>
+            </columns>
+            <rows datasource="installMethodsDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="installMethodsTable.create"/>
+                <button id="editBtn"
+                        action="installMethodsTable.edit"/>
+                <button id="removeBtn"
+                        action="installMethodsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

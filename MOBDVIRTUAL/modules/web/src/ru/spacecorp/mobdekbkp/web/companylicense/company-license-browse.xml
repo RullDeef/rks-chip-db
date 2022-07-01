@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="ru.spacecorp.mobdekbkp.web.companylicense.CompanyLicenseBrowse"
+        focusComponent="companyLicensesTable"
+        lookupComponent="companyLicensesTable"
+        messagesPack="ru.spacecorp.mobdekbkp.web.companylicense">
+    <dsContext>
+        <groupDatasource id="companyLicensesDs"
+                         class="ru.spacecorp.mobdekbkp.entity.CompanyLicense"
+                         view="companyLicense-view">
+            <query>
+                <![CDATA[select e from mobdekbkp$CompanyLicense e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="companyLicensesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="companyLicensesTable"
+                datasource="companyLicensesDs">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="companyLicensesTable"
+                    width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="number"/>
+                <column id="dateObtained"/>
+                <column id="dateExpire"/>
+                <column id="issued"/>
+            </columns>
+            <rows datasource="companyLicensesDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="companyLicensesTable.create"/>
+                <button id="editBtn"
+                        action="companyLicensesTable.edit"/>
+                <button id="removeBtn"
+                        action="companyLicensesTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

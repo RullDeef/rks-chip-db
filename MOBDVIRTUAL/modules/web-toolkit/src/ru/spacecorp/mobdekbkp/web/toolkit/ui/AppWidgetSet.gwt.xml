@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<module>
+    <inherits name="com.haulmont.cuba.web.toolkit.ui.WidgetSet"/>
+    <inherits name="com.haulmont.charts.web.toolkit.ui.ChartsWidgetSet"/>
+    <inherits name="com.company.reviews.web.toolkit.ui.AppWidgetSet"/>
+    <inherits name="com.haulmont.cuba.web.widgets.WidgetSet"/>
+    <inherits name="com.haulmont.charts.web.widgets.ChartsWidgetSet"/>
+</module>

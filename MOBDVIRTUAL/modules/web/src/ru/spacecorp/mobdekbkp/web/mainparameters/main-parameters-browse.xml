@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="ru.spacecorp.mobdekbkp.web.mainparameters.MainParametersBrowse"
+        focusComponent="mainParametersesTable"
+        lookupComponent="mainParametersesTable"
+        messagesPack="ru.spacecorp.mobdekbkp.web.typonominal">
+    <dsContext>
+        <groupDatasource id="mainParametersesDs"
+                         class="ru.spacecorp.mobdekbkp.entity.MainParameters"
+                         view="mainParameters-view">
+            <query>
+                <![CDATA[select e from mobdekbkp$MainParameters e]]>
+            </query>
+        </groupDatasource>
+        <groupDatasource id="customParametersesDs"
+                         class="ru.spacecorp.mobdekbkp.entity.CustomParameters"
+                         view="customParametersImport-view">
+            <query>
+                <![CDATA[select e from mobdekbkp$CustomParameters e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true">
+        <groupBox height="100%"
+                  spacing="true">
+            <groupTable id="mainParametersesTable"
+                        height="100%"
+                        width="100%">
+                <actions>
+                    <action id="create"/>
+                    <action id="edit"/>
+                    <action id="remove"/>
+                </actions>
+                <columns>
+                    <column id="tPlus"/>
+                    <column id="tMinus"/>
+                </columns>
+                <rows datasource="mainParametersesDs"/>
+                <rowsCount/>
+                <buttonsPanel id="buttonsPanel"
+                              alwaysVisible="true">
+                    <button id="createBtn"
+                            caption="msg://add"
+                            invoke="onCreateMainClick"/>
+                    <button id="editBtn"
+                            action="mainParametersesTable.edit"/>
+                    <button id="removeBtn"
+                            action="mainParametersesTable.remove"/>
+                </buttonsPanel>
+            </groupTable>
+        </groupBox>
+        <groupBox height="100%"
+                  spacing="true">
+            <groupTable id="customParametersesTable"
+                        height="100%"
+                        width="100%">
+                <actions>
+                    <action id="edit"/>
+                    <action id="remove"/>
+                </actions>
+                <columns>
+                    <column id="name"/>
+                    <column id="paramValue"/>
+                </columns>
+                <rows datasource="customParametersesDs"/>
+                <buttonsPanel id="buttonspanel_1"
+                              alwaysVisible="true">
+                    <button id="createButton"
+                            caption="msg://add"
+                            invoke="onCreateCustomClick"/>
+                    <button id="editButton"
+                            action="customParametersesTable.edit"/>
+                    <button id="removeButton"
+                            action="customParametersesTable.remove"/>
+                </buttonsPanel>
+            </groupTable>
+        </groupBox>
+    </layout>
+</window>

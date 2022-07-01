@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="ru.spacecorp.mobdekbkp.web.applicationokrinfo.ApplicationOkrInfoBrowse"
+        focusComponent="applicationOkrInfoesTable"
+        lookupComponent="applicationOkrInfoesTable"
+        messagesPack="ru.spacecorp.mobdekbkp.web.applicationokrinfo">
+    <dsContext>
+        <groupDatasource id="applicationOkrInfoesDs"
+                         class="ru.spacecorp.mobdekbkp.entity.ApplicationOkrInfo"
+                         view="applicationOkrInfo-view">
+            <query>
+                <![CDATA[select e from mobdekbkp$ApplicationOkrInfo e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="applicationOkrInfoesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="applicationOkrInfoesTable"
+                datasource="applicationOkrInfoesDs">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="applicationOkrInfoesTable"
+                    width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="responsible"/>
+                <column id="description"/>
+                <column id="dateStart"/>
+                <column id="dateApprox"/>
+                <column id="dateEnd"/>
+                <column id="condition"/>
+                <column id="result"/>
+                <column id="applicationCommonEntry"/>
+            </columns>
+            <rows datasource="applicationOkrInfoesDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="applicationOkrInfoesTable.create"/>
+                <button id="editBtn"
+                        action="applicationOkrInfoesTable.edit"/>
+                <button id="removeBtn"
+                        action="applicationOkrInfoesTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="ru.spacecorp.mobdekbkp.web.companytype.CompanyTypeBrowse"
+        focusComponent="companyTypesTable"
+        lookupComponent="companyTypesTable"
+        messagesPack="ru.spacecorp.mobdekbkp.web.companytype">
+    <dsContext>
+        <groupDatasource id="companyTypesDs"
+                         class="ru.spacecorp.mobdekbkp.entity.CompanyType"
+                         view="companyType-view">
+            <query>
+                <![CDATA[select e from mobdekbkp$CompanyType e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="companyTypesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="companyTypesTable"
+                datasource="companyTypesDs">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="companyTypesTable"
+                    width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="name"/>
+            </columns>
+            <rows datasource="companyTypesDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="companyTypesTable.create"/>
+                <button id="editBtn"
+                        action="companyTypesTable.edit"/>
+                <button id="removeBtn"
+                        action="companyTypesTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

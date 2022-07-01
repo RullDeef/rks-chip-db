@@ -1,0 +1,21 @@
+@mixin tableCellColors {
+  .v-table-cell-content.red {
+    background-color: rgb(255, 220, 220);
+    color: rgb(0, 0, 0);
+  }
+  .v-table-cell-content.orange {
+    background-color: rgb(255, 210, 90);
+    color: rgb(0, 0, 0);
+  }
+  .v-table-cell-content.green {
+    background-color: rgb(220, 255, 220);
+    color: rgb(0, 0, 0);
+  }
+  .v-table-cell-content.yellow {
+    background-color: rgb(255, 255, 220);
+    color: rgb(0, 0, 0)
+  }
+  .v-table-body {
+    height: 100%;
+  }
+}

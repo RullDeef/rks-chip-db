@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="ru.spacecorp.mobdekbkp.web.company.CompanyBrowse"
+        focusComponent="companiesTable"
+        lookupComponent="companiesTable"
+        messagesPack="ru.spacecorp.mobdekbkp.web.company">
+    <dsContext>
+        <groupDatasource id="companiesDs"
+                         class="ru.spacecorp.mobdekbkp.entity.Company"
+                         view="company-view">
+            <query>
+                <![CDATA[select e from mobdekbkp$Company e]]>
+            </query>
+            <collectionDatasource id="typesDs"
+                                  property="types"/>
+            <groupDatasource id="licensesDs"
+                             property="licenses"/>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="700"
+                width="1400"/>
+    <layout expand="mainLayout">
+        <grid id="mainLayout"
+              spacing="true"
+              width="100%">
+            <columns>
+                <column flex="0.85"/>
+                <column flex="0.15"/>
+            </columns>
+            <rows>
+                <row>
+                    <vbox expand="companiesTable"
+                          height="100%"
+                          spacing="true">
+                        <hbox id="upPanelHbox"
+                              expand="filter"
+                              spacing="true"
+                              width="100%">
+                            <buttonsPanel id="buttonsPanel"
+                                          align="MIDDLE_LEFT"
+                                          alwaysVisible="true">
+                                <button id="createBtn"
+                                        action="companiesTable.create"
+                                        width="100%"/>
+                                <button id="editBtn"
+                                        action="companiesTable.edit"
+                                        width="100%"/>
+                                <button id="removeBtn"
+                                        action="companiesTable.remove"
+                                        width="100%"/>
+                                <button id="excelBtn"
+                                        action="companiesTable.excel"
+                                        width="100%"/>
+                            </buttonsPanel>
+                            <filter id="filter"
+                                    align="MIDDLE_LEFT"
+                                    applyTo="companiesTable"
+                                    datasource="companiesDs">
+                                <properties include=".*"/>
+                            </filter>
+                        </hbox>
+                        <groupTable id="companiesTable"
+                                    width="100%">
+                            <actions>
+                                <action id="create"/>
+                                <action id="edit"/>
+                                <action id="remove"/>
+                                <action id="excel"/>
+                            </actions>
+                            <columns>
+                                <column id="name"/>
+                            </columns>
+                            <rows datasource="companiesDs"/>
+                        </groupTable>
+                    </vbox>
+                    <vbox expand="typesTable"
+                          height="100%"
+                          spacing="true">
+                        <table id="typesTable"
+                               width="100%">
+                            <columns>
+                                <column id="type"/>
+                            </columns>
+                            <rows datasource="typesDs"/>
+                        </table>
+                    </vbox>
+                </row>
+            </rows>
+        </grid>
+        <tabSheet id="dopAttrTabSheet"
+                  align="BOTTOM_LEFT"
+                  height="250px">
+            <tab id="mainInfoTab"
+                 caption="msg://mainInfo"
+                 margin="true">
+                <hbox id="mainInfoHbox"
+                      height="100%"
+                      spacing="true"
+                      width="100%">
+                    <groupBox id="mainInfoLeftGroupBox"
+                              height="100%">
+                        <hbox id="countryHbox"
+                              spacing="true"
+                              width="100%">
+                            <label id="countryLbl"
+                                   align="MIDDLE_LEFT"
+                                   value="msg://ru.spacecorp.mobdekbkp.entity/Company.country"/>
+                            <textField id="countryField"
+                                       align="MIDDLE_LEFT"
+                                       datasource="companiesDs"
+                                       editable="false"
+                                       property="country"
+                                       width="100%"/>
+                        </hbox>
+                        <hbox id="genDirHbox"
+                              spacing="true"
+                              width="100%">
+                            <label id="genDirLbl"
+                                   align="MIDDLE_LEFT"
+                                   value="msg://ru.spacecorp.mobdekbkp.entity/Company.genDir"/>
+                            <textField id="genDirField"
+                                       align="MIDDLE_LEFT"
+                                       datasource="companiesDs"
+                                       editable="false"
+                                       property="genDir"
+                                       width="100%"/>
+                        </hbox>
+                        <hbox id="nameShortHbox"
+                              spacing="true"
+                              width="100%">
+                            <label id="nameShortLbl"
+                                   align="MIDDLE_LEFT"
+                                   value="msg://ru.spacecorp.mobdekbkp.entity/Company.nameShort"/>
+                            <textField id="nameShortField"
+                                       align="MIDDLE_LEFT"
+                                       datasource="companiesDs"
+                                       editable="false"
+                                       property="nameShort"
+                                       width="100%"/>
+                        </hbox>
+                        <hbox id="phoneHbox"
+                              spacing="true"
+                              width="100%">
+                            <label id="phoneLbl"
+                                   align="MIDDLE_LEFT"
+                                   value="msg://ru.spacecorp.mobdekbkp.entity/Company.phone"/>
+                            <textField id="phoneField"
+                                       align="MIDDLE_LEFT"
+                                       datasource="companiesDs"
+                                       editable="false"
+                                       property="phone"
+                                       width="100%"/>
+                        </hbox>
+                        <hbox id="faxHbox"
+                              spacing="true"
+                              width="100%">
+                            <label id="faxLbl"
+                                   align="MIDDLE_LEFT"
+                                   value="msg://ru.spacecorp.mobdekbkp.entity/Company.fax"/>
+                            <textField id="faxField"
+                                       align="MIDDLE_LEFT"
+                                       datasource="companiesDs"
+                                       editable="false"
+                                       property="fax"
+                                       width="100%"/>
+                        </hbox>
+                    </groupBox>
+                    <groupBox id="mainInfoRightGroupBox"
+                              height="100%">
+                        <hbox id="emailHbox"
+                              spacing="true"
+                              width="100%">
+                            <label id="emailLbl"
+                                   align="MIDDLE_LEFT"
+                                   value="msg://ru.spacecorp.mobdekbkp.entity/Company.email"/>
+                            <textField id="emailField"
+                                       align="MIDDLE_LEFT"
+                                       datasource="companiesDs"
+                                       editable="false"
+                                       property="email"
+                                       width="100%"/>
+                        </hbox>
+                        <hbox id="addressLegalHbox"
+                              spacing="true"
+                              width="100%">
+                            <label id="addressLegalLbl"
+                                   align="MIDDLE_LEFT"
+                                   value="msg://ru.spacecorp.mobdekbkp.entity/Company.addressLegal"/>
+                            <textField id="addressLegalField"
+                                       align="MIDDLE_LEFT"
+                                       datasource="companiesDs"
+                                       editable="false"
+                                       property="addressLegal"
+                                       width="100%"/>
+                        </hbox>
+                        <hbox id="addressFactHbox"
+                              spacing="true"
+                              width="100%">
+                            <label id="addressFactLbl"
+                                   align="MIDDLE_LEFT"
+                                   value="msg://ru.spacecorp.mobdekbkp.entity/Company.addressFact"/>
+                            <textField id="addressFactField"
+                                       align="MIDDLE_LEFT"
+                                       datasource="companiesDs"
+                                       editable="false"
+                                       property="addressFact"
+                                       width="100%"/>
+                        </hbox>
+                        <hbox id="websiteHbox"
+                              spacing="true"
+                              width="100%">
+                            <label id="websiteLbl"
+                                   align="MIDDLE_LEFT"
+                                   value="msg://ru.spacecorp.mobdekbkp.entity/Company.website"/>
+                            <textField id="websiteField"
+                                       align="MIDDLE_LEFT"
+                                       datasource="companiesDs"
+                                       editable="false"
+                                       property="website"
+                                       width="100%"/>
+                        </hbox>
+                    </groupBox>
+                </hbox>
+            </tab>
+            <tab id="detailsTab"
+                 caption="msg://details"
+                 margin="true"
+                 spacing="true">
+                <groupBox id="detailsGroupBox"
+                          height="100%"
+                          width="AUTO">
+                    <hbox id="ogrnHbox"
+                          spacing="true">
+                        <label id="ogrnLbl"
+                               align="MIDDLE_LEFT"
+                               value="msg://ru.spacecorp.mobdekbkp.entity/Company.ogrn"
+                               width="50px"/>
+                        <textField id="ogrnField"
+                                   align="MIDDLE_LEFT"
+                                   datasource="companiesDs"
+                                   editable="false"
+                                   property="ogrn"
+                                   width="500px"/>
+                    </hbox>
+                    <hbox id="kppHbox"
+                          spacing="true">
+                        <label id="kppLbl"
+                               align="MIDDLE_LEFT"
+                               value="msg://ru.spacecorp.mobdekbkp.entity/Company.kpp"
+                               width="50px"/>
+                        <textField id="kppField"
+                                   align="MIDDLE_LEFT"
+                                   datasource="companiesDs"
+                                   editable="false"
+                                   property="kpp"
+                                   width="500px"/>
+                    </hbox>
+                    <hbox id="okatoHbox"
+                          spacing="true">
+                        <label id="okatoLbl"
+                               align="MIDDLE_LEFT"
+                               value="msg://ru.spacecorp.mobdekbkp.entity/Company.okato"
+                               width="50px"/>
+                        <textField id="okatoField"
+                                   align="MIDDLE_LEFT"
+                                   datasource="companiesDs"
+                                   editable="false"
+                                   property="okato"
+                                   width="500px"/>
+                    </hbox>
+                    <hbox id="innHbox"
+                          spacing="true">
+                        <label id="innLbl"
+                               align="MIDDLE_LEFT"
+                               value="msg://ru.spacecorp.mobdekbkp.entity/Company.inn"
+                               width="50px"/>
+                        <textField id="innField"
+                                   align="MIDDLE_LEFT"
+                                   datasource="companiesDs"
+                                   editable="false"
+                                   property="inn"
+                                   width="500px"/>
+                    </hbox>
+                    <hbox id="okpoHbox"
+                          spacing="true">
+                        <label id="okpoLbl"
+                               align="MIDDLE_LEFT"
+                               value="msg://ru.spacecorp.mobdekbkp.entity/Company.okpo"
+                               width="50px"/>
+                        <textField id="okpoField"
+                                   align="MIDDLE_LEFT"
+                                   datasource="companiesDs"
+                                   editable="false"
+                                   property="okpo"
+                                   width="500px"/>
+                    </hbox>
+                </groupBox>
+            </tab>
+            <tab id="companyLicenseTab"
+                 caption="msg://companyLicense"
+                 margin="true"
+                 spacing="true">
+                <groupBox id="licensesGroupBox"
+                          height="100%">
+                    <groupTable id="licensesTable"
+                                height="100%"
+                                width="100%">
+                        <columns>
+                            <column id="number"/>
+                            <column id="dateObtained"/>
+                            <column id="dateExpire"/>
+                            <column id="issued"/>
+                        </columns>
+                        <rows datasource="licensesDs"/>
+                    </groupTable>
+                </groupBox>
+            </tab>
+            <tab id="commentTab"
+                 caption="msg://comment"
+                 margin="true"
+                 spacing="true">
+                <frame id="comments"
+                       screen="discuss$Comment.browse"/>
+            </tab>
+        </tabSheet>
+    </layout>
+</window>

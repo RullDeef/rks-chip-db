@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        class="ru.spacecorp.mobdekbkp.web.bpm.screens.ProcFormStart"
+        extends="/com/haulmont/bpm/gui/form/standard/standard-proc-form.xml"
+        focusComponent="comment"
+        messagesPack="ru.spacecorp.mobdekbkp.web.bpm.screens"
+        xmlns:ext="http://schemas.haulmont.com/cuba/window-ext.xsd">
+    <dsContext>
+        <collectionDatasource id="sysRolesDs"
+                              class="com.haulmont.cuba.security.entity.UserRole"
+                              view="user.edit">
+            <query>
+                <![CDATA[select e.role.locName from sec$UserRole e]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <layout>
+        <label id="commentLabel"
+               htmlEnabled="true"/>
+        <textArea id="comment"
+                  required="true"/>
+        <hbox align="BOTTOM_LEFT"
+              ext:index="0"/>
+        <vbox spacing="true">
+            <hbox spacing="true"
+                  visible="false">
+                <label id="lbBpmExec"
+                       ext:index="0"
+                       value="msg://setExecRole"/>
+                <textField id="tfBpmExec"
+                           ext:index="1"
+                           inputPrompt="GNIO"
+                           responsive="true"/>
+            </hbox>
+        </vbox>
+    </layout>
+</window>

@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://NameDashBoardWindow"
+        class="ru.spacecorp.mobdekbkp.web.screens.Dashboardscreen"
+        messagesPack="ru.spacecorp.mobdekbkp.web.screens"
+        xmlns:chart="http://schemas.haulmont.com/charts/charts.xsd">
+    <dsContext>
+        <collectionDatasource id="typonominalsDs"
+                              class="ru.spacecorp.mobdekbkp.entity.Typonominal"
+                              maxResults="25"
+                              view="typonominal-dashboard-view">
+            <query>
+                <![CDATA[select e 
+from mobdekbkp$Typonominal e
+order by e.createTs DESC]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout>
+        <hbox expand="dashboardBox"
+              height="100%"
+              spacing="true"
+              width="100%">
+            <groupBox height="100%"
+                      spacing="true"
+                      width="300px">
+                <vbox spacing="true">
+                    <label height="40px"
+                           stylename="h1 bold align-center"
+                           value="msg://actions"
+                           width="100%"/>
+                    <button id="typonominalBtn"
+                            caption="msg://typonominalActionBtn"
+                            height="40px"
+                            icon="font-icon:CUBE"
+                            invoke="onTyponominalBtnClick"
+                            stylename="style-Action-Btn"
+                            visible="false"
+                            width="99%"/>
+                </vbox>
+            </groupBox>
+            <groupBox id="dashboardBox"
+                      expand="diagramsBox"
+                      height="100%"
+                      spacing="true"
+                      stylename="hideCredit">
+                <hbox height="40px"
+                      spacing="true"
+                      width="100%">
+                    <label height="100%"
+                           stylename="h1 bold align-center"
+                           value="msg://headingValue"
+                           width="100%"/>
+                </hbox>
+                <vbox id="diagramsBox"
+                      expand="twoVbox"
+                      spacing="true">
+                    <hbox spacing="true"
+                          width="100%">
+                        <chart:serialChart id="typeDeviceStackedChart"
+                                           categoryField="name"
+                                           creditsPosition="top-right"
+                                           height="150px"
+                                           marginTop="40"
+                                           plotAreaBorderAlpha="0"
+                                           stylename="panel-top-container panel"
+                                           visible="false"
+                                           width="100%">
+                            <chart:allLabels>
+                                <chart:label bold="true"
+                                             size="14"
+                                             text="msg://typeDeviceCount"
+                                             x="10"
+                                             y="10"/>
+                            </chart:allLabels>
+                            <chart:valueAxes>
+                                <chart:axis axisAlpha="0"
+                                            gridAlpha="0"
+                                            labelsEnabled="false"
+                                            stackType="REGULAR"/>
+                            </chart:valueAxes>
+                            <chart:categoryAxis axisAlpha="0"
+                                                color="#FAFAFA"
+                                                gridAlpha="0"
+                                                startOnAxis="false"/>
+                            <chart:chartCursor cursorAlpha="0"/>
+                            <chart:colors>
+                                <chart:color value="BLUE"/>
+                                <chart:color value="DARKGRAY"/>
+                                <chart:color value="#6ED329"/>
+                            </chart:colors>
+                        </chart:serialChart>
+                        <chart:pieChart id="deviceInCountryDonutChart"
+                                        addClassNames="true"
+                                        balloonText="[[name]] - [[value]]"
+                                        creditsPosition="top-right"
+                                        height="150px"
+                                        innerRadius="60%"
+                                        labelText="[[]]"
+                                        marginTop="60"
+                                        radius="33%"
+                                        stylename="panel-top-container panel"
+                                        titleField="name"
+                                        valueField="value"
+                                        visible="false"
+                                        width="100%">
+                            <chart:allLabels>
+                                <chart:label bold="true"
+                                             size="14"
+                                             text="msg://pieDeviceContry"
+                                             x="10"
+                                             y="10"/>
+                            </chart:allLabels>
+                            <chart:colors>
+                                <chart:color value="BLUE"/>
+                                <chart:color value="DARKGRAY"/>
+                                <chart:color value="#6ED329"/>
+                            </chart:colors>
+                            <chart:balloon fixedPosition="true"/>
+                        </chart:pieChart>
+                        <chart:serialChart id="daysLineChart"
+                                           addClassNames="true"
+                                           autoMargins="true"
+                                           categoryField="name"
+                                           creditsPosition="top-right"
+                                           height="150px"
+                                           marginBottom="26"
+                                           marginLeft="20"
+                                           marginRight="20"
+                                           marginTop="70"
+                                           stylename="panel-top-container panel"
+                                           theme="NONE"
+                                           width="100%">
+                            <chart:allLabels>
+                                <chart:label bold="true"
+                                             size="14"
+                                             text="msg://daysLineChart"
+                                             x="10"
+                                             y="10"/>
+                            </chart:allLabels>
+                            <chart:valueAxes>
+                                <chart:axis axisAlpha="0"
+                                            gridAlpha="0"
+                                            labelsEnabled="false"
+                                            position="LEFT"
+                                            stackType="REGULAR"/>
+                            </chart:valueAxes>
+                            <chart:chartCursor bulletsEnabled="true"
+                                               categoryBalloonEnabled="false"
+                                               cursorAlpha="0"
+                                               selectionAlpha="0"
+                                               valueBalloonsEnabled="true"
+                                               valueLineBalloonEnabled="false"
+                                               valueLineEnabled="false"/>
+                            <chart:balloon borderAlpha="0.4"
+                                           borderColor="#6ED329"
+                                           borderThickness="2"
+                                           color="#6ED329"
+                                           fillAlpha="0.8"
+                                           fillColor="WHITE"
+                                           fixedPosition="false"
+                                           shadowAlpha="0"/>
+                            <chart:graphs>
+                                <chart:graph balloonText="[[name]] - [[value]]"
+                                             bullet="ROUND"
+                                             bulletBorderAlpha="1"
+                                             bulletColor="#FFFFFF"
+                                             fillAlphas="0"
+                                             lineAlpha="0.6"
+                                             lineColor="#6ED329"
+                                             lineThickness="2"
+                                             showBalloon="true"
+                                             title="name"
+                                             type="LINE"
+                                             useLineColorForBulletBorder="true"
+                                             valueField="value">
+                                </chart:graph>
+                            </chart:graphs>
+                            <chart:categoryAxis axisAlpha="0"
+                                                axisColor="#DADADA"
+                                                gridAlpha="0"
+                                                labelFrequency="0"
+                                                labelsEnabled="false"
+                                                startOnAxis="false"/>
+                        </chart:serialChart>
+                        <chart:serialChart id="daysChangeLineChart"
+                                           addClassNames="true"
+                                           autoMargins="true"
+                                           categoryField="name"
+                                           creditsPosition="top-right"
+                                           height="150px"
+                                           marginBottom="26"
+                                           marginLeft="20"
+                                           marginRight="20"
+                                           marginTop="60"
+                                           stylename="panel-top-container panel"
+                                           theme="NONE"
+                                           width="100%">
+                            <chart:allLabels>
+                                <chart:label bold="true"
+                                             size="14"
+                                             text="msg://daysChangeLineChart"
+                                             x="10"
+                                             y="10"/>
+                            </chart:allLabels>
+                            <chart:valueAxes>
+                                <chart:axis axisAlpha="0"
+                                            gridAlpha="0"
+                                            labelsEnabled="false"
+                                            position="LEFT"
+                                            stackType="REGULAR"/>
+                            </chart:valueAxes>
+                            <chart:chartCursor bulletsEnabled="true"
+                                               categoryBalloonEnabled="false"
+                                               cursorAlpha="0"
+                                               selectionAlpha="0"
+                                               valueBalloonsEnabled="true"
+                                               valueLineBalloonEnabled="false"
+                                               valueLineEnabled="false"/>
+                            <chart:balloon borderAlpha="0.4"
+                                           borderColor="#2521DC"
+                                           borderThickness="2"
+                                           color="#140FEE"
+                                           fillAlpha="0.8"
+                                           fillColor="WHITE"
+                                           fixedPosition="false"
+                                           shadowAlpha="0"/>
+                            <chart:graphs>
+                                <chart:graph balloonText="[[name]] - [[value]]"
+                                             bullet="ROUND"
+                                             bulletBorderAlpha="1"
+                                             bulletColor="#FFFFFF"
+                                             fillAlphas="0"
+                                             lineAlpha="0.6"
+                                             lineColor="#140FEE"
+                                             lineThickness="2"
+                                             showBalloon="true"
+                                             title="name"
+                                             type="LINE"
+                                             useLineColorForBulletBorder="true"
+                                             valueField="value">
+                                </chart:graph>
+                            </chart:graphs>
+                            <chart:categoryAxis axisAlpha="0"
+                                                axisColor="#DADADA"
+                                                gridAlpha="0"
+                                                labelFrequency="0"
+                                                labelsEnabled="false"
+                                                startOnAxis="false"/>
+                        </chart:serialChart>
+                    </hbox>
+                    <hbox id="twoVbox"
+                          spacing="true"
+                          width="100%">
+                        <chart:pieChart id="companyPie"
+                                        addClassNames="true"
+                                        balloonText="[[name]] - [[value]]"
+                                        colorField="color"
+                                        creditsPosition="bottom-left"
+                                        description="msg://pieCompany"
+                                        height="100%"
+                                        labelText="[[]]"
+                                        stylename="pie-chart panel"
+                                        titleField="name"
+                                        valueField="value"
+                                        visible="false"
+                                        width="100%">
+                            <chart:allLabels>
+                                <chart:label bold="true"
+                                             size="14"
+                                             text="msg://pieCompany"
+                                             x="10"
+                                             y="10"/>
+                            </chart:allLabels>
+                            <chart:colors>
+                                <chart:color value="BLUE"/>
+                                <chart:color value="DARKGRAY"/>
+                                <chart:color value="#6ED329"/>
+                            </chart:colors>
+                            <chart:balloon fixedPosition="true"/>
+                        </chart:pieChart>
+                        <vbox height="100%"
+                              spacing="true"
+                              stylename="panel-table panel">
+                            <table id="lastEkbTable"
+                                   caption="msg://lastEkbTable"
+                                   columnHeaderVisible="false"
+                                   height="100%"
+                                   stylename="color-table"
+                                   width="100%">
+                                <actions>
+                                    <action id="edit"
+                                            openType="NEW_TAB"
+                                            visible="false"/>
+                                </actions>
+                                <columns>
+                                    <column id="name"
+                                            align="CENTER"/>
+                                    <column id="createTs"
+                                            align="CENTER"/>
+                                    <column id="createdBy"
+                                            align="CENTER"/>
+                                </columns>
+                                <rows datasource="typonominalsDs"/>
+                            </table>
+                        </vbox>
+                    </hbox>
+                </vbox>
+            </groupBox>
+        </hbox>
+    </layout>
+</window>

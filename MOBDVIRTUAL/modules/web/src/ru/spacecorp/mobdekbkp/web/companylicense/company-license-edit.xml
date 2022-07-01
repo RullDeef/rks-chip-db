@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="ru.spacecorp.mobdekbkp.web.companylicense.CompanyLicenseEdit"
+        datasource="companyLicenseDs"
+        focusComponent="fieldGroup"
+        messagesPack="ru.spacecorp.mobdekbkp.web.companylicense">
+    <dsContext>
+        <datasource id="companyLicenseDs"
+                    class="ru.spacecorp.mobdekbkp.entity.CompanyLicense"
+                    view="companyLicense-view">
+            <datasource id="documentDs"
+                        property="document"/>
+        </datasource>
+        <collectionDatasource id="companiesDs"
+                              class="ru.spacecorp.mobdekbkp.entity.Company"
+                              view="company-view">
+            <query>
+                <![CDATA[select e from mobdekbkp$Company e]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <dialogMode forceDialog="true"
+                height="300"
+                width="900"/>
+    <layout expand="windowActions"
+            spacing="true">
+        <fieldGroup id="fieldGroup"
+                    datasource="companyLicenseDs"
+                    width="100%">
+            <column width="250px">
+                <field property="number"/>
+                <field property="dateObtained"/>
+                <field property="dateExpire"/>
+                <field datasource="companyLicenseDs"
+                       optionsDatasource="companiesDs"
+                       property="company"
+                       width="100%"/>
+                <field property="issued"/>
+            </column>
+        </fieldGroup>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

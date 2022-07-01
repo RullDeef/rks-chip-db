@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<metadata xmlns="http://schemas.haulmont.com/cuba/metadata.xsd">
+    <metadata-model namespace="mobdekbkp"
+                    root-package="ru.spacecorp.mobdekbkp">
+        <class>ru.spacecorp.mobdekbkp.entity.ParameterFilterRow</class>
+        <class>ru.spacecorp.mobdekbkp.entity.ParamsAndAttributes</class>
+        <class>ru.spacecorp.mobdekbkp.entity.tc.EkbObject</class>
+        <class>ru.spacecorp.mobdekbkp.entity.tc.AttrEkbObject</class>
+    </metadata-model>
+</metadata>

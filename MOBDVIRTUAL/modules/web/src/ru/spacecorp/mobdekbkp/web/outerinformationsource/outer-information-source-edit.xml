@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="ru.spacecorp.mobdekbkp.web.outerinformationsource.OuterInformationSourceEdit"
+        datasource="outerInformationSourceDs"
+        focusComponent="outerInformationSourceFieldGroup"
+        messagesPack="ru.spacecorp.mobdekbkp.web.outerinformationsource">
+    <dsContext>
+        <datasource id="outerInformationSourceDs"
+                    class="ru.spacecorp.mobdekbkp.entity.OuterInformationSource"
+                    view="_local"/>
+    </dsContext>
+    <dialogMode forceDialog="true"
+                height="130"
+                width="420"/>
+    <layout expand="windowActions"
+            spacing="true">
+        <fieldGroup id="outerInformationSourceFieldGroup"
+                    datasource="outerInformationSourceDs">
+            <column width="250px">
+                <field property="databaseName"/>
+            </column>
+        </fieldGroup>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

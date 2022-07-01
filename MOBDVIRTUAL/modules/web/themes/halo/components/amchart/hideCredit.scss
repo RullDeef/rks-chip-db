@@ -1,0 +1,5 @@
+@mixin hideCredit($primary-stylename: hideCredit) {
+  .#{hideCredit} A[title="JavaScript charts"] {
+    visibility: hidden;
+  }
+}

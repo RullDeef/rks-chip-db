@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="ru.spacecorp.mobdekbkp.web.basicinformation.BasicInformationBrowse"
+        focusComponent="basicInformationsTable"
+        lookupComponent="basicInformationsTable"
+        messagesPack="ru.spacecorp.mobdekbkp.web.basicinformation">
+    <dsContext>
+        <groupDatasource id="basicInformationsDs"
+                         class="ru.spacecorp.mobdekbkp.entity.BasicInformation"
+                         view="basic-information-view">
+            <query>
+                <![CDATA[select e from mobdekbkp$BasicInformation e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true">
+        <groupTable id="basicInformationsTable"
+                    height="100%"
+                    width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="functionality"/>
+                <column id="levelQualityImport"/>
+            </columns>
+            <rows datasource="basicInformationsDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        caption="msg://create"
+                        invoke="onCreateBtnClick"/>
+                <button id="editBtn"
+                        action="basicInformationsTable.edit"/>
+                <button id="removeBtn"
+                        action="basicInformationsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

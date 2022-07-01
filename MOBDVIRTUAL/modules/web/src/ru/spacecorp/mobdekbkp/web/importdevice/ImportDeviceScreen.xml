@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        class="ru.spacecorp.mobdekbkp.web.importdevice.ImportDeviceScreen"
+        messagesPack="ru.spacecorp.mobdekbkp.web.importdevice">
+    <dialogMode height="600"
+                width="800"/>
+    <layout>
+        <frame id="frame"
+               height="100%"
+               screen="mobdekbkp$ImportCardFrame"/>
+    </layout>
+</window>

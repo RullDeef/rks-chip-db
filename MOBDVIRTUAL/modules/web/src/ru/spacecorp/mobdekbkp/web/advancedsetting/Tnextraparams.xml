@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        class="ru.spacecorp.mobdekbkp.web.advancedsetting.Tnextraparams"
+        messagesPack="ru.spacecorp.mobdekbkp.web.typonominal">
+    <dsContext>
+        <datasource id="advancedSettingDs"
+                    class="ru.spacecorp.mobdekbkp.entity.AdvancedSetting"
+                    view="advancedSetting-view"/>
+    </dsContext>
+    <layout>
+        <scrollBox height="100%">
+            <groupBox spacing="true">
+                <hbox spacing="true"
+                      width="100%">
+                    <label value="msg://massa"
+                           width="100%"/>
+                    <textField id="tfMass"
+                               width="100%"/>
+                </hbox>
+                <hbox spacing="true"
+                      width="100%">
+                    <label value="msg://WorkingLife"
+                           width="100%"/>
+                    <textField id="tfWorkingLife"
+                               width="100%"/>
+                </hbox>
+                <hbox spacing="true"
+                      width="100%">
+                    <label value="msg://ShelfLife"
+                           width="100%"/>
+                    <textField id="tfShelfLife"
+                               width="100%"/>
+                </hbox>
+                <hbox spacing="true"
+                      width="100%">
+                    <label value="msg://Tightness"
+                           width="100%"/>
+                    <textField id="tfTightness"
+                               width="100%"/>
+                </hbox>
+            </groupBox>
+            <groupBox spacing="true">
+                <label align="MIDDLE_CENTER"
+                       value="msg://WorkingOutsideTUModes"
+                       width="100%"/>
+                <hbox spacing="true"
+                      width="100%">
+                    <label value="msg://PRP"
+                           width="100%"/>
+                    <textField id="tfPRP"
+                               width="100%"/>
+                    <button id="btPRP"
+                            caption="msg://AddChange"
+                            invoke="onBtPRPClick"
+                            width="100%"/>
+                </hbox>
+                <hbox spacing="true"
+                      width="100%">
+                    <label value="msg://NameTechnicalSpecification"
+                           width="100%"/>
+                    <textField id="tfNameTechnicalSpecification"
+                               width="100%"/>
+                    <button id="btNameTechnicalSpecification"
+                            caption="msg://AddChange"
+                            invoke="onBtNameTechnicalSpecificationClick"
+                            width="100%"/>
+                </hbox>
+                <hbox spacing="true"
+                      width="100%">
+                    <label value="msg://TechnicalSpecificationValue"
+                           width="100%"/>
+                    <textField id="tfTechnicalSpecificationValue"
+                               width="100%"/>
+                    <button id="btTechnicalSpecificationValue"
+                            caption="msg://AddChange"
+                            invoke="onBtTechnicalSpecificationValueClick"
+                            width="100%"/>
+                </hbox>
+            </groupBox>
+        </scrollBox>
+    </layout>
+</window>

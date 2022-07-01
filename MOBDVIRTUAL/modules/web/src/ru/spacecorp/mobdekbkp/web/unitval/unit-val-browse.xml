@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="ru.spacecorp.mobdekbkp.web.unitval.UnitValBrowse"
+        focusComponent="unitValsTable"
+        lookupComponent="unitValsTable"
+        messagesPack="ru.spacecorp.mobdekbkp.web.unitval">
+    <dsContext>
+        <groupDatasource id="unitValsDs"
+                         class="ru.spacecorp.mobdekbkp.entity.UnitVal"
+                         view="unitVal-view">
+            <query>
+                <![CDATA[select e from mobdekbkp$UnitVal e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                modal="false"
+                resizable="true"
+                width="800"/>
+    <layout expand="unitValsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="unitValsTable"
+                datasource="unitValsDs">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="unitValsTable"
+                    width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="name"/>
+                <column id="labelUnitShortName"/>
+            </columns>
+            <rows datasource="unitValsDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="unitValsTable.create"/>
+                <button id="editBtn"
+                        action="unitValsTable.edit"/>
+                <button id="removeBtn"
+                        action="unitValsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

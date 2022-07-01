@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="ru.spacecorp.mobdekbkp.web.companylicensetype.CompanyLicenseTypeBrowse"
+        focusComponent="companyLicenseTypesTable"
+        lookupComponent="companyLicenseTypesTable"
+        messagesPack="ru.spacecorp.mobdekbkp.web.companylicensetype">
+    <dsContext>
+        <groupDatasource id="companyLicenseTypesDs"
+                         class="ru.spacecorp.mobdekbkp.entity.CompanyLicenseType"
+                         view="companyLicenseType-view">
+            <query>
+                <![CDATA[select e from mobdekbkp$CompanyLicenseType e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="companyLicenseTypesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="companyLicenseTypesTable"
+                datasource="companyLicenseTypesDs">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="companyLicenseTypesTable"
+                    width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="name"/>
+            </columns>
+            <rows datasource="companyLicenseTypesDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="companyLicenseTypesTable.create"/>
+                <button id="editBtn"
+                        action="companyLicenseTypesTable.edit"/>
+                <button id="removeBtn"
+                        action="companyLicenseTypesTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

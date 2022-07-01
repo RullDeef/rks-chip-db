@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="ru.spacecorp.mobdekbkp.web.applicationnewtyponominaldev.ApplicationNewTyponominalDevBrowse"
+        focusComponent="applicationNewTyponominalDevsTable"
+        lookupComponent="applicationNewTyponominalDevsTable"
+        messagesPack="ru.spacecorp.mobdekbkp.web.applicationnewtyponominaldev">
+    <dsContext>
+        <groupDatasource id="applicationNewTyponominalDevsDs"
+                         class="ru.spacecorp.mobdekbkp.entity.ApplicationNewTyponominalDev"
+                         view="applicationNewTyponominalDev-view">
+            <query>
+                <![CDATA[SELECT e
+                            FROM mobdekbkp$ApplicationNewTyponominalDev e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="applicationNewTyponominalDevsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="applicationNewTyponominalDevsTable"
+                datasource="applicationNewTyponominalDevsDs">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="applicationNewTyponominalDevsTable"
+                    width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="status"/>
+                <column id="className"/>
+                <column id="event"/>
+                <column id="characteristics"/>
+                <column id="possibility"/>
+                <column id="prototype"/>
+                <column id="document"/>
+                <column id="commonApplication"/>
+            </columns>
+            <rows datasource="applicationNewTyponominalDevsDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="applicationNewTyponominalDevsTable.create"/>
+                <button id="editBtn"
+                        action="applicationNewTyponominalDevsTable.edit"/>
+                <button id="removeBtn"
+                        action="applicationNewTyponominalDevsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

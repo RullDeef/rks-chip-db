@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        class="ru.spacecorp.mobdekbkp.web.importdevice.ImportCardFrame"
+        messagesPack="ru.spacecorp.mobdekbkp.web.typonominal">
+    <dialogMode height="600"
+                width="800"/>
+    <layout>
+        <groupBox caption="msg://tnInfo"
+                  expand="tbImportInfo"
+                  height="100%"
+                  spacing="true">
+            <hbox spacing="true"
+                  width="100%">
+                <label align="MIDDLE_CENTER"
+                       value="msg://tn"
+                       width="100%"/>
+                <textField id="tfDevice"
+                           width="100%"/>
+            </hbox>
+            <tabSheet id="tbImportInfo"
+                      stylename="mutilinetabsheet framed">
+                <tab id="tabPurchParams"
+                     caption="msg://importPurchaseParam"
+                     margin="true,false,false,false"
+                     spacing="true">
+                    <frame id="fParamForPurchaseImport"
+                           height="100%"
+                           screen="mobdekbkp$ParametersForPurchasing.browse"/>
+                </tab>
+                <tab id="tabEnterprises"
+                     caption="msg://Tab"
+                     margin="true,false,false,false"
+                     spacing="true">
+                    <frame id="fFactory"
+                           height="100%"
+                           screen="mobdekbkp$Factory.browse"/>
+                </tab>
+                <tab id="tabDiscuss"
+                     caption="msg://TabComments"
+                     margin="true,false,false,false"
+                     spacing="true">
+                    <frame id="fComment"
+                           height="100%"
+                           screen="frameCommentImport"/>
+                </tab>
+            </tabSheet>
+        </groupBox>
+    </layout>
+</window>

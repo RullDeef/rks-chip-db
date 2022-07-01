@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<studio>
+    <dbScripts>
+        <excludes>
+            <hsql>
+                <item name="180127-2-updateTyponominalPurchaseParameters04.sql">
+                    <![CDATA[alter table MOBDEKBKP_TYPONOMINAL_PURCHASE_PARAMETERS add constraint FK_MOBDEKBKP_TYPONOMINAL_PURCHASE_PARAMETERS_COST foreign key (COST_ID) references MOBDEKBKP_COST(ID);]]>
+                </item>
+                <item name="180307-0-dropMobdekbkpUser.sql">
+                    <![CDATA[alter table MOBDEKBKP_DATA_CHANGE_ENTRY drop constraint FK_MOBDEKBKP_DATA_CHANGE_ENTRY_USER;
+alter table MOBDEKBKP_RATING drop constraint FK_MOBDEKBKP_RATING_AUTHOR;
+drop table MOBDEKBKP_USER if exists cascade ;]]>
+                </item>
+            </hsql>
+            <postgres>
+            </postgres>
+        </excludes>
+    </dbScripts>
+    <screenDesigner>
+        <screen module="web"
+                previewMode="true"
+                reference="ru/spacecorp/mobdekbkp/web/typonominalinstallparameters/typonominal-install-parameters-edit.xml"/>
+        <screen module="web"
+                presentSize="400x200"
+                reference="ru/spacecorp/mobdekbkp/web/basicinformation/basic-information-edit.xml"/>
+    </screenDesigner>
+    <functionalitySettings>
+        <functionality id="oneToOneIndex"
+                       state="DISABLE"/>
+        <functionality id="joinedInheritanceDeleteCascade"
+                       state="ENABLE"/>
+        <functionality id="newFkConstraintNaming"
+                       state="ENABLE"/>
+    </functionalitySettings>
+</studio>
