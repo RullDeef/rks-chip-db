@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="ru.spacecorp.mobdekbkp.web.typemanufacturerentry.TypeManufacturerEntryBrowse"
+        focusComponent="typeManufacturerEntriesTable"
+        lookupComponent="typeManufacturerEntriesTable"
+        messagesPack="ru.spacecorp.mobdekbkp.web.typemanufacturerentry">
+    <dsContext>
+        <groupDatasource id="typeManufacturerEntriesDs"
+                         class="ru.spacecorp.mobdekbkp.entity.TypeManufacturerEntry"
+                         view="typeManufacturerEntry-view">
+            <query>
+                <![CDATA[select e from mobdekbkp$TypeManufacturerEntry e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="typeManufacturerEntriesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="typeManufacturerEntriesTable"
+                datasource="typeManufacturerEntriesDs">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="typeManufacturerEntriesTable"
+                    width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="name"/>
+            </columns>
+            <rows datasource="typeManufacturerEntriesDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="typeManufacturerEntriesTable.create"/>
+                <button id="editBtn"
+                        action="typeManufacturerEntriesTable.edit"/>
+                <button id="removeBtn"
+                        action="typeManufacturerEntriesTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

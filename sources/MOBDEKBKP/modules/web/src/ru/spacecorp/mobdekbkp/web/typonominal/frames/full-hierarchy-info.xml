@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        class="ru.spacecorp.mobdekbkp.web.typonominal.frames.FullHierarchyInfo"
+        messagesPack="ru.spacecorp.mobdekbkp.web.typonominal.frames">
+    <dialogMode height="600"
+                width="800"/>
+    <layout>
+        <grid height="100%"
+              spacing="true"
+              width="100%">
+            <columns>
+                <column flex="0.01"/>
+                <column flex="0.99"/>
+            </columns>
+            <rows>
+                <row>
+                    <label align="MIDDLE_LEFT"
+                           value="msg://tn"/>
+                    <textField id="tftn"
+                               editable="false"
+                               width="100%"/>
+                </row>
+                <row>
+                    <label align="MIDDLE_LEFT"
+                           value="msg://type"/>
+                    <textField id="tftype"
+                               editable="false"
+                               width="100%"/>
+                </row>
+                <row>
+                    <label align="MIDDLE_LEFT"
+                           value="msg://clss"/>
+                    <textArea id="textClass"
+                              editable="false"
+                              rows="1"
+                              width="100%"
+                              wordwrap="false"/>
+                </row>
+            </rows>
+        </grid>
+    </layout>
+</window>

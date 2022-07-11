@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<menu-config xmlns="http://schemas.haulmont.com/cuba/menu.xsd">
+    <item icon="font-icon:HOME"
+          insertBefore="reports"
+          screen="dashboardScreen"/>
+    <menu id="devicesEKB"
+          icon="font-icon:CUBES"
+          insertBefore="reports">
+        <item icon="font-icon:CUBES"
+              screen="mobdekbkp$Typonominal.browse"/>
+        <item icon="font-icon:CUBE"
+              screen="mobdekbkp$Type.browse"/>
+        <separator/>
+        <menu id="classificators"
+              icon="font-icon:ALIGN_LEFT">
+            <item screen="mobdekbkp$TypeClass.browse"/>
+            <item screen="mobdekbkp$AlterClassGost2710.browse"/>
+            <item screen="mobdekbkp$AlterClassGost56649.browse"/>
+            <item screen="mobdekbkp$AlterClassMil.browse"/>
+            <item screen="mobdekbkp$AlterClassReliability.browse"/>
+        </menu>
+        <menu id="applications"
+              icon="font-icon:FILE_TEXT">
+            <item screen="mobdekbkp$ApplicationNewTyponominalAdd.browse"/>
+            <item screen="mobdekbkp$ApplicationNewTyponominalAdd.browseReady"/>
+            <separator/>
+            <item screen="mobdekbkp$ApplicationNewTyponominalDev.browse"/>
+            <item screen="mobdekbkp$ApplicationNewTyponominalDev.browseReady"/>
+            <item screen="mobdekbkp$ApplicationCommonDev.browse"/>
+        </menu>
+        <separator/>
+        <item icon="font-icon:BELL_O"
+              screen="mobdekbkp$CompanyNeedApplication.browse"/>
+    </menu>
+    <menu id="devicesRKT"
+          icon="font-icon:SPACE_SHUTTLE"
+          insertBefore="reports">
+        <item icon="font-icon:SPACE_SHUTTLE"
+              screen="mobdekbkp$Device.browse"/>
+        <item screen="mobdekbkp$DeviceListProject.browse"/>
+        <item screen="mobdekbkp$DeviceListProjectAddition.browse"/>
+        <separator/>
+        <item icon="PAPER_PLANE_O"
+              screen="mobdekbkp$DevicePart.browse"/>
+        <item screen="mobdekbkp$DevicePartListPlanned.browse"/>
+        <item screen="mobdekbkp$DevicePartListComplect.browse"/>
+    </menu>
+    <menu id="referenceBooks"
+          icon="font-icon:BOOK"
+          insertBefore="reports">
+        <menu id="EkbRootMenu"
+              icon="font-icon:CUBE">
+            <item screen="mobdekbkp$TypeClimaticImplementation.browse"/>
+            <item screen="mobdekbkp$InstallMethod.browse"/>
+            <item screen="mobdekbkp$Substrate.browse"/>
+            <item screen="mobdekbkp$TyponominalBody.browse"/>
+            <item screen="mobdekbkp$DeviceFilterConditions.browse"/>
+            <separator/>
+            <item screen="mobdekbkp$TyponominalQualityLevelImportSettings.browse"/>
+            <item screen="mobdekbkp$TyponominalQualityLevelImport.browse"/>
+            <item screen="mobdekbkp$TyponominalQualityLevelNative.browse"/>
+            <separator/>
+            <item screen="mobdekbkp$Material.browse"/>
+            <item screen="mobdekbkp$GlueType.browse"/>
+            <item screen="mobdekbkp$SolderBrand.browse"/>
+            <item screen="mobdekbkp$FluxBrand.browse"/>
+            <separator/>
+            <item screen="mobdekbkp$UnitDev.browse"/>
+            <item screen="mobdekbkp$UnitVal.browse"/>
+            <separator/>
+            <item screen="typonominalReliability"/>
+        </menu>
+        <menu id="ParameterMenu">
+            <item screen="mobdekbkp$Parameter.browse"/>
+            <item screen="mobdekbkp$ParameterCategory.browse"/>
+            <item screen="mobdekbkp$StrRec.browse"/>
+            <item screen="mobdekbkp$StrRecSettings.browse"/>
+            <item screen="mobdekbkp$StrLib.browse"/>
+            <item screen="mobdekbkp$StrLibSettings.browse"/>
+        </menu>
+        <menu id="CompanyRootMenu"
+              icon="font-icon:UNIVERSITY">
+            <item screen="mobdekbkp$Company.browse"/>
+            <item screen="mobdekbkp$CompanyType.browse"/>
+            <separator/>
+            <item screen="mobdekbkp$CompanyLicenseType.browse"/>
+            <item icon="font-icon:MAP_O"
+                  screen="mobdekbkp$Country.browse"/>
+            <item icon="font-icon:RUBLE"
+                  screen="mobdekbkp$Currency.browse"/>
+        </menu>
+        <menu id="DocumentRootMenu"
+              icon="font-icon:FILE_TEXT">
+            <item screen="documents$Document.browse">
+                <param name="GLOBAL_TYPE_RESTRICTIONS"
+                       value="ntd"/>
+                <param name="SET_CAPTION"
+                       value="Нормативно-технические документы"/>
+            </item>
+            <item id="allDocuments"
+                  screen="documents$Document.browse"/>
+            <item screen="documents$DocumentType.browse"/>
+            <item screen="mobdekbkp$OuterListAllowing.browse"/>
+            <item screen="mobdekbkp$OuterListType.browse"/>
+            <separator/>
+            <item screen="mobdekbkp$OuterInformationSource.browse"/>
+            <item screen="mobdekbkp$TermsAndDefinitions.browse"/>
+            <item screen="mobdekbkp$OperationConditions.browse"/>
+        </menu>
+        <item screen="mobdekbkp$Handbook.browse"/>
+    </menu>
+    <item insertBefore="aboutWindow"
+          screen="support-screen"/>
+    <menu id="AdminDB"
+          insertAfter="discuss$CommentModerator.browse">
+        <item id="OptimizateTableBody"
+              bean="mobdekbkp_OptimizationDBService"
+              beanMethod="bodyTableOptimizate"/>
+        <item screen="optimizationBDScreen"/>
+        <menu id="tc">
+            <item screen="TeamCenterImport"/>
+        </menu>
+    </menu>
+    <menu id="reviewsSettings"
+          insertAfter="discuss$CommentModerator.browse">
+        <item screen="reviewModeratorScreen"/>
+        <item screen="reviews$ModerationProperty.browse"/>
+    </menu>
+    <item insertAfter="AdminDB"
+          screen="mobdekbkp$SupportInfo.browse"/>
+    <item insertAfter="mobdekbkp$SupportInfo.browse"
+          screen="mobdekbkp$HandbookCad.browse"/>
+    <item insertBefore="application-importmodule"
+          screen="tsniimashImport"/>
+</menu-config>

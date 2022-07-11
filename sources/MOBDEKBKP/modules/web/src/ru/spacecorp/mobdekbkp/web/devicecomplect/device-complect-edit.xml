@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="ru.spacecorp.mobdekbkp.web.devicecomplect.DeviceComplectEdit"
+        datasource="deviceComplectDs"
+        focusComponent="deviceComplectFieldGroup"
+        messagesPack="ru.spacecorp.mobdekbkp.web.devicecomplect">
+    <dsContext>
+        <datasource id="deviceComplectDs"
+                    class="ru.spacecorp.mobdekbkp.entity.DeviceComplect"
+                    view="deviceComplect-view">
+            <collectionDatasource id="partListComplectDs"
+                                  property="partListComplect"/>
+            <collectionDatasource id="documentsDs"
+                                  property="documents"/>
+        </datasource>
+        <collectionDatasource id="devicePartListComplectEntriesDs"
+                              class="ru.spacecorp.mobdekbkp.entity.DevicePartListComplectEntry"
+                              view="devicePartListComplectEntry-view_small">
+            <query>
+                <![CDATA[select e
+                            from mobdekbkp$DeviceComplect d
+                            join d.partListComplect c
+                            join c.entries e
+                            where d.id = :ds$deviceComplectDs]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="mainHbox"
+            spacing="true"
+            width="100%">
+        <hbox id="mainHbox"
+              spacing="true"
+              width="100%">
+            <vbox id="leftVbox"
+                  expand="documentGroupBox"
+                  height="100%"
+                  spacing="true">
+                <groupBox id="deviceComplectGroupBox"
+                          caption="Основные атрибуты"
+                          spacing="true">
+                    <fieldGroup id="deviceComplectFieldGroup"
+                                datasource="deviceComplectDs"
+                                width="100%">
+                        <column width="100%">
+                            <field property="complectNumber"/>
+                            <field editable="false"
+                                   property="status"/>
+                        </column>
+                    </fieldGroup>
+                </groupBox>
+                <groupBox id="documentGroupBox"
+                          caption="msg://Documents"
+                          spacing="true">
+                    <table id="documentTable"
+                           height="100%"
+                           width="100%">
+                        <actions>
+                            <action id="add"/>
+                            <action id="exclude"/>
+                        </actions>
+                        <columns>
+                            <column id="name"/>
+                            <column id="documentType"/>
+                            <column id="designation"/>
+                        </columns>
+                        <rows datasource="documentsDs"/>
+                        <buttonsPanel id="documentBtnPanel">
+                            <button id="documentAddBtn"
+                                    action="documentTable.add"/>
+                            <button id="documentExcludeBtn"
+                                    action="documentTable.exclude"/>
+                        </buttonsPanel>
+                    </table>
+                </groupBox>
+            </vbox>
+            <groupBox id="gbComplectList"
+                      caption="msg://editorCaption"
+                      height="100%"
+                      spacing="true">
+                <table id="tableDevComplect"
+                       height="100%"
+                       width="100%">
+                    <columns>
+                        <column id="typonominal"/>
+                        <column id="progress"
+                                align="CENTER"
+                                caption="msg://progress"
+                                generator="progressCell"/>
+                    </columns>
+                    <rows datasource="devicePartListComplectEntriesDs"/>
+                </table>
+            </groupBox>
+            <groupBox id="listComplectGroupBox"
+                      caption="msg://partComplects"
+                      height="100%"
+                      spacing="true">
+                <table id="partListComplectTable"
+                       height="100%"
+                       width="100%">
+                    <actions>
+                        <action id="exclude"/>
+                    </actions>
+                    <columns>
+                        <column id="name"/>
+                        <column id="status"/>
+                    </columns>
+                    <rows datasource="partListComplectDs"/>
+                </table>
+            </groupBox>
+        </hbox>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

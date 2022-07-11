@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="ru.spacecorp.mobdekbkp.web.companyneedapplication.CompanyNeedApplicationBrowse"
+        focusComponent="companyNeedApplicationsTable"
+        lookupComponent="companyNeedApplicationsTable"
+        messagesPack="ru.spacecorp.mobdekbkp.web.companyneedapplication">
+    <dsContext>
+        <groupDatasource id="companyNeedApplicationsDs"
+                         class="ru.spacecorp.mobdekbkp.entity.CompanyNeedApplication"
+                         view="companyNeedApplication-view">
+            <query>
+                <![CDATA[select e from mobdekbkp$CompanyNeedApplication e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="companyNeedApplicationsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="companyNeedApplicationsTable"
+                datasource="companyNeedApplicationsDs">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="companyNeedApplicationsTable"
+                    width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="number"/>
+                <column id="createTs"
+                        caption="msg://DateOfCreation"/>
+                <column id="requirement"/>
+            </columns>
+            <rows datasource="companyNeedApplicationsDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="companyNeedApplicationsTable.create"/>
+                <button id="editBtn"
+                        action="companyNeedApplicationsTable.edit"/>
+                <button id="removeBtn"
+                        action="companyNeedApplicationsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

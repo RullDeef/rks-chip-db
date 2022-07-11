@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="ru.spacecorp.mobdekbkp.web.unitval.UnitValEdit"
+        datasource="unitValDs"
+        messagesPack="ru.spacecorp.mobdekbkp.web.unitval">
+    <dsContext>
+        <datasource id="unitValDs"
+                    class="ru.spacecorp.mobdekbkp.entity.UnitVal"
+                    view="unitVal-view"/>
+    </dsContext>
+    <dialogMode forceDialog="true"/>
+    <layout expand="windowActions"
+            spacing="true">
+        <grid id="properdies"
+              spacing="true"
+              width="100%">
+            <columns>
+                <column flex="0.2"/>
+                <column flex="0.8"/>
+            </columns>
+            <rows>
+                <row>
+                    <label id="nameLable"
+                           align="MIDDLE_LEFT"
+                           value="msg://ru.spacecorp.mobdekbkp.entity/UnitVal.name"
+                           width="100%"/>
+                    <textField id="nameField"
+                               datasource="unitValDs"
+                               property="name"
+                               width="100%"/>
+                </row>
+                <row>
+                    <label id="shortNameLabel"
+                           align="MIDDLE_LEFT"
+                           value="msg://ru.spacecorp.mobdekbkp.entity/UnitVal.shortName"
+                           width="100%"/>
+                    <richTextArea datasource="unitValDs"
+                                  height="70px"
+                                  property="shortName"
+                                  stylename="smallRichTextArea"
+                                  width="100%"/>
+                </row>
+            </rows>
+        </grid>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

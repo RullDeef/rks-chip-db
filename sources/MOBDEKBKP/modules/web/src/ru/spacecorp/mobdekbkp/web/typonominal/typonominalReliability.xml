@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://caption"
+        class="ru.spacecorp.mobdekbkp.web.typonominal.Typonominalreliability"
+        messagesPack="ru.spacecorp.mobdekbkp.web.typonominal">
+    <dsContext>
+        <groupDatasource id="typonominalsDs"
+                         class="ru.spacecorp.mobdekbkp.entity.Typonominal"
+                         view="tn-names">
+            <query>
+                <![CDATA[select e from mobdekbkp$Typonominal e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout>
+        <vbox expand="typonominalTable"
+              height="100%"
+              spacing="true">
+            <filter datasource="typonominalsDs"
+                    useMaxResults="false"/>
+            <buttonsPanel>
+                <button id="excelBtn"
+                        action="typonominalTable.excel"/>
+                <button id="reliabilityBtn"
+                        caption="msg://Show reliable"
+                        invoke="onReliabilityBtnClick"/>
+                <button id="refreshBtn"
+                        caption="msg://Refresh"
+                        invoke="onRefreshBtnClick"/>
+            </buttonsPanel>
+            <groupTable id="typonominalTable"
+                        width="80%">
+                <actions>
+                    <action id="excel"/>
+                </actions>
+                <columns>
+                    <column id="name"/>
+                </columns>
+                <rows datasource="typonominalsDs"/>
+            </groupTable>
+        </vbox>
+    </layout>
+</window>

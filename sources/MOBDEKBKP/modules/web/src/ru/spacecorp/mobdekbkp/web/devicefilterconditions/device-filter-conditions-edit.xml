@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="ru.spacecorp.mobdekbkp.web.devicefilterconditions.DeviceFilterConditionsEdit"
+        datasource="deviceFilterConditionsDs"
+        messagesPack="ru.spacecorp.mobdekbkp.web.devicefilterconditions">
+    <dsContext>
+        <datasource id="deviceFilterConditionsDs"
+                    class="ru.spacecorp.mobdekbkp.entity.DeviceFilterConditions"
+                    view="deviceFilterConditions-view">
+            <collectionDatasource id="deviceDs"
+                                  property="devices"/>
+        </datasource>
+    </dsContext>
+    <dialogMode forceDialog="true"
+                height="600"
+                width="800"/>
+    <layout expand="windowActions"
+            spacing="true">
+        <grid id="filterGrid"
+              spacing="true"
+              width="100%">
+            <columns>
+                <column flex="1.0"/>
+                <column flex="3.0"/>
+            </columns>
+            <rows>
+                <row>
+                    <label value="msg://ru.spacecorp.mobdekbkp.entity/DeviceFilterConditions.name"/>
+                    <textField id="nameField"
+                               datasource="deviceFilterConditionsDs"
+                               property="name"
+                               width="100%"/>
+                </row>
+                <row>
+                    <label value="msg://ru.spacecorp.mobdekbkp.entity/DeviceFilterConditions.attribute"/>
+                    <hbox expand="rtaArea"
+                          stylename="rtaPickerField"
+                          width="100%">
+                        <richTextArea id="rtaArea"
+                                      datasource="deviceFilterConditionsDs"
+                                      editable="false"
+                                      height="30px"
+                                      property="attribute"/>
+                        <button id="pickBtn"
+                                icon="PICKERFIELD_LOOKUP"
+                                invoke="onPickBtnClick"/>
+                        <button id="clearBtn"
+                                icon="PICKERFIELD_CLEAR"/>
+                    </hbox>
+                </row>
+                <row>
+                    <label value="msg://ru.spacecorp.mobdekbkp.entity/DeviceFilterConditions.compareOperator"/>
+                    <lookupField id="compareOperator"
+                                 datasource="deviceFilterConditionsDs"
+                                 property="compareOperator"
+                                 width="100%"/>
+                </row>
+                <row>
+                    <label value="msg://ru.spacecorp.mobdekbkp.entity/DeviceFilterConditions.valueType"/>
+                    <textField id="valueType"
+                               datasource="deviceFilterConditionsDs"
+                               editable="false"
+                               property="valueType"
+                               width="100%"/>
+                </row>
+                <row>
+                    <label id="valFloatLbl"
+                           align="MIDDLE_LEFT"
+                           value="msg://value"
+                           visible="false"
+                           width="100%"/>
+                    <hbox id="valFloatHbox"
+                          spacing="true"
+                          visible="false"
+                          width="100%">
+                        <textField id="valFloatField"
+                                   align="MIDDLE_LEFT"
+                                   datasource="deviceFilterConditionsDs"
+                                   property="valFloat"
+                                   width="100%"/>
+                    </hbox>
+                </row>
+                <row>
+                    <label id="valStringLbl"
+                           align="MIDDLE_LEFT"
+                           value="msg://value"
+                           visible="false"
+                           width="100%"/>
+                    <hbox id="valStringHbox"
+                          spacing="true"
+                          visible="false"
+                          width="100%">
+                        <textField id="valStringField"
+                                   align="MIDDLE_LEFT"
+                                   datasource="deviceFilterConditionsDs"
+                                   property="valString"
+                                   width="100%"/>
+                    </hbox>
+                </row>
+                <row>
+                    <label id="boolLbl"
+                           align="MIDDLE_LEFT"
+                           value="Значение"
+                           visible="false"
+                           width="100%"/>
+                    <checkBox id="boolCheckBox"
+                              datasource="deviceFilterConditionsDs"
+                              property="valBoolean"
+                              visible="false"/>
+                </row>
+            </rows>
+        </grid>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

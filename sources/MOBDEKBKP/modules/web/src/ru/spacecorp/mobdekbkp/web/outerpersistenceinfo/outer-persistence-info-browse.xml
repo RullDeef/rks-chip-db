@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="ru.spacecorp.mobdekbkp.web.outerpersistenceinfo.OuterPersistenceInfoBrowse"
+        focusComponent="outerPersistenceInfoesTable"
+        lookupComponent="outerPersistenceInfoesTable"
+        messagesPack="ru.spacecorp.mobdekbkp.web.outerpersistenceinfo">
+    <dsContext>
+        <groupDatasource id="outerPersistenceInfoesDs"
+                         class="ru.spacecorp.mobdekbkp.entity.OuterPersistenceInfo"
+                         view="outerPersistenceInfo-view">
+            <query>
+                <![CDATA[select e from mobdekbkp$OuterPersistenceInfo e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="outerPersistenceInfoesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="outerPersistenceInfoesTable"
+                datasource="outerPersistenceInfoesDs">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="outerPersistenceInfoesTable"
+                    width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="typonominal"/>
+                <column id="manufacturer"/>
+                <column id="infoSource"/>
+                <column id="singleEffectData"/>
+                <column id="doseEffectData"/>
+                <column id="hasFiles"/>
+                <column id="originalEntry"/>
+            </columns>
+            <rows datasource="outerPersistenceInfoesDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="outerPersistenceInfoesTable.create"/>
+                <button id="editBtn"
+                        action="outerPersistenceInfoesTable.edit"/>
+                <button id="removeBtn"
+                        action="outerPersistenceInfoesTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

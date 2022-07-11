@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        class="com.company.reviews.web.screens.Reviewsframe"
+        focusComponent="reviewsTable"
+        lookupComponent="reviewsTable"
+        messagesPack="com.company.reviews.web.screens">
+    <dsContext>
+        <collectionDatasource id="reviewsDs"
+                              class="com.company.reviews.entity.Review"
+                              datasourceClass="com.company.reviews.web.review.ReviewDatasource"
+                              view="review-view">
+            <query>
+                <![CDATA[select e from reviews$Review e]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true">
+        <vbox expand="reviewBox"
+              height="100%"
+              spacing="true">
+            <hbox spacing="true"
+                  width="100%">
+                <groupBox id="perconalReviewBox"
+                          caption="msg://personalReview"
+                          collapsable="true"
+                          spacing="true">
+                    <buttonsPanel>
+                        <button id="addReviewBtn"
+                                action="reviewsTable.create"
+                                caption="msg://addReviewBtn"/>
+                        <button id="editReviewBtn"
+                                caption="msg://editReviewBtn"
+                                invoke="onEditReviewBtnClick"/>
+                        <button id="removeReviewBtn"
+                                caption="msg://deleteReviewBtn"
+                                invoke="onRemoveReviewBtnClick"/>
+                    </buttonsPanel>
+                    <label id="personalReview"
+                           htmlEnabled="true"
+                           width="1005px"/>
+                </groupBox>
+            </hbox>
+            <groupBox id="reviewBox"
+                      caption="msg://allReview"
+                      collapsable="true"
+                      orientation="horizontal"
+                      spacing="true"
+                      width="100%">
+                <table id="reviewsTable"
+                       columnHeaderVisible="false"
+                       contextMenuEnabled="false"
+                       height="100%"
+                       showSelection="false"
+                       width="100%">
+                    <actions>
+                        <action id="create"/>
+                    </actions>
+                    <columns>
+                        <column id="reviewArea"/>
+                    </columns>
+                    <rows datasource="reviewsDs"/>
+                </table>
+            </groupBox>
+        </vbox>
+    </layout>
+</window>

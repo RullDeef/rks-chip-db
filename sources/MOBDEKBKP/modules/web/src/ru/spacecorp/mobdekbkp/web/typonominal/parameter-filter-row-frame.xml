@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        class="ru.spacecorp.mobdekbkp.web.typonominal.ParameterFilterRowFrame"
+        messagesPack="ru.spacecorp.mobdekbkp.web.typonominal">
+    <dsContext>
+        <datasource id="parameterFilterRowDs"
+                    class="ru.spacecorp.mobdekbkp.entity.ParameterFilterRow"/>
+        <collectionDatasource id="parametersDs"
+                              class="ru.spacecorp.mobdekbkp.entity.Parameter"
+                              view="_minimal">
+            <query>
+                <![CDATA[select e from mobdekbkp$Parameter e                
+            ]]>
+                <filter>
+                    <c>e.paramType = :component$parameterTypeLookup</c>
+                </filter>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true">
+        <hbox id="mainBox"
+              height="100%"
+              spacing="true">
+            <lookupField id="parameterTypeLookup"
+                         datasource="parameterFilterRowDs"
+                         inputPrompt="msg://prompt.parameterType"
+                         property="parameterType"
+                         width="250px"/>
+            <lookupField id="parameterLookup"
+                         datasource="parameterFilterRowDs"
+                         inputPrompt="msg://prompt.parameter"
+                         optionsDatasource="parametersDs"
+                         property="parameter"
+                         width="250px"/>
+            <lookupField id="operationLookup"
+                         inputPrompt="msg://prompt.operation"/>
+            <hbox id="valFloatHbox"
+                  spacing="true"
+                  visible="false">
+                <textField id="valFloatField"
+                           align="MIDDLE_LEFT"
+                           datasource="parameterFilterRowDs"
+                           property="valFloat"/>
+            </hbox>
+            <hbox id="valStringHbox"
+                  spacing="true"
+                  visible="false">
+                <textField id="valStringField"
+                           align="MIDDLE_LEFT"
+                           datasource="parameterFilterRowDs"
+                           property="valString"/>
+            </hbox>
+            <hbox id="valMinMaxHbox"
+                  spacing="true"
+                  visible="false">
+                <hbox id="valMinHbox">
+                    <label id="valMinLbl"
+                           align="MIDDLE_RIGHT"
+                           value="от:  "/>
+                    <textField id="valMinField"
+                               align="MIDDLE_LEFT"
+                               datasource="parameterFilterRowDs"
+                               property="valMin"/>
+                </hbox>
+                <hbox id="valMaxHbox">
+                    <label id="valMaxLbl"
+                           align="MIDDLE_RIGHT"
+                           value="до: "/>
+                    <textField id="valMaxField"
+                               align="MIDDLE_LEFT"
+                               datasource="parameterFilterRowDs"
+                               property="valMax"/>
+                </hbox>
+            </hbox>
+            <button id="clearParameterBtn"
+                    description="Удалить условие поиска"
+                    icon="icons/close.png"
+                    invoke="clearParameterFilter"/>
+        </hbox>
+    </layout>
+</window>

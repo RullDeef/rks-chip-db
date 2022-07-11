@@ -1,0 +1,7 @@
+rootProject.name = 'RulesModule'
+include(':rules-global', ':rules-core', ':rules-gui', ':rules-web', ':rules-web-themes')
+project(':rules-global').projectDir = new File(settingsDir, 'modules/global')
+project(':rules-core').projectDir = new File(settingsDir, 'modules/core')
+project(':rules-gui').projectDir = new File(settingsDir, 'modules/gui')
+project(':rules-web').projectDir = new File(settingsDir, 'modules/web')
+project(':rules-web-themes').projectDir = new File(settingsDir, 'modules/web/themes')

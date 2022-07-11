@@ -1,0 +1,223 @@
+buildscript {
+    ext.cubaVersion = '6.9.3'
+    repositories {
+        maven {
+            url 'http://localhost:8081/repository/cuba-group/'
+        }
+    }
+    dependencies {
+        classpath "com.haulmont.gradle:cuba-plugin:$cubaVersion"
+    }
+}
+
+def globalModule = project(':notificationsusers-global')
+def coreModule = project(':notificationsusers-core')
+def guiModule = project(':notificationsusers-gui')
+def webModule = project(':notificationsusers-web')
+
+def servletApi = 'javax.servlet:javax.servlet-api:3.1.0'
+
+
+apply(plugin: 'idea')
+apply(plugin: 'cuba')
+
+cuba {
+//    uploadRepository {
+//        url = 'http://1.0.0.137:8010/nexus/content/repositories/snapshots/'
+//        user = 'admin'
+//        password = 'admin123'
+//    }
+    uploadRepository {
+        url = 'http://localhost:8081/repository/maven-snapshots/'
+        user = 'admin'
+        password = 'admin123'
+    }
+    artifact {
+        group = 'ru.iovchinnikov.notificationsusers'
+        version = "0.8.2"
+        isSnapshot = true
+    }
+    tomcat {
+        dir = "$project.rootDir/deploy/tomcat"
+    }
+    ide {
+        vcs = 'Git'
+    }
+}
+
+dependencies {
+    appComponent("com.haulmont.cuba:cuba-global:$cubaVersion")
+
+}
+
+def postgres = 'org.postgresql:postgresql:9.4.1212'
+
+configure([globalModule, coreModule, guiModule, webModule]) {
+    apply(plugin: 'java')
+    apply(plugin: 'maven')
+    apply(plugin: 'idea')
+    apply(plugin: 'cuba')
+
+    dependencies {
+        testCompile('junit:junit:4.12')
+    }
+
+    task sourceJar(type: Jar) {
+        from file('src')
+        classifier = 'sources'
+    }
+
+    artifacts {
+        archives sourceJar
+    }
+}
+
+configure(globalModule) {
+    task enhance(type: CubaEnhancing)
+
+    jar {
+        manifest {
+            attributes('App-Component-Id': cuba.artifact.group)
+            attributes('App-Component-Version': cuba.artifact.version + (cuba.artifact.isSnapshot ? '-SNAPSHOT' : ''))
+        }
+    }
+
+    
+}
+
+configure(coreModule) {
+
+    configurations {
+        jdbc
+        dbscripts
+    }
+
+    dependencies {
+        compile(globalModule)
+        provided(servletApi)
+        jdbc(postgres)
+        testRuntime(postgres)
+
+    }
+
+    task cleanConf(description: 'Cleans up conf directory') {
+        doLast {
+            def dir = new File(cuba.tomcat.dir, '/conf/notificationsusers-core')
+            if (dir.isDirectory()) {
+                ant.delete(includeemptydirs: true) {
+                    fileset(dir: dir, includes: '**/*', excludes: 'local.app.properties')
+                }
+            }
+        }
+    }
+
+    task deploy(dependsOn: [assemble, cleanConf], type: CubaDeployment) {
+        appName = 'notificationsusers-core'
+        appJars('notificationsusers-global', 'notificationsusers-core')
+    }
+
+    task createDb(dependsOn: assembleDbScripts, description: 'Creates local database', type: CubaDbCreation) {
+        dbms = 'postgres'
+        host = 'localhost'
+        dbName = 'notificationsusers'
+        dbUser = 'postgres'
+        dbPassword = 'postgres'
+    }
+
+    task updateDb(dependsOn: assembleDbScripts, description: 'Updates local database', type: CubaDbUpdate) {
+        dbms = 'postgres'
+        host = 'localhost'
+        dbName = 'notificationsusers'
+        dbUser = 'postgres'
+        dbPassword = 'postgres'
+    }
+}
+
+configure(guiModule) {
+    dependencies {
+        compile(globalModule)
+
+    }
+
+    task deployConf(type: Copy) {
+        from file('src')
+        include "ru/iovchinnikov/notificationsusers/**"
+        into "$cuba.tomcat.dir/conf/notificationsusers"
+    }
+}
+
+configure(webModule) {
+    configurations {
+        webcontent
+    }
+
+    dependencies {
+        provided(servletApi)
+        compile(guiModule)
+
+    }
+    
+    task webArchive(type: Zip) {
+        from file("$buildDir/web")
+        from file('web')
+        classifier = 'web'
+    }
+
+    artifacts {
+        archives webArchive
+    }
+
+    task deployConf(type: Copy) {
+        from file('src')
+        include "ru/iovchinnikov/notificationsusers/**"
+        into "$cuba.tomcat.dir/conf/notificationsusers"
+    }
+
+    task clearMessagesCache(type: CubaClearMessagesCache) {
+        appName = 'notificationsusers'
+    }
+    deployConf.dependsOn clearMessagesCache
+
+    task cleanConf(description: 'Cleans up conf directory') {
+        doLast {
+            def dir = new File(cuba.tomcat.dir, '/conf/notificationsusers')
+            if (dir.isDirectory()) {
+                ant.delete(includeemptydirs: true) {
+                    fileset(dir: dir, includes: '**/*', excludes: 'local.app.properties')
+                }
+            }
+        }
+    }
+
+    task deploy(dependsOn: [assemble, cleanConf], type: CubaDeployment) {
+        appName = 'notificationsusers'
+        appJars('notificationsusers-global', 'notificationsusers-gui', 'notificationsusers-web')
+    }
+}
+
+
+
+
+
+task undeploy(type: Delete, dependsOn: ':notificationsusers-web:cleanConf') {
+    delete("$cuba.tomcat.dir/shared")
+    delete("$cuba.tomcat.dir/webapps/notificationsusers-core")
+    delete("$cuba.tomcat.dir/webapps/notificationsusers")
+}
+
+task restart(dependsOn: ['stop', ':notificationsusers-core:deploy', ':notificationsusers-web:deploy'], description: 'Redeploys applications and restarts local Tomcat') {
+    doLast {
+        ant.waitfor(maxwait: 6, maxwaitunit: 'second', checkevery: 2, checkeveryunit: 'second') {
+            not {
+                socket(server: 'localhost', port: '8787')
+            }
+        }
+        start.execute()
+    }
+}
+
+//task wrapper(type: Wrapper) {
+//    gradleVersion = '4.3.1'
+//}
+
+apply from: 'extra.gradle'

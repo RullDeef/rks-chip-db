@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        class="ru.spacecorp.mobdekbkp.web.typonominal.frames.Tninstallparams"
+        messagesPack="ru.spacecorp.mobdekbkp.web.typonominal">
+    <dialogMode height="600"
+                width="800"/>
+    <layout>
+        <scrollBox id="scrollBox"
+                   height="100%">
+            <vbox id="vbTnInstParams"
+                  height="100%"
+                  margin="true"
+                  spacing="true">
+                <hbox id="hbInstMethod"
+                      spacing="true"
+                      visible="false"
+                      width="100%">
+                    <label align="MIDDLE_LEFT"
+                           value="msg://ru.spacecorp.mobdekbkp.entity/TyponominalInstallParameters.installMethod"
+                           width="70%"/>
+                    <textField id="tfInstallMethod"
+                               editable="false"
+                               width="100%"/>
+                </hbox>
+                <textArea id="taDescription"
+                          editable="false"
+                          rows="4"
+                          visible="false"
+                          width="100%"/>
+                <hbox id="hbTemperatureMode"
+                      spacing="true"
+                      visible="false"
+                      width="100%">
+                    <label align="MIDDLE_LEFT"
+                           value="msg://ru.spacecorp.mobdekbkp.entity/TyponominalInstallParameters.temperatureMode"
+                           width="70%"/>
+                    <textField id="tfTemperatureMode"
+                               editable="false"
+                               width="100%"/>
+                </hbox>
+                <hbox id="hbPinFormDesignation"
+                      spacing="true"
+                      visible="false"
+                      width="100%">
+                    <label align="MIDDLE_LEFT"
+                           value="msg://ru.spacecorp.mobdekbkp.entity/TyponominalInstallParameters.pinFormingDesignation"
+                           width="70%"/>
+                    <textField id="tfPinFormDesignation"
+                               editable="false"
+                               width="100%"/>
+                </hbox>
+                <hbox id="hbInstallationOption"
+                      spacing="true"
+                      visible="false"
+                      width="100%">
+                    <label align="MIDDLE_LEFT"
+                           value="msg://ru.spacecorp.mobdekbkp.entity/TyponominalInstallParameters.installationOptionDesignation"
+                           width="70%"/>
+                    <textField id="tfInstallationOption"
+                               editable="false"
+                               width="100%"/>
+                </hbox>
+                <hbox id="hbInstallCountAllowed"
+                      spacing="true"
+                      visible="false"
+                      width="100%">
+                    <label align="MIDDLE_LEFT"
+                           value="msg://ru.spacecorp.mobdekbkp.entity/TyponominalInstallParameters.installationCountAllowed"
+                           width="70%"/>
+                    <textField id="tfInstallCountAllowed"
+                               editable="false"
+                               width="100%"/>
+                </hbox>
+                <label id="lblHasGasket"
+                       align="MIDDLE_LEFT"/>
+                <hbox id="hbGasketSize"
+                      spacing="true"
+                      visible="false"
+                      width="100%">
+                    <label align="MIDDLE_LEFT"
+                           value="msg://ru.spacecorp.mobdekbkp.entity/TyponominalInstallParameters.gasketSize"
+                           width="70%"/>
+                    <textField id="tfGasketSize"
+                               editable="false"
+                               width="100%"/>
+                </hbox>
+                <label id="lblHasGlue"
+                       align="MIDDLE_LEFT"/>
+                <hbox id="hbGlueType"
+                      spacing="true"
+                      visible="false"
+                      width="100%">
+                    <label align="MIDDLE_LEFT"
+                           value="msg://ru.spacecorp.mobdekbkp.entity/TyponominalInstallParameters.glueType"
+                           width="70%"/>
+                    <textField id="tfGlueType"
+                               editable="false"
+                               width="100%"/>
+                </hbox>
+                <hbox id="hbSolderBrand"
+                      spacing="true"
+                      visible="false"
+                      width="100%">
+                    <label align="MIDDLE_LEFT"
+                           value="msg://ru.spacecorp.mobdekbkp.entity/TyponominalInstallParameters.solderBrand"
+                           width="70%"/>
+                    <textField id="tfSolderBrand"
+                               editable="false"
+                               width="100%"/>
+                </hbox>
+                <hbox id="hbFluxBrand"
+                      spacing="true"
+                      visible="false"
+                      width="100%">
+                    <label align="MIDDLE_LEFT"
+                           value="msg://ru.spacecorp.mobdekbkp.entity/TyponominalInstallParameters.fluxBrand"
+                           width="70%"/>
+                    <textField id="tfFluxBrand"
+                               editable="false"
+                               width="100%"/>
+                </hbox>
+                <label id="lblSolderTech"
+                       align="MIDDLE_LEFT"
+                       visible="false"/>
+                <label id="lblGasEnvAvail"
+                       align="MIDDLE_LEFT"
+                       visible="false"/>
+                <label id="lblAutoInstall"
+                       align="MIDDLE_LEFT"
+                       visible="false"/>
+                <linkButton id="btnBodyInstalDocLink"
+                            caption="msg://ru.spacecorp.mobdekbkp.entity/TyponominalInstallParameters.bodyInstallationDocument"
+                            invoke="onBodyInstalDocLinkBtnClick"
+                            visible="false"/>
+                <linkButton id="btnPinFormDocLink"
+                            caption="msg://ru.spacecorp.mobdekbkp.entity/TyponominalInstallParameters.pinFormingDocument"
+                            invoke="onPinFormDocLinkBtnClick"
+                            visible="false"/>
+            </vbox>
+        </scrollBox>
+    </layout>
+</window>

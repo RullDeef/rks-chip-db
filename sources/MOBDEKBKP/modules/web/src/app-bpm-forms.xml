@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<forms xmlns="http://schemas.haulmont.com/cuba/bpm-forms.xsd">
+    <form name="ProcFormStart">
+        <param name="customRole" value="head" />
+        <param name="bpmExecutor" value="GNIO" />
+        <param name="setHead" value="true" />
+        <param name="setExec" value="true" />
+    </form>
+    <form name="GnioAddOthersProcForm">
+        <param name="commentRequired" value="true" />
+    </form>
+</forms>

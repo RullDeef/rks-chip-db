@@ -1,0 +1,147 @@
+[
+  {
+    "_entityName": "sec$Group",
+    "id": "deffae41-f0ed-17b2-b290-0eee1694cdc8",
+    "parent": {
+      "_entityName": "sec$Group",
+      "id": "2050e32c-013a-1d1c-3810-28b9e5265770",
+      "parent": {
+        "_entityName": "sec$Group",
+        "id": "0fa2b1a5-1d68-4d69-9fbd-dff348347f93",
+        "version": 0,
+        "constraints": [],
+        "name": "Company",
+        "hierarchyList": [],
+        "sessionAttributes": []
+      },
+      "version": 1,
+      "constraints": [
+        {
+          "_entityName": "sec$Constraint",
+          "id": "b8c874d4-b463-e407-9071-f6b8bc13aa59",
+          "checkType": "MEMORY",
+          "groovyScript": "{E}.moderated\u003d\u003dfalse",
+          "isActive": true,
+          "version": 1,
+          "entityName": "discuss$Comment",
+          "operationType": "UPDATE",
+          "group": {
+            "_entityName": "sec$Group",
+            "id": "2050e32c-013a-1d1c-3810-28b9e5265770"
+          }
+        }
+      ],
+      "name": "Moderators",
+      "hierarchyList": [
+        {
+          "_entityName": "sec$GroupHierarchy",
+          "id": "46585c7c-0fa1-5a43-f025-65db989819f3",
+          "parent": {
+            "_entityName": "sec$Group",
+            "id": "0fa2b1a5-1d68-4d69-9fbd-dff348347f93"
+          },
+          "level": 0,
+          "group": {
+            "_entityName": "sec$Group",
+            "id": "2050e32c-013a-1d1c-3810-28b9e5265770"
+          }
+        },
+        {
+          "_entityName": "sec$GroupHierarchy",
+          "id": "f8510a92-07ad-7343-bbe6-cd57123e61e1",
+          "parent": {
+            "_entityName": "sec$Group",
+            "id": "0fa2b1a5-1d68-4d69-9fbd-dff348347f93"
+          },
+          "level": 0,
+          "group": {
+            "_entityName": "sec$Group",
+            "id": "2050e32c-013a-1d1c-3810-28b9e5265770"
+          }
+        }
+      ],
+      "sessionAttributes": []
+    },
+    "version": 1,
+    "constraints": [
+      {
+        "_entityName": "sec$Constraint",
+        "id": "01ae75c1-53db-4d47-3651-e1bdb26bff91",
+        "checkType": "DATABASE",
+        "whereClause": "{E}.commentStatus\u003c\u003e\u0027notApproved\u0027",
+        "isActive": true,
+        "version": 1,
+        "entityName": "discuss$Comment",
+        "operationType": "READ",
+        "group": {
+          "_entityName": "sec$Group",
+          "id": "deffae41-f0ed-17b2-b290-0eee1694cdc8"
+        }
+      }
+    ],
+    "name": "CommonUsers",
+    "hierarchyList": [
+      {
+        "_entityName": "sec$GroupHierarchy",
+        "id": "ac6e1021-193f-8f24-ef11-4d6dc6e021f1",
+        "parent": {
+          "_entityName": "sec$Group",
+          "id": "0fa2b1a5-1d68-4d69-9fbd-dff348347f93"
+        },
+        "level": 0,
+        "group": {
+          "_entityName": "sec$Group",
+          "id": "deffae41-f0ed-17b2-b290-0eee1694cdc8"
+        }
+      },
+      {
+        "_entityName": "sec$GroupHierarchy",
+        "id": "eed90ff0-da7f-8a09-7aaf-86f3c4ff9d97",
+        "parent": {
+          "_entityName": "sec$Group",
+          "id": "0fa2b1a5-1d68-4d69-9fbd-dff348347f93"
+        },
+        "level": 0,
+        "group": {
+          "_entityName": "sec$Group",
+          "id": "deffae41-f0ed-17b2-b290-0eee1694cdc8"
+        }
+      },
+      {
+        "_entityName": "sec$GroupHierarchy",
+        "id": "70d6a0a8-fba5-2926-3885-e82eddd55e40",
+        "parent": {
+          "_entityName": "sec$Group",
+          "id": "2050e32c-013a-1d1c-3810-28b9e5265770"
+        },
+        "level": 1,
+        "group": {
+          "_entityName": "sec$Group",
+          "id": "deffae41-f0ed-17b2-b290-0eee1694cdc8"
+        }
+      },
+      {
+        "_entityName": "sec$GroupHierarchy",
+        "id": "a5734a4b-54b5-c5e5-26f3-631db476c1b3",
+        "parent": {
+          "_entityName": "sec$Group",
+          "id": "2050e32c-013a-1d1c-3810-28b9e5265770"
+        },
+        "level": 1,
+        "group": {
+          "_entityName": "sec$Group",
+          "id": "deffae41-f0ed-17b2-b290-0eee1694cdc8"
+        }
+      }
+    ],
+    "sessionAttributes": []
+  },
+  {
+    "_entityName": "sec$Group",
+    "id": "0fa2b1a5-1d68-4d69-9fbd-dff348347f93"
+  },
+  {
+    "_entityName": "sec$Group",
+    "id": "2050e32c-013a-1d1c-3810-28b9e5265770"
+  }
+]

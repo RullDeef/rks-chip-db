@@ -1,0 +1,192 @@
+@import "halo-defaults";
+@import "ru.spacecorp.mobdekbkp/halo-ext-defaults";
+@import "app-components";
+@import "ru.spacecorp.mobdekbkp/halo-ext";
+
+.halo {
+  // include auto-generated app components SCSS
+  @include app_components;
+  
+  @include ru_spacecorp_mobdekbkp-halo-ext;
+}
+
+// Typonominal
+.main-tn-frame {
+    width: 100%;
+    height: 100%;
+    table-layout: fixed;
+    margin-top: 5px;
+}
+.tn-pick {
+    width: 100%;
+    height: 100%;
+    table-layout: fixed;
+    overflow:auto;
+}
+.tncol {
+    height: 100%;
+    overflow:auto;
+}
+.gbClass {
+    height: 100%;
+    overflow:auto;
+}
+
+.gbTypes {
+    height: 100%;
+    overflow:auto;
+}
+.gbTns {
+    height: 100%;
+    overflow:auto;
+}
+.gbInfo {
+    height: 100%;
+    overflow:auto;
+}
+.gbTabs {
+    height: 100%;
+    overflow:auto;
+}
+.tbsInformation {
+    height: 100%;
+    overflow:auto;
+}
+.tab {
+    height: 100%;
+    overflow:auto;
+}
+
+// Typonominal Test
+.main-tn-frame-test {
+    width: 100%;
+    height: 100%;
+    table-layout: fixed;
+    margin-top: 5px;
+    overflow:auto;
+}
+.tn-pick-test {
+    width: 100%;
+    height: 100%;
+    table-layout: fixed;
+    overflow:auto;
+}
+.tncol-test {
+    height: 100%;
+    overflow:auto;
+}
+.gbClass-test {
+    height: 100%;
+    overflow:auto;
+}
+.gbTypes-test {
+    height: 100%;
+    overflow:auto;
+}
+.gbTns-test {
+    height: 100%;
+    overflow:auto;
+}
+.gbInfo-test {
+    height: 100%;
+    overflow:auto;
+}
+.gbTabs-test {
+    height: 100%;
+    overflow:auto;
+}
+.tbsInformation-test {
+    height: 100%;
+    overflow:auto;
+}
+.tab-test {
+    height: 100%;
+    overflow:auto;
+}
+
+.cardFrame{
+ height: 100%;
+  overflow:auto;
+}
+
+.textFieldSize{
+overflow-x:auto;
+white-space: nowrap;
+}
+
+.label_tests{
+text-align: center;
+text-decoration: underline;
+}
+
+
+.table_tests{
+    height: 100%;
+    width: 100%;
+    overflow-y: auto;
+    owerflow-x: auto;
+    table-layout: fixed;
+}
+
+
+
+@media (max-width: 960px){
+        .hboxlayout_deviceedit{
+           overflow-y:auto;
+        }
+        .devicestyleVbox, .devicestyleGroupBoxComplect, .devicestyleGroupBoxDocs{
+        }
+        .v-slot-devicestyleVbox, .v-slot-devicestyleGroupBoxComplect, .v-slot-devicestyleGroupBoxDocs{
+        width:100% !important;
+        margin-left:0px !important;
+        display:block;
+        }
+ }
+
+.has-top-panel{
+    width: 100% !important;
+}
+
+@mixin bg-horizontal-gradient($from, $to, $start:0%, $stop:100%) {
+		background-color: (light-green);
+		background-image: -moz-linear-gradient(left, $from $start, $to $stop);
+		background-image: -webkit-gradient(linear, left top, right top, color-stop($start $from), color-stop($stop, $to));
+		background-image: -webkit-linear-gradient(left, $from $start, $to $stop);
+		background-image: -o-linear-gradient(left, $from $start, $to $stop);
+		background: -ms-linear-gradient(left, $from $start, $to $stop);
+		background: -linear-gradient(to right, $from $start, $to $stop);
+
+}
+.halo .c-pickerfield-layout>.v-filterselect>input{
+  height:30px;
+}
+
+$progress: 0 5 10 15 20 25 30 35 40 45 50 55 60 65 70 75 80 85 90 95 100;
+
+@each $value in $progress {
+		.some-color-#{$value} {
+//				color: rgba(0,0,0,0);  // text invisiblity
+
+				$valueLeft: $value - 0%;
+				$valueRight: $value + 0%;
+
+				$back: white;
+				$fore: white;
+				@if $value == 0 {
+						$fore: grey;
+						$back: grey;
+						color: blue;
+				} @else if $value < 20 {
+						$fore: red;
+						color: blue;
+				} @else if $value < 100 {
+						$fore: yellow;
+						color: blue;
+				} @else {
+						$fore: green;
+						color: white;
+				}
+
+				@include bg-horizontal-gradient($fore, $back, $valueLeft, $valueRight);
+		}
+}

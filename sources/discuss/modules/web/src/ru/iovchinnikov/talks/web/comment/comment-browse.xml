@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="ru.iovchinnikov.talks.web.comment.CommentBrowse"
+        focusComponent="commentsTable"
+        lookupComponent="commentsTable"
+        messagesPack="ru.iovchinnikov.talks.web.comment">
+    <dsContext>
+        <groupDatasource id="commentsDs"
+                         class="ru.iovchinnikov.talks.entity.Comment"
+                         datasourceClass="ru.iovchinnikov.talks.web.comment.commentDatasource"
+                         view="comment-view">
+            <query>
+                <![CDATA[select e from discuss$Comment e order by e.updateTs]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true">
+        <groupTable id="commentsTable"
+                    align="BOTTOM_LEFT"
+                    height="100%"
+                    multiLineCells="true"
+                    sortable="false"
+                    width="938px">
+            <actions>
+                <action id="create"/>
+                <action id="edit"
+                        icon="font-icon:EYE"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="hasAnswer"/>
+                <column id="updateTs"/>
+                <column id="author"/>
+                <column id="commentStatus"/>
+                <column id="contents"/>
+            </columns>
+            <rows datasource="commentsDs"/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="commentsTable.create"/>
+                <button id="btnReply"
+                        caption="msg://btnReplyCaption"
+                        invoke="onBtnReplyClick"/>
+                <button id="editBtn"
+                        action="commentsTable.edit"
+                        icon="font-icon:EYE"/>
+                <button id="removeBtn"
+                        action="commentsTable.remove"/>
+                <button id="approveBtn"
+                        caption="msg://Approve"
+                        invoke="onApproveBtnClick"
+                        visible="false"/>
+                <button id="rejectBtn"
+                        caption="msg://Reject"
+                        invoke="onRejectBtnClick"
+                        visible="false"/>
+                <button id="hideBtn"
+                        caption="msg://Hide"
+                        invoke="onHideBtnClick"
+                        visible="false"/>
+                <button id="editMBtn"
+                        caption="msg://Moderate"
+                        invoke="onEditMBtnClick"
+                        visible="false"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="ru.spacecorp.mobdekbkp.web.alterclassmil.AlterClassMilEdit"
+        datasource="alterClassMilDs"
+        focusComponent="fieldGroup"
+        messagesPack="ru.spacecorp.mobdekbkp.web.alterclassmil">
+    <dsContext>
+        <datasource id="alterClassMilDs"
+                    class="ru.spacecorp.mobdekbkp.entity.AlterClassMil"
+                    view="alterClassMil-view"/>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="windowActions"
+            spacing="true">
+        <fieldGroup id="fieldGroup"
+                    datasource="alterClassMilDs">
+            <column width="250px">
+                <field property="name"/>
+                <field property="shortName"/>
+                <field property="parent"/>
+            </column>
+        </fieldGroup>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

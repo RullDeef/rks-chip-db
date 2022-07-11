@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="ru.spacecorp.mobdekbkp.web.applicationnewtyponominaladd.ApplicationNewTyponominalAddEdit"
+        datasource="applicationNewTyponominalAddDs"
+        focusComponent="applicationNewTyponominalAddFieldGroup"
+        messagesPack="ru.spacecorp.mobdekbkp.web.applicationnewtyponominaladd">
+    <dsContext>
+        <datasource id="applicationNewTyponominalAddDs"
+                    class="ru.spacecorp.mobdekbkp.entity.ApplicationNewTyponominalAdd"
+                    view="applicationNewTyponominalAdd-view">
+            <collectionDatasource id="documentsDs"
+                                  property="documents"/>
+        </datasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="mainHbox"
+            spacing="true">
+        <hbox id="mainHbox"
+              spacing="true"
+              width="100%">
+            <groupBox id="applicationNewTyponominalAddGroupBox"
+                      caption="Основные атрибуты"
+                      height="100%"
+                      spacing="true">
+                <scrollBox height="100%"
+                           spacing="true">
+                    <vbox spacing="true">
+                        <fieldGroup id="applicationNewTyponominalAddFieldGroup"
+                                    datasource="applicationNewTyponominalAddDs"
+                                    width="95%">
+                            <column width="100%">
+                                <field id="designation"
+                                       property="designation"
+                                       rows="5"/>
+                                <field id="status"
+                                       editable="false"
+                                       property="status"/>
+                                <field id="docInfo"
+                                       property="deliveryDocDesignation"
+                                       rows="5"/>
+                                <field id="classMop"
+                                       property="classMop"/>
+                                <field id="producer"
+                                       property="producer"/>
+                                <field id="desc"
+                                       property="description"
+                                       rows="5"/>
+                            </column>
+                        </fieldGroup>
+                        <button id="readyBtn"
+                                caption="msg://Ready"
+                                enable="false"
+                                invoke="onReadyBtnClick"/>
+                    </vbox>
+                    <groupBox id="procActionsBox"
+                              align="BOTTOM_LEFT"
+                              caption="msg://process"
+                              orientation="vertical"
+                              spacing="true"
+                              width="95%">
+                        <frame id="procActionsFrame"
+                               screen="procActionsFrame"/>
+                    </groupBox>
+                </scrollBox>
+            </groupBox>
+            <groupBox id="documentBox"
+                      caption="msg://ru.spacecorp.mobdekbkp.entity/Device.documents"
+                      height="100%"
+                      spacing="true">
+                <table id="documentTable"
+                       height="100%"
+                       width="100%">
+                    <actions>
+                        <action id="add"/>
+                        <action id="exclude"/>
+                    </actions>
+                    <columns>
+                        <column id="name"/>
+                        <column id="documentType"/>
+                        <column id="designation"/>
+                    </columns>
+                    <rows datasource="documentsDs"/>
+                    <buttonsPanel id="documentBtnPanel">
+                        <button id="documentAddBtn"
+                                action="documentTable.add"
+                                width="100%"/>
+                        <button id="documentExcludeBtn"
+                                action="documentTable.exclude"
+                                width="100%"/>
+                    </buttonsPanel>
+                </table>
+            </groupBox>
+        </hbox>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

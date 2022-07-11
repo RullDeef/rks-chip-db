@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        class="ru.spacecorp.mobdekbkp.web.bpm.screens.GnioAddOthersProcForm"
+        extends="/com/haulmont/bpm/gui/form/standard/standard-proc-form.xml"
+        messagesPack="ru.spacecorp.mobdekbkp.web.bpm.screens"
+        xmlns:ext="http://schemas.haulmont.com/cuba/window-ext.xsd">
+    <layout>
+        <buttonsPanel ext:index="0">
+            <button id="btnAddMniirip"
+                    caption="msg://addMniirip"
+                    invoke="onBtnAddMniiripClick"/>
+            <button id="btnAddNiikp"
+                    caption="msg://addNiikp"
+                    invoke="onBtnAddNiikpClick"/>
+        </buttonsPanel>
+        <textArea id="comment"
+                  required="true"/>
+    </layout>
+</window>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="ru.spacecorp.documents.web.documentrestriction.DocumentRestrictionBrowse"
+        focusComponent="documentRestrictionsTable"
+        lookupComponent="documentRestrictionsTable"
+        messagesPack="ru.spacecorp.documents.web.documentrestriction">
+    <dsContext>
+        <groupDatasource id="documentRestrictionsDs"
+                         class="ru.spacecorp.documents.entity.DocumentRestriction"
+                         view="documentRestriction-view">
+            <query>
+                <![CDATA[select e from documents$DocumentRestriction e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="documentRestrictionsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="documentRestrictionsTable"
+                datasource="documentRestrictionsDs">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="documentRestrictionsTable"
+                    width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="key"/>
+            </columns>
+            <rows datasource="documentRestrictionsDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="documentRestrictionsTable.create"/>
+                <button id="editBtn"
+                        action="documentRestrictionsTable.edit"/>
+                <button id="removeBtn"
+                        action="documentRestrictionsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="ru.spacecorp.mobdekbkp.web.country.CountryEdit"
+        datasource="countryDs"
+        focusComponent="fieldGroup"
+        messagesPack="ru.spacecorp.mobdekbkp.web.country">
+    <dsContext>
+        <datasource id="countryDs"
+                    class="ru.spacecorp.mobdekbkp.entity.Country"
+                    view="_local"/>
+    </dsContext>
+    <dialogMode forceDialog="true"
+                height="160"
+                width="400"/>
+    <layout expand="windowActions"
+            spacing="true">
+        <fieldGroup id="fieldGroup"
+                    datasource="countryDs">
+            <column width="250px">
+                <field property="name"/>
+                <field property="countryType"/>
+            </column>
+        </fieldGroup>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<app-component xmlns="http://schemas.haulmont.com/cuba/app-component.xsd"
+               dependsOn="com.haulmont.cuba">
+    <module blocks="*"
+            name="global">
+        <artifact appJar="true"
+                  name="import-global"/>
+        <property name="cuba.persistenceConfig"
+                  value="+com/company/importmodule/persistence.xml"/>
+        <property name="cuba.metadataConfig"
+                  value="+com/company/importmodule/metadata.xml"/>
+        <property name="cuba.viewsConfig"
+                  value="+com/company/importmodule/views.xml"/>
+    </module>
+    <module blocks="core"
+            dependsOn="global"
+            name="core">
+        <artifact appJar="true"
+                  name="import-core"/>
+        <artifact classifier="db"
+                  configuration="dbscripts"
+                  ext="zip"
+                  name="import-core"/>
+        <property name="cuba.springContextConfig"
+                  value="+com/company/importmodule/spring.xml"/>
+        <property name="cuba.mainMessagePack"
+                  value="+com.company.importmodule.core"/>
+    </module>
+    <module blocks="web,desktop"
+            dependsOn="global"
+            name="gui">
+        <artifact appJar="true"
+                  name="import-gui"/>
+    </module>
+    <module blocks="web"
+            dependsOn="gui"
+            name="web">
+        <artifact appJar="true"
+                  name="import-web"/>
+        <artifact classifier="web"
+                  configuration="webcontent"
+                  ext="zip"
+                  name="import-web"/>
+        <property name="cuba.springContextConfig"
+                  value="+com/company/importmodule/web-spring.xml"/>
+        <property name="cuba.dispatcherSpringContextConfig"
+                  value="+com/company/importmodule/web-dispatcher-spring.xml"/>
+        <property name="cuba.windowConfig"
+                  value="+com/company/importmodule/web-screens.xml"/>
+        <property name="cuba.menuConfig"
+                  value="+com/company/importmodule/web-menu.xml"/>
+        <property name="cuba.permissionConfig"
+                  value="+com/company/importmodule/web-permissions.xml"/>
+        <property name="cuba.mainMessagePack"
+                  value="+com.company.importmodule.web"/>
+    </module>
+</app-component>

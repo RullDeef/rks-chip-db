@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="ru.spacecorp.mobdekbkp.web.devicelistprojectadditionentry.DeviceListProjectAdditionEntryBrowse"
+        focusComponent="deviceListProjectAdditionEntriesTable"
+        lookupComponent="deviceListProjectAdditionEntriesTable"
+        messagesPack="ru.spacecorp.mobdekbkp.web.devicelistprojectadditionentry">
+    <dsContext>
+        <groupDatasource id="deviceListProjectAdditionEntriesDs"
+                         class="ru.spacecorp.mobdekbkp.entity.DeviceListProjectAdditionEntry"
+                         view="deviceListProjectAdditionEntry-view">
+            <query>
+                <![CDATA[select e from mobdekbkp$DeviceListProjectAdditionEntry e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="deviceListProjectAdditionEntriesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="deviceListProjectAdditionEntriesTable"
+                datasource="deviceListProjectAdditionEntriesDs">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="deviceListProjectAdditionEntriesTable"
+                    width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="edited"/>
+                <column id="newtyponominal"/>
+                <column id="additionType"/>
+                <column id="status"/>
+            </columns>
+            <rows datasource="deviceListProjectAdditionEntriesDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="deviceListProjectAdditionEntriesTable.create"/>
+                <button id="editBtn"
+                        action="deviceListProjectAdditionEntriesTable.edit"/>
+                <button id="removeBtn"
+                        action="deviceListProjectAdditionEntriesTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

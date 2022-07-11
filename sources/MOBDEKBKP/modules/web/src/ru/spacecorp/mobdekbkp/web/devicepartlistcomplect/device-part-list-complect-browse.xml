@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="ru.spacecorp.mobdekbkp.web.devicepartlistcomplect.DevicePartListComplectBrowse"
+        focusComponent="devicePartListComplectsTable"
+        lookupComponent="devicePartListComplectsTable"
+        messagesPack="ru.spacecorp.mobdekbkp.web.devicepartlistcomplect">
+    <dsContext>
+        <groupDatasource id="devicePartListComplectsDs"
+                         class="ru.spacecorp.mobdekbkp.entity.DevicePartListComplect"
+                         view="devicePartListComplect-view">
+            <query>
+                <![CDATA[select e from mobdekbkp$DevicePartListComplect e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="devicePartListComplectsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="devicePartListComplectsTable"
+                datasource="devicePartListComplectsDs">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="devicePartListComplectsTable"
+                    width="100%">
+            <actions>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="name"/>
+                <column id="status"/>
+            </columns>
+            <rows datasource="devicePartListComplectsDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="editBtn"
+                        action="devicePartListComplectsTable.edit"/>
+                <button id="removeBtn"
+                        action="devicePartListComplectsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

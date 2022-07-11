@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<app-component xmlns="http://schemas.haulmont.com/cuba/app-component.xsd"
+               dependsOn="com.haulmont.charts, com.haulmont.cuba">
+    <module blocks="*"
+            name="global">
+        <artifact appJar="true"
+                  name="reviews-global"/>
+        <property name="cuba.persistenceConfig"
+                  value="+com/company/reviews/persistence.xml"/>
+        <property name="cuba.metadataConfig"
+                  value="+com/company/reviews/metadata.xml"/>
+        <property name="cuba.viewsConfig"
+                  value="+com/company/reviews/views.xml"/>
+    </module>
+    <module blocks="core"
+            dependsOn="global"
+            name="core">
+        <artifact appJar="true"
+                  name="reviews-core"/>
+        <artifact classifier="db"
+                  configuration="dbscripts"
+                  ext="zip"
+                  name="reviews-core"/>
+        <property name="cuba.springContextConfig"
+                  value="+com/company/reviews/spring.xml"/>
+        <property name="cuba.mainMessagePack"
+                  value="+com.company.reviews.core"/>
+    </module>
+    <module blocks="web,desktop"
+            dependsOn="global"
+            name="gui">
+        <artifact appJar="true"
+                  name="reviews-gui"/>
+    </module>
+    <module blocks="web"
+            dependsOn="gui"
+            name="web">
+        <artifact appJar="true"
+                  name="reviews-web"/>
+        <artifact classifier="web"
+                  configuration="webcontent"
+                  ext="zip"
+                  name="reviews-web"/>
+        <artifact classifier="web"
+                  configuration="webcontent"
+                  ext="zip"
+                  name="reviews-web-toolkit"
+                  skipIfExists="web-toolkit"/>
+        <artifact configuration="themes"
+                  name="reviews-web-themes"/>
+        <property name="cuba.springContextConfig"
+                  value="+com/company/reviews/web-spring.xml"/>
+        <property name="cuba.dispatcherSpringContextConfig"
+                  value="+com/company/reviews/web-dispatcher-spring.xml"/>
+        <property name="cuba.windowConfig"
+                  value="+com/company/reviews/web-screens.xml"/>
+        <property name="cuba.menuConfig"
+                  value="+com/company/reviews/web-menu.xml"/>
+        <property name="cuba.permissionConfig"
+                  value="+com/company/reviews/web-permissions.xml"/>
+        <property name="cuba.mainMessagePack"
+                  value="+com.company.reviews.web"/>
+        <property name="cuba.web.widgetSet"
+                  value="com.company.reviews.web.toolkit.ui.AppWidgetSet"/>
+    </module>
+    <module dependsOn="web"
+            name="web-toolkit">
+        <artifact name="reviews-web-toolkit"/>
+    </module>
+    <module name="web-themes">
+        <artifact name="reviews-web-themes"/>
+    </module>
+</app-component>

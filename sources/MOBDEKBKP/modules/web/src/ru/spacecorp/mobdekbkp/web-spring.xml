@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd"
+       xmlns:context="http://www.springframework.org/schema/context">
+    <!-- Annotation-based beans -->
+    <context:component-scan base-package="ru.spacecorp.mobdekbkp"/>
+    <bean class="com.haulmont.cuba.web.sys.remoting.WebRemoteProxyBeanCreator">
+        <property name="serverSelector"
+                  ref="cuba_ServerSelector"/>
+        <property name="remoteServices">
+            <map>
+                <entry key="mobdekbkp_TestService"
+                       value="ru.spacecorp.mobdekbkp.service.TestService"/>
+                <entry key="mobdekbkp_AddDeviceListProjectService"
+                       value="ru.spacecorp.mobdekbkp.service.AddDeviceListProjectService"/>
+                <entry key="mobdekbkp_EditStatusService"
+                       value="ru.spacecorp.mobdekbkp.service.EditStatusService"/>
+                <entry key="mobdekbkp_AddDeviceComplectService"
+                       value="ru.spacecorp.mobdekbkp.service.AddDeviceComplectService"/>
+                <entry key="mobdekbkp_AddEntriesService"
+                       value="ru.spacecorp.mobdekbkp.service.AddEntriesService"/>
+                <entry key="mobdekbkp_CheckDuplicateService"
+                       value="ru.spacecorp.mobdekbkp.service.CheckDuplicateService"/>
+                <entry key="mobdekbkp_DashBoardService"
+                       value="ru.spacecorp.mobdekbkp.service.DashBoardService"/>
+                <entry key="mobdekbkp_OptimizationDBService"
+                       value="ru.spacecorp.mobdekbkp.service.OptimizationDBService"/>
+                <entry key="mobdekbkp_TyponominalService"
+                       value="ru.spacecorp.mobdekbkp.service.TyponominalService"/>
+                <entry key="mobdekbkp_ComplectDatasourceService"
+                       value="ru.spacecorp.mobdekbkp.service.ComplectDatasourceService"/>
+                <entry key="mobdekbkp_MessagesSendService"
+                       value="ru.spacecorp.mobdekbkp.service.MessagesSendService"/>
+                <entry key="mobdekbkp_TeamCenterIntegrationService"
+                       value="ru.spacecorp.mobdekbkp.service.TeamCenterIntegrationService"/>
+                <entry key="mobdekbkp_TsniimashImportService"
+                       value="ru.spacecorp.mobdekbkp.service.TsniimashImportService"/>
+            </map>
+        </property>
+    </bean>
+</beans>

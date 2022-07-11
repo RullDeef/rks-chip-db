@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="ru.spacecorp.mobdekbkp.web.outerdbfail.OuterDbFailEdit"
+        datasource="outerDbFailDs"
+        focusComponent="fieldGroup"
+        messagesPack="ru.spacecorp.mobdekbkp.web.outerdbfail">
+    <dsContext>
+        <datasource id="outerDbFailDs"
+                    class="ru.spacecorp.mobdekbkp.entity.OuterDbFail"
+                    view="outerDbFail-view"/>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="scrollBox"
+            spacing="true">
+        <scrollBox id="scrollBox"
+                   spacing="true">
+            <fieldGroup id="fieldGroup"
+                        datasource="outerDbFailDs"
+                        width="100%">
+                <column width="100%">
+                    <field property="typonominal"/>
+                    <field property="index"/>
+                    <field property="maufactureDate"/>
+                    <field property="failDate"/>
+                    <field property="workFact"/>
+                    <field property="workGuarantee"/>
+                    <field property="claimDocs"
+                           rows="5"/>
+                    <field property="failType"/>
+                    <field property="failTypeComment"
+                           rows="5"/>
+                    <field property="repeating"/>
+                    <field property="part"/>
+                    <field property="visibleFail"/>
+                    <field property="description"
+                           rows="5"/>
+                    <field property="comissionResume"
+                           rows="5"/>
+                    <field property="previousResume"
+                           rows="5"/>
+                    <field property="source"/>
+                </column>
+            </fieldGroup>
+        </scrollBox>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

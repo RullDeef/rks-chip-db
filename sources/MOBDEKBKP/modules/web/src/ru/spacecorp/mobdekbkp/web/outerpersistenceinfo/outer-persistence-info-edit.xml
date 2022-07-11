@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="ru.spacecorp.mobdekbkp.web.outerpersistenceinfo.OuterPersistenceInfoEdit"
+        datasource="outerPersistenceInfoDs"
+        focusComponent="outerPersistenceInfoFieldGroup"
+        messagesPack="ru.spacecorp.mobdekbkp.web.outerpersistenceinfo">
+    <dsContext>
+        <datasource id="outerPersistenceInfoDs"
+                    class="ru.spacecorp.mobdekbkp.entity.OuterPersistenceInfo"
+                    view="outerPersistenceInfo-view"/>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="windowActions"
+            spacing="true">
+        <fieldGroup id="outerPersistenceInfoFieldGroup"
+                    datasource="outerPersistenceInfoDs">
+            <column width="250px">
+                <field property="typonominal"/>
+                <field property="manufacturer"/>
+                <field property="infoSource"/>
+                <field property="singleEffectData"/>
+                <field property="doseEffectData"/>
+                <field property="hasFiles"/>
+            </column>
+        </fieldGroup>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

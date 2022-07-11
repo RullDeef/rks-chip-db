@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        class="ru.spacecorp.mobdekbkp.web.typonominalpurchaseparameters.Purchaseparameters"
+        messagesPack="ru.spacecorp.mobdekbkp.web.typonominalpurchaseparameters">
+    <dsContext>
+        <collectionDatasource id="typonominalPurchaseParametersesDs"
+                              class="ru.spacecorp.mobdekbkp.entity.TyponominalPurchaseParameters"
+                              view="typonominalPurchaseParameters-view">
+            <query>
+                <![CDATA[select e from mobdekbkp$TyponominalPurchaseParameters e]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout>
+        <vbox id="vbox"
+              expand="tableParameters"
+              height="100%"
+              spacing="true">
+            <buttonsPanel>
+                <button id="buttonCreate"
+                        caption="msg://Create"
+                        invoke="onButtonCreateClick"/>
+                <button id="removeBtn"
+                        action="tableParameters.remove"
+                        visible="false"/>
+            </buttonsPanel>
+            <table id="tableParameters"
+                   width="100%">
+                <actions>
+                    <action id="edit"
+                            invoke="onEdit"/>
+                    <action id="remove"
+                            enable="false"
+                            visible="false"/>
+                </actions>
+                <columns>
+                    <column id="company"/>
+                    <column id="cost"/>
+                    <column id="typicalDeliveryTerm"/>
+                </columns>
+                <rows datasource="typonominalPurchaseParametersesDs"/>
+            </table>
+        </vbox>
+    </layout>
+</window>

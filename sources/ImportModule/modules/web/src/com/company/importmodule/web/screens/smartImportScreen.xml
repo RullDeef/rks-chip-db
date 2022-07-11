@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://smartImport"
+        class="com.company.importmodule.web.screens.Smartimportscreen"
+        messagesPack="com.company.importmodule.web.screens">
+    <dialogMode height="600"
+                width="800"/>
+    <layout>
+        <hbox spacing="true"
+              width="60%">
+            <vbox spacing="true">
+                <hbox expand="uploadBox"
+                      spacing="true"
+                      width="100%">
+                    <vbox id="uploadBox"
+                          spacing="true">
+                        <groupBox caption="msg://Download import files"
+                                  height="100%"
+                                  spacing="true">
+                            <multiUpload id="multiUpload"/>
+                            <textArea id="fileNamesArea"
+                                      editable="false"
+                                      height="100%"
+                                      width="100%"/>
+                        </groupBox>
+                    </vbox>
+                    <checkBox id="findTypeCheck"
+                              caption="msg://Find type"/>
+                </hbox>
+                <lookupField id="rootPackageLkup"
+                             caption="msg://Root package"
+                             width="50%"/>
+                <lookupField id="entityLkup"
+                             caption="msg://Entity"
+                             width="50%"/>
+                <twinColumn id="propertyColumn"
+                            addAllBtnEnabled="true"
+                            caption="msg://Fields"/>
+                <button id="createImportTable"
+                        caption="msg://Create import table"
+                        invoke="onCreateImportTableClick"/>
+            </vbox>
+        </hbox>
+    </layout>
+</window>

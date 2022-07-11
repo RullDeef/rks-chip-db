@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="ru.spacecorp.mobdekbkp.web.typeclass.TypeClassEdit"
+        datasource="typeClassDs"
+        focusComponent="typeClassFieldGroup"
+        messagesPack="ru.spacecorp.mobdekbkp.web.typeclass">
+    <dsContext>
+        <datasource id="typeClassDs"
+                    class="ru.spacecorp.mobdekbkp.entity.TypeClass"
+                    view="typeClass-view">
+            <groupDatasource id="characteristicsDs"
+                             property="characteristics">
+                <datasource id="parameterDs"
+                            property="parameter"/>
+            </groupDatasource>
+            <datasource id="typeDs"
+                        property="type"/>
+        </datasource>
+        <collectionDatasource id="typesDs"
+                              class="ru.spacecorp.mobdekbkp.entity.TypeClassType"
+                              view="_minimal">
+            <query>
+                <![CDATA[select e from mobdekbkp$TypeClassType e]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true">
+        <grid height="100%"
+              margin="true,false,false,false"
+              spacing="true"
+              width="100%">
+            <columns>
+                <column flex="0.3"/>
+                <column flex="0.7"/>
+            </columns>
+            <rows>
+                <row>
+                    <vbox height="100%"
+                          margin="false,true,false,false"
+                          spacing="true">
+                        <groupBox caption="msg://mainProperties"
+                                  height="100%"
+                                  spacing="true">
+                            <fieldGroup id="typeClassFieldGroup"
+                                        datasource="typeClassDs"
+                                        width="100%">
+                                <column width="100%">
+                                    <field property="number"/>
+                                    <field property="name"/>
+                                    <field datasource="typeClassDs"
+                                           optionsDatasource="typesDs"
+                                           property="type"/>
+                                    <field property="parent"/>
+                                </column>
+                            </fieldGroup>
+                        </groupBox>
+                    </vbox>
+                    <vbox height="100%"
+                          margin="false,true,false,false"
+                          spacing="true">
+                        <tabSheet id="tabSheet"
+                                  height="100%">
+                            <tab id="tabParameters"
+                                 caption="msg://tabParameters"
+                                 margin="true,false,false,false"
+                                 spacing="true">
+                                <groupTable id="characteristicsTable"
+                                            editable="true"
+                                            height="100%"
+                                            multiselect="true"
+                                            width="100%">
+                                    <actions>
+                                        <action id="add"/>
+                                        <action id="edit"
+                                                openType="DIALOG"/>
+                                        <action id="remove"/>
+                                    </actions>
+                                    <columns>
+                                        <group>
+                                            <column id="parameter.paramType"/>
+                                        </group>
+                                        <column id="isMain"
+                                                editable="true"/>
+                                        <column id="paramsName"/>
+                                        <column id="parameter.description"/>
+                                    </columns>
+                                    <rows datasource="characteristicsDs"/>
+                                    <buttonsPanel id="paramBtnPanel">
+                                        <button id="addParamBtn"
+                                                action="characteristicsTable.add"/>
+                                        <button id="editParamBtn"
+                                                action="characteristicsTable.edit"/>
+                                        <button id="removeParamBtn"
+                                                action="characteristicsTable.remove"/>
+                                    </buttonsPanel>
+                                </groupTable>
+                            </tab>
+                        </tabSheet>
+                    </vbox>
+                </row>
+            </rows>
+        </grid>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

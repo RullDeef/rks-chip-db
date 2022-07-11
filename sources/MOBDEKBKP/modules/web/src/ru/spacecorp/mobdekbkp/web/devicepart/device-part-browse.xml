@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="ru.spacecorp.mobdekbkp.web.devicepart.DevicePartBrowse"
+        focusComponent="devicePartsTable"
+        lookupComponent="devicePartsTable"
+        messagesPack="ru.spacecorp.mobdekbkp.web.devicepart">
+    <dsContext>
+        <groupDatasource id="devicePartsDs"
+                         class="ru.spacecorp.mobdekbkp.entity.DevicePart"
+                         view="devicePart-view">
+            <query>
+                <![CDATA[select e from mobdekbkp$DevicePart e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="devicePartsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="devicePartsTable"
+                datasource="devicePartsDs">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="devicePartsTable"
+                    width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="designation"/>
+                <column id="type"/>
+                <column id="developer"
+                        maxTextLength="70"/>
+                <column id="constructor"/>
+                <column id="demands"
+                        maxTextLength="70"/>
+            </columns>
+            <rows datasource="devicePartsDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="devicePartsTable.create"/>
+                <button id="editBtn"
+                        action="devicePartsTable.edit"/>
+                <button id="removeBtn"
+                        action="devicePartsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

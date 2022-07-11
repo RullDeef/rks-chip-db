@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://moderatorEditorCaption"
+        class="com.company.reviews.web.review.ReviewModeratorEdit"
+        datasource="reviewDs"
+        focusComponent="fieldGroup"
+        messagesPack="com.company.reviews.web.review">
+    <dsContext>
+        <datasource id="reviewDs"
+                    class="com.company.reviews.entity.Review"
+                    view="review-view"/>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="scrollBox"
+            spacing="true">
+        <scrollBox id="scrollBox"
+                   spacing="true">
+            <fieldGroup id="fieldGroup"
+                        datasource="reviewDs">
+                <column width="250px">
+                    <field editable="false"
+                           property="review"
+                           rows="5"/>
+                    <field property="moderatedReview"
+                           rows="5"/>
+                    <field editable="false"
+                           property="moderationReason"/>
+                    <field editable="false"
+                           property="author"/>
+                    <field editable="false"
+                           property="parent"/>
+                    <field editable="false"
+                           property="grade"/>
+                    <field editable="false"
+                           property="status"/>
+                </column>
+            </fieldGroup>
+        </scrollBox>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

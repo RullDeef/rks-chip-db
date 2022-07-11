@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        class="ru.spacecorp.mobdekbkp.web.outerpersistenceinfo.Fpersistenceinfo"
+        messagesPack="ru.spacecorp.mobdekbkp.web.outerpersistenceinfo">
+    <dsContext>
+        <collectionDatasource id="outerPersistenceInfoesDs"
+                              class="ru.spacecorp.mobdekbkp.entity.OuterPersistenceInfo"
+                              view="outerPersistenceInfo-view">
+            <query>
+                <![CDATA[select e from mobdekbkp$OuterPersistenceInfo e]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout>
+        <vbox id="vbMain"
+              expand="tblPersistenceInfo"
+              height="100%">
+            <button id="btnCreate"
+                    caption="msg://create"
+                    invoke="onBtnCreateClick"
+                    visible="false"/>
+            <table id="tblPersistenceInfo"
+                   width="100%">
+                <columns>
+                    <column id="singleEffectData"/>
+                    <column id="doseEffectData"/>
+                    <column id="hasFiles"/>
+                </columns>
+                <rows datasource="outerPersistenceInfoesDs"/>
+            </table>
+        </vbox>
+    </layout>
+</window>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="ru.spacecorp.mobdekbkp.web.outerrejection.OuterRejectionEdit"
+        datasource="outerRejectionDs"
+        focusComponent="fieldGroup"
+        messagesPack="ru.spacecorp.mobdekbkp.web.outerrejection">
+    <dsContext>
+        <datasource id="outerRejectionDs"
+                    class="ru.spacecorp.mobdekbkp.entity.OuterRejection"
+                    view="outerRejection-view">
+            <collectionDatasource id="documentsDs"
+                                  property="documents"/>
+        </datasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="tabSheet"
+            spacing="true">
+        <tabSheet id="tabSheet">
+            <tab id="mainTab"
+                 caption="msg://Properties"
+                 margin="true,false,false,false"
+                 spacing="true">
+                <fieldGroup id="fieldGroup"
+                            datasource="outerRejectionDs"
+                            width="100%">
+                    <column width="100%">
+                        <field property="typonominal"/>
+                        <field property="date"/>
+                        <field property="checked"/>
+                        <field property="rejected"/>
+                        <field property="reason"
+                               rows="5"/>
+                        <field property="failedByConsumer"/>
+                        <field property="notChecked"/>
+                        <field property="comment"
+                               rows="5"/>
+                    </column>
+                </fieldGroup>
+            </tab>
+            <tab id="docsTab"
+                 caption="msg://Documents"
+                 margin="true,false,false,false"
+                 spacing="true">
+                <groupBox id="documentsBox"
+                          caption="msg://ru.spacecorp.mobdekbkp.entity/OuterRejection.documents"
+                          height="100%">
+                    <table id="documentsTable"
+                           height="100%"
+                           width="100%">
+                        <actions>
+                            <action id="add"/>
+                            <action id="remove"/>
+                        </actions>
+                        <columns>
+                            <column id="name"/>
+                            <column id="designation"/>
+                            <column id="documentType"/>
+                        </columns>
+                        <rows datasource="documentsDs"/>
+                        <buttonsPanel>
+                            <button action="documentsTable.add"/>
+                            <button action="documentsTable.remove"/>
+                        </buttonsPanel>
+                    </table>
+                </groupBox>
+            </tab>
+        </tabSheet>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

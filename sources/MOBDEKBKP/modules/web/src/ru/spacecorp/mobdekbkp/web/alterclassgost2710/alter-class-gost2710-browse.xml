@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="ru.spacecorp.mobdekbkp.web.alterclassgost2710.AlterClassGost2710Browse"
+        focusComponent="alterClassGost2710sTable"
+        lookupComponent="alterClassGost2710sTable"
+        messagesPack="ru.spacecorp.mobdekbkp.web.alterclassgost2710">
+    <dsContext>
+        <hierarchicalDatasource id="alterClassGost2710sDs"
+                                class="ru.spacecorp.mobdekbkp.entity.AlterClassGost2710"
+                                hierarchyProperty="parent"
+                                view="alterClassGost2710-view">
+            <query>
+                <![CDATA[select e from mobdekbkp$AlterClassGost2710 e]]>
+            </query>
+        </hierarchicalDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="alterClassGost2710sTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="alterClassGost2710sTable"
+                datasource="alterClassGost2710sDs">
+            <properties include=".*"/>
+        </filter>
+        <treeTable id="alterClassGost2710sTable"
+                    width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="typeGroup"/>
+                <column id="typeSamples"/>
+                <column id="code"/>
+                <column id="parent"/>
+            </columns>
+            <rows datasource="alterClassGost2710sDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="alterClassGost2710sTable.create"/>
+                <button id="editBtn"
+                        action="alterClassGost2710sTable.edit"/>
+                <button id="removeBtn"
+                        action="alterClassGost2710sTable.remove"/>
+            </buttonsPanel>
+        </treeTable>
+    </layout>
+</window>

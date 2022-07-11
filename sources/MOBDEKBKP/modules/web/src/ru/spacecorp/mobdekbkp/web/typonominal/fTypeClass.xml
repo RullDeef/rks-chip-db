@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://screenTypeCalss"
+        class="ru.spacecorp.mobdekbkp.web.typonominal.Ftypeclass"
+        messagesPack="ru.spacecorp.mobdekbkp.web.typonominal">
+    <dsContext>
+        <hierarchicalDatasource id="typeClassesDs"
+                                class="ru.spacecorp.mobdekbkp.entity.TypeClass"
+                                hierarchyProperty="parent"
+                                view="typeClass-view">
+            <query>
+                <![CDATA[select e from mobdekbkp$TypeClass e]]>
+            </query>
+        </hierarchicalDatasource>
+        <collectionDatasource id="typesDs"
+                              class="ru.spacecorp.mobdekbkp.entity.Type"
+                              view="_minimal">
+            <query>
+                <![CDATA[select e from mobdekbkp$Type e order by e.designation]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="1200"/>
+    <layout>
+        <vbox expand="groupBoxTables"
+              height="100%"
+              spacing="true">
+            <groupBox id="groupBoxTables"
+                      spacing="true">
+                <hbox height="100%"
+                      spacing="true"
+                      width="100%">
+                    <tree caption="msg://tableClass"
+                          height="100%"
+                          width="130%">
+                        <treechildren datasource="typeClassesDs"/>
+                    </tree>
+                    <table id="tableType"
+                           align="TOP_RIGHT"
+                           caption="msg://tableType"
+                           columnHeaderVisible="false"
+                           height="100%"
+                           width="70%">
+                        <columns>
+                            <column id="designation"/>
+                        </columns>
+                        <rows datasource="typesDs"/>
+                    </table>
+                </hbox>
+            </groupBox>
+            <groupBox orientation="horizontal"
+                      spacing="true"
+                      width="100%">
+                <hbox spacing="true"
+                      width="100%">
+                    <button id="ok"
+                            caption="msg://Ok"
+                            invoke="onOkClick"
+                            width="100%"/>
+                    <button id="cancel"
+                            caption="msg://Cancel"
+                            invoke="onCancelClick"
+                            width="100%"/>
+                </hbox>
+            </groupBox>
+        </vbox>
+    </layout>
+</window>

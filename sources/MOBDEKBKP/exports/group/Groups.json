@@ -1,0 +1,242 @@
+[
+  {
+    "_entityName": "sec$Group",
+    "id": "deffae41-f0ed-17b2-b290-0eee1694cdc8",
+    "parent": {
+      "_entityName": "sec$Group",
+      "id": "2050e32c-013a-1d1c-3810-28b9e5265770",
+      "parent": {
+        "_entityName": "sec$Group",
+        "id": "0fa2b1a5-1d68-4d69-9fbd-dff348347f93",
+        "version": 0,
+        "constraints": [],
+        "name": "Company",
+        "hierarchyList": [],
+        "sessionAttributes": []
+      },
+      "version": 1,
+      "constraints": [
+        {
+          "_entityName": "sec$Constraint",
+          "id": "cae56f1b-bc33-7880-52cd-61225d79926c",
+          "checkType": "MEMORY",
+          "groovyScript": "{E}.moderated\u003d\u003dfalse",
+          "isActive": true,
+          "version": 1,
+          "entityName": "discuss$Comment",
+          "operationType": "UPDATE",
+          "group": {
+            "_entityName": "sec$Group",
+            "id": "2050e32c-013a-1d1c-3810-28b9e5265770"
+          }
+        }
+      ],
+      "name": "Moderators",
+      "hierarchyList": [
+        {
+          "_entityName": "sec$GroupHierarchy",
+          "id": "46585c7c-0fa1-5a43-f025-65db989819f3",
+          "parent": {
+            "_entityName": "sec$Group",
+            "id": "0fa2b1a5-1d68-4d69-9fbd-dff348347f93"
+          },
+          "level": 0,
+          "group": {
+            "_entityName": "sec$Group",
+            "id": "2050e32c-013a-1d1c-3810-28b9e5265770"
+          }
+        },
+        {
+          "_entityName": "sec$GroupHierarchy",
+          "id": "53b72d78-f635-e072-6edc-b6d3319e36a7",
+          "parent": {
+            "_entityName": "sec$Group",
+            "id": "0fa2b1a5-1d68-4d69-9fbd-dff348347f93"
+          },
+          "level": 0,
+          "group": {
+            "_entityName": "sec$Group",
+            "id": "2050e32c-013a-1d1c-3810-28b9e5265770"
+          }
+        },
+        {
+          "_entityName": "sec$GroupHierarchy",
+          "id": "d1fbf22d-fb4a-f564-ad5e-9400fd5a8295",
+          "parent": {
+            "_entityName": "sec$Group",
+            "id": "0fa2b1a5-1d68-4d69-9fbd-dff348347f93"
+          },
+          "level": 0,
+          "group": {
+            "_entityName": "sec$Group",
+            "id": "2050e32c-013a-1d1c-3810-28b9e5265770"
+          }
+        }
+      ],
+      "sessionAttributes": []
+    },
+    "version": 2,
+    "constraints": [
+      {
+        "_entityName": "sec$Constraint",
+        "id": "64866cf8-b2f4-ed0b-8519-d1efad359b28",
+        "checkType": "MEMORY",
+        "groovyScript": "{E}.createdBy \u003d\u003d userSession.user.login",
+        "isActive": true,
+        "version": 1,
+        "entityName": "mobdekbkp$Device",
+        "operationType": "DELETE",
+        "group": {
+          "_entityName": "sec$Group",
+          "id": "deffae41-f0ed-17b2-b290-0eee1694cdc8"
+        }
+      },
+      {
+        "_entityName": "sec$Constraint",
+        "id": "68948a3c-eb96-62dd-54b4-b2cd4aa6902f",
+        "checkType": "MEMORY",
+        "groovyScript": "{E}.createdBy \u003d\u003d userSession.user.login",
+        "isActive": true,
+        "version": 1,
+        "entityName": "mobdekbkp$Device",
+        "operationType": "UPDATE",
+        "group": {
+          "_entityName": "sec$Group",
+          "id": "deffae41-f0ed-17b2-b290-0eee1694cdc8"
+        }
+      },
+      {
+        "_entityName": "sec$Constraint",
+        "id": "85a38a4f-81e1-3afd-41e0-e90b0b9a4aad",
+        "checkType": "DATABASE",
+        "whereClause": "{E}.published \u003d true",
+        "filterXml": "\u003c?xml version\u003d\"1.0\" encoding\u003d\"UTF-8\"?\u003e\n\n\u003cfilter\u003e\n  \u003cand\u003e\n    \u003cc name\u003d\"published\" class\u003d\"java.lang.Boolean\" operatorType\u003d\"EQUAL\" width\u003d\"1\" type\u003d\"PROPERTY\"\u003e\u003c![CDATA[queryEntity.published \u003d :component$filterWithoutId.published10298]]\u003e\n      \u003cparam name\u003d\"component$filterWithoutId.published10298\" javaClass\u003d\"java.lang.Boolean\"\u003eNULL\u003c/param\u003e\n    \u003c/c\u003e\n  \u003c/and\u003e\n\u003c/filter\u003e\n",
+        "isActive": true,
+        "version": 1,
+        "entityName": "mobdekbkp$Handbook",
+        "operationType": "READ",
+        "group": {
+          "_entityName": "sec$Group",
+          "id": "deffae41-f0ed-17b2-b290-0eee1694cdc8"
+        }
+      },
+      {
+        "_entityName": "sec$Constraint",
+        "id": "01ae75c1-53db-4d47-3651-e1bdb26bff91",
+        "checkType": "DATABASE",
+        "whereClause": "{E}.commentStatus\u003c\u003e\u0027notApproved\u0027",
+        "isActive": true,
+        "version": 1,
+        "entityName": "discuss$Comment",
+        "operationType": "READ",
+        "group": {
+          "_entityName": "sec$Group",
+          "id": "deffae41-f0ed-17b2-b290-0eee1694cdc8"
+        }
+      }
+    ],
+    "name": "CommonUsers",
+    "hierarchyList": [
+      {
+        "_entityName": "sec$GroupHierarchy",
+        "id": "fa7fe65b-4a77-713e-ec6b-ef244471247a",
+        "parent": {
+          "_entityName": "sec$Group",
+          "id": "0fa2b1a5-1d68-4d69-9fbd-dff348347f93"
+        },
+        "level": 0,
+        "group": {
+          "_entityName": "sec$Group",
+          "id": "deffae41-f0ed-17b2-b290-0eee1694cdc8"
+        }
+      },
+      {
+        "_entityName": "sec$GroupHierarchy",
+        "id": "eed90ff0-da7f-8a09-7aaf-86f3c4ff9d97",
+        "parent": {
+          "_entityName": "sec$Group",
+          "id": "0fa2b1a5-1d68-4d69-9fbd-dff348347f93"
+        },
+        "level": 0,
+        "group": {
+          "_entityName": "sec$Group",
+          "id": "deffae41-f0ed-17b2-b290-0eee1694cdc8"
+        }
+      },
+      {
+        "_entityName": "sec$GroupHierarchy",
+        "id": "fe77a483-e496-d9cd-f661-b43fe0151648",
+        "parent": {
+          "_entityName": "sec$Group",
+          "id": "0fa2b1a5-1d68-4d69-9fbd-dff348347f93"
+        },
+        "level": 0,
+        "group": {
+          "_entityName": "sec$Group",
+          "id": "deffae41-f0ed-17b2-b290-0eee1694cdc8"
+        }
+      },
+      {
+        "_entityName": "sec$GroupHierarchy",
+        "id": "835fa583-98db-2b16-e568-18b4e8354a58",
+        "parent": {
+          "_entityName": "sec$Group",
+          "id": "0fa2b1a5-1d68-4d69-9fbd-dff348347f93"
+        },
+        "level": 1,
+        "group": {
+          "_entityName": "sec$Group",
+          "id": "deffae41-f0ed-17b2-b290-0eee1694cdc8"
+        }
+      },
+      {
+        "_entityName": "sec$GroupHierarchy",
+        "id": "34ff1cb2-4760-9dfc-bbe8-f4c9c8e92865",
+        "parent": {
+          "_entityName": "sec$Group",
+          "id": "2050e32c-013a-1d1c-3810-28b9e5265770"
+        },
+        "level": 1,
+        "group": {
+          "_entityName": "sec$Group",
+          "id": "deffae41-f0ed-17b2-b290-0eee1694cdc8"
+        }
+      },
+      {
+        "_entityName": "sec$GroupHierarchy",
+        "id": "70d6a0a8-fba5-2926-3885-e82eddd55e40",
+        "parent": {
+          "_entityName": "sec$Group",
+          "id": "2050e32c-013a-1d1c-3810-28b9e5265770"
+        },
+        "level": 1,
+        "group": {
+          "_entityName": "sec$Group",
+          "id": "deffae41-f0ed-17b2-b290-0eee1694cdc8"
+        }
+      },
+      {
+        "_entityName": "sec$GroupHierarchy",
+        "id": "f0cb3c07-3816-5360-4a4f-9aaf16559f0d",
+        "parent": {
+          "_entityName": "sec$Group",
+          "id": "2050e32c-013a-1d1c-3810-28b9e5265770"
+        },
+        "level": 2,
+        "group": {
+          "_entityName": "sec$Group",
+          "id": "deffae41-f0ed-17b2-b290-0eee1694cdc8"
+        }
+      }
+    ],
+    "sessionAttributes": []
+  },
+  {
+    "_entityName": "sec$Group",
+    "id": "0fa2b1a5-1d68-4d69-9fbd-dff348347f93"
+  },
+  {
+    "_entityName": "sec$Group",
+    "id": "2050e32c-013a-1d1c-3810-28b9e5265770"
+  }
+]

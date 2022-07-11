@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="com.spacecorp.rulesmodule.web.rulescript.RuleScriptBrowse"
+        focusComponent="ruleScriptsTable"
+        lookupComponent="ruleScriptsTable"
+        messagesPack="com.spacecorp.rulesmodule.web.rulescript">
+    <dsContext>
+        <groupDatasource id="ruleScriptsDs"
+                         class="com.spacecorp.rulesmodule.entity.RuleScript"
+                         view="_local">
+            <query>
+                <![CDATA[select e from rulesmodule$RuleScript e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="ruleScriptsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="ruleScriptsTable"
+                datasource="ruleScriptsDs">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="ruleScriptsTable"
+                    width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="name"/>
+                <column id="script"/>
+                <column id="comment"/>
+            </columns>
+            <rows datasource="ruleScriptsDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="ruleScriptsTable.create"/>
+                <button id="editBtn"
+                        action="ruleScriptsTable.edit"/>
+                <button id="removeBtn"
+                        action="ruleScriptsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

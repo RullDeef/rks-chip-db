@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<views xmlns="http://schemas.haulmont.com/cuba/view.xsd">
+    <view class="ru.iovchinnikov.talks.entity.Comment"
+          extends="_minimal"
+          name="comment-view"
+          systemProperties="true">
+        <property name="parent"
+                  view="_minimal">
+            <property name="updateTs"/>
+        </property>
+        <property name="contents"/>
+        <property name="entity"/>
+        <property name="entityName"/>
+        <property name="hasAnswer"/>
+        <property name="commentStatus"/>
+        <property name="moderatedContent"/>
+        <property name="moderated"/>
+    </view>
+</views>

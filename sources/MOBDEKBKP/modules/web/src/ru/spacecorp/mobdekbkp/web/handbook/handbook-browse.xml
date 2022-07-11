@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="ru.spacecorp.mobdekbkp.web.handbook.HandbookBrowse"
+        focusComponent="handbooksTable"
+        lookupComponent="handbooksTable"
+        messagesPack="ru.spacecorp.mobdekbkp.web.handbook">
+    <dsContext>
+        <groupDatasource id="handbooksDs"
+                         class="ru.spacecorp.mobdekbkp.entity.Handbook"
+                         view="handbook-view">
+            <query>
+                <![CDATA[select e from mobdekbkp$Handbook e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="handbooksTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="handbooksTable"
+                datasource="handbooksDs">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="handbooksTable"
+                    width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="name"/>
+            </columns>
+            <rows datasource="handbooksDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="handbooksTable.create"/>
+                <button id="editBtn"
+                        action="handbooksTable.edit"/>
+                <button id="removeBtn"
+                        action="handbooksTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

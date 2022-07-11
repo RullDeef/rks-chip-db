@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="ru.spacecorp.mobdekbkp.web.typonominal.Typonominalmaincombined"
+        lookupComponent="tblTn"
+        messagesPack="ru.spacecorp.mobdekbkp.web.typonominal">
+    <dsContext>
+        <collectionDatasource id="typonominalsDs"
+                              class="ru.spacecorp.mobdekbkp.entity.Typonominal"
+                              datasourceClass="ru.spacecorp.mobdekbkp.web.typonominal.CustTyponominalDs"
+                              view="tn-names">
+            <query>
+                <![CDATA[select e from mobdekbkp$Typonominal e order by e.name]]>
+            </query>
+        </collectionDatasource>
+        <collectionDatasource id="typesDs"
+                              class="ru.spacecorp.mobdekbkp.entity.Type"
+                              view="type-names">
+            <query>
+                <![CDATA[select e from mobdekbkp$Type e order by e.designation]]>
+            </query>
+        </collectionDatasource>
+        <hierarchicalDatasource id="typeClassesDs"
+                                class="ru.spacecorp.mobdekbkp.entity.TypeClass"
+                                hierarchyProperty="parent"
+                                view="typeClass-view">
+            <query>
+                <![CDATA[select e from mobdekbkp$TypeClass e]]>
+            </query>
+        </hierarchicalDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout height="100%"
+            margin="true"
+            spacing="true">
+        <split enable="false"
+               height="100%"
+               maxSplitPosition="70%"
+               minSplitPosition="20%"
+               orientation="horizontal"
+               pos="40"
+               width="100%">
+            <vbox expand="gbMain"
+                  height="100%"
+                  margin="false,true,false,false">
+                <vbox id="filterVbox"
+                      spacing="true">
+                    <hbox id="hboxFilterBtn"
+                          spacing="true"
+                          width="100%">
+                        <filter id="typonominalsFilter"
+                                datasource="typonominalsDs">
+                            <properties excludeProperties="id, createdBy, updatedBy, deleteTs, deletedBy, libAttributes, body.id, body.createTs,                     body.createdBy, body.updateTs, body.updatedBy, body.deleteTs, body.deletedBy, body.models, body.dimensionsAndBody, body.photo, body.fixatorMarkup,                     body.pinFormingDesignation, body.bodyMaterial.id, body.bodyMaterial.createTs, body.bodyMaterial.createdBy, body.bodyMaterial.updateTs,                     body.bodyMaterial.updatedBy, body.bodyMaterial.deleteTs, body.bodyMaterial.deletedBy, body.bodyMaterial.name, body.bodyMaterial.type,                     body.pinsMaterial.id, body.pinsMaterial.createTs, body.pinsMaterial.createdBy, body.pinsMaterial.updateTs, body.pinsMaterial.updatedBy,                     body.pinsMaterial.deleteTs, body.pinsMaterial.deletedBy, body.pinsMaterial.name, body.pinsMaterial.type, body.coatingMaterial.id,                     body.coatingMaterial.createTs, body.coatingMaterial.createdBy, body.coatingMaterial.updateTs, body.coatingMaterial.updatedBy,                     body.coatingMaterial.deleteTs, body.coatingMaterial.deletedBy, body.coatingMaterial.name, body.coatingMaterial.type, installParameters.id,                     installParameters.createTs, installParameters.createdBy, installParameters.updateTs, installParameters.updatedBy, installParameters.deleteTs,                     installParameters.deletedBy, installParameters.bodyInstallationDocument, installParameters.pinFormingDocument,                     installParameters.gasketMaterial.id, installParameters.gasketMaterial.createTs, installParameters.gasketMaterial.createdBy,                     installParameters.gasketMaterial.updateTs, installParameters.gasketMaterial.updatedBy, installParameters.gasketMaterial.deleteTs,                     installParameters.gasketMaterial.deletedBy, installParameters.gasketMaterial.name, installParameters.gasketMaterial.type, installParameters.glueType.id,                     installParameters.glueType.createTs, installParameters.glueType.createdBy, installParameters.glueType.updateTs, installParameters.glueType.updatedBy,                     installParameters.glueType.deleteTs, installParameters.glueType.deletedBy, installParameters.glueType.name, installParameters.installMethod.id,                     installParameters.installMethod.createTs, installParameters.installMethod.createdBy, installParameters.installMethod.updateTs,                     installParameters.installMethod.updatedBy, installParameters.installMethod.deleteTs, installParameters.installMethod.deletedBy,                     installParameters.installMethod.name, installParameters.solderBrand.id, installParameters.solderBrand.createTs, installParameters.solderBrand.createdBy,                     installParameters.solderBrand.updateTs, installParameters.solderBrand.updatedBy, installParameters.solderBrand.deleteTs, installParameters.solderBrand.deletedBy,                     installParameters.solderBrand.name, installParameters.fluxBrand.id, installParameters.fluxBrand.createTs, installParameters.fluxBrand.createdBy,                     installParameters.fluxBrand.updateTs, installParameters.fluxBrand.updatedBy, installParameters.fluxBrand.deleteTs, installParameters.fluxBrand.deletedBy,                     installParameters.fluxBrand.name, typonominalQualityLevelNative.id, typonominalQualityLevelNative.createTs, typonominalQualityLevelNative.createdBy,                     typonominalQualityLevelNative.updateTs, typonominalQualityLevelNative.updatedBy, typonominalQualityLevelNative.deleteTs, typonominalQualityLevelNative.deletedBy,                     typonominalQualityLevelNative.name, typonominalQualityLevelImport.id, typonominalQualityLevelImport.createTs, typonominalQualityLevelImport.createdBy,                     typonominalQualityLevelImport.updateTs, typonominalQualityLevelImport.updatedBy, typonominalQualityLevelImport.deleteTs, typonominalQualityLevelImport.deletedBy,                     typonominalQualityLevelImport.name, type.id, type.createTs, type.createdBy, type.updateTs, type.updatedBy, type.deleteTs, type.deletedBy,                     type.standardApplicationSchemes, type.deliveryDocument, type.mathModelParams, type.amountUnit.id, type.amountUnit.createTs, type.amountUnit.createdBy,                     type.amountUnit.updateTs, type.amountUnit.updatedBy, type.amountUnit.deleteTs, type.amountUnit.deletedBy, type.amountUnit.name, type.amountUnit.shortName,                     type.climaticImplementation.id, type.climaticImplementation.createTs, type.climaticImplementation.createdBy, type.climaticImplementation.updateTs,                     type.climaticImplementation.updatedBy, type.climaticImplementation.deleteTs, type.climaticImplementation.deletedBy, type.climaticImplementation.name,                     type.typeClass.id, type.typeClass.createTs, type.typeClass.createdBy, type.typeClass.updateTs, type.typeClass.updatedBy, type.typeClass.deleteTs,                     type.typeClass.deletedBy, type.typeClass.number, type.typeClass.name, type.typeClass.parent, type.typeClass.type"
+                                        include=".*"/>
+                        </filter>
+                    </hbox>
+                </vbox>
+                <groupBox id="gbMain"
+                          spacing="true">
+                    <vbox expand="tableBox"
+                          height="100%"
+                          spacing="true">
+                        <hbox spacing="true">
+                            <popupButton id="allBtns"
+                                         icon="BARS">
+                                <actions>
+                                    <action id="excel"
+                                            caption="msg://excel"
+                                            invoke="onExcel"/>
+                                    <action id="report"
+                                            caption="msg://reportButton"
+                                            icon="icons/reports-print.png"
+                                            invoke="onReport"/>
+                                </actions>
+                            </popupButton>
+                        </hbox>
+                        <hbox id="tableBox"
+                              spacing="true"
+                              width="100%">
+                            <groupBox id="gbClass"
+                                      caption="msg://typeClass"
+                                      height="100%"
+                                      spacing="true">
+                                <treeTable id="tblClass"
+                                           columnControlVisible="false"
+                                           columnHeaderVisible="false"
+                                           height="100%"
+                                           multiLineCells="true"
+                                           reorderingAllowed="false"
+                                           settingsEnabled="false"
+                                           width="100%">
+                                    <columns>
+                                        <column id="name"/>
+                                    </columns>
+                                    <rows datasource="typeClassesDs"/>
+                                </treeTable>
+                            </groupBox>
+                            <groupBox id="gbTypes"
+                                      caption="msg://Type"
+                                      height="100%"
+                                      spacing="true">
+                                <dataGrid id="tblType"
+                                          columnsCollapsingAllowed="false"
+                                          datasource="typesDs"
+                                          headerVisible="false"
+                                          height="100%"
+                                          reorderingAllowed="false"
+                                          settingsEnabled="false"
+                                          width="100%">
+                                    <columns>
+                                        <column id="designation"
+                                                property="designation"
+                                                sortable="false"/>
+                                    </columns>
+                                </dataGrid>
+                            </groupBox>
+                            <groupBox id="gbTns"
+                                      caption="msg://Typonominal"
+                                      height="100%"
+                                      spacing="true">
+                                <dataGrid id="tblTn"
+                                          columnsCollapsingAllowed="false"
+                                          datasource="typonominalsDs"
+                                          headerVisible="false"
+                                          height="100%"
+                                          reorderingAllowed="false"
+                                          settingsEnabled="false"
+                                          width="100%">
+                                    <actions>
+                                        <action id="excel"/>
+                                        <action id="edit"
+                                                invoke="onEdit"/>
+                                    </actions>
+                                    <columns>
+                                        <column id="name"
+                                                property="name"
+                                                sortable="false"/>
+                                    </columns>
+                                </dataGrid>
+                            </groupBox>
+                        </hbox>
+                    </vbox>
+                </groupBox>
+            </vbox>
+            <vbox height="100%"
+                  margin="false,false,false,true"
+                  spacing="true">
+                <frame id="cardFrame"
+                       height="100%"
+                       screen="tn-card-frame"/>
+            </vbox>
+        </split>
+    </layout>
+</window>

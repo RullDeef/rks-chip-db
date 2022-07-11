@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="com.company.reviews.web.moderationproperty.ModerationPropertyEdit"
+        datasource="moderationPropertyDs"
+        focusComponent="fieldGroup"
+        messagesPack="com.company.reviews.web.moderationproperty">
+    <dsContext>
+        <datasource id="moderationPropertyDs"
+                    class="com.company.reviews.entity.ModerationProperty"
+                    view="moderationProperty-view">
+            <collectionDatasource id="selectedEntitiesDs"
+                                  property="selectedEntities"/>
+            <collectionDatasource id="moderatorsDs"
+                                  property="moderators"/>
+        </datasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true">
+        <vbox spacing="true">
+            <hbox expand="packageLookup"
+                  spacing="true"
+                  width="30%">
+                <label value="msg://Package"/>
+                <lookupField id="packageLookup"/>
+            </hbox>
+            <hbox expand="entityLookup"
+                  spacing="true"
+                  width="30%">
+                <label value="msg://Entity"/>
+                <lookupField id="entityLookup"
+                             datasource="moderationPropertyDs"
+                             property="entity"/>
+            </hbox>
+            <fieldGroup id="fieldGroup"
+                        datasource="moderationPropertyDs"
+                        width="30%">
+                <column width="100%">
+                    <field property="moderationType"/>
+                </column>
+            </fieldGroup>
+            <groupBox caption="msg://Entity moderation"
+                      spacing="true">
+                <table id="entityTable"
+                       width="100%">
+                    <actions>
+                        <action id="create"/>
+                        <action id="edit"/>
+                        <action id="remove"/>
+                    </actions>
+                    <columns>
+                        <column id="entityId"/>
+                    </columns>
+                    <rows datasource="selectedEntitiesDs"/>
+                    <buttonsPanel>
+                        <button action="entityTable.create"/>
+                        <button action="entityTable.edit"/>
+                        <button action="entityTable.remove"/>
+                    </buttonsPanel>
+                </table>
+            </groupBox>
+            <groupBox caption="msg://Moderators"
+                      spacing="true">
+                <table id="moderatorTable"
+                       width="100%">
+                    <actions>
+                        <action id="add"/>
+                        <action id="remove"/>
+                    </actions>
+                    <columns>
+                        <column id="login"/>
+                        <column id="name"/>
+                    </columns>
+                    <rows datasource="moderatorsDs"/>
+                    <buttonsPanel>
+                        <button action="moderatorTable.add"/>
+                        <button action="moderatorTable.remove"/>
+                    </buttonsPanel>
+                </table>
+            </groupBox>
+            <frame id="windowActions"
+                   screen="editWindowActions"/>
+        </vbox>
+    </layout>
+</window>

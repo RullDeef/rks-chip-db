@@ -1,0 +1,13 @@
+@mixin ratingframe($primary-stylename: ratingframe) {
+    .#{$primary-stylename} div[class="v-label v-widget v-has-width v-has-height rating v-label-rating"] {
+        font-size: 1vw;
+        align-content: center;
+        display: inline;
+    }
+
+    .#{$primary-stylename} div[class="v-label v-widget v-has-width v-has-height total v-label-total"] {
+        font-size: 0.6vw;
+        align-content: center;
+        display: inline;
+    }
+}

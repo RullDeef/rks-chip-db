@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="ru.spacecorp.mobdekbkp.web.devicelistprojectaddition.DeviceListProjectAdditionBrowse"
+        focusComponent="deviceListProjectAdditionsTable"
+        lookupComponent="deviceListProjectAdditionsTable"
+        messagesPack="ru.spacecorp.mobdekbkp.web.devicelistprojectaddition">
+    <dsContext>
+        <groupDatasource id="deviceListProjectAdditionsDs"
+                         class="ru.spacecorp.mobdekbkp.entity.DeviceListProjectAddition"
+                         view="deviceListProjectAddition-view">
+            <query>
+                <![CDATA[select e from mobdekbkp$DeviceListProjectAddition e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="deviceListProjectAdditionsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="deviceListProjectAdditionsTable"
+                datasource="deviceListProjectAdditionsDs">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="deviceListProjectAdditionsTable"
+                    width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="name"/>
+                <column id="status"/>
+            </columns>
+            <rows datasource="deviceListProjectAdditionsDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="deviceListProjectAdditionsTable.create"/>
+                <button id="editBtn"
+                        action="deviceListProjectAdditionsTable.edit"/>
+                <button id="removeBtn"
+                        action="deviceListProjectAdditionsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

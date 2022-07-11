@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title>Потребность в применении</title>
+    <style>
+      *{
+        font-family: Times New Roman;
+       }
+      .table_header{
+        position: relative;
+        left: 10%;
+      }
+      .left_cell_header{
+        position: relative;
+        padding-left: 60px;
+      }
+      .main_table{
+        border: 1px solid;
+        text-align: center;
+        margin-left: 20px;
+        border-collapse: collapse;
+      }
+      .main_table td{
+        border: 1px solid;
+        padding: 5px;
+      }
+      .main_table tr:last-child{
+        display:none;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+    <#assign ReportName = Root.bands.reportname>
+    <#assign yr = Root.bands.yr>
+    <#assign hmain = Root.bands.hmain>
+    <#assign main = Root.bands.main>
+    <h1 class="header_name">${(ReportName[0].fields('name'))!?string!}</h1>
+    <table class="main_table">
+      <tr>
+        <td>${hmain[0].fields.henum}</td>
+        <td>${hmain[0].fields.hdesignation}</td>
+        <td>${hmain[0].fields.hqlevel}</td>
+        <td>${hmain[0].fields.hamount}</td>
+        <td>${hmain[0].fields.hcompanies}</td>
+        <td>${hmain[0].fields.hdevelopers}</td>
+      </tr>
+      <#list main as main_>
+        <tr>
+          <td>${main_.fields.enum}</td>
+          <td>${main_.fields.designation}</td>
+          <td>${main_.fields.qlevel}</td>
+          <td>${main_.fields.amount}</td>
+          <td>${main_.fields.companies}</td>
+          <td>${main_.fields.developers}</td>
+        </tr>
+      </#list>
+    </table>
+  </div>
+  </body>
+</html>

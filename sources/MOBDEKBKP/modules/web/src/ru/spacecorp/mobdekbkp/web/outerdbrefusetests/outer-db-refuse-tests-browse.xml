@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="ru.spacecorp.mobdekbkp.web.outerdbrefusetests.OuterDbRefuseTestsBrowse"
+        focusComponent="outerDbRefuseTestsesTable"
+        lookupComponent="outerDbRefuseTestsesTable"
+        messagesPack="ru.spacecorp.mobdekbkp.web.outerdbrefusetests">
+    <dsContext>
+        <groupDatasource id="outerDbRefuseTestsesDs"
+                         class="ru.spacecorp.mobdekbkp.entity.OuterDbRefuseTests"
+                         view="_local">
+            <query>
+                <![CDATA[select e from mobdekbkp$OuterDbRefuseTests e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="outerDbRefuseTestsesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="outerDbRefuseTestsesTable"
+                datasource="outerDbRefuseTestsesDs">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="outerDbRefuseTestsesTable"
+                    width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="name"/>
+            </columns>
+            <rows datasource="outerDbRefuseTestsesDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="outerDbRefuseTestsesTable.create"/>
+                <button id="editBtn"
+                        action="outerDbRefuseTestsesTable.edit"/>
+                <button id="removeBtn"
+                        action="outerDbRefuseTestsesTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

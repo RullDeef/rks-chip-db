@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://template"
+        class="com.company.importmodule.web.screens.Templatescreen"
+        messagesPack="com.company.importmodule.web.screens">
+    <dialogMode height="600"
+                width="800"/>
+    <layout>
+        <hbox spacing="true"
+              width="100%">
+            <vbox spacing="true">
+                <lookupField id="rootPackageLkup"
+                             caption="msg://Root package"
+                             width="40%"/>
+                <lookupField id="entityLkup"
+                             caption="msg://Entity"
+                             width="40%"/>
+                <twinColumn id="propertyColumn"
+                            addAllBtnEnabled="true"
+                            caption="msg://Fields"
+                            width="50%"/>
+                <button id="createTemplate"
+                        caption="msg://Create template"
+                        invoke="onCreateTemplateClick"/>
+            </vbox>
+        </hbox>
+    </layout>
+</window>

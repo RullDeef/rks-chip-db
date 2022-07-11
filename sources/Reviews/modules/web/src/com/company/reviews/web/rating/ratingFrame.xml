@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://caption"
+        class="com.company.reviews.web.rating.Ratingframe"
+        messagesPack="com.company.reviews.web.rating"
+        xmlns:chart="http://schemas.haulmont.com/charts/charts.xsd">
+    <dialogMode height="600"
+                width="800"/>
+    <layout>
+        <hbox height="100%"
+              responsive="true"
+              spacing="true"
+              width="100%">
+            <grid height="100%"
+                  responsive="true"
+                  spacing="true"
+                  stylename="ratingframe"
+                  width="100%">
+                <columns>
+                    <column flex="0.2"/>
+                    <column flex="0.8"/>
+                </columns>
+                <rows>
+                    <row>
+                        <hbox height="100%"
+                              spacing="true"
+                              width="100%">
+                            <label id="ratingLabel"
+                                   align="MIDDLE_CENTER"
+                                   height="100%"
+                                   htmlEnabled="true"
+                                   stylename="rating"
+                                   width="100%"/>
+                        </hbox>
+                        <chart:serialChart id="serialChart"
+                                           categoryField="rating"
+                                           height="100%"
+                                           marginLeft="0"
+                                           marginTop="10"
+                                           plotAreaBorderAlpha="0"
+                                           rotate="true"
+                                           rowspan="2"
+                                           width="100%">
+                            <chart:data>
+                            </chart:data>
+                            <chart:valueAxes>
+                                <chart:axis axisAlpha="0"
+                                            color="WHITE"
+                                            gridAlpha="0"
+                                            position="BOTTOM"
+                                            stackType="REGULAR"/>
+                            </chart:valueAxes>
+                            <chart:graphs>
+                                <chart:graph alphaField="0"
+                                             fillAlphas="0.6"
+                                             lineAlpha="0"
+                                             lineColor="GREEN"
+                                             type="COLUMN"
+                                             valueField="value5"/>
+                                <chart:graph alphaField="0"
+                                             fillAlphas="0.6"
+                                             lineAlpha="0"
+                                             lineColor="YELLOW"
+                                             type="COLUMN"
+                                             valueField="value4"/>
+                                <chart:graph alphaField="0"
+                                             fillAlphas="0.6"
+                                             lineAlpha="0"
+                                             lineColor="ORANGE"
+                                             type="COLUMN"
+                                             valueField="value3"/>
+                                <chart:graph alphaField="0"
+                                             fillAlphas="0.6"
+                                             lineAlpha="0"
+                                             lineColor="RED"
+                                             type="COLUMN"
+                                             valueField="value2"/>
+                                <chart:graph alphaField="0"
+                                             fillAlphas="0.6"
+                                             lineAlpha="0"
+                                             lineColor="DARKRED"
+                                             type="COLUMN"
+                                             valueField="value1"/>
+                            </chart:graphs>
+                            <chart:categoryAxis gridAlpha="0"
+                                                startOnAxis="false"/>
+                        </chart:serialChart>
+                    </row>
+                    <row>
+                        <hbox height="100%"
+                              spacing="true"
+                              width="100%">
+                            <label id="totalLabel"
+                                   align="MIDDLE_CENTER"
+                                   height="100%"
+                                   htmlEnabled="true"
+                                   stylename="total"
+                                   width="100%"/>
+                        </hbox>
+                    </row>
+                </rows>
+            </grid>
+        </hbox>
+    </layout>
+</window>

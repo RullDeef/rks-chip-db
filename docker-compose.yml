@@ -1,0 +1,28 @@
+version: '3.7'
+
+services:
+  nexus:
+    build: nexus
+    container_name: nexus
+    ports:
+      - '8081:8081'
+    volumes:
+      - ./nexus/data:/nexus-data
+  database:
+    image: postgres:10-alpine
+    container_name: database
+    ports:
+      - '5432:5432'
+    volumes:
+      - ./database/data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=postgres
+  builder:
+    build: builder
+    container_name: builder
+    network_mode: host
+    volumes:
+      - ./sources:/home/gradle
+    depends_on:
+      - nexus
+      - database

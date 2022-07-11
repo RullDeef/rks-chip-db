@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="com.company.reviews.web.entitiesformoderation.EntitiesForModerationEdit"
+        datasource="entitiesForModerationDs"
+        focusComponent="fieldGroup"
+        messagesPack="com.company.reviews.web.entitiesformoderation">
+    <dsContext>
+        <datasource id="entitiesForModerationDs"
+                    class="com.company.reviews.entity.EntitiesForModeration"
+                    view="entitiesForModeration-view">
+            <collectionDatasource id="moderatorsDs"
+                                  property="moderators"/>
+        </datasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true">
+        <vbox expand="moderatorBox"
+              height="100%"
+              spacing="true">
+            <hbox expand="entityPicker"
+                  spacing="true"
+                  width="30%">
+                <label value="msg://Entity"/>
+                <pickerField id="entityPicker"
+                             width="30%"/>
+            </hbox>
+            <fieldGroup id="fieldGroup"
+                        datasource="entitiesForModerationDs"
+                        editable="false"
+                        width="30%">
+                <column width="100%">
+                    <field property="entityId"/>
+                </column>
+            </fieldGroup>
+            <groupBox id="moderatorBox"
+                      caption="msg://Moderators"
+                      spacing="true">
+                <table id="moderatorTable"
+                       height="100%"
+                       width="100%">
+                    <actions>
+                        <action id="add"/>
+                        <action id="remove"/>
+                    </actions>
+                    <columns>
+                        <column id="login"/>
+                        <column id="name"/>
+                    </columns>
+                    <rows datasource="moderatorsDs"/>
+                    <buttonsPanel>
+                        <button action="moderatorTable.add"/>
+                        <button action="moderatorTable.remove"/>
+                    </buttonsPanel>
+                </table>
+            </groupBox>
+            <frame id="windowActions"
+                   screen="editWindowActions"/>
+        </vbox>
+    </layout>
+</window>

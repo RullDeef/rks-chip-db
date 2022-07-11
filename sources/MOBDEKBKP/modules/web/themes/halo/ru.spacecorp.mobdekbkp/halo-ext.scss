@@ -1,0 +1,37 @@
+/* Define your theme modifications inside next mixin */
+//@import "../../../../../halo"
+@import "../components/dashboard/dashboard";
+@import "../components/amchart/hideCredit";
+@import "../components/richtextarea/smallRichTextArea";
+@import "../components/richtextarea/rtaPickerField";
+@import "../components/table/tableCellColors";
+@import "../components/datagrid/datagridCellColors";
+@import "../components/mutilinetabsheet/mutilinetabsheet";
+
+
+@mixin ru_spacecorp_mobdekbkp-halo-ext {
+@include halo;
+@include mobd-dashboard;
+@include hideCredit;
+@include smallRichTextArea;
+@include tableCellColors;
+@include datagridCellColors;
+@include mutilinetabsheet;
+@include rtaPickerField;
+
+
+
+
+
+  .color-menu-new2 {
+    color: red;
+  }
+
+  .oshibkaFieldWhite {
+    border: inherit;
+  }
+  .oshibkaFieldPink {
+    border: 2px solid red;
+  }
+
+}

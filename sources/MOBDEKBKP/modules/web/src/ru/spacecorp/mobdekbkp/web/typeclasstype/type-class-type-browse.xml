@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="ru.spacecorp.mobdekbkp.web.typeclasstype.TypeClassTypeBrowse"
+        focusComponent="typeClassTypesTable"
+        lookupComponent="typeClassTypesTable"
+        messagesPack="ru.spacecorp.mobdekbkp.web.typeclasstype">
+    <dsContext>
+        <groupDatasource id="typeClassTypesDs"
+                         class="ru.spacecorp.mobdekbkp.entity.TypeClassType"
+                         view="typeClassType-view">
+            <query>
+                <![CDATA[select e from mobdekbkp$TypeClassType e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="typeClassTypesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="typeClassTypesTable"
+                datasource="typeClassTypesDs">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="typeClassTypesTable"
+                    width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="name"/>
+            </columns>
+            <rows datasource="typeClassTypesDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="typeClassTypesTable.create"/>
+                <button id="editBtn"
+                        action="typeClassTypesTable.edit"/>
+                <button id="removeBtn"
+                        action="typeClassTypesTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

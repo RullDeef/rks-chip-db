@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="ru.spacecorp.mobdekbkp.web.supportinfo.SupportInfoBrowse"
+        focusComponent="supportInfoesTable"
+        lookupComponent="supportInfoesTable"
+        messagesPack="ru.spacecorp.mobdekbkp.web.supportinfo">
+    <dsContext>
+        <groupDatasource id="supportInfoesDs"
+                         class="ru.spacecorp.mobdekbkp.entity.SupportInfo"
+                         view="supportInfo-view">
+            <query>
+                <![CDATA[select e from mobdekbkp$SupportInfo e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="supportInfoesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="supportInfoesTable"
+                datasource="supportInfoesDs">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="supportInfoesTable"
+                    width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="phone"/>
+                <column id="instructions"/>
+                <column id="mail"/>
+                <column id="message"/>
+                <column id="expiration"/>
+            </columns>
+            <rows datasource="supportInfoesDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="supportInfoesTable.create"/>
+                <button id="editBtn"
+                        action="supportInfoesTable.edit"/>
+                <button id="removeBtn"
+                        action="supportInfoesTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

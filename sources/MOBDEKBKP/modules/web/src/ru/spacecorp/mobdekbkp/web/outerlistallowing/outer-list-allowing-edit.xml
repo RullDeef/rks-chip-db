@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="ru.spacecorp.mobdekbkp.web.outerlistallowing.OuterListAllowingEdit"
+        datasource="outerListAllowingDs"
+        focusComponent="outerListAllowingFieldGroup"
+        messagesPack="ru.spacecorp.mobdekbkp.web.outerlistallowing">
+    <dsContext>
+        <datasource id="outerListAllowingDs"
+                    class="ru.spacecorp.mobdekbkp.entity.OuterListAllowing"
+                    view="outerListAllowing-view">
+            <groupDatasource id="entriesDs"
+                             property="entries"/>
+            <collectionDatasource id="documentsDs"
+                                  property="documents"/>
+        </datasource>
+        <collectionDatasource id="typesDs"
+                              class="ru.spacecorp.mobdekbkp.entity.OuterListType"
+                              view="_minimal">
+            <query>
+                <![CDATA[select e from mobdekbkp$OuterListType e]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true">
+        <vbox spacing="true">
+            <hbox spacing="true">
+                <fieldGroup id="outerListAllowingFieldGroup"
+                            datasource="outerListAllowingDs"
+                            height="100%">
+                    <column width="250px">
+                        <field property="number"/>
+                        <field property="name"/>
+                        <field datasource="outerListAllowingDs"
+                               optionsDatasource="typesDs"
+                               property="type"/>
+                        <field property="startDate"/>
+                        <field property="endDate"/>
+                        <field property="substituting"/>
+                        <field property="releaseYear"/>
+                        <field property="isModification"/>
+                    </column>
+                </fieldGroup>
+                <groupBox id="groupBoxOuterList"
+                          caption="msg://ru.spacecorp.mobdekbkp.entity/OuterListAllowing.documents"
+                          spacing="true"
+                          width="650px">
+                    <table id="documentTableOuterList"
+                           height="300px"
+                           width="100%">
+                        <actions>
+                            <action id="add"/>
+                            <action id="exclude"/>
+                        </actions>
+                        <columns>
+                            <column id="name"/>
+                            <column id="documentType"/>
+                            <column id="designation"/>
+                        </columns>
+                        <rows datasource="documentsDs"/>
+                        <buttonsPanel id="outerListBtnPanel">
+                            <button id="addBtnDoOuterList"
+                                    action="documentTableOuterList.add"/>
+                            <button id="excludeBnDocOuterList"
+                                    action="documentTableOuterList.exclude"/>
+                        </buttonsPanel>
+                    </table>
+                </groupBox>
+            </hbox>
+            <groupBox id="groupBoxLinkToListEntry"
+                      caption="msg://typonominals"
+                      height="400px"
+                      spacing="true"
+                      width="700px">
+                <table id="entriesTable"
+                       height="100%"
+                       width="100%">
+                    <actions>
+                        <action id="create"/>
+                        <action id="edit"/>
+                        <action id="remove"/>
+                    </actions>
+                    <columns>
+                        <column id="typonominal.name"/>
+                        <column id="linkToListEntry"/>
+                    </columns>
+                    <rows datasource="entriesDs"/>
+                    <buttonsPanel id="buttonsPanel">
+                        <button id="createButton"
+                                action="entriesTable.create"
+                                caption="msg://addButton"/>
+                        <button id="editButton"
+                                action="entriesTable.edit"/>
+                        <button id="removeButton"
+                                action="entriesTable.remove"/>
+                    </buttonsPanel>
+                </table>
+            </groupBox>
+            <frame id="windowActions"
+                   height="100%"
+                   screen="editWindowActions"/>
+        </vbox>
+    </layout>
+</window>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="ru.spacecorp.mobdekbkp.web.alterclassgost56649.AlterClassGost56649Edit"
+        datasource="alterClassGost56649Ds"
+        focusComponent="fieldGroup"
+        messagesPack="ru.spacecorp.mobdekbkp.web.alterclassgost56649">
+    <dsContext>
+        <datasource id="alterClassGost56649Ds"
+                    class="ru.spacecorp.mobdekbkp.entity.AlterClassGost56649"
+                    view="_local"/>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="windowActions"
+            spacing="true">
+        <fieldGroup id="fieldGroup"
+                    datasource="alterClassGost56649Ds">
+            <column width="250px">
+                <field property="name"/>
+                <field property="typeSamples"/>
+                <field property="code"/>
+            </column>
+        </fieldGroup>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

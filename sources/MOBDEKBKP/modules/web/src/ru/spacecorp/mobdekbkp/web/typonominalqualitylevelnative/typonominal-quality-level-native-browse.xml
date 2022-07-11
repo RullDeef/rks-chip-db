@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="ru.spacecorp.mobdekbkp.web.typonominalqualitylevelnative.TyponominalQualityLevelNativeBrowse"
+        focusComponent="typonominalQualityLevelNativesTable"
+        lookupComponent="typonominalQualityLevelNativesTable"
+        messagesPack="ru.spacecorp.mobdekbkp.web.typonominalqualitylevelnative">
+    <dsContext>
+        <groupDatasource id="typonominalQualityLevelNativesDs"
+                         class="ru.spacecorp.mobdekbkp.entity.TyponominalQualityLevelNative"
+                         view="typonominalQualityLevelNative-view">
+            <query>
+                <![CDATA[select e from mobdekbkp$TyponominalQualityLevelNative e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="typonominalQualityLevelNativesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="typonominalQualityLevelNativesTable"
+                datasource="typonominalQualityLevelNativesDs">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="typonominalQualityLevelNativesTable"
+                    width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="name"/>
+            </columns>
+            <rows datasource="typonominalQualityLevelNativesDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="typonominalQualityLevelNativesTable.create"/>
+                <button id="editBtn"
+                        action="typonominalQualityLevelNativesTable.edit"/>
+                <button id="removeBtn"
+                        action="typonominalQualityLevelNativesTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://TyponominalMainTest"
+        class="ru.spacecorp.mobdekbkp.web.typonominal.Typonominalmaintest"
+        messagesPack="ru.spacecorp.mobdekbkp.web.typonominal">
+    <dsContext>
+        <collectionDatasource id="typonominalsDs"
+                              class="ru.spacecorp.mobdekbkp.entity.Typonominal"
+                              view="tn-names">
+            <query>
+                <![CDATA[select e from mobdekbkp$Typonominal e order by e.name]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="gbTns"
+            margin="false,false,true,false">
+        <vbox id="filterVbox"
+              spacing="true">
+            <hbox id="hboxFilterBtn"
+                  expand="typonominalsFilter"
+                  spacing="true"
+                  width="100%">
+                <filter id="typonominalsFilter"
+                        datasource="typonominalsDs">
+                    <custom caption="msg://parameterName"
+                            join="join {E}.paramValue prVal"
+                            name="parameterName"
+                            paramClass="java.lang.String">prVal.parameter.name like ?</custom>
+                    <custom caption="msg://parameterType"
+                            join="join {E}.paramValue prVal"
+                            name="parameterType"
+                            paramClass="ru.spacecorp.mobdekbkp.entity.ParameterType">prVal.parameter.paramType = ?</custom>
+                    <custom caption="msg://manufacturer"
+                            join="join {E}.manufacturers mn"
+                            name="manufacturers"
+                            paramClass="java.lang.String">(mn.name.name like ?) or (mn.name.nameShort like ?)</custom>
+                    <custom caption="msg://calicoholder"
+                            join="join {E}.calicoholders cl"
+                            name="calicoholders"
+                            paramClass="java.lang.String">(cl.name.name like ?) or (cl.name.nameShort like ?)</custom>
+                    <custom caption="msg://provider"
+                            join="join {E}.providers pr"
+                            name="providers"
+                            paramClass="java.lang.String">(pr.name.name like ?) or (pr.name.nameShort like ?)</custom>
+                    <custom caption="msg://typonominalName"
+                            join="join {E}.typonominal tp"
+                            name="typonominal.name"
+                            paramClass="java.lang.String">tp.name like ?</custom>
+                    <custom caption="msg://massa"
+                            join="join {E}.typonominal tp"
+                            name="mass"
+                            paramClass="java.lang.Double">tp.mass like ?</custom>
+                    <properties exclude="(id|createTs|createdBy|updateTs|updatedBy|deleteTs|deletedBy|adminParameters)"
+                                include=".*"/>
+                </filter>
+                <vbox id="vboxFilterAndButtons"
+                      spacing="true"
+                      width="AUTO"/>
+            </hbox>
+        </vbox>
+        <buttonsPanel id="bpanControls">
+            <button id="btnClassType"
+                    caption="msg://TypeClass"
+                    icon="icons/reports-template-view.png"
+                    invoke="onBtnClassTypeClick"/>
+            <button id="btnDoTnsExcel"
+                    action="tblTn.excel"
+                    caption="msg://excel"/>
+            <button id="btnReport"
+                    caption="msg://reportButton"
+                    icon="icons/reports-print.png"/>
+        </buttonsPanel>
+        <groupBox id="gbTns"
+                  caption="msg://Typonominal"
+                  spacing="true">
+            <grid height="100%"
+                  spacing="true"
+                  width="100%">
+                <columns>
+                    <column flex="0.2"/>
+                    <column flex="0.8"/>
+                </columns>
+                <rows>
+                    <row>
+                        <table id="tblTn"
+                               columnControlVisible="false"
+                               columnHeaderVisible="false"
+                               height="100%"
+                               reorderingAllowed="false"
+                               settingsEnabled="false"
+                               width="100%">
+                            <actions>
+                                <action id="excel"/>
+                                <action id="edit"
+                                        invoke="onEdit"/>
+                            </actions>
+                            <columns>
+                                <column id="name"
+                                        sortable="false"/>
+                            </columns>
+                            <rows datasource="typonominalsDs"/>
+                        </table>
+                        <frame id="cardFrame"
+                               height="100%"
+                               screen="tn-card-frame"/>
+                    </row>
+                </rows>
+            </grid>
+        </groupBox>
+    </layout>
+</window>

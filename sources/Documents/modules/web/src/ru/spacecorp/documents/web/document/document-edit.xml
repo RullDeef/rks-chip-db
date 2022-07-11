@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="ru.spacecorp.documents.web.document.DocumentEdit"
+        datasource="documentDs"
+        focusComponent="fieldGroup"
+        icon="ADD_ACTION"
+        messagesPack="ru.spacecorp.documents.web.document">
+    <dsContext>
+        <datasource id="documentDs"
+                    class="ru.spacecorp.documents.entity.Document"
+                    view="document-view">
+            <collectionDatasource id="filesDs"
+                                  property="files"/>
+        </datasource>
+    </dsContext>
+    <layout expand="tabSheet"
+            spacing="true">
+        <vbox margin="false,false,true,false"
+              spacing="true">
+            <label datasource="documentDs"
+                   property="name"
+                   stylename="h1"/>
+        </vbox>
+        <tabSheet id="tabSheet">
+            <tab id="mainTab"
+                 caption="msg://Properties"
+                 icon="ADD_ACTION"
+                 margin="true,false,false,false"
+                 spacing="true">
+                <groupBox caption="msg://Properties"
+                          spacing="true">
+                    <fieldGroup id="fieldGroup"
+                                datasource="documentDs"
+                                height="100%"
+                                width="100%">
+                        <column width="100%">
+                            <field property="name"/>
+                            <field property="designation"
+                                   rows="5"/>
+                            <field property="documentType"/>
+                        </column>
+                    </fieldGroup>
+                </groupBox>
+            </tab>
+            <tab id="filesTab"
+                 caption="msg://FilesPreview"
+                 icon="font-icon:FILE_PDF_O"
+                 margin="true,false,false,false"
+                 spacing="true">
+                <split height="100%"
+                       orientation="horizontal"
+                       pos="30"
+                       stylename="large"
+                       width="100%">
+                    <vbox height="100%"
+                          margin="false,true,false,false"
+                          spacing="true">
+                        <groupBox id="filesBox"
+                                  caption="msg://Files"
+                                  height="100%">
+                            <table id="filesTable"
+                                   height="100%"
+                                   width="100%">
+                                <actions>
+                                    <action id="add"/>
+                                    <action id="remove"/>
+                                </actions>
+                                <columns>
+                                    <column id="name"/>
+                                    <column id="createDate"/>
+                                    <column id="extension"/>
+                                </columns>
+                                <rows datasource="filesDs"/>
+                                <buttonsPanel id="buttonsPanel">
+                                    <multiUpload id="filesUpload"
+                                                 caption="msg://UploadFiles"
+                                                 datasource="filesDs"
+                                                 icon="UPLOAD"/>
+                                    <button action="filesTable.add"/>
+                                    <button action="filesTable.remove"/>
+                                </buttonsPanel>
+                            </table>
+                        </groupBox>
+                    </vbox>
+                    <vbox height="100%"
+                          margin="false,false,false,true"
+                          spacing="true">
+                        <groupBox id="previewBox"
+                                  caption="msg://preview"
+                                  height="100%"
+                                  spacing="true">
+                            <browserFrame id="browserPreview"
+                                          height="100%"
+                                          width="100%"/>
+                        </groupBox>
+                    </vbox>
+                </split>
+            </tab>
+        </tabSheet>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

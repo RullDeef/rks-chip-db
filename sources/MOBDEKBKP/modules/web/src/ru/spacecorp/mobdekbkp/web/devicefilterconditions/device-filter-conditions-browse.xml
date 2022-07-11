@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="ru.spacecorp.mobdekbkp.web.devicefilterconditions.DeviceFilterConditionsBrowse"
+        focusComponent="deviceFilterConditionsesTable"
+        lookupComponent="deviceFilterConditionsesTable"
+        messagesPack="ru.spacecorp.mobdekbkp.web.devicefilterconditions">
+    <dsContext>
+        <groupDatasource id="deviceFilterConditionsesDs"
+                         class="ru.spacecorp.mobdekbkp.entity.DeviceFilterConditions"
+                         view="deviceFilterConditions-view">
+            <query>
+                <![CDATA[select e from mobdekbkp$DeviceFilterConditions e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="deviceFilterConditionsesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="deviceFilterConditionsesTable"
+                datasource="deviceFilterConditionsesDs">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="deviceFilterConditionsesTable"
+                    width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="name"/>
+                <column id="attribute"/>
+                <column id="valueType"/>
+                <column id="compareOperator"/>
+                <column id="valFloat"/>
+                <column id="valString"/>
+                <column id="valBoolean"/>
+            </columns>
+            <rows datasource="deviceFilterConditionsesDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="deviceFilterConditionsesTable.create"/>
+                <button id="editBtn"
+                        action="deviceFilterConditionsesTable.edit"/>
+                <button id="removeBtn"
+                        action="deviceFilterConditionsesTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

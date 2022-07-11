@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="ru.spacecorp.mobdekbkp.web.outerfailandrefuses.OuterFailAndRefusesEdit"
+        datasource="outerFailAndRefusesDs"
+        focusComponent="fieldGroup"
+        messagesPack="ru.spacecorp.mobdekbkp.web.outerfailandrefuses">
+    <dsContext>
+        <datasource id="outerFailAndRefusesDs"
+                    class="ru.spacecorp.mobdekbkp.entity.OuterFailAndRefuses"
+                    view="outerFailAndRefuses-view">
+            <collectionDatasource id="documentsDs"
+                                  property="documents"/>
+        </datasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="scrollBox"
+            spacing="true">
+        <scrollBox id="scrollBox"
+                   spacing="true">
+            <tabSheet id="tabSheet"
+                      height="100%">
+                <tab id="mainTab"
+                     caption="msg://Properties"
+                     margin="true,false,false,false"
+                     spacing="true">
+                    <fieldGroup id="fieldGroup"
+                                datasource="outerFailAndRefusesDs"
+                                width="100%">
+                        <column>
+                            <field property="typonominal"/>
+                            <field property="releaseDate"/>
+                            <field property="refuseDate"/>
+                            <field property="beforeRefuse"/>
+                            <field property="acceptedDefect"/>
+                            <field property="denyReasons"/>
+                            <field property="defectClass"
+                                   rows="5"/>
+                            <field property="defectRepeat"
+                                   rows="5"/>
+                            <field property="userBlame"/>
+                            <field property="prevent"
+                                   rows="5"/>
+                            <field property="actionsDate"/>
+                            <field property="amountAtProvider"/>
+                        </column>
+                    </fieldGroup>
+                </tab>
+                <tab id="docsTab"
+                     caption="msg://Documents"
+                     margin="true,false,false,false"
+                     spacing="true">
+                    <groupBox id="documentsBox"
+                              caption="msg://ru.spacecorp.mobdekbkp.entity/OuterFailAndRefuses.documents"
+                              height="100%">
+                        <table id="documentsTable"
+                               height="200px"
+                               width="100%">
+                            <actions>
+                                <action id="add"/>
+                                <action id="remove"/>
+                            </actions>
+                            <columns>
+                                <column id="name"/>
+                                <column id="designation"/>
+                                <column id="documentType"/>
+                            </columns>
+                            <rows datasource="documentsDs"/>
+                            <buttonsPanel>
+                                <button action="documentsTable.add"/>
+                                <button action="documentsTable.remove"/>
+                            </buttonsPanel>
+                        </table>
+                    </groupBox>
+                </tab>
+            </tabSheet>
+        </scrollBox>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

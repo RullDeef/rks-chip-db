@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="ru.spacecorp.mobdekbkp.web.devicepartlistplannedentry.DevicePartListPlannedEntryEdit"
+        datasource="devicePartListPlannedEntryDs"
+        messagesPack="ru.spacecorp.mobdekbkp.web.devicepartlistplannedentry">
+    <dsContext>
+        <datasource id="devicePartListPlannedEntryDs"
+                    class="ru.spacecorp.mobdekbkp.entity.DevicePartListPlannedEntry"
+                    view="devicePartListPlannedEntry-view">
+            <datasource id="typonominalDs"
+                        property="typonominal"/>
+        </datasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true">
+        <vbox spacing="true">
+            <fieldGroup id="fieldGroup"
+                        datasource="devicePartListPlannedEntryDs">
+                <column width="250px">
+                    <field property="typonominal"/>
+                    <field property="status"/>
+                    <field property="devicePartListPlannedInverse"/>
+                </column>
+            </fieldGroup>
+            <frame id="windowActions"
+                   height="100%"
+                   screen="editWindowActions"/>
+        </vbox>
+    </layout>
+</window>

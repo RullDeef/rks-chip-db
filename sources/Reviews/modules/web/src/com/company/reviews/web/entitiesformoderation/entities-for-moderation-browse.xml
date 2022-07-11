@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="com.company.reviews.web.entitiesformoderation.EntitiesForModerationBrowse"
+        focusComponent="entitiesForModerationsTable"
+        lookupComponent="entitiesForModerationsTable"
+        messagesPack="com.company.reviews.web.entitiesformoderation">
+    <dsContext>
+        <groupDatasource id="entitiesForModerationsDs"
+                         class="com.company.reviews.entity.EntitiesForModeration"
+                         view="entitiesForModeration-view">
+            <query>
+                <![CDATA[select e from reviews$EntitiesForModeration e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="entitiesForModerationsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="entitiesForModerationsTable"
+                datasource="entitiesForModerationsDs">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="entitiesForModerationsTable"
+                    width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="entityId"/>
+            </columns>
+            <rows datasource="entitiesForModerationsDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="entitiesForModerationsTable.create"/>
+                <button id="editBtn"
+                        action="entitiesForModerationsTable.edit"/>
+                <button id="removeBtn"
+                        action="entitiesForModerationsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

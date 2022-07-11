@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://import"
+        class="com.company.importmodule.web.screens.Importscreen"
+        messagesPack="com.company.importmodule.web.screens">
+    <dialogMode height="600"
+                width="800"/>
+    <layout>
+        <grid height="100%"
+              spacing="true"
+              width="60%">
+            <columns count="4"/>
+            <rows>
+                <row>
+                    <buttonsPanel>
+                        <groupBox spacing="true"
+                                  width="AUTO">
+                            <button id="infoFileBtn"
+                                    caption="msg://Template"
+                                    invoke="onInfoFileBtnClick"
+                                    width="150px"/>
+                            <button id="custTempl"
+                                    caption="msg://Custom template"
+                                    invoke="onCustTemplClick"
+                                    width="150px"/>
+                            <button id="MetaModelBtn"
+                                    caption="msg://MetaModel"
+                                    invoke="onMetaModelBtnClick"
+                                    width="150px"/>
+                        </groupBox>
+                        <groupBox spacing="true"
+                                  width="AUTO">
+                            <button id="checkBtn"
+                                    caption="msg://Check exist"
+                                    invoke="onCheckBtnClick"/>
+                            <optionsGroup id="analysOptionList"/>
+                        </groupBox>
+                        <groupBox spacing="true"
+                                  width="AUTO">
+                            <button id="smartImportBtn"
+                                    caption="msg://smartImport"
+                                    invoke="onSmartImportClick"/>
+                        </groupBox>
+                    </buttonsPanel>
+                    <lookupField id="rootPackageLookup"
+                                 caption="msg://Root package"
+                                 width="300px"/>
+                </row>
+                <row>
+                    <vbox height="100%"
+                          margin="false,true,false,false"
+                          spacing="true">
+                        <groupBox caption="msg://Download import files"
+                                  expand="fileNamesArea"
+                                  height="100%"
+                                  spacing="true">
+                            <multiUpload id="multiUpload"/>
+                            <textArea id="fileNamesArea"
+                                      editable="false"
+                                      width="100%"/>
+                        </groupBox>
+                    </vbox>
+                    <vbox expand="twinColumn"
+                          height="100%"
+                          spacing="true"
+                          width="465px">
+                        <hbox expand="searchField"
+                              spacing="true"
+                              width="100%">
+                            <textField id="searchField"/>
+                            <button id="searchBtn"
+                                    caption="msg://Find"
+                                    invoke="onSearchBtnClick"/>
+                        </hbox>
+                        <twinColumn id="twinColumn"
+                                    addAllBtnEnabled="true"
+                                    caption="msg://Entities"
+                                    width="100%"/>
+                    </vbox>
+                    <vbox margin="false,false,false,true"
+                          spacing="true">
+                        <checkBox id="alwaysCreateCheck"
+                                  caption="msg://Always create"/>
+                        <checkBox id="overwriteCheck"
+                                  caption="msg://actionType"/>
+                        <optionsGroup id="findTypeGroup"/>
+                        <optionsGroup id="actionOptionsGroup"
+                                      caption="msg://Association action"/>
+                        <button id="importBtn"
+                                caption="msg://Import"
+                                invoke="onImportBtnClick"/>
+                    </vbox>
+                </row>
+                <row>
+                    <tabSheet>
+                        <tab id="infoTab"
+                             caption="msg://Info"
+                             margin="true,false,false,false"
+                             spacing="true">
+                            <textArea id="infoArea"
+                                      editable="false"
+                                      height="280px"
+                                      width="100%"/>
+                        </tab>
+                        <tab id="errorTab"
+                             caption="msg://ImportInfo"
+                             margin="true,false,false,false"
+                             spacing="true">
+                            <textArea id="errorArea"
+                                      editable="false"
+                                      height="280px"
+                                      width="100%"/>
+                        </tab>
+                    </tabSheet>
+                </row>
+            </rows>
+        </grid>
+    </layout>
+</window>

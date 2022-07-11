@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<screen-config xmlns="http://schemas.haulmont.com/cuba/screens.xsd">
+    <include file="com/spacecorp/rulesmodule/screens.xml"/>
+    <screen id="rulesmodule$RuleScript.browse"
+            template="com/spacecorp/rulesmodule/web/rulescript/rule-script-browse.xml"/>
+    <screen id="rulesmodule$RuleScript.edit"
+            template="com/spacecorp/rulesmodule/web/rulescript/rule-script-edit.xml"/>
+    <screen id="rulesmodule$RuleDataScript.browse"
+            template="com/spacecorp/rulesmodule/web/ruledatascript/rule-data-script-browse.xml"/>
+    <screen id="rulesmodule$RuleDataScript.edit"
+            template="com/spacecorp/rulesmodule/web/ruledatascript/rule-data-script-edit.xml"/>
+    <screen id="rulesmodule$RuleManager.browse"
+            template="com/spacecorp/rulesmodule/web/rulemanager/rule-manager-browse.xml"/>
+    <screen id="rulesmodule$RuleManager.edit"
+            template="com/spacecorp/rulesmodule/web/rulemanager/rule-manager-edit.xml"/>
+</screen-config>

@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        class="ru.spacecorp.mobdekbkp.web.typonominal.frames.Tnbody"
+        messagesPack="ru.spacecorp.mobdekbkp.web.typonominal">
+    <dsContext>
+        <collectionDatasource id="modelDocsDs"
+                              class="ru.spacecorp.documents.entity.Document">
+            <query>
+                <![CDATA[select e from documents$Document e]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <layout>
+        <scrollBox id="vbMain"
+                   height="100%"
+                   margin="true"
+                   spacing="true">
+            <hbox id="hbDesignation"
+                  spacing="true"
+                  visible="false"
+                  width="100%">
+                <label align="MIDDLE_LEFT"
+                       value="msg://ru.spacecorp.mobdekbkp.entity/TyponominalBody.designation"/>
+                <textField id="tfDesignation"
+                           editable="false"
+                           width="300px"/>
+            </hbox>
+            <label id="lblName"
+                   align="MIDDLE_LEFT"
+                   visible="false"
+                   width="100%"/>
+            <textArea id="taDescription"
+                      editable="false"
+                      rows="3"
+                      visible="false"
+                      width="100%"/>
+            <hbox id="hbDimensions"
+                  spacing="true"
+                  visible="false"
+                  width="100%">
+                <label id="lblLenght"
+                       align="MIDDLE_LEFT"/>
+                <label id="lblWidth"
+                       align="MIDDLE_LEFT"/>
+                <label id="lblHeight"
+                       align="MIDDLE_LEFT"/>
+            </hbox>
+            <hbox id="hbPinsCount"
+                  spacing="true"
+                  visible="false"
+                  width="100%">
+                <label align="MIDDLE_LEFT"
+                       value="msg://ru.spacecorp.mobdekbkp.entity/TyponominalBody.pinsCount"/>
+                <textField id="tfPinsCount"
+                           editable="false"
+                           width="100px"/>
+            </hbox>
+            <hbox id="hbBodyMaterial"
+                  spacing="true"
+                  visible="false"
+                  width="100%">
+                <label align="MIDDLE_LEFT"
+                       value="msg://ru.spacecorp.mobdekbkp.entity/TyponominalBody.bodyMaterial"/>
+                <textField id="tfBodyMaterial"
+                           editable="false"
+                           width="300px"/>
+            </hbox>
+            <hbox id="hbPinsMaterial"
+                  spacing="true"
+                  visible="false"
+                  width="100%">
+                <label align="MIDDLE_LEFT"
+                       value="msg://ru.spacecorp.mobdekbkp.entity/TyponominalBody.pinsMaterial"/>
+                <textField id="tfPinsMaterial"
+                           editable="false"
+                           width="300px"/>
+            </hbox>
+            <hbox id="hbCoatingMaterial"
+                  spacing="true"
+                  visible="false"
+                  width="100%">
+                <label align="MIDDLE_LEFT"
+                       value="msg://ru.spacecorp.mobdekbkp.entity/TyponominalBody.coatingMaterial"/>
+                <textField id="tfCoatingMaterial"
+                           editable="false"
+                           width="300px"/>
+            </hbox>
+            <hbox id="hbDistanceLeads"
+                  spacing="true"
+                  visible="false"
+                  width="100%">
+                <label align="MIDDLE_LEFT"
+                       value="msg://ru.spacecorp.mobdekbkp.entity/TyponominalBody.distanceLeads"/>
+                <textField id="tfDistanceLeads"
+                           editable="false"
+                           width="100px"/>
+            </hbox>
+            <hbox id="hbBodyMass"
+                  spacing="true"
+                  visible="false"
+                  width="100%">
+                <label align="MIDDLE_LEFT"
+                       value="msg://ru.spacecorp.mobdekbkp.entity/TyponominalBody.mass"/>
+                <textField id="tfBodyMass"
+                           editable="false"
+                           width="100px"/>
+            </hbox>
+            <hbox id="hbMaxHeight"
+                  spacing="true"
+                  visible="false"
+                  width="100%">
+                <label align="MIDDLE_LEFT"
+                       value="msg://ru.spacecorp.mobdekbkp.entity/TyponominalBody.maxHeight"/>
+                <textField id="tfMaxHeight"
+                           editable="false"
+                           width="100px"/>
+            </hbox>
+            <hbox id="hbDispersePower"
+                  spacing="true"
+                  visible="false"
+                  width="100%">
+                <label align="MIDDLE_LEFT"
+                       value="msg://ru.spacecorp.mobdekbkp.entity/TyponominalBody.dispersePower"/>
+                <textField id="tfDispersePower"
+                           editable="false"
+                           width="100px"/>
+            </hbox>
+            <hbox id="hbOutputPower"
+                  spacing="true"
+                  visible="false"
+                  width="100%">
+                <label align="MIDDLE_LEFT"
+                       value="msg://ru.spacecorp.mobdekbkp.entity/TyponominalBody.outputPower"/>
+                <textField id="tfOutputPower"
+                           editable="false"
+                           width="100px"/>
+            </hbox>
+            <hbox id="hbMarking"
+                  spacing="true"
+                  visible="false"
+                  width="100%">
+                <label align="MIDDLE_LEFT"
+                       value="msg://ru.spacecorp.mobdekbkp.entity/TyponominalBody.marking"/>
+                <textField id="tfMarking"
+                           editable="false"
+                           width="300px"/>
+            </hbox>
+            <hbox id="hbThermalResistance"
+                  spacing="true"
+                  visible="false"
+                  width="100%">
+                <label align="MIDDLE_LEFT"
+                       value="msg://ru.spacecorp.mobdekbkp.entity/TyponominalBody.thermalResistance"/>
+                <textField id="tfThermalResistance"
+                           editable="false"
+                           width="100px"/>
+            </hbox>
+            <label id="lblSealingDemand"
+                   align="MIDDLE_LEFT"
+                   visible="false"/>
+            <linkButton id="lbtnPinFormingDesignation"
+                        align="MIDDLE_LEFT"
+                        caption="msg://ru.spacecorp.mobdekbkp.entity/TyponominalBody.pinFormingDesignation"
+                        invoke="onPinFormingDesignationLinkBtnClick"
+                        visible="false"/>
+            <linkButton id="lbtnPhoto"
+                        align="MIDDLE_LEFT"
+                        caption="msg://ru.spacecorp.mobdekbkp.entity/TyponominalBody.photo"
+                        invoke="onPhotolinkBtnClick"
+                        visible="false"/>
+            <linkButton id="lbtnDimensionsAndBody"
+                        align="MIDDLE_LEFT"
+                        caption="msg://ru.spacecorp.mobdekbkp.entity/TyponominalBody.dimensionsAndBody"
+                        invoke="onDimensionsAndBodyLinkBtnClick"
+                        visible="false"/>
+            <linkButton id="lbtnFixatorMarkup"
+                        align="MIDDLE_LEFT"
+                        caption="msg://ru.spacecorp.mobdekbkp.entity/TyponominalBody.fixatorMarkup"
+                        invoke="onFixatorMarkupLinkBtnClick"
+                        visible="false"/>
+            <table id="tblModels"
+                   caption="msg://ru.spacecorp.mobdekbkp.entity/TyponominalBody.documentsModel"
+                   columnHeaderVisible="false"
+                   height="150px"
+                   visible="false"
+                   width="100%">
+                <columns>
+                    <column id="name"
+                            link="true"
+                            linkScreen="documents$Document.edit"/>
+                </columns>
+                <rows datasource="modelDocsDs"/>
+            </table>
+        </scrollBox>
+    </layout>
+</window>

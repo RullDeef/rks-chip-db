@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="ru.spacecorp.mobdekbkp.web.handbook.HandbookEdit"
+        datasource="handbookDs"
+        focusComponent="fieldGroup"
+        messagesPack="ru.spacecorp.mobdekbkp.web.handbook">
+    <dsContext>
+        <datasource id="handbookDs"
+                    class="ru.spacecorp.mobdekbkp.entity.Handbook"
+                    view="handbook-view">
+            <hierarchicalDatasource id="entriesDs"
+                                    hierarchyProperty="parent"
+                                    property="entries"/>
+        </datasource>
+    </dsContext>
+    <dialogMode forceDialog="true"
+                height="600"
+                width="800"/>
+    <layout expand="treeTable"
+            spacing="true">
+        <fieldGroup id="fieldGroup"
+                    datasource="handbookDs"
+                    width="100%">
+            <column width="100%">
+                <field property="name"/>
+                <field property="published"/>
+            </column>
+        </fieldGroup>
+        <treeTable id="treeTable"
+                   caption="msg://entries"
+                   width="100%">
+            <actions>
+                <action id="create"
+                        caption="msg://create"
+                        icon="CREATE_ACTION"/>
+                <action id="edit"
+                        caption="msg://edit"
+                        icon="EDIT_ACTION"/>
+                <action id="remove"
+                        caption="msg://remove"
+                        icon="REMOVE_ACTION"/>
+            </actions>
+            <columns>
+                <column id="key"/>
+                <column id="value"/>
+            </columns>
+            <rows datasource="entriesDs"/>
+            <buttonsPanel>
+                <button id="btnc"
+                        action="treeTable.create"/>
+                <button id="btne"
+                        action="treeTable.edit"/>
+                <button id="btnr"
+                        action="treeTable.remove"/>
+            </buttonsPanel>
+        </treeTable>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

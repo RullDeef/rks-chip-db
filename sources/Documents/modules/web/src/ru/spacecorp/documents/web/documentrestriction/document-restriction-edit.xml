@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="ru.spacecorp.documents.web.documentrestriction.DocumentRestrictionEdit"
+        datasource="documentRestrictionDs"
+        messagesPack="ru.spacecorp.documents.web.documentrestriction">
+    <dsContext>
+        <datasource id="documentRestrictionDs"
+                    class="ru.spacecorp.documents.entity.DocumentRestriction"
+                    view="documentRestriction-view">
+            <collectionDatasource id="restrictionDs"
+                                  property="restriction"/>
+        </datasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="windowActions"
+            spacing="true">
+        <hbox expand="restrictionBox"
+              spacing="true"
+              width="100%">
+            <groupBox id="propertiesBox"
+                      caption="msg://Properties"
+                      height="100%"
+                      spacing="true"
+                      width="350px">
+                <fieldGroup datasource="documentRestrictionDs"
+                            height="100%"
+                            width="100%">
+                    <column width="100%">
+                        <field property="key"/>
+                    </column>
+                </fieldGroup>
+            </groupBox>
+            <groupBox id="restrictionBox"
+                      caption="msg://ru.spacecorp.documents.entity/DocumentRestriction.restriction">
+                <table id="restrictionTable"
+                       height="200px"
+                       width="100%">
+                    <actions>
+                        <action id="add"/>
+                        <action id="remove"/>
+                    </actions>
+                    <columns>
+                        <column id="name"/>
+                    </columns>
+                    <rows datasource="restrictionDs"/>
+                    <buttonsPanel>
+                        <button action="restrictionTable.add"/>
+                        <button action="restrictionTable.remove"/>
+                    </buttonsPanel>
+                </table>
+            </groupBox>
+        </hbox>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

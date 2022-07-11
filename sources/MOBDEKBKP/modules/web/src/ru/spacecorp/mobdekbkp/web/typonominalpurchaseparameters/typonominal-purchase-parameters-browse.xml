@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="ru.spacecorp.mobdekbkp.web.typonominalpurchaseparameters.TyponominalPurchaseParametersBrowse"
+        focusComponent="typonominalPurchaseParametersesTable"
+        lookupComponent="typonominalPurchaseParametersesTable"
+        messagesPack="ru.spacecorp.mobdekbkp.web.typonominalpurchaseparameters">
+    <dsContext>
+        <groupDatasource id="typonominalPurchaseParametersesDs"
+                         class="ru.spacecorp.mobdekbkp.entity.TyponominalPurchaseParameters"
+                         view="typonominalPurchaseParameters-view">
+            <query>
+                <![CDATA[select e from mobdekbkp$TyponominalPurchaseParameters e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="typonominalPurchaseParametersesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="typonominalPurchaseParametersesTable"
+                datasource="typonominalPurchaseParametersesDs">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="typonominalPurchaseParametersesTable"
+                    width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="purchaseDesignation"/>
+                <column id="costRating"/>
+                <column id="typicalDeliveryTerm"/>
+                <column id="marketAvailableIndex"/>
+                <column id="hasSamples"/>
+                <column id="deliveryMin"/>
+                <column id="deliveryMax"/>
+                <column id="typonominal"/>
+                <column id="company.smartName"
+                        caption="msg://ru.spacecorp.mobdekbkp.entity/TyponominalPurchaseParameters.company"/>
+                <column id="cost"/>
+            </columns>
+            <rows datasource="typonominalPurchaseParametersesDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="typonominalPurchaseParametersesTable.create"/>
+                <button id="editBtn"
+                        action="typonominalPurchaseParametersesTable.edit"/>
+                <button id="removeBtn"
+                        action="typonominalPurchaseParametersesTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

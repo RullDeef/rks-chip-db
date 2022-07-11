@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="ru.spacecorp.mobdekbkp.web.typeclass.TypeClassBrowse"
+        focusComponent="typeClassesTable"
+        lookupComponent="typeClassesTable"
+        messagesPack="ru.spacecorp.mobdekbkp.web.typeclass">
+    <dsContext>
+        <hierarchicalDatasource id="typeClassesDs"
+                                class="ru.spacecorp.mobdekbkp.entity.TypeClass"
+                                hierarchyProperty="parent"
+                                view="typeClass-view">
+            <query>
+                <![CDATA[select e from mobdekbkp$TypeClass e]]>
+            </query>
+        </hierarchicalDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="typeClassesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="typeClassesTable"
+                datasource="typeClassesDs">
+            <properties include=".*"/>
+        </filter>
+        <treeTable id="typeClassesTable"
+                   width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="number"/>
+                <column id="name"/>
+                <column id="type"/>
+                <column id="parent"/>
+            </columns>
+            <rows datasource="typeClassesDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="typeClassesTable.create"/>
+                <button id="editBtn"
+                        action="typeClassesTable.edit"/>
+                <button id="removeBtn"
+                        action="typeClassesTable.remove"/>
+            </buttonsPanel>
+        </treeTable>
+    </layout>
+</window>

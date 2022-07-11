@@ -1,0 +1,6 @@
+rootProject.name = 'ImportModule'
+include(':import-global', ':import-core', ':import-gui', ':import-web')
+project(':import-global').projectDir = new File(settingsDir, 'modules/global')
+project(':import-core').projectDir = new File(settingsDir, 'modules/core')
+project(':import-gui').projectDir = new File(settingsDir, 'modules/gui')
+project(':import-web').projectDir = new File(settingsDir, 'modules/web')

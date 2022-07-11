@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://Moderation reason"
+        class="com.company.reviews.web.screens.Reasonwindow"
+        messagesPack="com.company.reviews.web.screens">
+    <dialogMode forceDialog="true"
+                height="300"
+                width="600"/>
+    <layout>
+        <vbox expand="reasonArea"
+              height="100%"
+              spacing="true">
+            <textArea id="reasonArea"
+                      required="true"
+                      width="100%"/>
+            <buttonsPanel width="30%">
+                <button id="okBtn"
+                        caption="msg://Ok"
+                        invoke="onOkBtnClick"
+                        width="100%"/>
+                <button id="cancelBtn"
+                        caption="msg://Cancel"
+                        invoke="onCancelBtnClick"
+                        width="100%"/>
+            </buttonsPanel>
+        </vbox>
+    </layout>
+</window>

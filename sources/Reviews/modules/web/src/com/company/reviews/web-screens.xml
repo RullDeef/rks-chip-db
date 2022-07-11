@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<screen-config xmlns="http://schemas.haulmont.com/cuba/screens.xsd">
+    <include file="com/company/reviews/screens.xml"/>
+    <screen id="reviews$Review.browse"
+            template="com/company/reviews/web/review/review-browse.xml"/>
+    <screen id="reviews$Review.edit"
+            template="com/company/reviews/web/review/review-edit.xml"/>
+    <screen id="ratingFrame"
+            template="/com/company/reviews/web/rating/ratingFrame.xml"/>
+    <screen id="reviewsFrame"
+            template="com/company/reviews/web/screens/reviewsFrame.xml"/>
+    <screen id="reviews$ModerationProperty.browse"
+            template="com/company/reviews/web/moderationproperty/moderation-property-browse.xml"/>
+    <screen id="reviews$ModerationProperty.edit"
+            template="com/company/reviews/web/moderationproperty/moderation-property-edit.xml"/>
+    <screen id="reviews$EntitiesForModeration.browse"
+            template="com/company/reviews/web/entitiesformoderation/entities-for-moderation-browse.xml"/>
+    <screen id="reviews$EntitiesForModeration.edit"
+            template="com/company/reviews/web/entitiesformoderation/entities-for-moderation-edit.xml"/>
+    <screen id="reviewModeratorScreen"
+            template="com/company/reviews/web/review/reviewModeratorScreen.xml"/>
+    <screen id="reviews$ReviewModerator.edit"
+            template="com/company/reviews/web/review/review-moderator-edit.xml"/>
+    <screen id="reviewReport"
+            template="com/company/reviews/web/review/reviewReport.xml"/>
+    <screen id="reasonWindow"
+            template="com/company/reviews/web/screens/reasonWindow.xml"/>
+</screen-config>

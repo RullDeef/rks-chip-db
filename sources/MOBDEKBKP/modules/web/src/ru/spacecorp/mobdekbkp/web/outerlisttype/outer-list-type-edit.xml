@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="ru.spacecorp.mobdekbkp.web.outerlisttype.OuterListTypeEdit"
+        datasource="outerListTypeDs"
+        focusComponent="outerListTypeFieldGroup"
+        messagesPack="ru.spacecorp.mobdekbkp.web.outerlisttype">
+    <dsContext>
+        <datasource id="outerListTypeDs"
+                    class="ru.spacecorp.mobdekbkp.entity.OuterListType"
+                    view="outerListType-view"/>
+    </dsContext>
+    <dialogMode forceDialog="true"
+                height="160"
+                width="420"/>
+    <layout expand="windowActions"
+            spacing="true">
+        <fieldGroup id="outerListTypeFieldGroup"
+                    datasource="outerListTypeDs">
+            <column width="250px">
+                <field property="name"/>
+                <field property="isAllowing"/>
+            </column>
+        </fieldGroup>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        class="ru.spacecorp.mobdekbkp.web.typonominal.TnCardFrame"
+        messagesPack="ru.spacecorp.mobdekbkp.web.typonominal">
+    <dialogMode height="100%"
+                width="100%"/>
+    <layout>
+        <groupBox id="gbInfo"
+                  caption="msg://tnInfo"
+                  expand="tbsInformation"
+                  height="100%"
+                  spacing="true">
+            <frame id="fHierarchy"
+                   screen="full-hierarchy-info"/>
+            <tabSheet id="tbsInformation"
+                      stylename="mutilinetabsheet framed">
+                <tab id="tabBasic"
+                     caption="msg://basicInfo"
+                     margin="true,false,false,false"
+                     spacing="true">
+                    <frame id="fBasicInfo"
+                           height="100%"
+                           screen="TnBasicInfo"/>
+                </tab>
+                <tab id="tabParameters"
+                     caption="msg://ru.spacecorp.mobdekbkp.entity/TypeClassCharacteristic.parameter"
+                     margin="true,false,false,false"
+                     spacing="true">
+                    <frame id="fParametersMain"
+                           height="100%"
+                           screen="TnParameters"/>
+                </tab>
+                <tab id="tabAddParams"
+                     caption="msg://addParams"
+                     margin="true,false,false,false"
+                     spacing="true">
+                    <frame id="fExtraParams"
+                           screen="TnExtraParams"/>
+                </tab>
+                <tab id="tabTnInstallParams"
+                     caption="msg://ru.spacecorp.mobdekbkp.entity/TyponominalInstallParameters"
+                     margin="true,false,false,false"
+                     spacing="true">
+                    <frame id="fInstallParams"
+                           screen="TnInstallParams"/>
+                </tab>
+                <tab id="tabOuterPersistenceInfo"
+                     caption="msg://ru.spacecorp.mobdekbkp.entity/OuterPersistenceInfo"
+                     margin="true,false,false,false"
+                     spacing="true">
+                    <frame id="fPersistenceInfo"
+                           screen="fPersistenceInfo"/>
+                </tab>
+                <tab id="tabTnAnalogs"
+                     caption="msg://ru.spacecorp.mobdekbkp.entity/Typonominal.analogs"
+                     margin="true,false,false,false"
+                     spacing="true">
+                    <frame id="fAnalogframe"
+                           screen="AnalogFrame"/>
+                </tab>
+                <tab id="tabBody"
+                     caption="msg://ru.spacecorp.mobdekbkp.entity/TyponominalBody"
+                     margin="true,false,false,false"
+                     spacing="true"
+                     visible="true">
+                    <frame id="fBody"
+                           height="100%"
+                           screen="TnBody"/>
+                </tab>
+                <tab id="tabEntranceControl"
+                     caption="msg://entranceControl"
+                     margin="true,false,false,false"
+                     spacing="true">
+                    <vbox id="vboxTests"
+                          height="100%"
+                          spacing="true">
+                        <frame id="foutercertificatetests"
+                               height="100%"
+                               screen="fOuterCertificateTests"/>
+                        <frame id="fEntranceControl"
+                               height="100%"
+                               screen="fouterentrancetests"/>
+                    </vbox>
+                </tab>
+                <tab id="tabDefects"
+                     caption="msg://defects"
+                     margin="true,false,false,false"
+                     spacing="true">
+                    <frame id="fOuterDbRefuse"
+                           screen="fOuterDbRefuse"/>
+                    <frame id="fReject"
+                           screen="fOuterDbRejection"/>
+                </tab>
+                <tab id="tabPurchParams"
+                     caption="msg://ru.spacecorp.mobdekbkp.entity/TyponominalPurchaseParameters"
+                     margin="true,false,false,false"
+                     spacing="true">
+                    <frame id="fPurchaseParameters"
+                           enable="false"
+                           screen="PurchaseParameters"/>
+                </tab>
+                <tab id="tabFail"
+                     caption="msg://FailsText"
+                     margin="true,false,false,false"
+                     spacing="true">
+                    <frame id="fOuterDbFail"
+                           enable="false"
+                           height="100%"
+                           screen="outerDbFail"/>
+                    <frame id="fOuterFailAndRefuses"
+                           enable="false"
+                           height="100%"
+                           screen="fOuterFailAndRefuses"/>
+                </tab>
+                <tab id="tabDocsSchemes"
+                     caption="msg://docsAndSchemes"
+                     margin="true"
+                     spacing="true">
+                    <frame id="fDocsSchemes"
+                           screen="TnDocsSchemes"/>
+                </tab>
+                <tab id="tabSapr"
+                     caption="msg://sapr"
+                     margin="true,false,false,false"
+                     spacing="true">
+                    <frame id="frameSAPR"
+                           height="100%"
+                           screen="TnSAPR"/>
+                </tab>
+                <tab id="tabEnterprises"
+                     caption="msg://Tab"
+                     margin="true,false,false,false"
+                     spacing="true">
+                    <frame id="frameEnterprises"
+                           height="100%"
+                           screen="typeFrameEnterprises"/>
+                </tab>
+                <tab id="tabDiscuss"
+                     caption="msg://TabComments"
+                     margin="true,false,false,false"
+                     spacing="true">
+                    <frame id="fComments"
+                           enable="false"
+                           height="100%"
+                           screen="frameComment"/>
+                </tab>
+            </tabSheet>
+        </groupBox>
+    </layout>
+</window>

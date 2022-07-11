@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<app-component xmlns="http://schemas.haulmont.com/cuba/app-component.xsd"
+               dependsOn="com.haulmont.cuba">
+    <module blocks="*"
+            name="global">
+        <artifact appJar="true"
+                  name="rules-global"/>
+        <property name="cuba.persistenceConfig"
+                  value="+com/spacecorp/rulesmodule/persistence.xml"/>
+        <property name="cuba.metadataConfig"
+                  value="+com/spacecorp/rulesmodule/metadata.xml"/>
+        <property name="cuba.viewsConfig"
+                  value="+com/spacecorp/rulesmodule/views.xml"/>
+    </module>
+    <module blocks="core"
+            dependsOn="global"
+            name="core">
+        <artifact appJar="true"
+                  name="rules-core"/>
+        <artifact classifier="db"
+                  configuration="dbscripts"
+                  ext="zip"
+                  name="rules-core"/>
+        <property name="cuba.springContextConfig"
+                  value="+com/spacecorp/rulesmodule/spring.xml"/>
+        <property name="cuba.mainMessagePack"
+                  value="+com.spacecorp.rulesmodule.core"/>
+    </module>
+    <module blocks="web,desktop"
+            dependsOn="global"
+            name="gui">
+        <artifact appJar="true"
+                  name="rules-gui"/>
+    </module>
+    <module blocks="web"
+            dependsOn="gui"
+            name="web">
+        <artifact appJar="true"
+                  name="rules-web"/>
+        <artifact classifier="web"
+                  configuration="webcontent"
+                  ext="zip"
+                  name="rules-web"/>
+        <artifact configuration="themes"
+                  name="rules-web-themes"/>
+        <property name="cuba.springContextConfig"
+                  value="+com/spacecorp/rulesmodule/web-spring.xml"/>
+        <property name="cuba.dispatcherSpringContextConfig"
+                  value="+com/spacecorp/rulesmodule/web-dispatcher-spring.xml"/>
+        <property name="cuba.windowConfig"
+                  value="+com/spacecorp/rulesmodule/web-screens.xml"/>
+        <property name="cuba.menuConfig"
+                  value="+com/spacecorp/rulesmodule/web-menu.xml"/>
+        <property name="cuba.permissionConfig"
+                  value="+com/spacecorp/rulesmodule/web-permissions.xml"/>
+        <property name="cuba.mainMessagePack"
+                  value="+com.spacecorp.rulesmodule.web"/>
+    </module>
+    <module name="web-themes">
+        <artifact name="rules-web-themes"/>
+    </module>
+</app-component>

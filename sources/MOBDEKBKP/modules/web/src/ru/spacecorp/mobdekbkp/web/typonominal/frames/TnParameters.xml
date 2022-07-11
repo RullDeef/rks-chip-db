@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        class="ru.spacecorp.mobdekbkp.web.typonominal.frames.Tnparameters"
+        messagesPack="ru.spacecorp.mobdekbkp.web.typonominal">
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="gbMain"
+            spacing="true">
+        <hbox id="hbTypeParams"
+              spacing="true"
+              width="100%">
+            <hbox id="hbCharacteristics"
+                  expand="lfCharacteristics"
+                  spacing="true"
+                  width="100%">
+                <label id="lblCharacteristics"
+                       align="MIDDLE_LEFT"
+                       value="msg://paramsAllOrBasic"/>
+                <lookupField id="lfCharacteristics"
+                             nullOptionVisible="false"/>
+            </hbox>
+            <hbox id="hbParamType"
+                  expand="lfParamType"
+                  spacing="true"
+                  width="100%">
+                <label id="lblParamType"
+                       align="MIDDLE_LEFT"
+                       value="msg://paramTypes"/>
+                <lookupField id="lfParamType"
+                             nullName="msg://paramsAll"
+                             optionsEnum="ru.spacecorp.mobdekbkp.entity.ParameterType"/>
+            </hbox>
+        </hbox>
+        <groupBox id="gbMain"
+                  settingsEnabled="false"
+                  spacing="true">
+            <scrollBox id="vbMain"
+                       height="100%"
+                       margin="true"
+                       spacing="true"/>
+        </groupBox>
+    </layout>
+</window>

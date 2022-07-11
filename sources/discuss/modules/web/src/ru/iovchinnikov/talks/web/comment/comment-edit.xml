@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="ru.iovchinnikov.talks.web.comment.CommentEdit"
+        datasource="commentDs"
+        focusComponent="fieldGroup"
+        messagesPack="ru.iovchinnikov.talks.web.comment">
+    <dsContext>
+        <datasource id="commentDs"
+                    class="ru.iovchinnikov.talks.entity.Comment"
+                    view="comment-view"/>
+    </dsContext>
+    <dialogMode forceDialog="true"
+                height="450"
+                width="600"/>
+    <layout expand="windowActions"
+            spacing="true">
+        <hbox expand="lbtnParent"
+              spacing="true"
+              width="100%">
+            <label id="lblParent"
+                   value="msg://parent"/>
+            <linkButton id="lbtnParent"
+                        invoke="btnParentClick"/>
+        </hbox>
+        <fieldGroup id="fieldGroup"
+                    datasource="commentDs"
+                    width="100%">
+            <column width="100%">
+                <field id="timestamp"
+                       editable="false"
+                       property="updateTs"/>
+                <field id="author"
+                       editable="false"
+                       property="author"/>
+                <field id="contents"
+                       property="contents"
+                       rows="5"/>
+                <field property="moderatedContent"
+                       visible="false"/>
+            </column>
+        </fieldGroup>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+        <buttonsPanel align="BOTTOM_LEFT">
+            <button id="btnClose"
+                    caption="msg://btnCloseCaption"
+                    invoke="btnCloseClick"/>
+        </buttonsPanel>
+    </layout>
+</window>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://Delete"
+        class="com.company.importmodule.web.screens.Smalldeletescreen"
+        messagesPack="com.company.importmodule.web.screens">
+    <dialogMode height="600"
+                width="800"/>
+    <layout>
+        <groupBox caption="msg://Delete file"
+                  spacing="true">
+            <multiUpload id="multiUpload"/>
+            <textArea id="fileNamesArea"
+                      editable="false"
+                      width="50%"/>
+            <hbox spacing="true">
+                <button id="templateBtn"
+                        caption="msg://Template Current"
+                        invoke="onTemplateBtnClick"/>
+                <button id="deleteBtn"
+                        caption="msg://Delete"
+                        invoke="onDeleteBtnClick"/>
+            </hbox>
+            <textArea id="messageArea"
+                      editable="false"
+                      width="574px"/>
+            <textArea id="errorArea"
+                      editable="false"
+                      height="293px"
+                      width="574px"/>
+        </groupBox>
+    </layout>
+</window>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://moderatorBrowseCaption"
+        class="com.company.reviews.web.review.Reviewmoderatorscreen"
+        messagesPack="com.company.reviews.web.review">
+    <dsContext>
+        <collectionDatasource id="reviewsPostDs"
+                              class="com.company.reviews.entity.Review"
+                              datasourceClass="com.company.reviews.web.review.ReviewDatasource"
+                              view="review-view">
+            <query>
+                <![CDATA[select e from reviews$Review e
+where e.status<>'premoderation' and e.status<>'hidden']]>
+            </query>
+        </collectionDatasource>
+        <collectionDatasource id="reviewsPreDs"
+                              class="com.company.reviews.entity.Review"
+                              datasourceClass="com.company.reviews.web.review.ReviewDatasource"
+                              view="review-view">
+            <query>
+                <![CDATA[select e from reviews$Review e
+where e.status='premoderation' or e.status='hidden']]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout>
+        <tabSheet>
+            <tab id="premoderationTab"
+                 caption="msg://Premoderation"
+                 margin="true,false,false,false"
+                 spacing="true">
+                <table id="reviewPreTable"
+                       height="526px"
+                       width="100%">
+                    <actions>
+                        <action id="edit"/>
+                    </actions>
+                    <columns>
+                        <column id="review"/>
+                        <column id="moderatedReview"/>
+                        <column id="parent"/>
+                        <column id="grade"/>
+                        <column id="status"/>
+                    </columns>
+                    <rows datasource="reviewsPreDs"/>
+                    <buttonsPanel>
+                        <button action="reviewPreTable.edit"
+                                caption="msg://View"/>
+                        <button id="acceptBtn"
+                                caption="msg://Accept"
+                                enable="false"
+                                invoke="onAcceptBtnClick"/>
+                        <button id="hideBtn"
+                                caption="msg://Hide"
+                                enable="false"
+                                invoke="onHideBtnClick"/>
+                    </buttonsPanel>
+                </table>
+            </tab>
+            <tab id="postmoderationTab"
+                 caption="msg://Postmoderation"
+                 margin="true,false,false,false"
+                 spacing="true">
+                <table id="reviewPostTable"
+                       height="526px"
+                       width="100%">
+                    <actions>
+                        <action id="edit"/>
+                    </actions>
+                    <columns>
+                        <column id="review"/>
+                        <column id="moderatedReview"/>
+                        <column id="parent"/>
+                        <column id="grade"/>
+                        <column id="status"/>
+                    </columns>
+                    <rows datasource="reviewsPostDs"/>
+                    <buttonsPanel>
+                        <button action="reviewPostTable.edit"
+                                caption="msg://Moderate"/>
+                        <button id="declineBtn"
+                                caption="msg://Decline"
+                                enable="false"
+                                invoke="onDeclineBtnClick"/>
+                    </buttonsPanel>
+                </table>
+            </tab>
+        </tabSheet>
+    </layout>
+</window>

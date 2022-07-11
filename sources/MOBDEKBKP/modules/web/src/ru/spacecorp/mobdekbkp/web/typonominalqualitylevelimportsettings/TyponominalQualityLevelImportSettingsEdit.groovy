@@ -1,0 +1,7 @@
+package ru.spacecorp.mobdekbkp.web.typonominalqualitylevelimportsettings
+
+import com.haulmont.cuba.gui.components.AbstractEditor
+import ru.spacecorp.mobdekbkp.entity.TyponominalQualityLevelImportSettings
+
+class TyponominalQualityLevelImportSettingsEdit extends AbstractEditor<TyponominalQualityLevelImportSettings> {
+}

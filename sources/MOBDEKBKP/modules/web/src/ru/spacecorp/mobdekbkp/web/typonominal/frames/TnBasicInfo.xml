@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        class="ru.spacecorp.mobdekbkp.web.typonominal.frames.TnBasicInfo"
+        messagesPack="ru.spacecorp.mobdekbkp.web.typonominal">
+    <dialogMode height="600"
+                width="800"/>
+    <layout>
+        <scrollBox id="scrollBox"
+                   height="100%">
+            <groupBox id="gbBasicInfo"
+                      height="100%"
+                      spacing="true">
+                <textArea id="taFuncPurpose"
+                          caption="msg://functional"
+                          editable="false"
+                          inputPrompt="msg://mustSelectTn"
+                          width="100%"/>
+                <label id="lblLifeCycleStage"
+                       align="MIDDLE_LEFT"
+                       visible="false"
+                       width="100%"/>
+                <hbox id="hbTnQualityLvl"
+                      spacing="true"
+                      width="100%">
+                    <label id="lblTnQualityLvl"
+                           align="MIDDLE_LEFT"
+                           width="100%"/>
+                    <textField id="tfTnQualityLvl"
+                               editable="false"
+                               width="100%"/>
+                    <label id="lblTnCountry"
+                           align="MIDDLE_LEFT"
+                           value="msg://country"
+                           width="100%"/>
+                    <textField id="tfTnCountry"
+                               editable="false"
+                               width="100%"/>
+                </hbox>
+                <hbox id="hbMainStats"
+                      spacing="true"
+                      width="100%">
+                    <label id="lblEkbk"
+                           align="MIDDLE_LEFT"
+                           value="msg://isEKBK"
+                           visible="false"/>
+                    <label id="lblMpt"
+                           align="MIDDLE_CENTER"
+                           value="msg://isMPT"
+                           visible="false"/>
+                    <label id="lblNotPerspective"
+                           align="MIDDLE_RIGHT"
+                           value="msg://notPerspective"
+                           visible="false"/>
+                </hbox>
+                <vbox id="vbAlterClasses"
+                      spacing="true">
+                    <hbox id="hbAlterRel"
+                          spacing="true"
+                          visible="false"
+                          width="100%">
+                        <label value="msg://altRel"/>
+                        <textField id="tfAltRel"
+                                   width="100%"/>
+                    </hbox>
+                    <hbox id="hbAlterMil"
+                          spacing="true"
+                          visible="false"
+                          width="100%">
+                        <label value="msg://altMil"/>
+                        <textField id="tfAltMil"
+                                   width="100%"/>
+                    </hbox>
+                    <hbox id="hbAlterGost2"
+                          spacing="true"
+                          visible="false"
+                          width="100%">
+                        <label value="msg://altGost2"/>
+                        <textField id="tfAltGost2"
+                                   width="100%"/>
+                    </hbox>
+                    <hbox id="hbAlterGost5"
+                          spacing="true"
+                          visible="false"
+                          width="100%">
+                        <label value="msg://altGost5"/>
+                        <textField id="tfAltGost5"
+                                   width="100%"/>
+                    </hbox>
+                </vbox>
+                <button id="reportButton"
+                        caption="msg://reportButton"
+                        icon="font-icon:PRINT"
+                        invoke="runReport"/>
+            </groupBox>
+        </scrollBox>
+    </layout>
+</window>

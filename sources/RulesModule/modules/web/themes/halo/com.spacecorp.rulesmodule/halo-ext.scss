@@ -1,0 +1,7 @@
+/* Define your theme modifications inside next mixin */
+@mixin com_spacecorp_rulesmodule-halo-ext {
+	.v-table-cell-content.red { background-color: red; }
+	.v-table-cell-content.orange { background-color: orange;}
+	.v-table-cell-content.green { background-color: green; }
+	.v-table-cell-content.yellow { background-color: yellow; }
+}

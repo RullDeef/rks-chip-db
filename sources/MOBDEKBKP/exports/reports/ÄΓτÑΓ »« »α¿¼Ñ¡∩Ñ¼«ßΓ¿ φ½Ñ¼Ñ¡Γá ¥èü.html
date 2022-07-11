@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title>Потребность в применении</title>
+    <style>
+      *{
+        font-family: Times New Roman;
+       }
+      .table_header{
+        position: relative;
+        left: 10%;
+      }
+      .left_cell_header{
+        position: relative;
+        padding-left: 60px;
+      }
+      .main_table{
+        border: 1px solid;
+        text-align: center;
+        border-collapse: collapse;
+      }
+      .main_table td{
+        border: 1px solid;
+        padding: 5px;
+      }
+      .main_table tr:last-child{
+        display:none;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+    <#assign ReportName = Root.bands.reportname>
+    <#assign headerup = Root.bands.headerup>
+    <#assign componentCommons = Root.bands.componentCommons>
+    <#assign headerdown = Root.bands.headerdown>
+    <#assign mainRows = Root.bands.mainRows>
+    <h1 class="header_name">${(ReportName[0].fields('name'))!?string!}</h1>
+    <table class="main_table">
+      <tr>
+        <td>${headerup[0].fields.hsp1}</td>
+        <td>${headerup[0].fields.hclass}</td>
+        <td>${headerup[0].fields.htype}</td>
+        <td>${headerup[0].fields.hlevel}</td>
+        <td>${headerup[0].fields.hmans}</td>
+        <td>${headerup[0].fields.hcountry}</td>
+      </tr>
+      <tr>
+        <td>${componentCommons[0].fields.sp1}</td>
+        <td>${componentCommons[0].fields.rowcl}</td>
+        <td>${componentCommons[0].fields.type}</td>
+        <td>${componentCommons[0].fields.qualityLevel}</td>
+        <td>${componentCommons[0].fields.mans}</td>
+        <td>${componentCommons[0].fields.country}</td>
+      </tr>
+      <tr>
+        <td>${headerdown[0].fields.henum}</td>
+        <td>${headerdown[0].fields.hdevpt}</td>
+        <td>${headerdown[0].fields.hdevptdev}</td>
+        <td>${headerdown[0].fields.hdev}</td>
+        <td>${headerdown[0].fields.hdevprod}</td>
+        <td>${headerdown[0].fields.hyr}</td>
+      </tr>
+      <#list mainRows as main_>
+        <tr>
+          <td>${main_.fields.enum1}</td>
+          <td>${main_.fields.devpt}</td>
+          <td>${main_.fields.devptdev}</td>
+          <td>${main_.fields.dev}</td>
+          <td>${main_.fields.devprod}</td>
+          <td>${main_.fields.yr}</td>
+        </tr>
+      </#list>
+    </table>
+  </div>
+  </body>
+</html>

@@ -1,0 +1,1 @@
+gradle dropTomcat clean setupTomcat deploy

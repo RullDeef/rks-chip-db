@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://export"
+        class="com.company.importmodule.web.screens.Exportscreen"
+        messagesPack="com.company.importmodule.web.screens">
+    <dialogMode height="600"
+                width="800"/>
+    <layout>
+        <hbox height="100%"
+              spacing="true"
+              width="100%">
+            <vbox expand="mainBox"
+                  height="100%"
+                  spacing="true">
+                <lookupField id="rootPackageLkup"
+                             caption="msg://Root package"
+                             width="25%"/>
+                <lookupField id="entityLkup"
+                             caption="msg://Entity"
+                             width="25%"/>
+                <hbox id="mainBox"
+                      spacing="true"
+                      width="80%">
+                    <twinColumn id="propertyColumn"
+                                addAllBtnEnabled="true"
+                                caption="msg://Fields"
+                                height="80%"
+                                width="100%"/>
+                    <vbox spacing="true"
+                          width="80%">
+                        <checkBox id="findTypeCheck"
+                                  caption="msg://Export by id"/>
+                        <checkBox id="typonominalLinkCheck"
+                                  caption="msg://Export with link"/>
+                        <groupBox caption="msg://warning"
+                                  spacing="true">
+                            <optionsGroup id="exportOptions"/>
+                        </groupBox>
+                        <button id="exportBtn"
+                                caption="msg://Export"
+                                invoke="onExportBtnClick"/>
+                    </vbox>
+                </hbox>
+            </vbox>
+        </hbox>
+    </layout>
+</window>

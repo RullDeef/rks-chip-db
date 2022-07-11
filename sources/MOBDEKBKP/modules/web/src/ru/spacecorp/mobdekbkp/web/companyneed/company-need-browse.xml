@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="ru.spacecorp.mobdekbkp.web.companyneed.CompanyNeedBrowse"
+        focusComponent="companyNeedsTable"
+        lookupComponent="companyNeedsTable"
+        messagesPack="ru.spacecorp.mobdekbkp.web.companyneed">
+    <dsContext>
+        <groupDatasource id="companyNeedsDs"
+                         class="ru.spacecorp.mobdekbkp.entity.CompanyNeed"
+                         view="companyNeed-view">
+            <query>
+                <![CDATA[SELECT cn FROM mobdekbkp$CompanyNeed cn]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="companyNeedsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="companyNeedsTable"
+                datasource="companyNeedsDs">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="companyNeedsTable"
+                    width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="typonominal"/>
+                <column id="amount"/>
+                <column id="wantedDeliverDate"/>
+                <column id="company"/>
+                <column id="createTs"/>
+                <column id="status"
+                        caption="msg://status"/>
+                <column id="requirements"/>
+            </columns>
+            <rows datasource="companyNeedsDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="companyNeedsTable.create"/>
+                <button id="editBtn"
+                        action="companyNeedsTable.edit"/>
+                <button id="removeBtn"
+                        action="companyNeedsTable.remove"/>
+                <label id="spacer"
+                       width="250px"/>
+                <button id="approveBtn"
+                        caption="msg://Approve"
+                        invoke="onApproveBtnClick"
+                        visible="false"/>
+                <button id="rejectBtn"
+                        caption="msg://Reject"
+                        invoke="onRejectBtnClick"
+                        visible="false"/>
+                <button id="rejectGnioBtn"
+                        caption="msg://RejectGnio"
+                        invoke="onRejectGnioBtnClick"
+                        visible="false"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

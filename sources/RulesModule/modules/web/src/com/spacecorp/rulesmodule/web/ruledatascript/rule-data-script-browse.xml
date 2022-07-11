@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="com.spacecorp.rulesmodule.web.ruledatascript.RuleDataScriptBrowse"
+        focusComponent="ruleDataScriptsTable"
+        lookupComponent="ruleDataScriptsTable"
+        messagesPack="com.spacecorp.rulesmodule.web.ruledatascript">
+    <dsContext>
+        <groupDatasource id="ruleDataScriptsDs"
+                         class="com.spacecorp.rulesmodule.entity.RuleDataScript"
+                         view="_local">
+            <query>
+                <![CDATA[select e from rulesmodule$RuleDataScript e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="ruleDataScriptsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="ruleDataScriptsTable"
+                datasource="ruleDataScriptsDs">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="ruleDataScriptsTable"
+                    width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="name"/>
+                <column id="sql"/>
+                <column id="comment"/>
+                <column id="entity"/>
+                <column id="view"/>
+            </columns>
+            <rows datasource="ruleDataScriptsDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="ruleDataScriptsTable.create"/>
+                <button id="editBtn"
+                        action="ruleDataScriptsTable.edit"/>
+                <button id="removeBtn"
+                        action="ruleDataScriptsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="ru.spacecorp.mobdekbkp.web.parameter.ParameterEdit"
+        datasource="parameterDs"
+        messagesPack="ru.spacecorp.mobdekbkp.web.parameter">
+    <dsContext>
+        <datasource id="parameterDs"
+                    class="ru.spacecorp.mobdekbkp.entity.Parameter"
+                    view="parameter-view">
+            <datasource id="unitDs"
+                        property="unit"/>
+        </datasource>
+    </dsContext>
+    <dialogMode forceDialog="true"/>
+    <layout expand="windowActions"
+            spacing="true">
+        <grid spacing="true"
+              width="100%">
+            <columns>
+                <column flex="0.25"/>
+                <column flex="0.75"/>
+            </columns>
+            <rows>
+                <row>
+                    <label align="MIDDLE_LEFT"
+                           value="msg://ru.spacecorp.mobdekbkp.entity/Parameter.name"
+                           width="100%"/>
+                    <richTextArea id="smallRichTextArea"
+                                  datasource="parameterDs"
+                                  height="70px"
+                                  property="name"
+                                  required="true"
+                                  requiredMessage="msg://richTextAreaIsEmpty"
+                                  stylename="smallRichTextArea"
+                                  width="100%"/>
+                </row>
+                <row>
+                    <label align="MIDDLE_LEFT"
+                           value="msg://ru.spacecorp.mobdekbkp.entity/Parameter.description"
+                           width="100%"/>
+                    <textArea datasource="parameterDs"
+                              property="description"
+                              width="100%"/>
+                </row>
+                <row>
+                    <label align="MIDDLE_LEFT"
+                           value="msg://ru.spacecorp.mobdekbkp.entity/Parameter.defaultValueType"
+                           width="100%"/>
+                    <lookupField datasource="parameterDs"
+                                 property="defaultValueType"
+                                 width="100%"/>
+                </row>
+                <row>
+                    <label align="MIDDLE_LEFT"
+                           value="msg://ru.spacecorp.mobdekbkp.entity/Parameter.paramType"
+                           width="100%"/>
+                    <lookupField datasource="parameterDs"
+                                 property="paramType"
+                                 width="100%"/>
+                </row>
+                <row>
+                    <label align="MIDDLE_LEFT"
+                           value="msg://ru.spacecorp.mobdekbkp.entity/Parameter.unit"
+                           width="100%"/>
+                    <hbox expand="unitValLabel"
+                          stylename="rtaPickerField"
+                          width="100%">
+                        <richTextArea id="unitValLabel"
+                                      datasource="unitDs"
+                                      editable="false"
+                                      property="fullName"/>
+                        <button id="unitValPickerBtn"
+                                icon="PICKERFIELD_LOOKUP"
+                                invoke="openLookupUnitVal"/>
+                        <button id="unitValClearBtn"
+                                icon="PICKERFIELD_CLEAR"
+                                invoke="onUnitValClearBtnClick"/>
+                    </hbox>
+                </row>
+                <row>
+                    <label value="msg://ru.spacecorp.mobdekbkp.entity/Parameter.parameterCategory"
+                           width="100%"/>
+                    <pickerField datasource="parameterDs"
+                                 property="parameterCategory"
+                                 width="100%"/>
+                </row>
+            </rows>
+        </grid>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

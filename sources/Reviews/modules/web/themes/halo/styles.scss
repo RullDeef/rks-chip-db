@@ -1,0 +1,11 @@
+@import "halo-defaults";
+@import "com.company.reviews/halo-ext-defaults";
+@import "app-components";
+@import "com.company.reviews/halo-ext";
+
+.halo {
+  // include auto-generated app components SCSS
+  @include app_components;
+  
+  @include com_company_reviews-halo-ext;
+}

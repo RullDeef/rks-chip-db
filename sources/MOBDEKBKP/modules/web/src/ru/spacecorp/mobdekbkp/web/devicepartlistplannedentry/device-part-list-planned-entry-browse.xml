@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="ru.spacecorp.mobdekbkp.web.devicepartlistplannedentry.DevicePartListPlannedEntryBrowse"
+        focusComponent="devicePartListPlannedEntriesTable"
+        lookupComponent="devicePartListPlannedEntriesTable"
+        messagesPack="ru.spacecorp.mobdekbkp.web.devicepartlistplannedentry">
+    <dsContext>
+        <groupDatasource id="devicePartListPlannedEntriesDs"
+                         class="ru.spacecorp.mobdekbkp.entity.DevicePartListPlannedEntry"
+                         view="devicePartListPlannedEntry-view">
+            <query>
+                <![CDATA[select e from mobdekbkp$DevicePartListPlannedEntry e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="devicePartListPlannedEntriesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="devicePartListPlannedEntriesTable"
+                datasource="devicePartListPlannedEntriesDs">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="devicePartListPlannedEntriesTable"
+                    width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="typonominal"/>
+                <column id="status"/>
+                <column id="devicePartListPlannedInverse"/>
+            </columns>
+            <rows datasource="devicePartListPlannedEntriesDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="devicePartListPlannedEntriesTable.create"/>
+                <button id="editBtn"
+                        action="devicePartListPlannedEntriesTable.edit"/>
+                <button id="removeBtn"
+                        action="devicePartListPlannedEntriesTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

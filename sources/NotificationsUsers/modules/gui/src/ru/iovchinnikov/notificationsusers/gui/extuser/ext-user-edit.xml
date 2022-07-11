@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        class="ru.iovchinnikov.notificationsusers.gui.extuser.ExtUserEditor"
+        extends="/com/haulmont/cuba/gui/app/security/user/edit/user-edit.xml"
+        messagesPack="ru.iovchinnikov.notificationsusers.gui.extuser"
+        xmlns:ext="http://schemas.haulmont.com/cuba/window-ext.xsd">
+    <dsContext>
+        <datasource id="userDs"
+                    class="ru.iovchinnikov.notificationsusers.entity.ExtUser"
+                    view="extUser-view"/>
+    </dsContext>
+    <layout>
+        <groupBox id="propertiesBox">
+            <grid id="propertiesGrid">
+                <rows>
+                    <row id="propertiesRow">
+                        <fieldGroup id="fieldGroupRight">
+                            <column>
+                                <field property="file"/>
+                            </column>
+                        </fieldGroup>
+                    </row>
+                </rows>
+            </grid>
+        </groupBox>
+        <hbox ext:index="1"
+              spacing="true">
+            <label id="company"
+                   value="msg://company"/>
+            <lookupPickerField id="pfCompany"/>
+            <label id="phone"
+                   align="MIDDLE_LEFT"
+                   value="msg://phone"/>
+            <maskedField datasource="userDs"
+                         mask="#-###-###-##-##"
+                         property="phone"
+                         width="161px"/>
+            <label value="msg://phAdd"/>
+            <textField/>
+        </hbox>
+    </layout>
+</window>

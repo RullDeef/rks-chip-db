@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="ru.spacecorp.mobdekbkp.web.devicecomplect.DeviceComplectBrowse"
+        focusComponent="deviceComplectsTable"
+        lookupComponent="deviceComplectsTable"
+        messagesPack="ru.spacecorp.mobdekbkp.web.devicecomplect">
+    <dsContext>
+        <groupDatasource id="deviceComplectsDs"
+                         class="ru.spacecorp.mobdekbkp.entity.DeviceComplect"
+                         view="deviceComplect-view">
+            <query>
+                <![CDATA[select e from mobdekbkp$DeviceComplect e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="deviceComplectsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="deviceComplectsTable"
+                datasource="deviceComplectsDs">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="deviceComplectsTable"
+                    width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="complectNumber"/>
+                <column id="status"/>
+                <column id="progress"/>
+            </columns>
+            <rows datasource="deviceComplectsDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="deviceComplectsTable.create"/>
+                <button id="editBtn"
+                        action="deviceComplectsTable.edit"/>
+                <button id="removeBtn"
+                        action="deviceComplectsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

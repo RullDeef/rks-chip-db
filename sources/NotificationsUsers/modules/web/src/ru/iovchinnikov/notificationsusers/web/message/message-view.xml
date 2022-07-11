@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://viewerCaption"
+        class="ru.iovchinnikov.notificationsusers.web.message.MessageView"
+        datasource="messageDs"
+        focusComponent="fieldGroup"
+        messagesPack="ru.iovchinnikov.notificationsusers.web.message">
+    <dsContext>
+        <datasource id="messageDs"
+                    class="ru.iovchinnikov.notificationsusers.entity.Message"
+                    view="message-view">
+            <datasource id="messageTextDs"
+                        property="messageText"/>
+            <datasource id="metaDs"
+                        property="meta"/>
+        </datasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="windowActions"
+            spacing="true">
+        <buttonsPanel>
+            <button id="btnReply"
+                    caption="msg://reply"
+                    invoke="onBtnReplyClick"/>
+            <button id="btnForward"
+                    caption="msg://forward"
+                    invoke="onBtnFwdClick"/>
+            <button id="btnRemove"
+                    caption="msg://remove"
+                    invoke="onBtnRemoveClick"/>
+            <button id="btnReport"
+                    caption="msg://report"
+                    invoke="onBtnReportClick"/>
+            <button id="btnFavorites"
+                    caption="msg://favorites"
+                    invoke="onBtnFavClick"
+                    visible="false"/>
+        </buttonsPanel>
+        <fieldGroup id="fieldGroup"
+                    datasource="messageDs"
+                    fieldCaptionWidth="100"
+                    width="50%">
+            <column width="250px">
+                <field id="tfSender"
+                       caption="msg://txUser"
+                       width="100%">
+                    <textField id="tfSender"
+                               caseConversion="NONE"
+                               textChangeEventMode="LAZY"
+                               textChangeTimeout="400"
+                               trim="true"
+                               visible="true"
+                               width="100%"/>
+                </field>
+                <field id="fRecipient"
+                       editable="false"
+                       property="recipient"
+                       width="100%"/>
+                <field id="fSubject"
+                       editable="false"
+                       property="subject"
+                       width="100%"/>
+                <field id="fEntityRef"
+                       editable="false"
+                       property="entityReference"
+                       visible="false"
+                       width="100%"/>
+                <field id="fAttach"
+                       editable="false"
+                       property="attachment"
+                       width="100%"/>
+            </column>
+        </fieldGroup>
+        <richTextArea id="messageTextTextArea"
+                      datasource="messageTextDs"
+                      editable="false"
+                      property="text"
+                      width="100%"/>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

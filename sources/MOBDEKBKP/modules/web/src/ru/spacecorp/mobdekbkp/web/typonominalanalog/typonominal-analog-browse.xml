@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="ru.spacecorp.mobdekbkp.web.typonominalanalog.TyponominalAnalogBrowse"
+        focusComponent="typonominalAnalogsTable"
+        lookupComponent="typonominalAnalogsTable"
+        messagesPack="ru.spacecorp.mobdekbkp.web.typonominalanalog">
+    <dsContext>
+        <groupDatasource id="typonominalAnalogsDs"
+                         class="ru.spacecorp.mobdekbkp.entity.TyponominalAnalog"
+                         view="typonominalAnalog-view">
+            <query>
+                <![CDATA[select e from mobdekbkp$TyponominalAnalog e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="typonominalAnalogsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="typonominalAnalogsTable"
+                datasource="typonominalAnalogsDs">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="typonominalAnalogsTable"
+                    width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="typonominal"/>
+                <column id="typonominalAnalogType"/>
+                <column id="parentTyponominal"/>
+                <column id="isRecommendedGnio"/>
+            </columns>
+            <rows datasource="typonominalAnalogsDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="typonominalAnalogsTable.create"/>
+                <button id="editBtn"
+                        action="typonominalAnalogsTable.edit"/>
+                <button id="removeBtn"
+                        action="typonominalAnalogsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

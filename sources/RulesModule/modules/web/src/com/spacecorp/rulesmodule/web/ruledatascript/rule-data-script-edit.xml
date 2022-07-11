@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="com.spacecorp.rulesmodule.web.ruledatascript.RuleDataScriptEdit"
+        datasource="ruleDataScriptDs"
+        focusComponent="fieldGroup"
+        messagesPack="com.spacecorp.rulesmodule.web.ruledatascript">
+    <dsContext>
+        <datasource id="ruleDataScriptDs"
+                    class="com.spacecorp.rulesmodule.entity.RuleDataScript"
+                    view="_local"/>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="windowActions"
+            spacing="true">
+        <hbox spacing="true">
+            <fieldGroup id="fieldGroup"
+                        datasource="ruleDataScriptDs">
+                <column width="250px">
+                    <field property="name"/>
+                    <field editable="false"
+                           property="sql"
+                           visible="false"/>
+                    <field property="comment"
+                           rows="4"/>
+                    <field editable="false"
+                           property="entity"/>
+                    <field editable="false"
+                           property="view"/>
+                </column>
+            </fieldGroup>
+            <sourceCodeEditor id="sourceCodeEditor"
+                              height="300px"
+                              mode="SQL"
+                              width="800px"/>
+        </hbox>
+        <lookupField id="lookupFieldRoot"
+                     width="241px"/>
+        <lookupField id="lookupFieldEntity"
+                     width="243px"/>
+        <lookupField id="lookupFieldView"
+                     width="244px"/>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

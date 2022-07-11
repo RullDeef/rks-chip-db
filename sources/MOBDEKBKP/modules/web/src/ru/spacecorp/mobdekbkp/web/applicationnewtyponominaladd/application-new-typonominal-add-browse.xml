@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="ru.spacecorp.mobdekbkp.web.applicationnewtyponominaladd.ApplicationNewTyponominalAddBrowse"
+        focusComponent="applicationNewTyponominalAddsTable"
+        lookupComponent="applicationNewTyponominalAddsTable"
+        messagesPack="ru.spacecorp.mobdekbkp.web.applicationnewtyponominaladd">
+    <dsContext>
+        <groupDatasource id="applicationNewTyponominalAddsDs"
+                         class="ru.spacecorp.mobdekbkp.entity.ApplicationNewTyponominalAdd"
+                         view="applicationNewTyponominalAdd-view">
+            <query>
+                <![CDATA[SELECT e from mobdekbkp$ApplicationNewTyponominalAdd e
+                            ]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="applicationNewTyponominalAddsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="applicationNewTyponominalAddsTable"
+                datasource="applicationNewTyponominalAddsDs">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="applicationNewTyponominalAddsTable"
+                    width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="designation"/>
+                <column id="status"/>
+                <column id="deliveryDocDesignation"/>
+                <column id="classMop"/>
+                <column id="producer"/>
+                <column id="description"/>
+            </columns>
+            <rows datasource="applicationNewTyponominalAddsDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="applicationNewTyponominalAddsTable.create"/>
+                <button id="editBtn"
+                        action="applicationNewTyponominalAddsTable.edit"/>
+                <button id="removeBtn"
+                        action="applicationNewTyponominalAddsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

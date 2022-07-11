@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="ru.spacecorp.documents.web.document.DocumentBrowse"
+        messagesPack="ru.spacecorp.documents.web.document"
+        lookupComponent="docsFrame.documentsTable">
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true">
+        <frame id="docsFrame"
+               height="100%"
+               screen="documents$Documents.frame"/>
+    </layout>
+</window>

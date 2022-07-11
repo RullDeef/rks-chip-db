@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        class="ru.spacecorp.mobdekbkp.web.typonominal.frames.Tnextraparams"
+        messagesPack="ru.spacecorp.mobdekbkp.web.typonominal">
+    <dialogMode height="600"
+                width="800"/>
+    <layout>
+        <scrollBox id="scrollBox"
+                   height="100%">
+            <vbox id="vbExtParams"
+                  height="100%"
+                  margin="true"
+                  spacing="true">
+                <hbox id="hbClimaticImplementation"
+                      spacing="true"
+                      visible="false">
+                    <label align="MIDDLE_LEFT"
+                           value="msg://ru.spacecorp.mobdekbkp.entity/Type.climaticImplementation"
+                           width="300px"/>
+                    <textField id="tfClimaticImplementation"
+                               editable="false"
+                               width="100px"/>
+                </hbox>
+                <hbox id="hbPlacementCategory"
+                      spacing="true"
+                      visible="false">
+                    <label align="MIDDLE_LEFT"
+                           value="msg://ru.spacecorp.mobdekbkp.entity/Type.placementCategory"
+                           width="300px"/>
+                    <textField id="tfPlacementCategory"
+                               editable="false"
+                               width="100px"/>
+                </hbox>
+                <hbox id="hbMass"
+                      spacing="true"
+                      visible="false">
+                    <label id="lblMass"
+                           align="MIDDLE_LEFT"
+                           value="msg://ru.spacecorp.mobdekbkp.entity/Typonominal.mass"
+                           width="300px"/>
+                    <textField id="tfMass"
+                               editable="false"
+                               width="100px"/>
+                    <label id="lblMassGr"
+                           align="MIDDLE_LEFT"
+                           value="г."/>
+                </hbox>
+                <label id="lblHasLongDeliverCycle"
+                       align="MIDDLE_LEFT"
+                       width="100%"/>
+                <label id="lblHasSubstitute"
+                       align="MIDDLE_LEFT"
+                       visible="false"
+                       width="100%"/>
+                <label id="lblSealNeeded"
+                       align="MIDDLE_LEFT"
+                       visible="false"
+                       width="100%"/>
+                <label id="lblIsAutoAssemble"
+                       align="MIDDLE_LEFT"
+                       visible="false"
+                       width="100%"/>
+            </vbox>
+        </scrollBox>
+    </layout>
+</window>

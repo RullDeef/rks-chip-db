@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title>Потребность в применении</title>
+    <style>
+      *{
+        font-family: Times New Roman;
+       }
+
+      .table_header{
+        position: relative;
+        left: 10%;
+      }
+      .left_cell_header{
+        position: relative;
+        padding-left: 60px;
+      }
+      .main_table{
+        border: 1px solid;
+        text-align: center;
+        margin-left: 20px;
+        border-collapse: collapse;
+      }
+      .main_table td{
+        border: 1px solid;
+        padding: 5px;
+      }
+      .main_table tr:last-child{
+        display:none;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+    <#assign ReportName = Root.bands.reportname>
+    <#assign HeaderUp = Root.bands.headerup>
+    <#assign ComponentCommons = Root.bands.componentCommons>
+    <#assign HeaderDown = Root.bands.headerdown>
+    <#assign ComponenttListProject = Root.bands.componentListProject>
+    <h1 class="header_name">${(ReportName[0].fields('name'))!?string!}</h1>
+    <table class="table_header">
+      <tr >
+      <td class="">
+        <p>${HeaderUp[0].fields.hgroup}:</p>
+        <p>${HeaderUp[0].fields.htyponom}:</p>
+        <p>${HeaderUp[0].fields.hlevel}:</p>
+        <p>${HeaderUp[0].fields.hprod}:</p>
+        <p>${HeaderUp[0].fields.hcountry}:</p>
+      </td>
+      <td class="left_cell_header">
+        <p>${ComponentCommons[0].fields.componentType}</p>
+        <p>${ComponentCommons[0].fields.typonominal}</p>
+        <p>${ComponentCommons[0].fields.qualityLevel}</p>
+        <p>${ComponentCommons[0].fields.producerCompany}</p>
+        <p>${ComponentCommons[0].fields.country}</p>
+      </td>
+    </tr>
+    </table>
+    <table class="main_table">
+      <tr>
+        <td>${HeaderDown[0].fields.hnum}</td>
+        <td>${HeaderDown[0].fields.hyr}</td>
+        <td>${HeaderDown[0].fields.hdev}</td>
+        <td>${HeaderDown[0].fields.qty}</td>
+        <td>${HeaderDown[0].fields.hcommneed}</td>
+        <td>${HeaderDown[0].fields.hdone}</td>
+        <td>${HeaderDown[0].fields.hleft}</td>
+      </tr>
+      <#list ComponenttListProject as component>
+        <tr>
+          <td>${component.fields.enum}</td>
+          <td>${component.fields.planYear}</td>
+          <td>${component.fields.deviceDesignation}</td>
+          <td>${component.fields.deviceKitsCount}</td>
+          <td>${component.fields.prjEntriesAmount}</td>
+          <td>${component.fields.complEntriesAmount}</td>
+          <td>${component.fields.deltaProjectComplect}</td>
+        </tr>
+      </#list>
+    </table>
+  </div>
+  </body>
+</html>

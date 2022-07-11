@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://Review report"
+        class="com.company.reviews.web.review.Reviewreport"
+        messagesPack="com.company.reviews.web.review">
+    <dsContext>
+        <collectionDatasource id="reviewsDs"
+                              class="com.company.reviews.entity.Review"
+                              view="review-view">
+            <query>
+                <![CDATA[select e from reviews$Review e
+where e.status='hidden' or e.status='declined']]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout>
+        <table height="400px"
+               width="100%">
+            <columns>
+                <column id="review"/>
+                <column id="moderatedReview"/>
+                <column id="parent"/>
+                <column id="parentName"/>
+                <column id="grade"/>
+                <column id="status"/>
+                <column id="updateTs"/>
+            </columns>
+            <rows datasource="reviewsDs"/>
+            <buttonsPanel>
+                <button id="hiddenAndDeclinedBtn"
+                        caption="msg://Hidden and declined"
+                        invoke="onHiddenAndDeclinedBtnClick"/>
+                <button id="notModeratedBtn"
+                        caption="msg://Not Moderated"
+                        invoke="onNotModeratedBtnClick"/>
+            </buttonsPanel>
+        </table>
+    </layout>
+</window>

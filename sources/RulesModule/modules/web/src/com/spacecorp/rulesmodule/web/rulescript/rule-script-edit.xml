@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="com.spacecorp.rulesmodule.web.rulescript.RuleScriptEdit"
+        datasource="ruleScriptDs"
+        focusComponent="fieldGroup"
+        messagesPack="com.spacecorp.rulesmodule.web.rulescript">
+    <dsContext>
+        <datasource id="ruleScriptDs"
+                    class="com.spacecorp.rulesmodule.entity.RuleScript"
+                    view="_local"/>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="windowActions"
+            spacing="true">
+        <hbox spacing="true">
+            <fieldGroup id="fieldGroup"
+                        datasource="ruleScriptDs">
+                <column width="250px">
+                    <field property="name"/>
+                    <field property="script"
+                           rows="5"
+                           visible="false"/>
+                    <field property="comment"
+                           rows="4"/>
+                </column>
+            </fieldGroup>
+            <sourceCodeEditor id="sourceCodeEditor"
+                              height="650px"
+                              mode="Groovy"
+                              width="1200px"/>
+        </hbox>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

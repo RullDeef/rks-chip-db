@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://recycleMessage"
+        class="ru.iovchinnikov.notificationsusers.web.message.MessageRecoverEdit"
+        datasource="messageDs"
+        focusComponent="fieldGroup"
+        messagesPack="ru.iovchinnikov.notificationsusers.web.message">
+    <dsContext>
+        <collectionDatasource id="usersDs"
+                              class="ru.iovchinnikov.notificationsusers.entity.ExtUser"
+                              datasourceClass="ru.iovchinnikov.notificationsusers.web.UserDatasource"
+                              view="extUser-view">
+            <query>
+                <![CDATA[select e from notificationsusers$ExtUser e where e.login <> :session$userLogin and e.login <> 'anonymous']]>
+            </query>
+        </collectionDatasource>
+        <datasource id="messageDs"
+                    class="ru.iovchinnikov.notificationsusers.entity.Message"
+                    view="message-view">
+            <datasource id="messageTextDs"
+                        property="messageText"/>
+            <datasource id="metaDs"
+                        property="meta"/>
+        </datasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="1000"/>
+    <layout spacing="true">
+        <vbox spacing="true">
+            <label id="lblCaption"
+                   stylename="h1 bold large"
+                   value="msg://view_message"/>
+            <grid spacing="true"
+                  width="100%">
+                <columns>
+                    <column flex="0.6"/>
+                    <column flex="0.4"/>
+                </columns>
+                <rows>
+                    <row>
+                        <fieldGroup id="fieldGroup"
+                                    datasource="messageDs"
+                                    editable="false"
+                                    fieldCaptionWidth="100px"
+                                    width="100%">
+                            <column width="100%">
+                                <field property="subject"
+                                       width="100%"/>
+                                <field property="attachment"/>
+                            </column>
+                        </fieldGroup>
+                        <fieldGroup id="fieldgroup2"
+                                    datasource="messageDs"
+                                    editable="false"
+                                    fieldCaptionWidth="100px"
+                                    width="100%">
+                            <column width="100%">
+                                <field id="recipient"
+                                       caption="msg://rxUser"
+                                       width="100%">
+                                    <lookupField id="recipient"
+                                                 datasource="messageDs"
+                                                 filterMode="CONTAINS"
+                                                 optionsDatasource="usersDs"
+                                                 property="recipient"
+                                                 width="100%"/>
+                                </field>
+                                <field id="companies"
+                                       caption="msg://filterCompany"
+                                       width="100%">
+                                    <lookupField id="companies"
+                                                 filterMode="CONTAINS"
+                                                 nullOptionVisible="true"
+                                                 width="100%"/>
+                                </field>
+                            </column>
+                        </fieldGroup>
+                    </row>
+                </rows>
+            </grid>
+            <richTextArea id="messageTextTextArea"
+                          datasource="messageTextDs"
+                          editable="false"
+                          height="300px"
+                          property="text"
+                          width="100%"/>
+            <hbox spacing="true">
+                <button id="recycleBtn"
+                        caption="msg://Recycle"
+                        invoke="onRecycleBtnClick"/>
+                <button id="cancelBtn"
+                        caption="msg://Cancel"
+                        invoke="onCancelBtnClick"/>
+            </hbox>
+        </vbox>
+    </layout>
+</window>

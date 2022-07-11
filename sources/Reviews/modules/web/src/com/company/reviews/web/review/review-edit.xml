@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="com.company.reviews.web.review.ReviewEdit"
+        datasource="reviewDs"
+        focusComponent="ratingBox"
+        messagesPack="com.company.reviews.web.review">
+    <dsContext>
+        <datasource id="reviewDs"
+                    class="com.company.reviews.entity.Review"
+                    view="review-view"/>
+    </dsContext>
+    <dialogMode forceDialog="true"/>
+    <layout expand="windowActions"
+            spacing="true">
+        <vbox id="reviewBox"
+              spacing="true">
+            <hbox expand="authorValue"
+                  spacing="true"
+                  width="100%">
+                <label id="authorLabel"
+                       value="msg://createrReview"
+                       stylename="h2"/>
+                <label id="authorValue"
+                       datasource="reviewDs"
+                       property="author.name"
+                       stylename="h2"/>
+            </hbox>
+        </vbox>
+        <hbox id="ratingBox"
+              spacing="true"/>
+        <textArea datasource="reviewDs"
+                  inputPrompt="msg://writeReviewThis"
+                  property="review"
+                  rows="10"
+                  width="100%"/>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="ru.spacecorp.mobdekbkp.web.handbookcad.HandbookCadBrowse"
+        focusComponent="handbookCadsTable"
+        lookupComponent="handbookCadsTable"
+        messagesPack="ru.spacecorp.mobdekbkp.web.handbookcad">
+    <dsContext>
+        <groupDatasource id="handbookCadsDs"
+                         class="ru.spacecorp.mobdekbkp.entity.HandbookCad"
+                         view="handbookCad-view">
+            <query>
+                <![CDATA[select e from mobdekbkp$HandbookCad e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="handbookCadsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="handbookCadsTable"
+                datasource="handbookCadsDs">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="handbookCadsTable"
+                    width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="handbook"/>
+            </columns>
+            <rows datasource="handbookCadsDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="handbookCadsTable.create"/>
+                <button id="editBtn"
+                        action="handbookCadsTable.edit"/>
+                <button id="removeBtn"
+                        action="handbookCadsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

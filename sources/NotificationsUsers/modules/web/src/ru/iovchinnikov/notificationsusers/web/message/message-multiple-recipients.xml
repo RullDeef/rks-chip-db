@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://caption"
+        class="ru.iovchinnikov.notificationsusers.web.message.MessageMultipleRecipients"
+        messagesPack="ru.iovchinnikov.notificationsusers.web.message">
+    <dsContext>
+        <collectionDatasource id="userDs"
+                              class="ru.iovchinnikov.notificationsusers.entity.ExtUser"
+                              view="extUser-view">
+            <query>
+                <![CDATA[select e from notificationsusers$ExtUser e where e.login <> :session$userLogin and e.login <> 'anonymous']]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout>
+        <vbox spacing="true">
+            <textField id="tfTheme"
+                       caption="msg://theme"
+                       width="70%"/>
+            <hbox align="MIDDLE_RIGHT"
+                  spacing="true"
+                  visible="false">
+                <label value="msg://filterCompany"/>
+                <lookupField id="companies"/>
+            </hbox>
+            <twinColumn id="tcSelectedUsers"
+                        addAllBtnEnabled="true"
+                        caption="msg://recepient"
+                        height="100%"
+                        optionsDatasource="userDs"
+                        property="name"
+                        required="true"
+                        rows="8"
+                        width="100%"/>
+            <richTextArea id="rtaText"
+                          caption="msg://text"
+                          width="100%"/>
+            <buttonsPanel>
+                <button id="btnSend"
+                        caption="msg://send"
+                        invoke="onBtnSendClick"/>
+                <button id="btnCancel"
+                        caption="msg://cancel"
+                        invoke="onBtnCancelClick"/>
+            </buttonsPanel>
+        </vbox>
+    </layout>
+</window>

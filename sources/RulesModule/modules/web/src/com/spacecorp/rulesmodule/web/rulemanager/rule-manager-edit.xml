@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="com.spacecorp.rulesmodule.web.rulemanager.RuleManagerEdit"
+        datasource="ruleManagerDs"
+        focusComponent="fieldGroup"
+        messagesPack="com.spacecorp.rulesmodule.web.rulemanager">
+    <dsContext>
+        <datasource id="ruleManagerDs"
+                    class="com.spacecorp.rulesmodule.entity.RuleManager"
+                    view="ruleManager-view">
+            <collectionDatasource id="scriptDs"
+                                  property="script"/>
+            <collectionDatasource id="dataScriptDs"
+                                  property="dataScript"/>
+        </datasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="windowActions"
+            spacing="true">
+        <fieldGroup id="fieldGroup"
+                    datasource="ruleManagerDs">
+            <column width="250px">
+                <field property="name"/>
+                <field editable="false"
+                       property="entity"/>
+            </column>
+        </fieldGroup>
+        <lookupField id="lookupFieldRoot"
+                     width="180px"/>
+        <lookupField id="lookupFieldEntity"
+                     width="180px"/>
+        <groupBox id="scriptBox"
+                  caption="msg://com.spacecorp.rulesmodule.entity/RuleManager.script">
+            <table id="scriptTable"
+                   height="200px"
+                   width="100%">
+                <actions>
+                    <action id="add"/>
+                    <action id="remove"/>
+                </actions>
+                <columns>
+                    <column id="name"/>
+                    <column id="script"/>
+                    <column id="comment"/>
+                </columns>
+                <rows datasource="scriptDs"/>
+                <buttonsPanel>
+                    <button action="scriptTable.add"/>
+                    <button action="scriptTable.remove"/>
+                </buttonsPanel>
+            </table>
+        </groupBox>
+        <groupBox id="dataScriptBox"
+                  caption="msg://com.spacecorp.rulesmodule.entity/RuleManager.dataScript">
+            <table id="dataScriptTable"
+                   height="200px"
+                   width="100%">
+                <actions>
+                    <action id="add"/>
+                    <action id="remove"/>
+                </actions>
+                <columns>
+                    <column id="name"/>
+                    <column id="sql"/>
+                    <column id="comment"/>
+                    <column id="view"/>
+                </columns>
+                <rows datasource="dataScriptDs"/>
+                <buttonsPanel>
+                    <button action="dataScriptTable.add"/>
+                    <button action="dataScriptTable.remove"/>
+                </buttonsPanel>
+            </table>
+        </groupBox>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

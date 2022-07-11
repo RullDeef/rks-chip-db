@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="ru.spacecorp.mobdekbkp.web.devicelistproject.DeviceListProjectBrowse"
+        focusComponent="deviceListProjectsTable"
+        lookupComponent="deviceListProjectsTable"
+        messagesPack="ru.spacecorp.mobdekbkp.web.devicelistproject">
+    <dsContext>
+        <groupDatasource id="deviceListProjectsDs"
+                         class="ru.spacecorp.mobdekbkp.entity.DeviceListProject"
+                         view="deviceListProject-view">
+            <query>
+                <![CDATA[select e from mobdekbkp$DeviceListProject e]]>
+            </query>
+        </groupDatasource>
+        <groupDatasource id="typonominalsDs"
+                         class="ru.spacecorp.mobdekbkp.entity.Typonominal">
+            <query>
+                <![CDATA[select e from mobdekbkp$Typonominal e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="deviceListProjectsTable"
+            spacing="true">
+        <filter applyTo="deviceListProjectsTable"
+                datasource="deviceListProjectsDs"/>
+        <groupTable id="deviceListProjectsTable"
+                    height="1606px"
+                    width="100%">
+            <actions>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="name"/>
+                <column id="status"/>
+                <column id="device.designation"/>
+            </columns>
+            <rows datasource="deviceListProjectsDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="readBtn"
+                        caption="msg://read"
+                        icon="EYE"
+                        invoke="onReadBtnClick"/>
+                <button id="editBtn"
+                        action="deviceListProjectsTable.edit"/>
+                <button id="removeBtn"
+                        action="deviceListProjectsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

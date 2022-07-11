@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="ru.spacecorp.mobdekbkp.web.alterclassmil.AlterClassMilBrowse"
+        focusComponent="alterClassMilsTable"
+        lookupComponent="alterClassMilsTable"
+        messagesPack="ru.spacecorp.mobdekbkp.web.alterclassmil">
+    <dsContext>
+        <hierarchicalDatasource id="alterClassMilsDs"
+                                class="ru.spacecorp.mobdekbkp.entity.AlterClassMil"
+                                hierarchyProperty="parent"
+                                view="alterClassMil-view">
+            <query>
+                <![CDATA[select e from mobdekbkp$AlterClassMil e]]>
+            </query>
+        </hierarchicalDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="alterClassMilsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="alterClassMilsTable"
+                datasource="alterClassMilsDs">
+            <properties include=".*"/>
+        </filter>
+        <treeTable id="alterClassMilsTable"
+                   width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="name"/>
+                <column id="shortName"/>
+                <column id="parent"/>
+            </columns>
+            <rows datasource="alterClassMilsDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="alterClassMilsTable.create"/>
+                <button id="editBtn"
+                        action="alterClassMilsTable.edit"/>
+                <button id="removeBtn"
+                        action="alterClassMilsTable.remove"/>
+            </buttonsPanel>
+        </treeTable>
+    </layout>
+</window>

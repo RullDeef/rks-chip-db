@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<fts-config>
+    <entities>
+        <entity class="ru.spacecorp.mobdekbkp.entity.DeviceFilterConditions">
+            <include re=".*"/>
+        </entity>
+        <entity class="ru.spacecorp.mobdekbkp.entity.Handbook">
+            <include re=".*"/>
+        </entity>
+        <entity class="ru.spacecorp.mobdekbkp.entity.HandbookEntry">
+            <include re=".*"/>
+        </entity>
+        <entity class="ru.spacecorp.mobdekbkp.entity.HandbookCad">
+            <include re=".*"/>
+        </entity>
+        <entity class="ru.spacecorp.mobdekbkp.entity.tc.MappingEntity">
+            <include re=".*"/>
+        </entity>
+        <entity class="ru.spacecorp.mobdekbkp.entity.ParameterCategory">
+            <include re=".*"/>
+        </entity>
+        <entity class="ru.spacecorp.mobdekbkp.entity.TyponominalQualityLevelImportSettings">
+            <include re=".*"/>
+        </entity>
+        <entity class="ru.spacecorp.mobdekbkp.entity.StrLib">
+            <include re=".*"/>
+        </entity>
+        <entity class="ru.spacecorp.mobdekbkp.entity.StrRec">
+            <include re=".*"/>
+        </entity>
+        <entity class="ru.spacecorp.mobdekbkp.entity.StrLibSettings">
+            <include re=".*"/>
+        </entity>
+        <entity class="ru.spacecorp.mobdekbkp.entity.StrRecSettings">
+            <include re=".*"/>
+        </entity>
+        <entity class="ru.spacecorp.mobdekbkp.entity.CompanyNeedApplication">
+            <include re=".*"/>
+        </entity>
+    </entities>
+</fts-config>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="ru.spacecorp.mobdekbkp.web.typonominalinstallparameters.TyponominalInstallParametersBrowse"
+        focusComponent="typonominalInstallParametersesTable"
+        lookupComponent="typonominalInstallParametersesTable"
+        messagesPack="ru.spacecorp.mobdekbkp.web.typonominalinstallparameters">
+    <dsContext>
+        <groupDatasource id="typonominalInstallParametersesDs"
+                         class="ru.spacecorp.mobdekbkp.entity.TyponominalInstallParameters"
+                         view="typonominalInstallParameters-view">
+            <query>
+                <![CDATA[select e from mobdekbkp$TyponominalInstallParameters e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="typonominalInstallParametersesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="typonominalInstallParametersesTable"
+                datasource="typonominalInstallParametersesDs">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="typonominalInstallParametersesTable"
+                    width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="description"/>
+                <column id="nonPbSolderTech"/>
+                <column id="temperatureMode"/>
+                <column id="gasEnvironmentAvailable"/>
+                <column id="bodyInstallationDocument"/>
+                <column id="installationOptionDesignation"/>
+                <column id="pinFormingDocument"/>
+                <column id="hasGasket"/>
+                <column id="gasketSize"/>
+                <column id="hasGlue"/>
+                <column id="installationCountAllowed"/>
+                <column id="autoInstallation"/>
+                <column id="glueType"/>
+                <column id="installMethod"/>
+                <column id="solderBrand"/>
+                <column id="fluxBrand"/>
+                <column id="pinFormingDesignation"/>
+            </columns>
+            <rows datasource="typonominalInstallParametersesDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="typonominalInstallParametersesTable.create"/>
+                <button id="editBtn"
+                        action="typonominalInstallParametersesTable.edit"/>
+                <button id="removeBtn"
+                        action="typonominalInstallParametersesTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

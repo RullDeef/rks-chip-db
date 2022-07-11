@@ -1,0 +1,11 @@
+/* Define your theme modifications inside next mixin */
+
+@import "../components/ratingfield/ratingfield";
+@import "../components/ratingframe/ratingframe";
+
+@mixin com_company_reviews-halo-ext {
+    @include halo;
+    @include ratingfield;
+    @include ratingframe;
+
+}

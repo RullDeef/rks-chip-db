@@ -1,0 +1,6 @@
+rootProject.name = 'NotificationsUsers'
+include(':notificationsusers-global', ':notificationsusers-core', ':notificationsusers-gui', ':notificationsusers-web')
+project(':notificationsusers-global').projectDir = new File(settingsDir, 'modules/global')
+project(':notificationsusers-core').projectDir = new File(settingsDir, 'modules/core')
+project(':notificationsusers-gui').projectDir = new File(settingsDir, 'modules/gui')
+project(':notificationsusers-web').projectDir = new File(settingsDir, 'modules/web')

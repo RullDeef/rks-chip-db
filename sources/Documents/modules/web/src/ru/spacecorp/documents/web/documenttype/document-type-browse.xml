@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="ru.spacecorp.documents.web.documenttype.DocumentTypeBrowse"
+        focusComponent="createBtn"
+        lookupComponent="documentTreeTable"
+        messagesPack="ru.spacecorp.documents.web.documenttype">
+    <dsContext>
+        <hierarchicalDatasource id="documentTypesDs"
+                                class="ru.spacecorp.documents.entity.DocumentType"
+                                hierarchyProperty="parent"
+                                view="documentType-view">
+            <query>
+                <![CDATA[select e from documents$DocumentType e]]>
+            </query>
+        </hierarchicalDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="documentTreeTable"
+            spacing="true">
+        <filter id="filter"
+                datasource="documentTypesDs">
+            <properties include=".*"/>
+        </filter>
+        <tree id="documentTreeTable"
+              width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <treechildren datasource="documentTypesDs"/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="documentTreeTable.create"/>
+                <button id="editBtn"
+                        action="documentTreeTable.edit"/>
+                <button id="removeBtn"
+                        action="documentTreeTable.remove"/>
+            </buttonsPanel>
+        </tree>
+    </layout>
+</window>

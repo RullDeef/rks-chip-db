@@ -1,0 +1,6 @@
+rootProject.name = 'discuss'
+include(':talks-global', ':talks-core', ':talks-gui', ':talks-web')
+project(':talks-global').projectDir = new File(settingsDir, 'modules/global')
+project(':talks-core').projectDir = new File(settingsDir, 'modules/core')
+project(':talks-gui').projectDir = new File(settingsDir, 'modules/gui')
+project(':talks-web').projectDir = new File(settingsDir, 'modules/web')

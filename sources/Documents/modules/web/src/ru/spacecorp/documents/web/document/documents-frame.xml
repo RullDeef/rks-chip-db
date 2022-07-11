@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        class="ru.spacecorp.documents.web.document.DocumentsFrame"
+        messagesPack="ru.spacecorp.documents.web.document">
+    <dsContext>
+        <groupDatasource id="documentsDs"
+                         class="ru.spacecorp.documents.entity.Document"
+                         view="document-view">
+            <query>
+                <![CDATA[select e from documents$Document e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="documentsTable">
+        <filter id="filter"
+                applyTo="documentsTable"
+                datasource="documentsDs"
+                margin="false,false,true,false"/>
+        <groupTable id="documentsTable"
+                    width="100%">
+            <actions>
+                <action id="create"
+                        enable="false"
+                        visible="false"/>
+                <action id="edit"
+                        enable="false"
+                        visible="false"/>
+                <action id="remove"
+                        enable="false"
+                        visible="false"/>
+                <action id="refresh"
+                        enable="false"
+                        visible="false"/>
+                <action id="add"
+                        enable="false"
+                        visible="false"/>
+                <action id="exclude"
+                        enable="false"
+                        visible="false"/>
+                <action id="excel"
+                        enable="false"
+                        visible="false"/>
+                <action id="open"
+                        caption="msg://open"
+                        enable="false"
+                        icon="PICKERFIELD_OPEN"
+                        visible="false"/>
+            </actions>
+            <columns>
+                <column id="name"/>
+                <column id="documentType"/>
+                <column id="designation"/>
+            </columns>
+            <rows datasource="documentsDs"/>
+            <buttonsPanel id="buttons"
+                          alwaysVisible="true">
+                <button action="documentsTable.create"/>
+                <button action="documentsTable.add"/>
+                <button id="openBtn"
+                        action="documentsTable.open"
+                        icon="PICKERFIELD_OPEN"/>
+                <button action="documentsTable.edit"/>
+                <button action="documentsTable.remove"/>
+                <button action="documentsTable.exclude"/>
+                <button action="documentsTable.refresh"/>
+                <button action="documentsTable.excel"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

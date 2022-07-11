@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<views xmlns="http://schemas.haulmont.com/cuba/view.xsd">
+    <view class="com.spacecorp.rulesmodule.entity.RuleManager"
+          extends="_local"
+          name="ruleManager-view">
+        <property name="script"
+                  view="_minimal">
+            <property name="script"/>
+            <property name="comment"/>
+        </property>
+        <property name="dataScript"
+                  view="_minimal">
+            <property name="sql"/>
+            <property name="comment"/>
+            <property name="view"/>
+        </property>
+    </view>
+</views>

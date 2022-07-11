@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        class="ru.spacecorp.mobdekbkp.web.type.Typeframeenterprises"
+        messagesPack="ru.spacecorp.mobdekbkp.web.type">
+    <dsContext>
+        <collectionDatasource id="typeEnterprisesDs"
+                              class="ru.spacecorp.mobdekbkp.entity.Type"
+                              view="type-view">
+            <query>
+                <![CDATA[select e from mobdekbkp$Type e]]>
+            </query>
+        </collectionDatasource>
+        <collectionDatasource id="typeManufacturerEntriesDs"
+                              class="ru.spacecorp.mobdekbkp.entity.TypeManufacturerEntry"
+                              view="typeManufacturerEntry-view">
+            <query>
+                <![CDATA[select e from mobdekbkp$TypeManufacturerEntry e]]>
+            </query>
+        </collectionDatasource>
+        <collectionDatasource id="typeCalicoholderEntriesDs"
+                              class="ru.spacecorp.mobdekbkp.entity.TypeCalicoholderEntry"
+                              view="typeCalicoholderEntry-view">
+            <query>
+                <![CDATA[select e from mobdekbkp$TypeCalicoholderEntry e]]>
+            </query>
+        </collectionDatasource>
+        <collectionDatasource id="typeProviderEntriesDs"
+                              class="ru.spacecorp.mobdekbkp.entity.TypeProviderEntry"
+                              view="typeProviderEntry-view">
+            <query>
+                <![CDATA[select e from mobdekbkp$TypeProviderEntry e]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout>
+        <hbox id="hBoxLayout"
+              height="100%"
+              spacing="true"
+              width="100%">
+            <table id="tableManufacturers"
+                   caption="msg://Manufacturers"
+                   height="100%"
+                   multiLineCells="true"
+                   width="100%">
+                <actions>
+                    <action id="edit"
+                            invoke="onEditManufacturers"/>
+                </actions>
+                <columns>
+                    <column id="name"/>
+                </columns>
+                <rows datasource="typeManufacturerEntriesDs"/>
+            </table>
+            <table id="tableCalculatorHolder"
+                   caption="msg://CalculatorHolder"
+                   height="100%"
+                   multiLineCells="true"
+                   width="100%">
+                <actions>
+                    <action id="edit"
+                            invoke="onEditHolders"/>
+                </actions>
+                <columns>
+                    <column id="name"/>
+                </columns>
+                <rows datasource="typeCalicoholderEntriesDs"/>
+            </table>
+            <table id="tableProviders"
+                   caption="msg://Providers"
+                   height="100%"
+                   multiLineCells="true"
+                   width="100%">
+                <actions>
+                    <action id="edit"
+                            invoke="onEditProviders"/>
+                </actions>
+                <columns>
+                    <column id="name"/>
+                </columns>
+                <rows datasource="typeProviderEntriesDs"/>
+            </table>
+        </hbox>
+    </layout>
+</window>

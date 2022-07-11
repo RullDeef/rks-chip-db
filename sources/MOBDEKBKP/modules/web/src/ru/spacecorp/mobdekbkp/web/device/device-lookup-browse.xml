@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="ru.spacecorp.mobdekbkp.web.device.DeviceLookupBrowse"
+        focusComponent="devicesLookupTable"
+        lookupComponent="devicesLookupTable"
+        messagesPack="ru.spacecorp.mobdekbkp.web.device">
+    <dsContext>
+        <groupDatasource id="devicesLookupDs"
+                         class="ru.spacecorp.mobdekbkp.entity.Device"
+                         view="device-view">
+            <query>
+                <!--только утверждённые, и если форма открывается из планируемого перечня сч - только те в которых есть сч-->
+                <![CDATA[select e from mobdekbkp$Device e
+                            join e.parts pts
+                            where pts.part.id = :param$part
+                            and e.isApproved = 'true']]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="devicesLookupTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="devicesLookupTable"
+                datasource="devicesLookupDs">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="devicesLookupTable"
+                    width="100%">
+            <columns>
+                <column id="designation"/>
+                <column id="developer"
+                        maxTextLength="70"/>
+                <column id="generalConstructor"/>
+                <column id="demands"
+                        maxTextLength="70"/>
+                <column id="isApproved"/>
+            </columns>
+            <rows datasource="devicesLookupDs"/>
+            <rowsCount/>
+        </groupTable>
+    </layout>
+</window>

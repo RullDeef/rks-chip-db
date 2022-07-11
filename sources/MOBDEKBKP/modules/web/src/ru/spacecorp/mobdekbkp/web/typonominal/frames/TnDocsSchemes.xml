@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        class="ru.spacecorp.mobdekbkp.web.typonominal.frames.Tndocsschemes"
+        messagesPack="ru.spacecorp.mobdekbkp.web.typonominal.frames">
+    <dialogMode height="600"
+                width="800"/>
+    <layout>
+        <hbox id="docAndSchemHbox"
+              height="100%"
+              margin="true"
+              spacing="true"
+              width="100%">
+            <groupBox id="deliveryDocBox"
+                      caption="msg://ru.spacecorp.mobdekbkp.entity/Type.documnetsDelivery"
+                      height="100%"
+                      spacing="true"
+                      visible="false">
+                <vbox id="deliveryDocVbox"
+                      spacing="true"/>
+            </groupBox>
+            <groupBox id="standardAppSchemBox"
+                      caption="msg://ru.spacecorp.mobdekbkp.entity/Type.documentsStandartAppScheme"
+                      height="100%"
+                      spacing="true"
+                      visible="false">
+                <vbox id="standardAppSchemVbox"
+                      spacing="true"/>
+            </groupBox>
+        </hbox>
+    </layout>
+</window>

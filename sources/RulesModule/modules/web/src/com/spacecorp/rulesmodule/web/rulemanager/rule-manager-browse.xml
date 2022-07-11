@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="com.spacecorp.rulesmodule.web.rulemanager.RuleManagerBrowse"
+        focusComponent="ruleManagersTable"
+        lookupComponent="ruleManagersTable"
+        messagesPack="com.spacecorp.rulesmodule.web.rulemanager">
+    <dsContext>
+        <groupDatasource id="ruleManagersDs"
+                         class="com.spacecorp.rulesmodule.entity.RuleManager"
+                         view="_local">
+            <query>
+                <![CDATA[select e from rulesmodule$RuleManager e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="ruleManagersTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="ruleManagersTable"
+                datasource="ruleManagersDs">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="ruleManagersTable"
+                    width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="name"/>
+                <column id="entity"/>
+            </columns>
+            <rows datasource="ruleManagersDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="ruleManagersTable.create"/>
+                <button id="editBtn"
+                        action="ruleManagersTable.edit"/>
+                <button id="removeBtn"
+                        action="ruleManagersTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

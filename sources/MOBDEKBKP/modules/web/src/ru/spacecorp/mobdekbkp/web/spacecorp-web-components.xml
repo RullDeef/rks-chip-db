@@ -1,0 +1,7 @@
+<components xmlns="http://schemas.haulmont.com/cuba/components.xsd">
+    <component>
+        <name>filter</name>
+        <class>ru.spacecorp.mobdekbkp.web.SpacecorpWebFilter</class>
+        <componentLoader>com.haulmont.cuba.gui.xml.layout.loaders.FilterLoader</componentLoader>
+    </component>
+</components>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="ru.spacecorp.mobdekbkp.web.typonominalpurchaseparameters.TyponominalPurchaseParametersEdit"
+        datasource="typonominalPurchaseParametersDs"
+        focusComponent="typonominalPurchaseParametersFieldGroup"
+        messagesPack="ru.spacecorp.mobdekbkp.web.typonominalpurchaseparameters">
+    <dsContext>
+        <datasource id="typonominalPurchaseParametersDs"
+                    class="ru.spacecorp.mobdekbkp.entity.TyponominalPurchaseParameters"
+                    view="typonominalPurchaseParameters-view"/>
+        <collectionDatasource id="typonominalsDs"
+                              class="ru.spacecorp.mobdekbkp.entity.Typonominal"
+                              view="_minimal">
+            <query>
+                <![CDATA[select e from mobdekbkp$Typonominal e]]>
+            </query>
+        </collectionDatasource>
+        <collectionDatasource id="companiesDs"
+                              class="ru.spacecorp.mobdekbkp.entity.Company"
+                              view="company-view">
+            <query>
+                <![CDATA[select e from mobdekbkp$Company e]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="scrollBox"
+            spacing="true">
+        <scrollBox id="scrollBox"
+                   spacing="true">
+            <fieldGroup id="typonominalPurchaseParametersFieldGroup"
+                        datasource="typonominalPurchaseParametersDs">
+                <column width="500px">
+                    <field property="purchaseDesignation"/>
+                    <field property="costRating"
+                           rows="5"/>
+                    <field property="typicalDeliveryTerm"/>
+                    <field property="marketAvailableIndex"
+                           rows="5"/>
+                    <field property="hasSamples"/>
+                    <field property="deliveryMin"/>
+                    <field property="deliveryMax"/>
+                    <field datasource="typonominalPurchaseParametersDs"
+                           optionsDatasource="typonominalsDs"
+                           property="typonominal"/>
+                    <field editable="false"
+                           optionsDatasource="companiesDs"
+                           property="company"/>
+                    <field property="cost"/>
+                </column>
+            </fieldGroup>
+        </scrollBox>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

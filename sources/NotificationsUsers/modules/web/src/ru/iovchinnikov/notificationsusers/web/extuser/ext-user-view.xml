@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="ru.iovchinnikov.notificationsusers.web.extuser.ExtUserView"
+        datasource="extUserDs"
+        focusComponent="fieldGroup"
+        messagesPack="ru.iovchinnikov.notificationsusers.web.extuser">
+    <dsContext>
+        <datasource id="extUserDs"
+                    class="ru.iovchinnikov.notificationsusers.entity.ExtUser"
+                    view="_local"/>
+    </dsContext>
+    <dialogMode forceDialog="true"
+                height="AUTO"
+                width="600"/>
+    <layout expand="scrollBox"
+            spacing="true">
+        <scrollBox id="scrollBox"
+                   spacing="true">
+            <fieldGroup id="fieldGroup"
+                        datasource="extUserDs">
+                <column width="250px">
+                    <field id="login"
+                           editable="false"
+                           property="login"/>
+                    <field id="name"
+                           editable="false"
+                           property="name"/>
+                    <field id="firstName"
+                           editable="false"
+                           property="firstName"/>
+                    <field id="lastName"
+                           editable="false"
+                           property="lastName"/>
+                    <field id="middleName"
+                           editable="false"
+                           property="middleName"/>
+                    <field id="companyRef"
+                           editable="false"
+                           property="companyRef"/>
+                    <field id="position"
+                           editable="false"
+                           property="position"/>
+                    <field id="email"
+                           editable="false"
+                           property="email"/>
+                </column>
+            </fieldGroup>
+            <hbox spacing="true">
+                <label value="msg://phone"/>
+                <maskedField id="phone"
+                             datasource="extUserDs"
+                             editable="false"
+                             mask="#-###-###-##-##"
+                             property="phone"/>
+                <label value="msg://PhAdd"/>
+                <textField id="phAdd" datasource="extUserDs" property="phAdd" editable="false"/>
+            </hbox>
+        </scrollBox>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

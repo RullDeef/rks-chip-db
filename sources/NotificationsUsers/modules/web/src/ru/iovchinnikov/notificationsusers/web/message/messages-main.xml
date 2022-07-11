@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://caption"
+        class="ru.iovchinnikov.notificationsusers.web.message.MessagesMain"
+        messagesPack="ru.iovchinnikov.notificationsusers.web.message">
+    <dsContext>
+        <groupDatasource id="msgInboxDs"
+                         class="ru.iovchinnikov.notificationsusers.entity.Message"
+                         view="message-view">
+            <query>
+                <![CDATA[SELECT e
+                            FROM notificationsusers$Message e
+                            WHERE e.recipient.id = :session$userId
+                            AND e.meta.isReceiverRec = FALSE
+                            AND e.sent = TRUE
+                            AND NOT (e.meta.isReceiverDel = TRUE)
+                            ORDER BY e.meta.isRead, e.meta.createTs DESC]]>
+            </query>
+            <datasource id="inMetaDs"
+                        property="meta"/>
+        </groupDatasource>
+        <groupDatasource id="msgSentDs"
+                         class="ru.iovchinnikov.notificationsusers.entity.Message"
+                         view="message-view">
+            <query>
+                <![CDATA[SELECT e
+                            FROM notificationsusers$Message e
+                            WHERE e.sender.id = :session$userId
+                            AND e.meta.isSenderRec = FALSE
+                            AND e.sent = TRUE
+                            AND NOT (e.meta.isSenderDel = TRUE)
+                            ORDER BY e.meta.createTs DESC, e.meta.isRead]]>
+            </query>
+            <datasource id="sentMetaDs"
+                        property="meta"/>
+        </groupDatasource>
+        <groupDatasource id="msgRecycleDs"
+                         class="ru.iovchinnikov.notificationsusers.entity.Message"
+                         datasourceClass="ru.iovchinnikov.notificationsusers.web.message.RecycleDs"
+                         view="message-view">
+            <query>
+                <![CDATA[SELECT e FROM notificationsusers$Message e
+                            ]]>
+            </query>
+            <datasource id="recycleMetaDs"
+                        property="meta"/>
+        </groupDatasource>
+        <groupDatasource id="msgDraftDs"
+                         class="ru.iovchinnikov.notificationsusers.entity.Message"
+                         view="message-view">
+            <query>
+                <![CDATA[SELECT e
+                            FROM notificationsusers$Message e
+                            WHERE e.sender.id = :session$userId
+                            AND e.meta.isSenderRec = FALSE
+                            AND e.sent = FALSE
+                            AND NOT (e.meta.isSenderDel = TRUE)
+                            ORDER BY e.meta.createTs DESC, e.meta.isRead]]>
+            </query>
+            <datasource id="draftMetaDs"
+                        property="meta"/>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout>
+        <tabSheet id="allTabs"
+                  height="100%">
+            <tab id="tabInbox"
+                 caption="msg://inboxCaption"
+                 margin="true,false,false,false"
+                 spacing="true">
+                <groupBox id="gbIn"
+                          height="100%"
+                          spacing="true">
+                    <groupTable id="inboxTable"
+                                height="100%"
+                                multiselect="true"
+                                width="100%">
+                        <actions>
+                            <action id="create"
+                                    openType="DIALOG"/>
+                            <action id="edit"
+                                    openType="DIALOG"/>
+                        </actions>
+                        <columns>
+                            <column id="meta.isRead"/>
+                            <column id="meta.createTs"/>
+                            <column id="sender"/>
+                            <column id="subject"/>
+                        </columns>
+                        <rows datasource="msgInboxDs"/>
+                        <buttonsPanel id="inboxButtonsPanel"
+                                      alwaysVisible="true">
+                            <button id="inboxCreateBtn"
+                                    action="inboxTable.create"
+                                    caption="msg://create"/>
+                            <button id="btnMultipleRx"
+                                    caption="msg://recepient"
+                                    invoke="onMultipleBtnRxClick"/>
+                            <button id="inboxEditBtn"
+                                    action="inboxTable.edit"
+                                    caption="msg://view"/>
+                            <button id="inboxRemoveBtn"
+                                    caption="msg://remove"
+                                    invoke="recycle"/>
+                        </buttonsPanel>
+                    </groupTable>
+                </groupBox>
+            </tab>
+            <tab id="tabSent"
+                 caption="msg://sentCaption"
+                 margin="true,false,false,false"
+                 spacing="true">
+                <groupBox id="gbOut"
+                          height="100%"
+                          spacing="true">
+                    <groupTable id="sentTable"
+                                height="100%"
+                                multiselect="true"
+                                width="100%">
+                        <actions>
+                            <action id="create"
+                                    openType="DIALOG"/>
+                            <action id="edit"
+                                    openType="DIALOG"/>
+                        </actions>
+                        <columns>
+                            <column id="meta.isRead"/>
+                            <column id="meta.createTs"/>
+                            <column id="recipient"/>
+                            <column id="subject"/>
+                        </columns>
+                        <rows datasource="msgSentDs"/>
+                        <rowsCount/>
+                        <buttonsPanel id="sentButtonsPanel"
+                                      alwaysVisible="true">
+                            <button id="sentCreateBtn"
+                                    action="sentTable.create"
+                                    caption="msg://create"/>
+                            <button id="sentEditBtn"
+                                    action="sentTable.edit"
+                                    caption="msg://view"/>
+                            <button id="sentRemoveBtn"
+                                    caption="msg://remove"
+                                    invoke="recycle"/>
+                        </buttonsPanel>
+                    </groupTable>
+                </groupBox>
+            </tab>
+            <tab id="tabDraft"
+                 caption="msg://Drafts"
+                 margin="true,false,false,false"
+                 spacing="true">
+                <groupBox id="gbDraft"
+                          height="100%"
+                          spacing="true">
+                    <groupTable id="draftTable"
+                                height="100%"
+                                multiselect="true"
+                                width="100%">
+                        <actions>
+                            <action id="create"
+                                    openType="DIALOG"/>
+                            <action id="edit"
+                                    openType="DIALOG"/>
+                            <action id="remove"/>
+                        </actions>
+                        <columns>
+                            <column id="meta.createTs"/>
+                            <column id="recipient"/>
+                            <column id="subject"/>
+                        </columns>
+                        <rows datasource="msgDraftDs"/>
+                        <rowsCount/>
+                        <buttonsPanel id="draftButtonsPanel"
+                                      alwaysVisible="true">
+                            <button id="draftEditBtn"
+                                    action="draftTable.edit"
+                                    caption="msg://Edit"/>
+                            <button id="draftRemoveBtn"
+                                    caption="msg://remove"
+                                    invoke="recycle"/>
+                        </buttonsPanel>
+                    </groupTable>
+                </groupBox>
+            </tab>
+            <tab id="tabRecycle"
+                 caption="msg://recycleCaption"
+                 margin="true,false,false,false"
+                 spacing="true">
+                <groupBox id="gbRec"
+                          height="100%"
+                          spacing="true">
+                    <groupTable id="recycleTable"
+                                height="100%"
+                                multiselect="true"
+                                width="100%">
+                        <actions>
+                            <action id="create"
+                                    openType="DIALOG"/>
+                            <action id="edit"
+                                    openType="DIALOG"/>
+                        </actions>
+                        <columns>
+                            <column id="meta.isRead"/>
+                            <column id="meta.createTs"/>
+                            <column id="sender"/>
+                            <column id="recipient"/>
+                            <column id="subject"/>
+                        </columns>
+                        <rows datasource="msgRecycleDs"/>
+                        <rowsCount/>
+                        <buttonsPanel id="recycleButtonsPanel"
+                                      alwaysVisible="true">
+                            <button id="recycleRestoreBtn"
+                                    caption="msg://recover"
+                                    invoke="recover"/>
+                            <button id="recycleEditBtn"
+                                    action="recycleTable.edit"/>
+                            <button id="recycleRemoveBtn"
+                                    caption="msg://remove"
+                                    invoke="recycle"/>
+                        </buttonsPanel>
+                    </groupTable>
+                </groupBox>
+            </tab>
+        </tabSheet>
+    </layout>
+</window>

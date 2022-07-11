@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<screen-config xmlns="http://schemas.haulmont.com/cuba/screens.xsd">
+    <screen id="documents$Document.browse"
+            template="ru/spacecorp/documents/web/document/document-browse.xml"/>
+    <screen id="documents$Document.edit"
+            template="ru/spacecorp/documents/web/document/document-edit.xml"/>
+    <screen id="documents$DocumentType.browse"
+            template="ru/spacecorp/documents/web/documenttype/document-type-browse.xml"/>
+    <screen id="documents$DocumentType.edit"
+            template="ru/spacecorp/documents/web/documenttype/document-type-edit.xml"/>
+    <screen id="documents$DocumentRestriction.browse"
+            template="ru/spacecorp/documents/web/documentrestriction/document-restriction-browse.xml"/>
+    <screen id="documents$DocumentRestriction.edit"
+            template="ru/spacecorp/documents/web/documentrestriction/document-restriction-edit.xml"/>
+    <screen id="documents$Documents.frame"
+            template="ru/spacecorp/documents/web/document/documents-frame.xml"/>
+</screen-config>

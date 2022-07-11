@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<screen-config xmlns="http://schemas.haulmont.com/cuba/screens.xsd">
+    <include file="com/company/importmodule/screens.xml"/>
+    <screen id="importScreen"
+            template="com/company/importmodule/web/screens/importScreen.xml"/>
+    <screen id="templateScreen"
+            template="com/company/importmodule/web/screens/templateScreen.xml"/>
+    <screen id="exportScreen"
+            template="com/company/importmodule/web/screens/exportScreen.xml"/>
+    <screen id="smartImportScreen"
+            template="com/company/importmodule/web/screens/smartImportScreen.xml"/>
+    <screen id="smallImportScreen"
+            template="com/company/importmodule/web/screens/smallImportScreen.xml"/>
+    <screen id="smallDeleteScreen"
+            template="com/company/importmodule/web/screens/smallDeleteScreen.xml"/>
+</screen-config>
