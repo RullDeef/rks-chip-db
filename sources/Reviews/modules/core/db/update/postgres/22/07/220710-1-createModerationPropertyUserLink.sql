@@ -1,0 +1,5 @@
+create table REVIEWS_MODERATION_PROPERTY_USER_LINK (
+    MODERATION_PROPERTY_ID uuid,
+    USER_ID uuid,
+    primary key (MODERATION_PROPERTY_ID, USER_ID)
+);

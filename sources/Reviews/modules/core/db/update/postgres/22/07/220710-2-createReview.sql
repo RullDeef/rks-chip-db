@@ -1,0 +1,2 @@
+alter table REVIEWS_REVIEW add constraint FK_REVIEWS_REVIEW_AUTHOR foreign key (AUTHOR_ID) references SEC_USER(ID);
+create index IDX_REVIEWS_REVIEW_AUTHOR on REVIEWS_REVIEW (AUTHOR_ID);
