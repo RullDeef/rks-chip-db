@@ -4,9 +4,20 @@
 
 Необходимо поднять контейнер с нексусом:
 
-```shell
+<!---```shell
 $ docker-compose up -d nexus
+```--->
+```shell
+sudo docker-compose up -d --build
 ```
+Для проверки поднятых контейнеров смторим вывод команды:
+```shell
+sudo docker-compose ps --all
+```
+Должно быть так:
+
+![Screenshot from 2022-07-13 19-22-22](https://user-images.githubusercontent.com/82890344/178783545-1bb8dfcb-e3d4-4954-836f-32594c531af9.png)
+
 
 P.S. Опция `-d (detach)` означает запустить контейнер в фоне. Это нужно для того, чтобы он не упал при закрытии управляющего терминала.
 
