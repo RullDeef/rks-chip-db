@@ -10,5 +10,3 @@ out
 test-run
 /deploy/
 /gradle/
-modules/core/db/init/hsql/*.sql
-modules/core/db/update/hsql/18/*.sql

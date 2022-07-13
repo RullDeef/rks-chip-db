@@ -8,4 +8,3 @@ deploy/*
 modules/*/build/*
 out
 test-run
-modules/core/db/

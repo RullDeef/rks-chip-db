@@ -10,6 +10,5 @@ out
 test-run
 /.idea/
 *.org~
-/modules/core/db/update/
 *.*~
 /DB-Backup/dump.sql
