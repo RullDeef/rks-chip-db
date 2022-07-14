@@ -42,10 +42,143 @@ Sonatype Nexus -- интегрированная платформа, с помо
 
 \section{Набор клиентских средств для выкладки ПАК}
 
-пердокер
+Конфигурация среды разработки зависит от платформы, на которой происходит эта самая разработка. Поэтому решено использовать механизм контейнеризации, чтобы абстрагироваться от имеющегося окружения и работать с неизменной и защищенной средой внутри контейнера.
+
+Docker \cite{docker} -- это платформа контейнеризации с открытым исходным кодом, с помощью которой можно автоматизировать создание приложений, их доставку и управление.
+
+\subsection{Компоненты Docker, используемые в выкладке} 
+В таблице \ref{tab:docker-ref} даны определения основных компонентов Docker, использованных при выкладке.
+\begin{table}[H]
+	\centering
+	\captionsetup{singlelinecheck = false, justification=raggedleft}
+	\caption{Компоненты Docker, используемые в выкладке}
+	\begin{tabular}{|l|l|l|}
+		\hline
+		Имя компонента     & Описание                                                                                                                                           & Применение                                                                                                             \\ \hline
+		Dockerfile         & \begin{tabular}[c]{@{}l@{}}Текстовый файл с\\ последовательно \\ расположенными\\ инструкциями для \\ создания образа Docker\end{tabular}          & \begin{tabular}[c]{@{}l@{}}Развертывание \\ окружения, \\ необходимого\\ для сборки артефактов\end{tabular}            \\ \hline
+		image              & \begin{tabular}[c]{@{}l@{}}Неизменяемый файл (образ),\\  из которого можно\\ неограниченное количество\\  раз развернуть контейнер\end{tabular}    & \begin{tabular}[c]{@{}l@{}}Использованы образы \\ окружения сборки,\\ репозитория Nexus\end{tabular}                   \\ \hline
+		docker-compose.yml & \begin{tabular}[c]{@{}l@{}}Определение служб для \\ централизованного запуска\\ при сборке \\ многоконтейнерного \\ приложения Docker\end{tabular} & \begin{tabular}[c]{@{}l@{}}Централизованный \\ запуск служб Nexus, \\ СУБД Postgres и \\ окружения сборки\end{tabular} \\ \hline
+		docker volumes     & \begin{tabular}[c]{@{}l@{}}Тома для постоянного\\  хранения информации\end{tabular}                                                                & \begin{tabular}[c]{@{}l@{}}Хранение \\ изменяемых данных\\ после остановки \\ службы\end{tabular}                      \\ \hline
+	\end{tabular}
+	\label{tab:docker-ref}
+\end{table}
 
 \section{Процесс выкладки программного окружения}
+На листинге \ref{lst:compose} приведено определение служб в файле docker-compose для централизованного запуска при сборке многоконтейнерного приложения Docker.
+\captionsetup{singlelinecheck = false, justification=raggedright}
+\begin{lstlisting}[label=lst:compose,caption=файл docker-compose.yml]
+version: '3.7'
 
-лешины драгоценные скрипты
+services:
+  nexus:
+    build: nexus
+    container_name: nexus
+    ports:
+      - '8081:8081'
+    volumes:
+      - ./nexus/data:/nexus-data
+  database:
+    image: postgres:10-alpine
+    container_name: database
+    ports:
+      - '5432:5432'
+    volumes:
+      - ./database/data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=postgres
+  builder:
+    build: builder
+    container_name: builder
+    network_mode: host
+    volumes:
+      - ./sources:/home/gradle
+    depends_on:
+      - nexus
+      - database
+\end{lstlisting}
 
+Корневой ключ в этом файле -- services. Под этим ключом определяются службы, которые требуется развернуть и запустить. В данном случае в файле docker-compose.yml определено несколько служб, как показано в таблице \ref{tab:serv}.
+\begin{table}[H]
+	\centering
+	\captionsetup{singlelinecheck = false, justification=raggedleft}
+	\caption{Назначение служб}
+	\begin{tabular}{|l|l|}
+		\hline
+		Имя службы & Описание                                                                                                                                                                                   \\ \hline
+		nexus      & \begin{tabular}[c]{@{}l@{}}Организация локального хранилища пакетов\\ и артефактов CUBA, а также управление\\ запросами и перенаправление их на \\ специальные датацентры РКС\end{tabular} \\ \hline
+		database   & \begin{tabular}[c]{@{}l@{}}Развертывание реляционной СУБД\\ PostgreSQL\end{tabular}                                                                                                        \\ \hline
+		builder    & \begin{tabular}[c]{@{}l@{}}Окружение, необходимое для корректной\\ сборки артефактов системы\end{tabular}                                                                                  \\ \hline
+	\end{tabular}
+	\label{tab:serv}
+\end{table}
 
+\subsection[Окружение, необходимое для сборки артефактов]{Окружение, необходимое для сборки\\артефактов}
+
+На листинге \ref{lst:builder} приведено содержание файла Dockerfile для развертывания окружения, необходимого для сборки артефактов.
+\begin{lstlisting}[label=lst:builder,caption=Dockerfile для для службы builder]
+FROM eclipse-temurin:8-jdk-jammy
+	
+CMD ["bash"]
+	
+ENV GRADLE_HOME /opt/gradle
+	
+RUN set -o errexit -o nounset \
+	&& echo "Adding gradle user and group" \
+	&& groupadd --system --gid 1000 gradle \
+	&& useradd --system --gid gradle --uid 1000 ... \
+	&& mkdir /home/gradle/.gradle \
+	&& chown --recursive gradle:gradle /home/gradle \
+	\
+	&& echo "Symlinking root Gradle cache to gradle Gradle cache" \
+	&& ln --symbolic /home/gradle/.gradle /root/.gradle
+	
+VOLUME /home/gradle/.gradle
+	
+WORKDIR /home/gradle
+	
+RUN set -o errexit -o nounset \
+	&& apt-get update \
+	&& apt-get install --yes --no-install-recommends \
+		unzip \
+		wget \
+		\
+		bzr \
+		git \
+		git-lfs \
+		mercurial \
+		openssh-client \
+		subversion \
+	&& rm --recursive --force /var/lib/apt/lists/* \
+	\
+	&& echo "Testing VCSes" \
+	&& which bzr \
+	&& which git \
+	&& which git-lfs \
+	&& which hg \
+	&& which svn
+	
+ENV GRADLE_VERSION 4.3.1
+ARG GRADLE_DOWNLOAD_SHA256=15ebe098ce0392a2d06...
+RUN set -o errexit -o nounset \
+	&& echo "Downloading Gradle" \
+	&& wget --no-verbose --output-document=gradle.zip ... \
+	\
+	&& echo "Checking download hash" \
+	&& echo "${GRADLE_DOWNLOAD_SHA256} *gradle.zip" | sha256sum --check - \
+	\
+	&& echo "Installing Gradle" \
+	&& unzip gradle.zip \
+	&& rm gradle.zip \
+	&& mv "gradle-${GRADLE_VERSION}" "${GRADLE_HOME}/" \
+	&& ln --symbolic "${GRADLE_HOME}/bin/gradle" /usr/bin/gradle \
+	\
+	&& echo "Testing Gradle installation" \
+	&& gradle --version
+\end{lstlisting}
+
+\subsection{Сборка подсистем отраслевой БД по ЭКБ КП}
+После успешного запуска всех необходимых служб с помощью задач в системе автоматической сборки <<Gradle>> осуществляется сборка подсистем в строгом порядке, поскольку на каждом этапе определенная подсистема отправляет в удаленный репозиторий Nexus артефакты, требуемые для дальнейшей выкладки. 
+
+Основной модуль запускается с помощью <<Apache Tomcat>> -- программы, представляющая собой сервер, который занимается системной поддержкой сервлетов и обеспечивает их жизненный цикл в соответствии с правилами, определёнными в спецификациях. \cite{tomcat} 
+
+Выкладка программного комплекса на данном этапе завершена и программное обеспечение ПАК МОБД ЭКБ доступно по адресу, указанному в файле docker-compose для централизованного запуска служб приложения (листинг \ref{lst:compose}).
